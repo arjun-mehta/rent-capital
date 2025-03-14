@@ -19,9 +19,10 @@ const Index: React.FC = () => {
         const id = target.getAttribute('href')?.replace('#', '');
         const element = document.getElementById(id!);
         if (element) {
-          const yOffset = -80; // Header height + some padding
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          window.scrollTo({
+            top: element.offsetTop - 80,
+            behavior: 'auto' // Changed to 'auto' to remove smooth scrolling animation
+          });
         }
       }
     };
@@ -31,17 +32,15 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col w-full relative">
       <Header />
-      <main className="flex-grow">
-        <div className="w-full overflow-x-hidden">
-          <Hero />
-          <HowItWorks />
-          <WhoWeHelp />
-          <WhyCreatorCapital />
-          <PricingSection />
-          <ApplicationForm />
-        </div>
+      <main className="w-full">
+        <Hero />
+        <HowItWorks />
+        <WhoWeHelp />
+        <WhyCreatorCapital />
+        <PricingSection />
+        <ApplicationForm />
       </main>
       <Footer />
     </div>

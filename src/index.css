@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -74,18 +75,28 @@
   }
 
   html {
-    @apply h-full w-full;
-    scroll-behavior: smooth;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    position: relative;
   }
 
   body {
-    @apply h-full w-full bg-background text-foreground;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+    @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
   }
   
   #root {
-    @apply h-full w-full flex flex-col;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+    @apply flex flex-col;
   }
 }
 
