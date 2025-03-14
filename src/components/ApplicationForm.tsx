@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -66,7 +67,7 @@ const ApplicationForm: React.FC = () => {
   };
 
   return (
-    <section id="application-form" className="py-24 bg-[#fcf4ed]">
+    <section id="application-form" className="py-24 bg-white">
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <h2 className="heading-lg mb-6">
