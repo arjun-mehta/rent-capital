@@ -129,7 +129,7 @@ const ApplicationForm: React.FC = () => {
                               <img 
                                 src={platform.image} 
                                 alt={platform.label} 
-                                className="h-5 w-auto object-contain"
+                                className={platform.label === "Patreon" ? "h-6 w-auto object-contain" : "h-5 w-auto object-contain"}
                               />
                             )}
                             <span>{platform.label}</span>
