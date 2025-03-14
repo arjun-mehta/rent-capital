@@ -47,9 +47,6 @@ const PricingSection: React.FC = () => {
     <section id="pricing" className="py-24 bg-gray-50">
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="tag bg-black/5 text-black/80 mb-4">
-            Pricing & Terms
-          </div>
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
             Fair, Flexible, and Built for Growth
           </h2>

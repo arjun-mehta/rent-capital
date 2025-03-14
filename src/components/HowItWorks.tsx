@@ -68,9 +68,6 @@ const HowItWorks: React.FC = () => {
     <section id="how-it-works" className="py-24 bg-white">
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="tag bg-black/5 text-black/80 mb-4 opacity-0 animate-fade-in">
-            Simple Process
-          </div>
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
             Unlock Growth Capital in 3 Easy Steps
           </h2>

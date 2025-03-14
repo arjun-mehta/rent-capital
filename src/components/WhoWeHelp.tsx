@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
@@ -63,9 +64,6 @@ const WhoWeHelp: React.FC = () => {
     <section id="who-we-help" className="py-24 bg-gray-50">
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="tag bg-black/5 text-black/80 mb-4">
-            Eligibility
-          </div>
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
             If You Have Recurring Revenue, We Can Fund You
           </h2>

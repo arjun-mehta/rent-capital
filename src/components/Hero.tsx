@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -40,10 +41,6 @@ const Hero: React.FC = () => {
       
       <div className="section-container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="tag bg-black/5 text-black/80 mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-            Creator Financing Simplified
-          </div>
-          
           <h1 
             ref={headingRef}
             className="heading-xl mb-6 opacity-0"
