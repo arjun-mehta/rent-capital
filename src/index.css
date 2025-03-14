@@ -136,6 +136,11 @@
   .secondary-button {
     @apply inline-flex items-center justify-center h-12 px-8 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200;
   }
+  
+  .blur-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 /* Remove problematic animation classes that could be causing content to disappear */
@@ -157,11 +162,6 @@
 
 .hover-lift:hover {
   transform: none;
-}
-
-.blur-backdrop {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
 }
 
 /* Simplified hover underline */
