@@ -45,7 +45,7 @@ const HowItWorks: React.FC = () => {
     },
     {
       title: "Get Funded",
-      description: "Receive 75–90% of your projected membership revenue upfront as a cash advance.",
+      description: "Receive 85–90% of your projected membership revenue upfront as a cash advance.",
       icon: CreditCard,
       delay: "0.3s"
     },
