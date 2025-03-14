@@ -47,9 +47,9 @@ const WhoWeHelp: React.FC = () => {
   ];
 
   const qualifications = [
-    "You have consistent subscription revenue from engaged supporters.",
-    "You've been earning for at least 12 months on your platform.",
-    "You're generating $20,000+ per month in subscription revenue."
+    "You upload content at least twice a month on a subscription platform.",
+    "You've been earning subscription revenue for at least 12 months.",
+    "You generate $20,000+ per month from Patreon, Substack, or similar platforms."
   ];
 
   const useCases = [
