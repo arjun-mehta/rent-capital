@@ -39,11 +39,11 @@ const WhoWeHelp: React.FC = () => {
   }, []);
 
   const platforms = [
-    "Patreon",
-    "YouTube Memberships",
-    "Substack",
-    "Twitch",
-    "Discord",
+    { name: "Patreon", image: "/lovable-uploads/2ea3daf9-1958-4ef1-bff4-b7362b51e766.png" },
+    { name: "YouTube", image: "/lovable-uploads/48681725-4377-4e0b-acc6-3d9648ef158d.png" },
+    { name: "Substack", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
+    { name: "Twitch", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
+    { name: "Supercast", image: "/lovable-uploads/180032d6-e17b-4ef9-b1b4-735819d6e9a5.png" },
   ];
 
   const qualifications = [
@@ -86,7 +86,11 @@ const WhoWeHelp: React.FC = () => {
                 key={index}
                 className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-32"
               >
-                <span className="text-xl font-medium text-center">{platform}</span>
+                <img 
+                  src={platform.image} 
+                  alt={platform.name} 
+                  className="h-12 object-contain" 
+                />
               </div>
             ))}
           </div>

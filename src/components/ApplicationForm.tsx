@@ -24,6 +24,15 @@ const ApplicationForm: React.FC = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  const platforms = [
+    { value: "patreon", label: "Patreon", image: "/lovable-uploads/2ea3daf9-1958-4ef1-bff4-b7362b51e766.png" },
+    { value: "youtube", label: "YouTube", image: "/lovable-uploads/48681725-4377-4e0b-acc6-3d9648ef158d.png" },
+    { value: "substack", label: "Substack", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
+    { value: "twitch", label: "Twitch", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
+    { value: "supercast", label: "Supercast", image: "/lovable-uploads/180032d6-e17b-4ef9-b1b4-735819d6e9a5.png" },
+    { value: "other", label: "Other", image: "" }
+  ];
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -114,12 +123,20 @@ const ApplicationForm: React.FC = () => {
                       <SelectValue placeholder="Select platform" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="patreon">Patreon</SelectItem>
-                      <SelectItem value="youtube">YouTube Memberships</SelectItem>
-                      <SelectItem value="substack">Substack</SelectItem>
-                      <SelectItem value="twitch">Twitch</SelectItem>
-                      <SelectItem value="discord">Discord</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      {platforms.map((platform) => (
+                        <SelectItem key={platform.value} value={platform.value}>
+                          <div className="flex items-center gap-2">
+                            {platform.image && (
+                              <img 
+                                src={platform.image} 
+                                alt={platform.label} 
+                                className="h-5 w-auto object-contain"
+                              />
+                            )}
+                            <span>{platform.label}</span>
+                          </div>
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>

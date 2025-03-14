@@ -91,19 +91,19 @@ const Hero: React.FC = () => {
           <h2 className="text-lg text-center text-gray-500 mb-6 animate-fade-in-slow">Trusted by creators from</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-80">
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.1s" }}>
-              <div className="text-xl font-semibold">Patreon</div>
+              <img src="/lovable-uploads/2ea3daf9-1958-4ef1-bff4-b7362b51e766.png" alt="Patreon" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.2s" }}>
-              <div className="text-xl font-semibold">Substack</div>
+              <img src="/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" alt="Substack" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.3s" }}>
-              <div className="text-xl font-semibold">YouTube</div>
+              <img src="/lovable-uploads/48681725-4377-4e0b-acc6-3d9648ef158d.png" alt="YouTube" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.4s" }}>
-              <div className="text-xl font-semibold">Twitch</div>
+              <img src="/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" alt="Twitch" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.5s" }}>
-              <div className="text-xl font-semibold">Discord</div>
+              <img src="/lovable-uploads/180032d6-e17b-4ef9-b1b4-735819d6e9a5.png" alt="Supercast" className="h-8 object-contain" />
             </div>
           </div>
         </div>
