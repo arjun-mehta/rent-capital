@@ -111,6 +111,11 @@ export default {
 			fontFamily: {
 				sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
 				mono: ['SF Mono', 'monospace']
+			},
+			fontSize: {
+				'7xl': '5rem',
+				'8xl': '6rem',
+				'9xl': '7rem',
 			}
 		}
 	},

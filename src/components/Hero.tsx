@@ -40,17 +40,17 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-[#fcf4ed] z-0"></div>
       
       <div className="section-container relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <h1 
             ref={headingRef}
-            className="heading-xl mb-6 opacity-0"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 opacity-0 leading-[1.1]"
           >
             Get Upfront Capital for Your Recurring Revenue.
           </h1>
           
           <p 
             ref={subheadingRef}
-            className="paragraph text-xl md:text-2xl mb-8 opacity-0"
+            className="text-xl md:text-2xl lg:text-3xl mb-10 opacity-0 text-gray-700 max-w-3xl mx-auto"
           >
             Get a cash advance against your predictable subscription revenue—no equity, no debt, no hassle.
           </p>
