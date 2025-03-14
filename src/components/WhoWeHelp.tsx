@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
@@ -42,7 +41,7 @@ const WhoWeHelp: React.FC = () => {
     { name: "Patreon", image: "/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" },
     { name: "YouTube", image: "/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" },
     { name: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
-    { name: "Twitch", image: "/lovable-uploads/3f9346c4-e564-44c3-974d-587455f86bce.png" },
+    { name: "Twitch", image: "/lovable-uploads/09c16960-6097-4df5-ba5b-62d6d6d1cda8.png" },
     { name: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
   ];
 
