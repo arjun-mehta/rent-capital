@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
@@ -10,31 +10,38 @@ import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
 const Index: React.FC = () => {
-  // Smooth scroll functionality for anchor links
-  useEffect(() => {
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
-        e.preventDefault();
-        const id = target.getAttribute('href')?.replace('#', '');
-        const element = document.getElementById(id!);
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80,
-            behavior: 'auto' // Changed to 'auto' to remove smooth scrolling animation
-          });
-        }
+  // Direct link navigation without smooth scrolling
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute('href');
+    if (href?.startsWith('#')) {
+      e.preventDefault();
+      const id = href.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        // Static positioning without animation
+        window.scrollTo(0, element.offsetTop - 80);
       }
-    };
+    }
+  };
 
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
+  // Add click handler to document for all anchor links
+  React.useEffect(() => {
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach(anchor => {
+      anchor.addEventListener('click', handleNavigation as unknown as EventListener);
+    });
+
+    return () => {
+      anchors.forEach(anchor => {
+        anchor.removeEventListener('click', handleNavigation as unknown as EventListener);
+      });
+    };
   }, []);
 
   return (
-    <div className="flex flex-col w-full relative">
+    <div className="flex flex-col w-full h-full">
       <Header />
-      <main className="w-full">
+      <main className="flex-grow">
         <Hero />
         <HowItWorks />
         <WhoWeHelp />
