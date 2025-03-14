@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-16 md:pt-44 md:pb-32 overflow-hidden">
+    <section className="relative pt-32 pb-8 md:pt-44 md:pb-16 overflow-hidden">
       <div className="absolute inset-0 bg-[#fcf4ed] z-0"></div>
       
       <div className="section-container relative z-10">
@@ -78,29 +78,6 @@ const Hero: React.FC = () => {
             >
               Learn How It Works
             </Button>
-          </div>
-        </div>
-      </div>
-      
-      <div className="section-container mt-20">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-lg text-center text-gray-500 mb-6 animate-fade-in-slow">Trusted by creators from</h2>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-80">
-            <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.1s" }}>
-              <img src="/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" alt="Patreon" className="h-8 object-contain" />
-            </div>
-            <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.2s" }}>
-              <img src="/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" alt="Substack" className="h-8 object-contain" />
-            </div>
-            <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.3s" }}>
-              <img src="/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" alt="YouTube" className="h-8 object-contain" />
-            </div>
-            <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.4s" }}>
-              <img src="/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" alt="Twitch" className="h-8 object-contain" />
-            </div>
-            <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.5s" }}>
-              <img src="/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" alt="Supercast" className="h-8 object-contain" />
-            </div>
           </div>
         </div>
       </div>
