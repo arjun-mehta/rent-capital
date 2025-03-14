@@ -49,7 +49,7 @@ const WhoWeHelp: React.FC = () => {
   const qualifications = [
     "You have consistent subscription revenue from engaged supporters.",
     "You've been earning for at least 12 months on your platform.",
-    "You're generating $5,000+ per month in subscription revenue."
+    "You're generating $20,000+ per month in subscription revenue."
   ];
 
   const useCases = [
