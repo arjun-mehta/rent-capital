@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -130,7 +129,7 @@ const ApplicationForm: React.FC = () => {
                               <img 
                                 src={platform.image} 
                                 alt={platform.label} 
-                                className="h-5 w-auto object-contain"
+                                className={`h-5 w-auto object-contain ${platform.label === "Patreon" ? "h-6 w-auto" : ""}`}
                               />
                             )}
                             <span>{platform.label}</span>

@@ -89,7 +89,7 @@ const WhoWeHelp: React.FC = () => {
                 <img 
                   src={platform.image} 
                   alt={platform.name} 
-                  className="h-12 object-contain" 
+                  className={`h-12 object-contain ${platform.name === "Patreon" ? "h-14 w-auto" : ""}`}
                 />
               </div>
             ))}
