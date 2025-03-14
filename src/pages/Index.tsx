@@ -31,15 +31,17 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="w-full overflow-x-hidden">
-        <Hero />
-        <HowItWorks />
-        <WhoWeHelp />
-        <WhyCreatorCapital />
-        <PricingSection />
-        <ApplicationForm />
+      <main className="flex-grow overflow-visible">
+        <div className="w-full">
+          <Hero />
+          <HowItWorks />
+          <WhoWeHelp />
+          <WhyCreatorCapital />
+          <PricingSection />
+          <ApplicationForm />
+        </div>
       </main>
       <Footer />
     </div>
