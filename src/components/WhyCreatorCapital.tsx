@@ -3,6 +3,14 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const WhyCreatorCapital: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -53,7 +61,7 @@ const WhyCreatorCapital: React.FC = () => {
   const comparisonData = [
     {
       feature: "Approval Speed",
-      creatorCapital: "48 hours",
+      creatorCapital: "As fast as 48 hours",
       traditionalLoans: "Weeks",
       ventureCapital: "Months"
     },
@@ -67,19 +75,31 @@ const WhyCreatorCapital: React.FC = () => {
       feature: "No Personal Collateral",
       creatorCapital: true,
       traditionalLoans: false,
-      ventureCapital: true
-    },
-    {
-      feature: "Predictable Repayment",
-      creatorCapital: true,
-      traditionalLoans: false,
       ventureCapital: false
     },
     {
-      feature: "Designed for Creators",
-      creatorCapital: true,
-      traditionalLoans: false,
-      ventureCapital: false
+      feature: "Flexible Repayment",
+      creatorCapital: "Payments adjust with earnings",
+      traditionalLoans: "Fixed monthly payments",
+      ventureCapital: "No repayment, but loss of equity"
+    },
+    {
+      feature: "Higher Advance Limits",
+      creatorCapital: "$50K–$3M upfront",
+      traditionalLoans: "Lower limits for online businesses",
+      ventureCapital: "Varies"
+    },
+    {
+      feature: "No Personal Credit Checks",
+      creatorCapital: "No credit score impact",
+      traditionalLoans: "Requires credit check",
+      ventureCapital: "Not relevant"
+    },
+    {
+      feature: "Built for Subscription Creators",
+      creatorCapital: "Patreon, YouTube, Substack, etc.",
+      traditionalLoans: "Not creator-friendly",
+      ventureCapital: "Not tailored for subscription businesses"
     }
   ];
 
@@ -119,31 +139,31 @@ const WhyCreatorCapital: React.FC = () => {
           </h3>
           
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th className="text-left p-4 border-b-2 border-gray-100">Feature</th>
-                  <th className="p-4 border-b-2 border-gray-100 bg-black text-white rounded-tl-lg">
+            <Table className="w-full border-collapse">
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-left p-4 border-b-2 border-gray-100">Feature</TableHead>
+                  <TableHead className="p-4 border-b-2 border-gray-100 bg-black text-white rounded-tl-lg">
                     <span className="font-poppins font-semibold">Creator Capital</span>
-                  </th>
-                  <th className="p-4 border-b-2 border-gray-100">Traditional Loans</th>
-                  <th className="p-4 border-b-2 border-gray-100">Venture Capital</th>
-                </tr>
-              </thead>
-              <tbody>
+                  </TableHead>
+                  <TableHead className="p-4 border-b-2 border-gray-100">Traditional Loans</TableHead>
+                  <TableHead className="p-4 border-b-2 border-gray-100">Venture Capital</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {comparisonData.map((row, rowIndex) => (
-                  <tr key={rowIndex} className="hover:bg-gray-50">
-                    <td className="p-4 border-b border-gray-100 font-medium">{row.feature}</td>
-                    <td className="p-4 border-b border-gray-100 text-center bg-gray-50">
+                  <TableRow key={rowIndex} className="hover:bg-gray-50">
+                    <TableCell className="p-4 border-b border-gray-100 font-medium">{row.feature}</TableCell>
+                    <TableCell className="p-4 border-b border-gray-100 text-center bg-gray-50">
                       {typeof row.creatorCapital === 'boolean' ? (
                         row.creatorCapital ? 
                           <CheckCircle className="w-5 h-5 text-black mx-auto" /> : 
                           <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
-                        row.creatorCapital
+                        <span className="font-medium">{row.creatorCapital}</span>
                       )}
-                    </td>
-                    <td className="p-4 border-b border-gray-100 text-center">
+                    </TableCell>
+                    <TableCell className="p-4 border-b border-gray-100 text-center">
                       {typeof row.traditionalLoans === 'boolean' ? (
                         row.traditionalLoans ? 
                           <CheckCircle className="w-5 h-5 text-black mx-auto" /> : 
@@ -151,8 +171,8 @@ const WhyCreatorCapital: React.FC = () => {
                       ) : (
                         row.traditionalLoans
                       )}
-                    </td>
-                    <td className="p-4 border-b border-gray-100 text-center">
+                    </TableCell>
+                    <TableCell className="p-4 border-b border-gray-100 text-center">
                       {typeof row.ventureCapital === 'boolean' ? (
                         row.ventureCapital ? 
                           <CheckCircle className="w-5 h-5 text-black mx-auto" /> : 
@@ -160,11 +180,11 @@ const WhyCreatorCapital: React.FC = () => {
                       ) : (
                         row.ventureCapital
                       )}
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
           </div>
           
           <div className="flex justify-center mt-12">
