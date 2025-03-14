@@ -10,38 +10,39 @@ import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
 const Index: React.FC = () => {
-  // Direct link navigation without smooth scrolling
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const href = e.currentTarget.getAttribute('href');
-    if (href?.startsWith('#')) {
-      e.preventDefault();
-      const id = href.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        // Static positioning without animation
-        window.scrollTo(0, element.offsetTop - 80);
-      }
+  // Static link handling without animations or smooth scrolling
+  const handleSectionScroll = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      // Use static positioning with no animation
+      const yOffset = -80; // Header offset
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior: 'auto'});
     }
   };
 
-  // Add click handler to document for all anchor links
+  // Add global click handler for anchor links
   React.useEffect(() => {
-    const anchors = document.querySelectorAll('a[href^="#"]');
-    anchors.forEach(anchor => {
-      anchor.addEventListener('click', handleNavigation as unknown as EventListener);
-    });
-
-    return () => {
-      anchors.forEach(anchor => {
-        anchor.removeEventListener('click', handleNavigation as unknown as EventListener);
-      });
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      // Find the closest anchor tag if the target isn't an anchor
+      const anchor = target.tagName === 'A' ? target : target.closest('a');
+      
+      if (anchor && anchor.hash) {
+        e.preventDefault();
+        const sectionId = anchor.hash.substring(1);
+        handleSectionScroll(sectionId);
+      }
     };
+
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
   }, []);
 
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="min-h-screen flex flex-col w-full" style={{overflow: 'auto', position: 'static'}}>
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow relative" style={{overflow: 'auto', position: 'static'}}>
         <Hero />
         <HowItWorks />
         <WhoWeHelp />
