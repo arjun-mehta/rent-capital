@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative pt-32 pb-16 md:pt-44 md:pb-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white z-0"></div>
+      <div className="absolute inset-0 bg-[#fcf4ed] z-0"></div>
       
       <div className="section-container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
               <img src="/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" alt="YouTube" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.4s" }}>
-              <img src="/lovable-uploads/09c16960-6097-4df5-ba5b-62d6d6d1cda8.png" alt="Twitch" className="h-8 object-contain" />
+              <img src="/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" alt="Twitch" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.5s" }}>
               <img src="/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" alt="Supercast" className="h-8 object-contain" />

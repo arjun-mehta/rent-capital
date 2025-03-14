@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,7 +27,7 @@ const ApplicationForm: React.FC = () => {
     { value: "patreon", label: "Patreon", image: "/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" },
     { value: "youtube", label: "YouTube", image: "/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" },
     { value: "substack", label: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
-    { value: "twitch", label: "Twitch", image: "/lovable-uploads/09c16960-6097-4df5-ba5b-62d6d6d1cda8.png" },
+    { value: "twitch", label: "Twitch", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
     { value: "supercast", label: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
     { value: "other", label: "Other", image: "" }
   ];
@@ -67,12 +66,9 @@ const ApplicationForm: React.FC = () => {
   };
 
   return (
-    <section id="application-form" className="py-24 bg-white">
+    <section id="application-form" className="py-24 bg-[#fcf4ed]">
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <div className="tag bg-black/5 text-black/80 mb-4">
-            Apply Now
-          </div>
           <h2 className="heading-lg mb-6">
             Start Your Application in Minutes
           </h2>
