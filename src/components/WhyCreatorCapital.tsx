@@ -123,7 +123,9 @@ const WhyCreatorCapital: React.FC = () => {
               <thead>
                 <tr>
                   <th className="text-left p-4 border-b-2 border-gray-100">Feature</th>
-                  <th className="p-4 border-b-2 border-gray-100 bg-black text-white rounded-tl-lg">Creator Capital</th>
+                  <th className="p-4 border-b-2 border-gray-100 bg-black text-white rounded-tl-lg">
+                    <span className="font-poppins font-semibold">Creator Capital</span>
+                  </th>
                   <th className="p-4 border-b-2 border-gray-100">Traditional Loans</th>
                   <th className="p-4 border-b-2 border-gray-100">Venture Capital</th>
                 </tr>
