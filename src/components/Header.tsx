@@ -44,7 +44,7 @@ const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <a href="/" className="flex items-center z-10">
-          <span className="text-xl font-poppins font-semibold tracking-tight uppercase">Creator Capital</span>
+          <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
         </a>
 
         {/* Desktop Navigation */}

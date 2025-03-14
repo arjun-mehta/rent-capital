@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-16">
           <div className="md:col-span-1">
             <div className="mb-6">
-              <h2 className="text-2xl font-poppins font-semibold tracking-tight uppercase">Creator Capital</h2>
+              <h2 className="text-2xl font-poppins font-semibold tracking-tight">Creator Capital</h2>
             </div>
             <p className="text-gray-400 mb-4 max-w-xs">
               Providing creators with the financial tools they need to grow their business and focus on what they do best.
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} <span className="font-poppins font-semibold uppercase">Creator Capital</span>. All rights reserved.
+            © {currentYear} <span className="font-poppins font-semibold">Creator Capital</span>. All rights reserved.
           </div>
           
           <div className="flex space-x-6">
