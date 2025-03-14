@@ -31,9 +31,9 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col w-full">
       <Header />
-      <main>
+      <main className="w-full overflow-x-hidden">
         <Hero />
         <HowItWorks />
         <WhoWeHelp />
