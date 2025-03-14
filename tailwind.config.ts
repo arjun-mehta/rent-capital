@@ -109,8 +109,9 @@ export default {
 				'border-pulse': 'border-pulse 2s infinite ease-in-out'
 			},
 			fontFamily: {
-				sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
-				mono: ['SF Mono', 'monospace']
+				sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+				mono: ['SF Mono', 'monospace'],
+				poppins: ['Poppins', 'sans-serif']
 			},
 			fontSize: {
 				'7xl': '5rem',
