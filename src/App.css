@@ -1,7 +1,7 @@
 
 /* Reset and base styles */
 #root {
-  max-width: none;
+  max-width: 100%;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -9,8 +9,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  position: static;
 }
 
 /* Logo styles */

@@ -10,14 +10,14 @@ import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
 const Index: React.FC = () => {
-  // Static link handling without animations or smooth scrolling
+  // Static navigation without animations
   const handleSectionScroll = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      // Use static positioning with no animation
-      const yOffset = -80; // Header offset
-      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({top: y, behavior: 'auto'});
+      window.scrollTo({
+        top: section.offsetTop - 80, // Header offset
+        behavior: 'auto'
+      });
     }
   };
 
@@ -25,7 +25,6 @@ const Index: React.FC = () => {
   React.useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Find the closest anchor tag if the target isn't an anchor
       const anchor = target.tagName === 'A' ? target as HTMLAnchorElement : target.closest('a');
       
       if (anchor && anchor instanceof HTMLAnchorElement && anchor.hash) {
@@ -40,9 +39,9 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col w-full" style={{overflow: 'auto', position: 'static'}}>
+    <div className="flex flex-col w-full min-h-screen">
       <Header />
-      <main className="flex-grow relative" style={{overflow: 'auto', position: 'static'}}>
+      <main className="flex-grow">
         <Hero />
         <HowItWorks />
         <WhoWeHelp />
