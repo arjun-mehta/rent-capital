@@ -1,0 +1,112 @@
+
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const navItems = [
+    { label: "How It Works", href: "#how-it-works" },
+    { label: "Who We Help", href: "#who-we-help" },
+    { label: "Why Us", href: "#why-us" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "FAQ", href: "#faq" },
+  ];
+
+  return (
+    <header 
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4 px-4 sm:px-6",
+        isScrolled 
+          ? "bg-white/90 blur-backdrop shadow-sm" 
+          : "bg-transparent"
+      )}
+    >
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="/" className="flex items-center z-10">
+          <span className="text-xl font-semibold tracking-tight">Creator Capital</span>
+        </a>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-sm font-medium text-gray-700 hover-underline hover:text-black transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+          <Button 
+            className="primary-button animate-fade-in"
+            onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
+          >
+            Apply Now
+          </Button>
+        </nav>
+
+        {/* Mobile Navigation Trigger */}
+        <button
+          className="md:hidden z-10 p-2 focus:outline-none"
+          onClick={handleMenuToggle}
+          aria-label="Toggle Menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Mobile Navigation Menu */}
+        <div
+          className={cn(
+            "fixed inset-0 bg-white flex flex-col justify-center items-center transition-all duration-300 ease-in-out md:hidden",
+            isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          )}
+        >
+          <nav className="flex flex-col items-center space-y-6">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-xl font-medium text-gray-800 hover:text-black"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <Button 
+              className="primary-button mt-4"
+              onClick={() => {
+                setIsMenuOpen(false);
+                document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});
+              }}
+            >
+              Apply Now
+            </Button>
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
