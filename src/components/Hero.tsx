@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
             ref={headingRef}
             className="heading-xl mb-6 opacity-0"
           >
-            Get Upfront Capital for Your Recurring Revenue
+            Get Upfront Capital for Your Recurring Revenue.
           </h1>
           
           <p 
