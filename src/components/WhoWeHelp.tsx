@@ -53,11 +53,11 @@ const WhoWeHelp: React.FC = () => {
   ];
 
   const useCases = [
-    "Hiring an editor, designer, or producer.",
-    "Upgrading production equipment.",
-    "Launching new content or a premium subscription tier.",
-    "Creating & stocking merchandise.",
-    "Funding live events, digital products, or marketing campaigns."
+    "Hire an editor, designer, or producer to scale production.",
+    "Upgrade your setup with professional equipment.",
+    "Expand your business with a new content series or premium tier.",
+    "Launch & stock merchandise to boost your brand.",
+    "Invest in marketing, digital products, or live events to grow faster."
   ];
 
   return (
