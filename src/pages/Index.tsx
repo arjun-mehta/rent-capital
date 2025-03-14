@@ -26,9 +26,9 @@ const Index: React.FC = () => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       // Find the closest anchor tag if the target isn't an anchor
-      const anchor = target.tagName === 'A' ? target : target.closest('a');
+      const anchor = target.tagName === 'A' ? target as HTMLAnchorElement : target.closest('a');
       
-      if (anchor && anchor.hash) {
+      if (anchor && anchor instanceof HTMLAnchorElement && anchor.hash) {
         e.preventDefault();
         const sectionId = anchor.hash.substring(1);
         handleSectionScroll(sectionId);
