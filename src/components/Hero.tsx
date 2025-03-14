@@ -91,19 +91,19 @@ const Hero: React.FC = () => {
           <h2 className="text-lg text-center text-gray-500 mb-6 animate-fade-in-slow">Trusted by creators from</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-80">
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.1s" }}>
-              <img src="/lovable-uploads/a115cdfd-da41-4f7d-b3a8-08194ecd9a70.png" alt="Patreon" className="h-10 object-contain" />
+              <img src="/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" alt="Patreon" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.2s" }}>
-              <img src="/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" alt="Substack" className="h-8 object-contain" />
+              <img src="/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" alt="Substack" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.3s" }}>
-              <img src="/lovable-uploads/48681725-4377-4e0b-acc6-3d9648ef158d.png" alt="YouTube" className="h-8 object-contain" />
+              <img src="/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" alt="YouTube" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.4s" }}>
-              <img src="/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" alt="Twitch" className="h-8 object-contain" />
+              <img src="/lovable-uploads/0468e60c-31d5-4d94-b04f-62446d6a00fc.png" alt="Twitch" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.5s" }}>
-              <img src="/lovable-uploads/180032d6-e17b-4ef9-b1b4-735819d6e9a5.png" alt="Supercast" className="h-8 object-contain" />
+              <img src="/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" alt="Supercast" className="h-8 object-contain" />
             </div>
           </div>
         </div>

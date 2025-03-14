@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,11 +25,11 @@ const ApplicationForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const platforms = [
-    { value: "patreon", label: "Patreon", image: "/lovable-uploads/a115cdfd-da41-4f7d-b3a8-08194ecd9a70.png" },
-    { value: "youtube", label: "YouTube", image: "/lovable-uploads/48681725-4377-4e0b-acc6-3d9648ef158d.png" },
-    { value: "substack", label: "Substack", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
-    { value: "twitch", label: "Twitch", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
-    { value: "supercast", label: "Supercast", image: "/lovable-uploads/180032d6-e17b-4ef9-b1b4-735819d6e9a5.png" },
+    { value: "patreon", label: "Patreon", image: "/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" },
+    { value: "youtube", label: "YouTube", image: "/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" },
+    { value: "substack", label: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
+    { value: "twitch", label: "Twitch", image: "/lovable-uploads/0468e60c-31d5-4d94-b04f-62446d6a00fc.png" },
+    { value: "supercast", label: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
     { value: "other", label: "Other", image: "" }
   ];
 
@@ -129,7 +130,7 @@ const ApplicationForm: React.FC = () => {
                               <img 
                                 src={platform.image} 
                                 alt={platform.label} 
-                                className={platform.label === "Patreon" ? "h-6 w-auto object-contain" : "h-5 w-auto object-contain"}
+                                className="h-5 w-auto object-contain"
                               />
                             )}
                             <span>{platform.label}</span>
