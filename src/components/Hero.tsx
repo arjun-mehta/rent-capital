@@ -100,7 +100,7 @@ const Hero: React.FC = () => {
               <img src="/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" alt="YouTube" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.4s" }}>
-              <img src="/lovable-uploads/0468e60c-31d5-4d94-b04f-62446d6a00fc.png" alt="Twitch" className="h-8 object-contain" />
+              <img src="/lovable-uploads/3f9346c4-e564-44c3-974d-587455f86bce.png" alt="Twitch" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.5s" }}>
               <img src="/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" alt="Supercast" className="h-8 object-contain" />
