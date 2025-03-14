@@ -73,20 +73,20 @@ const WhoWeHelp: React.FC = () => {
         </div>
 
         <div ref={platformsRef} className="mb-16 opacity-0">
-          <h3 className="heading-md text-center mb-10">
+          <h3 className="heading-md text-center mb-8">
             We fund creators with predictable, subscription-based earnings from:
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 max-w-4xl mx-auto">
             {platforms.map((platform, index) => (
               <div 
                 key={index}
-                className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-32"
+                className="flex flex-col items-center justify-center p-4 md:p-5 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-24 md:h-28"
               >
                 <img 
                   src={platform.image} 
                   alt={platform.name} 
-                  className="h-12 object-contain" 
+                  className="h-8 md:h-10 object-contain" 
                 />
               </div>
             ))}
