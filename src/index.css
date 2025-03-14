@@ -73,19 +73,19 @@
     @apply border-border;
   }
 
-  html, body {
-    @apply min-h-screen w-full;
+  html {
+    @apply h-full w-full;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply h-full w-full bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
   }
   
   #root {
-    @apply min-h-screen w-full flex flex-col;
+    @apply h-full w-full flex flex-col;
   }
 }
 

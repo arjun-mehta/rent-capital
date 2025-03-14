@@ -1,12 +1,12 @@
 
-/* Reset conflicting styles */
+/* Reset and base styles */
 #root {
   max-width: none;
   margin: 0;
   padding: 0;
   text-align: left;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
