@@ -24,7 +24,7 @@ const ApplicationForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const platforms = [
-    { value: "patreon", label: "Patreon", image: "/lovable-uploads/2ea3daf9-1958-4ef1-bff4-b7362b51e766.png" },
+    { value: "patreon", label: "Patreon", image: "/lovable-uploads/a115cdfd-da41-4f7d-b3a8-08194ecd9a70.png" },
     { value: "youtube", label: "YouTube", image: "/lovable-uploads/48681725-4377-4e0b-acc6-3d9648ef158d.png" },
     { value: "substack", label: "Substack", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
     { value: "twitch", label: "Twitch", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
@@ -129,7 +129,7 @@ const ApplicationForm: React.FC = () => {
                               <img 
                                 src={platform.image} 
                                 alt={platform.label} 
-                                className={`h-5 w-auto object-contain ${platform.label === "Patreon" ? "h-6 w-auto" : ""}`}
+                                className="h-5 w-auto object-contain"
                               />
                             )}
                             <span>{platform.label}</span>

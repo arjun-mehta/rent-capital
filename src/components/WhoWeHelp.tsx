@@ -39,7 +39,7 @@ const WhoWeHelp: React.FC = () => {
   }, []);
 
   const platforms = [
-    { name: "Patreon", image: "/lovable-uploads/2ea3daf9-1958-4ef1-bff4-b7362b51e766.png" },
+    { name: "Patreon", image: "/lovable-uploads/a115cdfd-da41-4f7d-b3a8-08194ecd9a70.png" },
     { name: "YouTube", image: "/lovable-uploads/48681725-4377-4e0b-acc6-3d9648ef158d.png" },
     { name: "Substack", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
     { name: "Twitch", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
@@ -89,7 +89,7 @@ const WhoWeHelp: React.FC = () => {
                 <img 
                   src={platform.image} 
                   alt={platform.name} 
-                  className={`h-12 object-contain ${platform.name === "Patreon" ? "h-14 w-auto" : ""}`}
+                  className="h-12 object-contain" 
                 />
               </div>
             ))}

@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
           <h2 className="text-lg text-center text-gray-500 mb-6 animate-fade-in-slow">Trusted by creators from</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-80">
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.1s" }}>
-              <img src="/lovable-uploads/2ea3daf9-1958-4ef1-bff4-b7362b51e766.png" alt="Patreon" className="h-10 object-contain" />
+              <img src="/lovable-uploads/a115cdfd-da41-4f7d-b3a8-08194ecd9a70.png" alt="Patreon" className="h-8 object-contain" />
             </div>
             <div className="h-8 flex items-center animate-fade-in-slow" style={{ animationDelay: "0.2s" }}>
               <img src="/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" alt="Substack" className="h-8 object-contain" />
