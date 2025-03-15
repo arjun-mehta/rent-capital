@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
-import { ArrowRight, Sparkles, Rocket, BadgeCheck } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -41,23 +41,20 @@ const HowItWorks: React.FC = () => {
     {
       title: "Apply in Minutes",
       description: "Share your revenue details & get an offer fast.",
-      icon: Sparkles,
       delay: "0.1s",
-      color: "bg-rose-50 text-rose-500"
+      color: "bg-green-50 text-green-500"
     },
     {
       title: "Get Upfront Cash",
       description: "Receive $50K–$3M upfront based on your earnings.",
-      icon: Rocket,
       delay: "0.3s",
-      color: "bg-blue-50 text-blue-500"
+      color: "bg-green-50 text-green-500"
     },
     {
       title: "Repay Without Stress",
       description: "Payments come from your platform revenue, automatically.",
-      icon: BadgeCheck,
       delay: "0.5s",
-      color: "bg-emerald-50 text-emerald-500"
+      color: "bg-green-50 text-green-500"
     }
   ];
 
@@ -82,7 +79,6 @@ const HowItWorks: React.FC = () => {
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {steps.map((step, index) => {
-            const Icon = step.icon;
             return (
               <div 
                 key={index}
@@ -95,7 +91,7 @@ const HowItWorks: React.FC = () => {
                 style={{ animationDelay: step.delay, animationFillMode: "forwards" }}
               >
                 <div className={cn("w-16 h-16 flex items-center justify-center rounded-full mb-6", step.color)}>
-                  <Icon className="w-8 h-8" />
+                  <Check className="w-8 h-8" />
                 </div>
                 <Badge 
                   variant="outline" 
@@ -135,10 +131,7 @@ const HowItWorks: React.FC = () => {
           
           <div className="flex justify-center mt-10">
             <Button 
-              className={cn(
-                "primary-button group shadow-lg",
-                "bg-gradient-to-r from-black to-gray-800 hover:from-gray-800 hover:to-black"
-              )}
+              className="primary-button group shadow-lg"
               onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
             >
               Apply for Funding
