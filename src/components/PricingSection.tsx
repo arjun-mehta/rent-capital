@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
@@ -59,7 +58,7 @@ const PricingSection: React.FC = () => {
           <div className="bg-black p-8 rounded-xl border border-white shadow-sm">
             <h3 className="heading-md mb-6 text-white">How Much Can You Get?</h3>
             <p className="text-white mb-6">
-              Receive 75-90% of your projected membership revenue upfront.
+              Receive up to 90% of your projected membership revenue upfront.
             </p>
             
             <div className="bg-black p-6 rounded-lg mb-6 border border-white">
