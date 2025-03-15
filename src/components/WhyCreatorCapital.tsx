@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Table,
@@ -143,11 +143,11 @@ const WhyCreatorCapital: React.FC = () => {
               <TableHeader>
                 <TableRow>
                   <TableHead className="text-left p-4 border-b-2 border-gray-100">Feature</TableHead>
-                  <TableHead className="p-4 border-b-2 border-gray-100 bg-black text-white rounded-tl-lg">
+                  <TableHead className="p-4 border-b-2 border-gray-100 bg-black text-white rounded-tl-lg text-center">
                     <span className="font-poppins font-semibold">Creator Capital</span>
                   </TableHead>
-                  <TableHead className="p-4 border-b-2 border-gray-100">Traditional Loans</TableHead>
-                  <TableHead className="p-4 border-b-2 border-gray-100">Venture Capital</TableHead>
+                  <TableHead className="p-4 border-b-2 border-gray-100 text-center">Traditional Loans</TableHead>
+                  <TableHead className="p-4 border-b-2 border-gray-100 text-center">Venture Capital</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -157,7 +157,7 @@ const WhyCreatorCapital: React.FC = () => {
                     <TableCell className="p-4 border-b border-gray-100 text-center bg-gray-50">
                       {typeof row.creatorCapital === 'boolean' ? (
                         row.creatorCapital ? 
-                          <CheckCircle className="w-5 h-5 text-black mx-auto" /> : 
+                          <Check className="w-5 h-5 text-black mx-auto" /> : 
                           <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
                         <span className="font-medium">{row.creatorCapital}</span>
@@ -166,7 +166,7 @@ const WhyCreatorCapital: React.FC = () => {
                     <TableCell className="p-4 border-b border-gray-100 text-center">
                       {typeof row.traditionalLoans === 'boolean' ? (
                         row.traditionalLoans ? 
-                          <CheckCircle className="w-5 h-5 text-black mx-auto" /> : 
+                          <Check className="w-5 h-5 text-black mx-auto" /> : 
                           <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
                         row.traditionalLoans
@@ -175,7 +175,7 @@ const WhyCreatorCapital: React.FC = () => {
                     <TableCell className="p-4 border-b border-gray-100 text-center">
                       {typeof row.ventureCapital === 'boolean' ? (
                         row.ventureCapital ? 
-                          <CheckCircle className="w-5 h-5 text-black mx-auto" /> : 
+                          <Check className="w-5 h-5 text-black mx-auto" /> : 
                           <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
                         row.ventureCapital
