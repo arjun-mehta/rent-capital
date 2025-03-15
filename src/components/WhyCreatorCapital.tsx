@@ -103,6 +103,16 @@ const WhyCreatorCapital: React.FC = () => {
     }
   ];
 
+  const isPositive = (text: string): boolean => {
+    const positiveTerms = ['adjust', 'no credit', 'patreon', 'youtube', 'substack', '$50k', 'upfront', 'not relevant'];
+    return positiveTerms.some(term => text.toLowerCase().includes(term.toLowerCase()));
+  };
+
+  const isNegative = (text: string): boolean => {
+    const negativeTerms = ['fixed', 'lower limits', 'requires', 'not creator', 'not tailored', 'loss of equity'];
+    return negativeTerms.some(term => text.toLowerCase().includes(term.toLowerCase()));
+  };
+
   return (
     <section id="why-us" className="py-24 bg-white">
       <div className="section-container">
@@ -160,7 +170,10 @@ const WhyCreatorCapital: React.FC = () => {
                           <Check className="w-5 h-5 text-black mx-auto" /> : 
                           <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
-                        <span className="font-medium">{row.creatorCapital}</span>
+                        <div className="flex items-center justify-center gap-2">
+                          <Check className="w-5 h-5 text-black flex-shrink-0" />
+                          <span className="font-medium">{row.creatorCapital}</span>
+                        </div>
                       )}
                     </TableCell>
                     <TableCell className="p-4 border-b border-gray-100 text-center">
@@ -169,7 +182,14 @@ const WhyCreatorCapital: React.FC = () => {
                           <Check className="w-5 h-5 text-black mx-auto" /> : 
                           <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
-                        row.traditionalLoans
+                        <div className="flex items-center justify-center gap-2">
+                          {isPositive(row.traditionalLoans) ? (
+                            <Check className="w-5 h-5 text-black flex-shrink-0" />
+                          ) : (
+                            <X className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                          )}
+                          <span>{row.traditionalLoans}</span>
+                        </div>
                       )}
                     </TableCell>
                     <TableCell className="p-4 border-b border-gray-100 text-center">
@@ -178,7 +198,14 @@ const WhyCreatorCapital: React.FC = () => {
                           <Check className="w-5 h-5 text-black mx-auto" /> : 
                           <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
-                        row.ventureCapital
+                        <div className="flex items-center justify-center gap-2">
+                          {isPositive(row.ventureCapital) ? (
+                            <Check className="w-5 h-5 text-black flex-shrink-0" />
+                          ) : (
+                            <X className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                          )}
+                          <span>{row.ventureCapital}</span>
+                        </div>
                       )}
                     </TableCell>
                   </TableRow>
