@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X, ArrowRight } from "lucide-react";
@@ -167,7 +168,7 @@ const WhyCreatorCapital: React.FC = () => {
                       {typeof row.creatorCapital === 'boolean' ? (
                         row.creatorCapital ? 
                           <Check className="w-5 h-5 text-green-500 mx-auto" /> : 
-                          <X className="w-5 h-5 text-red-500 mx-auto" />
+                          <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
                         <div className="flex items-center justify-center gap-2">
                           <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
@@ -179,13 +180,13 @@ const WhyCreatorCapital: React.FC = () => {
                       {typeof row.traditionalLoans === 'boolean' ? (
                         row.traditionalLoans ? 
                           <Check className="w-5 h-5 text-green-500 mx-auto" /> : 
-                          <X className="w-5 h-5 text-red-500 mx-auto" />
+                          <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
                         <div className="flex items-center justify-center gap-2">
                           {isPositive(row.traditionalLoans) ? (
                             <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
                           ) : (
-                            <X className="w-5 h-5 text-red-500 flex-shrink-0" />
+                            <X className="w-5 h-5 text-gray-400 flex-shrink-0" />
                           )}
                           <span>{row.traditionalLoans}</span>
                         </div>
@@ -195,13 +196,13 @@ const WhyCreatorCapital: React.FC = () => {
                       {typeof row.ventureCapital === 'boolean' ? (
                         row.ventureCapital ? 
                           <Check className="w-5 h-5 text-green-500 mx-auto" /> : 
-                          <X className="w-5 h-5 text-red-500 mx-auto" />
+                          <X className="w-5 h-5 text-gray-400 mx-auto" />
                       ) : (
                         <div className="flex items-center justify-center gap-2">
                           {isPositive(row.ventureCapital) ? (
                             <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
                           ) : (
-                            <X className="w-5 h-5 text-red-500 flex-shrink-0" />
+                            <X className="w-5 h-5 text-gray-400 flex-shrink-0" />
                           )}
                           <span>{row.ventureCapital}</span>
                         </div>
