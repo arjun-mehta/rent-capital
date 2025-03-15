@@ -38,20 +38,20 @@ const HowItWorks: React.FC = () => {
 
   const steps = [
     {
-      title: "Get Qualified",
-      description: "Apply in minutes by sharing your subscription revenue details.",
+      title: "Apply in Minutes",
+      description: "Share your revenue details & get an offer fast.",
       icon: FileText,
       delay: "0.1s"
     },
     {
-      title: "Get Funded",
-      description: "Receive 85–90% of your projected membership revenue upfront as a cash advance.",
+      title: "Get Upfront Cash",
+      description: "Receive $50K–$3M upfront based on your earnings.",
       icon: CreditCard,
       delay: "0.3s"
     },
     {
-      title: "Repay Automatically",
-      description: "We collect a portion of your monthly revenue until the advance is fully repaid.",
+      title: "Repay Without Stress",
+      description: "Payments come from your platform revenue, automatically.",
       icon: CheckCircle,
       delay: "0.5s"
     }
