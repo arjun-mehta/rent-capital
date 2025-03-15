@@ -45,14 +45,14 @@ const Hero: React.FC = () => {
             ref={headingRef}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 opacity-0 leading-[1.1]"
           >
-            Get Upfront Capital for Your Recurring Revenue.
+            Get Paid Upfront for Your Subscription Revenue.
           </h1>
           
           <p 
             ref={subheadingRef}
             className="text-xl md:text-2xl lg:text-3xl mb-10 opacity-0 text-gray-700 max-w-3xl mx-auto"
           >
-            Get a cash advance against your predictable subscription revenue—no equity, no debt, no hassle.
+            Turn your future earnings into cash today—no equity, no debt, no waiting.
           </p>
           
           <div 
