@@ -73,7 +73,7 @@ const HowItWorks: React.FC = () => {
             Unlock Growth Capital in 3 Easy Steps
           </h2>
           <p className="paragraph text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Our financing model is designed to be simple, intuitive, and de-risked for creators just like you.
+            Our financing is simple, fast, and designed for creators.
           </p>
         </div>
 
