@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h1 
             ref={headingRef}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 opacity-0 leading-[1.1] font-['Helvetica'] font-bold"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 opacity-0 leading-[1.1]"
           >
             Get Upfront Capital for Your Recurring Revenue.
           </h1>

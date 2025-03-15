@@ -111,8 +111,7 @@ export default {
 			fontFamily: {
 				sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
 				mono: ['SF Mono', 'monospace'],
-				poppins: ['Poppins', 'sans-serif'],
-				helvetica: ['Helvetica', 'Arial', 'sans-serif']
+				poppins: ['Poppins', 'sans-serif']
 			},
 			fontSize: {
 				'7xl': '5rem',
