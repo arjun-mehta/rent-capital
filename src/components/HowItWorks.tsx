@@ -131,11 +131,11 @@ const HowItWorks: React.FC = () => {
           
           <div className="flex justify-center mt-10">
             <Button 
-              className="primary-button group shadow-lg"
+              className="bg-[#1A1F2C] text-white px-8 py-6 rounded-md font-medium flex items-center gap-2 hover:bg-[#1A1F2C]/90 transition-colors"
               onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
             >
               Apply for Funding
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-1 h-5 w-5" />
             </Button>
           </div>
         </div>
