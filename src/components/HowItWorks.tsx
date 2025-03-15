@@ -1,8 +1,9 @@
 
 import React, { useEffect, useRef } from "react";
-import { ArrowRight, CheckCircle, FileText, CreditCard } from "lucide-react";
+import { ArrowRight, Sparkles, Rocket, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 
 const HowItWorks: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -40,20 +41,26 @@ const HowItWorks: React.FC = () => {
     {
       title: "Apply in Minutes",
       description: "Share your revenue details & get an offer fast.",
-      icon: FileText,
-      delay: "0.1s"
+      icon: Sparkles,
+      delay: "0.1s",
+      color: "bg-rose-50 text-rose-500",
+      borderColor: "border-rose-100"
     },
     {
       title: "Get Upfront Cash",
       description: "Receive $50K–$3M upfront based on your earnings.",
-      icon: CreditCard,
-      delay: "0.3s"
+      icon: Rocket,
+      delay: "0.3s",
+      color: "bg-blue-50 text-blue-500",
+      borderColor: "border-blue-100"
     },
     {
       title: "Repay Without Stress",
       description: "Payments come from your platform revenue, automatically.",
-      icon: CheckCircle,
-      delay: "0.5s"
+      icon: BadgeCheck,
+      delay: "0.5s",
+      color: "bg-emerald-50 text-emerald-500",
+      borderColor: "border-emerald-100"
     }
   ];
 
@@ -65,7 +72,7 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-white">
+    <section id="how-it-works" className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
@@ -83,23 +90,34 @@ const HowItWorks: React.FC = () => {
               <div 
                 key={index}
                 ref={stepsRefs[index]}
-                className="flex flex-col items-center text-center p-8 rounded-lg border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all duration-300 opacity-0"
+                className={cn(
+                  "flex flex-col items-center text-center p-8 rounded-xl border",
+                  "bg-white shadow-sm hover:shadow-md transition-all duration-300 opacity-0",
+                  "transform hover:-translate-y-1",
+                  step.borderColor
+                )}
                 style={{ animationDelay: step.delay, animationFillMode: "forwards" }}
               >
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-black/5 mb-6">
-                  <Icon className="w-6 h-6 text-black" />
+                <div className={cn("w-16 h-16 flex items-center justify-center rounded-full mb-6", step.color)}>
+                  <Icon className="w-8 h-8" />
                 </div>
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-gray-600 bg-gray-100 mb-4">
+                <Badge 
+                  variant="outline" 
+                  className={cn(
+                    "mb-4 px-3 py-1 font-medium",
+                    "bg-gray-50 hover:bg-gray-50" 
+                  )}
+                >
                   Step {index + 1}
-                </span>
-                <h3 className="heading-sm mb-3">{step.title}</h3>
+                </Badge>
+                <h3 className="heading-sm mb-3 font-bold">{step.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{step.description}</p>
               </div>
             );
           })}
         </div>
 
-        <div className="bg-gray-50 rounded-2xl p-8 md:p-12 mt-16">
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 md:p-12 mt-16 shadow-sm">
           <h3 className="heading-md mb-8 text-center opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
             Key Benefits
           </h3>
@@ -111,7 +129,9 @@ const HowItWorks: React.FC = () => {
                 className="flex items-start space-x-3 opacity-0 animate-fade-in"
                 style={{ animationDelay: `${0.2 + index * 0.1}s`, animationFillMode: "forwards" }}
               >
-                <CheckCircle className="w-6 h-6 text-black flex-shrink-0 mt-0.5" />
+                <div className="bg-black/5 p-2 rounded-full flex-shrink-0">
+                  <ArrowRight className="w-4 h-4 text-black" />
+                </div>
                 <p className="text-gray-700">{benefit}</p>
               </div>
             ))}
@@ -120,8 +140,8 @@ const HowItWorks: React.FC = () => {
           <div className="flex justify-center mt-10">
             <Button 
               className={cn(
-                "primary-button group",
-                "bg-black hover:bg-black/90"
+                "primary-button group shadow-lg",
+                "bg-gradient-to-r from-black to-gray-800 hover:from-gray-800 hover:to-black"
               )}
               onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
             >
