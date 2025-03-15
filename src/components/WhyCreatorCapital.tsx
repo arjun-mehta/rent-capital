@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X, ArrowRight } from "lucide-react";
@@ -167,11 +166,11 @@ const WhyCreatorCapital: React.FC = () => {
                     <TableCell className="p-4 border-b border-gray-100 text-center bg-gray-50">
                       {typeof row.creatorCapital === 'boolean' ? (
                         row.creatorCapital ? 
-                          <Check className="w-5 h-5 text-black mx-auto" /> : 
-                          <X className="w-5 h-5 text-gray-400 mx-auto" />
+                          <Check className="w-5 h-5 text-green-500 mx-auto" /> : 
+                          <X className="w-5 h-5 text-red-500 mx-auto" />
                       ) : (
                         <div className="flex items-center justify-center gap-2">
-                          <Check className="w-5 h-5 text-black flex-shrink-0" />
+                          <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
                           <span className="font-medium">{row.creatorCapital}</span>
                         </div>
                       )}
@@ -179,14 +178,14 @@ const WhyCreatorCapital: React.FC = () => {
                     <TableCell className="p-4 border-b border-gray-100 text-center">
                       {typeof row.traditionalLoans === 'boolean' ? (
                         row.traditionalLoans ? 
-                          <Check className="w-5 h-5 text-black mx-auto" /> : 
-                          <X className="w-5 h-5 text-gray-400 mx-auto" />
+                          <Check className="w-5 h-5 text-green-500 mx-auto" /> : 
+                          <X className="w-5 h-5 text-red-500 mx-auto" />
                       ) : (
                         <div className="flex items-center justify-center gap-2">
                           {isPositive(row.traditionalLoans) ? (
-                            <Check className="w-5 h-5 text-black flex-shrink-0" />
+                            <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
                           ) : (
-                            <X className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                            <X className="w-5 h-5 text-red-500 flex-shrink-0" />
                           )}
                           <span>{row.traditionalLoans}</span>
                         </div>
@@ -195,14 +194,14 @@ const WhyCreatorCapital: React.FC = () => {
                     <TableCell className="p-4 border-b border-gray-100 text-center">
                       {typeof row.ventureCapital === 'boolean' ? (
                         row.ventureCapital ? 
-                          <Check className="w-5 h-5 text-black mx-auto" /> : 
-                          <X className="w-5 h-5 text-gray-400 mx-auto" />
+                          <Check className="w-5 h-5 text-green-500 mx-auto" /> : 
+                          <X className="w-5 h-5 text-red-500 mx-auto" />
                       ) : (
                         <div className="flex items-center justify-center gap-2">
                           {isPositive(row.ventureCapital) ? (
-                            <Check className="w-5 h-5 text-black flex-shrink-0" />
+                            <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
                           ) : (
-                            <X className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                            <X className="w-5 h-5 text-red-500 flex-shrink-0" />
                           )}
                           <span>{row.ventureCapital}</span>
                         </div>
