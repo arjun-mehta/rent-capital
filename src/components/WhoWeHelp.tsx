@@ -107,7 +107,7 @@ const WhoWeHelp: React.FC = () => {
           </div>
 
           <div ref={useCasesRef} className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm opacity-0">
-            <h3 className="heading-md mb-6">What You Can Use the Funding For:</h3>
+            <h3 className="heading-md mb-6">Ways Creators Use Their Funding:</h3>
             <ul className="space-y-4">
               {useCases.map((item, index) => (
                 <li key={index} className="flex items-start space-x-3">
