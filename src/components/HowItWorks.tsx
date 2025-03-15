@@ -43,24 +43,21 @@ const HowItWorks: React.FC = () => {
       description: "Share your revenue details & get an offer fast.",
       icon: Sparkles,
       delay: "0.1s",
-      color: "bg-rose-50 text-rose-500",
-      borderColor: "border-rose-100"
+      color: "bg-rose-50 text-rose-500"
     },
     {
       title: "Get Upfront Cash",
       description: "Receive $50K–$3M upfront based on your earnings.",
       icon: Rocket,
       delay: "0.3s",
-      color: "bg-blue-50 text-blue-500",
-      borderColor: "border-blue-100"
+      color: "bg-blue-50 text-blue-500"
     },
     {
       title: "Repay Without Stress",
       description: "Payments come from your platform revenue, automatically.",
       icon: BadgeCheck,
       delay: "0.5s",
-      color: "bg-emerald-50 text-emerald-500",
-      borderColor: "border-emerald-100"
+      color: "bg-emerald-50 text-emerald-500"
     }
   ];
 
@@ -91,10 +88,9 @@ const HowItWorks: React.FC = () => {
                 key={index}
                 ref={stepsRefs[index]}
                 className={cn(
-                  "flex flex-col items-center text-center p-8 rounded-xl border",
+                  "flex flex-col items-center text-center p-8 rounded-xl border border-gray-200",
                   "bg-white shadow-sm hover:shadow-md transition-all duration-300 opacity-0",
-                  "transform hover:-translate-y-1",
-                  step.borderColor
+                  "transform hover:-translate-y-1"
                 )}
                 style={{ animationDelay: step.delay, animationFillMode: "forwards" }}
               >
