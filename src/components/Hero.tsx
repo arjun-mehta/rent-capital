@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
             ref={subheadingRef}
             className="text-xl md:text-2xl lg:text-3xl mb-10 opacity-0 text-gray-700 max-w-3xl mx-auto"
           >
-            Turn your future earnings into cash today—no equity, no debt, no waiting.
+            Turn your future subscription earnings into cash today—no equity, no debt, no waiting.
           </p>
           
           <div 
