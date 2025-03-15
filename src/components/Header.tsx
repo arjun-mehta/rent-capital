@@ -59,7 +59,7 @@ const Header: React.FC = () => {
             </a>
           ))}
           <Button 
-            className="primary-button animate-fade-in"
+            className="bg-black hover:bg-black/90 text-white"
             onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
           >
             Apply Now
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
               </a>
             ))}
             <Button 
-              className="primary-button mt-4"
+              className="bg-black hover:bg-black/90 text-white"
               onClick={() => {
                 setIsMenuOpen(false);
                 document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});

@@ -121,10 +121,7 @@ const WhoWeHelp: React.FC = () => {
 
         <div className="flex justify-center mt-10">
           <Button 
-            className={cn(
-              "primary-button group",
-              "bg-black hover:bg-black/90"
-            )}
+            className="bg-black hover:bg-black/90 text-white group"
             onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
           >
             See If You Qualify
