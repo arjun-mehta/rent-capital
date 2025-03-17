@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
               ref={platformsRef}
               className="opacity-0 hidden md:block"
             >
-              <h3 className="text-base md:text-lg font-medium mb-4">
+              <h3 className="text-sm md:text-base font-normal text-gray-600 mb-4">
                 We fund creators with subscription-based earnings from:
               </h3>
               
