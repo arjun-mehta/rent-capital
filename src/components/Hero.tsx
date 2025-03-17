@@ -3,18 +3,19 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import DashboardMockup from "./DashboardMockup";
+import MinimalCalculator from "./MinimalCalculator";
 
 const Hero: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subheadingRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const platformsRef = useRef<HTMLDivElement>(null);
+  const calculatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Staggered animation effect for hero elements
     const animateHeroElements = () => {
-      const elements = [headingRef.current, subheadingRef.current, ctaRef.current, platformsRef.current];
+      const elements = [headingRef.current, subheadingRef.current, ctaRef.current, calculatorRef.current, platformsRef.current];
       
       elements.forEach((element, index) => {
         if (element) {
@@ -47,72 +48,79 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-[#fcf4ed] z-0"></div>
       
       <div className="section-container relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 
-            ref={headingRef}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 opacity-0 leading-[1.1]"
-          >
-            Get Paid Upfront for Your Subscription Revenue.
-          </h1>
-          
-          <p 
-            ref={subheadingRef}
-            className="text-xl md:text-2xl lg:text-3xl mb-10 opacity-0 text-gray-700 max-w-3xl mx-auto"
-          >
-            Turn your future subscription earnings into cash today—no equity, no debt, no waiting.
-          </p>
-          
-          <div 
-            ref={ctaRef}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0"
-          >
-            <Button 
-              className={cn(
-                "primary-button group",
-                "bg-black hover:bg-black/90 text-base sm:text-lg h-14 px-8"
-              )}
-              onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
+        <div className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+          <div className="max-w-xl">
+            <h1 
+              ref={headingRef}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 opacity-0 leading-[1.1]"
             >
-              Apply Now
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+              Get Paid Upfront for Your Subscription Revenue.
+            </h1>
             
-            <Button 
-              variant="outline" 
-              className="secondary-button text-base sm:text-lg h-14 px-8"
-              onClick={() => document.getElementById('how-it-works')?.scrollIntoView({behavior: 'smooth'})}
+            <p 
+              ref={subheadingRef}
+              className="text-lg md:text-xl mb-8 opacity-0 text-gray-700"
             >
-              Learn How It Works
-            </Button>
-          </div>
-          
-          {/* Platform section */}
-          <div 
-            ref={platformsRef}
-            className="mt-16 opacity-0"
-          >
-            <h3 className="text-xl md:text-2xl font-medium text-center mb-8">
-              We fund creators with predictable, subscription-based earnings from:
-            </h3>
+              Turn your future subscription earnings into cash today—no equity, no debt, no waiting.
+            </p>
             
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 max-w-4xl mx-auto">
-              {platforms.map((platform, index) => (
-                <div 
-                  key={index}
-                  className="flex flex-col items-center justify-center p-4 md:p-5 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-24 md:h-28"
-                >
-                  <img 
-                    src={platform.image} 
-                    alt={platform.name} 
-                    className="h-8 md:h-10 object-contain" 
-                  />
-                </div>
-              ))}
+            <div 
+              ref={ctaRef}
+              className="flex flex-col sm:flex-row items-center justify-start gap-4 opacity-0 mb-8"
+            >
+              <Button 
+                className={cn(
+                  "primary-button group",
+                  "bg-black hover:bg-black/90 text-base h-12 px-6"
+                )}
+                onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
+              >
+                Apply Now
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                className="secondary-button text-base h-12 px-6"
+                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({behavior: 'smooth'})}
+              >
+                Learn How It Works
+              </Button>
+            </div>
+            
+            {/* Platform section */}
+            <div 
+              ref={platformsRef}
+              className="opacity-0"
+            >
+              <h3 className="text-base md:text-lg font-medium mb-4">
+                We fund creators with subscription-based earnings from:
+              </h3>
+              
+              <div className="grid grid-cols-5 gap-3 max-w-md">
+                {platforms.map((platform, index) => (
+                  <div 
+                    key={index}
+                    className="flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm h-16"
+                  >
+                    <img 
+                      src={platform.image} 
+                      alt={platform.name} 
+                      className="h-6 object-contain" 
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           
-          {/* Dashboard mockup */}
-          <DashboardMockup />
+          {/* Calculator section */}
+          <div 
+            ref={calculatorRef}
+            className="opacity-0"
+          >
+            <MinimalCalculator />
+          </div>
         </div>
       </div>
     </section>
