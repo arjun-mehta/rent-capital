@@ -72,7 +72,7 @@ const HowItWorks: React.FC = () => {
           >
             How It Works
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             Unlock capital without giving up ownership or control
           </p>
         </div>
