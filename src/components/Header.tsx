@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,8 +18,17 @@ const Header: React.FC = () => {
       }
     };
 
+    // Set loaded state after a small delay for animation
+    const loadTimer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 300);
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(loadTimer);
+    };
   }, []);
 
   const handleMenuToggle = () => {
@@ -43,7 +53,13 @@ const Header: React.FC = () => {
       )}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" className="flex items-center z-10">
+        <a 
+          href="/" 
+          className={cn(
+            "flex items-center z-10 transition-all duration-500",
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+          )}
+        >
           <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
         </a>
 

@@ -10,29 +10,25 @@ const Hero: React.FC = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-reveal-text");
-          observer.unobserve(entry.target);
+    // Staggered animation effect for hero elements
+    const animateHeroElements = () => {
+      const elements = [headingRef.current, subheadingRef.current, ctaRef.current];
+      
+      elements.forEach((element, index) => {
+        if (element) {
+          setTimeout(() => {
+            element.classList.add("animate-reveal-text");
+          }, index * 200); // Stagger the animations with 200ms delay
         }
       });
-    }, observerOptions);
-
-    if (headingRef.current) observer.observe(headingRef.current);
-    if (subheadingRef.current) observer.observe(subheadingRef.current);
-    if (ctaRef.current) observer.observe(ctaRef.current);
-
-    return () => {
-      if (headingRef.current) observer.unobserve(headingRef.current);
-      if (subheadingRef.current) observer.unobserve(subheadingRef.current);
-      if (ctaRef.current) observer.unobserve(ctaRef.current);
     };
+
+    // Trigger animations after a short delay when component mounts
+    const animationTimer = setTimeout(() => {
+      animateHeroElements();
+    }, 100);
+
+    return () => clearTimeout(animationTimer);
   }, []);
 
   return (
@@ -58,7 +54,6 @@ const Hero: React.FC = () => {
           <div 
             ref={ctaRef}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0"
-            style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
             <Button 
               className={cn(
