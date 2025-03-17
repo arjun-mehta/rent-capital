@@ -74,12 +74,14 @@ const DashboardMockup: React.FC = () => {
           {/* Main Content */}
           <div className="space-y-8">
             {/* Estimated Upfront Advance */}
-            <div className="bg-black/[0.02] rounded-2xl p-6 border border-black/5">
-              <div className="text-sm font-medium text-gray-500 mb-2">You could receive</div>
-              <div className="flex items-baseline">
-                <span className="text-4xl md:text-5xl font-semibold text-gray-900">${advanceAmount.toLocaleString()}</span>
+            <div className="bg-[#F2FCE2] rounded-2xl p-6 border border-black/5">
+              <div className="flex flex-col text-left">
+                <div className="flex items-baseline mb-2">
+                  <div className="text-sm font-medium text-gray-500">You could receive</div>
+                  <div className="text-sm text-gray-500 ml-2">Based on your current subscription revenue</div>
+                </div>
+                <span className="text-3xl md:text-4xl font-semibold text-green-600">${advanceAmount.toLocaleString()}</span>
               </div>
-              <div className="text-sm text-gray-500 mt-2">Based on your current subscription revenue</div>
             </div>
             
             {/* Revenue Metrics */}
