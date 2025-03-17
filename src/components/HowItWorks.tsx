@@ -84,7 +84,7 @@ const HowItWorks: React.FC = () => {
                 key={index}
                 ref={stepsRefs[index]}
                 className={cn(
-                  "flex flex-col items-center text-center p-6 md:p-8 rounded-xl border border-gray-200",
+                  "flex flex-col items-start text-left p-6 md:p-8 rounded-xl border border-gray-200",
                   "bg-white shadow-sm hover:shadow-md transition-all duration-300 opacity-0",
                   "transform hover:-translate-y-1"
                 )}
