@@ -66,7 +66,7 @@ const HowItWorks: React.FC = () => {
             How It Works
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-full opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Unlock capital without taking out a loan or giving up ownership and control. Just your future earnings, paid upfront.
+            Unlock capital without taking out a loan or giving up equity. Just your future earnings, paid upfront.
           </p>
         </div>
 
