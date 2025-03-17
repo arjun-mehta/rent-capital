@@ -26,7 +26,7 @@ const WhoWeHelp: React.FC = () => {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     if (qualificationsRef.current) observer.observe(qualificationsRef.current);
-    if (useCasesRef.current) observer.observe(useCasesRef.current);
+    if (useCasesRef.current) observer.unobserve(useCasesRef.current);
 
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
@@ -54,7 +54,7 @@ const WhoWeHelp: React.FC = () => {
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
-            If You Have Recurring Revenue, We Can Fund You
+            Qualification
           </h2>
           <p className="paragraph text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             We specialize in providing financing to creators with predictable, subscription-based income streams.
