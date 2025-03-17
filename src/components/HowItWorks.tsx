@@ -66,8 +66,8 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="section-container">
+    <section id="how-it-works" className="py-16 bg-gradient-to-b from-white to-gray-50">
+      <div className="section-container pt-0">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
             Unlock Growth Capital in 3 Easy Steps
