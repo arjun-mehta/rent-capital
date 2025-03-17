@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
-import { ArrowRight, DollarSign } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -26,16 +26,7 @@ const MinimalCalculator: React.FC = () => {
         <div className="mb-6">
           <h3 className="text-lg font-medium mb-2">See how much you could receive</h3>
           
-          <Card className="border border-black/5 shadow-md overflow-hidden mb-6">
-            <CardContent className="p-5">
-              <div className="flex flex-col text-left">
-                <div className="text-sm font-medium text-gray-500 mb-1">Estimated advance amount</div>
-                <span className="text-3xl font-semibold text-green-600">${advanceAmount.toLocaleString()}</span>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <div className="bg-black/[0.02] rounded-lg p-4 border border-black/5">
+          <div className="bg-black/[0.02] rounded-lg p-4 border border-black/5 mb-4">
             <div className="text-sm font-medium text-gray-700 mb-3">Monthly subscription revenue</div>
             <div className="space-y-3">
               <Slider 
@@ -51,6 +42,15 @@ const MinimalCalculator: React.FC = () => {
               </div>
             </div>
           </div>
+          
+          <Card className="border border-black/5 shadow-md overflow-hidden mb-6">
+            <CardContent className="p-5">
+              <div className="flex flex-col text-left">
+                <div className="text-sm font-medium text-gray-500 mb-1">Estimated advance amount</div>
+                <span className="text-3xl font-semibold text-green-600">${advanceAmount.toLocaleString()}</span>
+              </div>
+            </CardContent>
+          </Card>
         </div>
         
         <Button 
