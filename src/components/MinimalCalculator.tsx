@@ -52,7 +52,7 @@ const MinimalCalculator: React.FC = () => {
         
         <Button 
           className={cn(
-            "w-full bg-black hover:bg-black/90 text-white",
+            "w-full bg-[#017354] hover:bg-[#017354]/90 text-white",
             "flex items-center justify-center rounded-lg h-12"
           )}
           onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}

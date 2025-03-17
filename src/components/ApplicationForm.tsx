@@ -172,7 +172,7 @@ const ApplicationForm: React.FC = () => {
                   type="submit" 
                   className={cn(
                     "primary-button group w-full",
-                    "bg-black hover:bg-black/90 h-14"
+                    "bg-[#017354] hover:bg-[#017354]/90 h-14"
                   )}
                   disabled={loading}
                 >

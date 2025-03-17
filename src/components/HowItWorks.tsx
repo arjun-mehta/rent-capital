@@ -131,7 +131,7 @@ const HowItWorks: React.FC = () => {
           
           <div className="flex justify-center mt-10">
             <Button 
-              className="bg-[#1A1F2C] text-white px-8 py-6 rounded-md font-medium flex items-center gap-2 hover:bg-[#1A1F2C]/90 transition-colors"
+              className="bg-[#017354] text-white px-8 py-6 rounded-md font-medium flex items-center gap-2 hover:bg-[#017354]/90 transition-colors"
               onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
             >
               Apply for Funding
