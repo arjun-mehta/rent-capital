@@ -108,9 +108,7 @@ const HowItWorks: React.FC = () => {
                 <Check className="w-3 h-3 text-green-600" />
               </div>
               <p className="text-sm text-gray-700">{benefit}</p>
-              {index < benefits.length - 1 && (
-                <span className="text-gray-300 mx-1">•</span>
-              )}
+              {/* Removed the dot separators here */}
             </div>
           ))}
         </div>
