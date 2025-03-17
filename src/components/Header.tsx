@@ -46,79 +46,81 @@ const Header: React.FC = () => {
   return (
     <header 
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4 px-4 sm:px-6",
+        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4",
         isScrolled 
           ? "bg-[#FCF7F0]/80 backdrop-blur-md shadow-sm" 
           : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a 
-          href="/" 
-          className={cn(
-            "flex items-center z-10 transition-all duration-500",
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
-          )}
-        >
-          <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-gray-700 hover-underline hover:text-black transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-          <Button 
-            className="bg-[#017354] hover:bg-[#017354]/90 text-white"
-            onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
+      <div className="section-container py-0">
+        <div className="flex justify-between items-center">
+          <a 
+            href="/" 
+            className={cn(
+              "flex items-center z-10 transition-all duration-500",
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+            )}
           >
-            Apply Now
-          </Button>
-        </nav>
+            <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
+          </a>
 
-        {/* Mobile Navigation Trigger */}
-        <button
-          className="md:hidden z-10 p-2 focus:outline-none"
-          onClick={handleMenuToggle}
-          aria-label="Toggle Menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-        {/* Mobile Navigation Menu */}
-        <div
-          className={cn(
-            "fixed inset-0 bg-white flex flex-col justify-center items-center transition-all duration-300 ease-in-out md:hidden",
-            isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          )}
-        >
-          <nav className="flex flex-col items-center space-y-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-xl font-medium text-gray-800 hover:text-black"
-                onClick={() => setIsMenuOpen(false)}
+                className="text-sm font-medium text-gray-700 hover-underline hover:text-black transition-colors"
               >
                 {item.label}
               </a>
             ))}
             <Button 
               className="bg-[#017354] hover:bg-[#017354]/90 text-white"
-              onClick={() => {
-                setIsMenuOpen(false);
-                document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});
-              }}
+              onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
             >
               Apply Now
             </Button>
           </nav>
+
+          {/* Mobile Navigation Trigger */}
+          <button
+            className="md:hidden z-10 p-2 focus:outline-none"
+            onClick={handleMenuToggle}
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Mobile Navigation Menu */}
+          <div
+            className={cn(
+              "fixed inset-0 bg-white flex flex-col justify-center items-center transition-all duration-300 ease-in-out md:hidden",
+              isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            )}
+          >
+            <nav className="flex flex-col items-center space-y-6">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-xl font-medium text-gray-800 hover:text-black"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <Button 
+                className="bg-[#017354] hover:bg-[#017354]/90 text-white"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});
+                }}
+              >
+                Apply Now
+              </Button>
+            </nav>
+          </div>
         </div>
       </div>
     </header>
