@@ -50,7 +50,7 @@ const HowItWorks: React.FC = () => {
     },
     {
       title: "Repay Without Stress",
-      description: "Payments come from your platform revenue, automatically.",
+      description: "We'll automatically receive payments from the subscription platform. No manual transfers. No hidden fees.",
       delay: "0.5s",
       color: "bg-green-50 text-green-500"
     }
