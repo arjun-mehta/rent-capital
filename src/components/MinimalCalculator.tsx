@@ -16,14 +16,14 @@ const MinimalCalculator: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <div className="p-6">
-        <div className="mb-6">
-          <h3 className="text-lg font-medium mb-2">See how much you could receive</h3>
+        <div className="mb-8">
+          <h3 className="text-lg font-medium mb-4">See how much you could receive</h3>
           
-          <div className="bg-black/[0.02] rounded-lg p-4 border border-black/5 mb-4">
-            <div className="text-sm font-medium text-gray-700 mb-3">Monthly subscription revenue</div>
-            <div className="space-y-3">
+          <div className="bg-black/[0.02] rounded-lg p-5 border border-black/5 mb-6">
+            <div className="text-sm font-medium text-gray-700 mb-4">Monthly subscription revenue</div>
+            <div className="space-y-4">
               <Slider 
                 defaultValue={[10]} 
                 max={20} 
@@ -38,10 +38,10 @@ const MinimalCalculator: React.FC = () => {
             </div>
           </div>
           
-          <Card className="border-0 shadow-md overflow-hidden mb-6">
-            <CardContent className="p-5">
+          <Card className="border-0 shadow-md overflow-hidden mb-8">
+            <CardContent className="p-6">
               <div className="flex flex-col text-left">
-                <div className="text-sm font-medium text-gray-500 mb-1">Estimated advance amount</div>
+                <div className="text-sm font-medium text-gray-500 mb-2">Estimated advance amount</div>
                 <span className="text-3xl font-semibold text-green-600">${advanceAmount.toLocaleString()}</span>
               </div>
             </CardContent>
@@ -51,7 +51,7 @@ const MinimalCalculator: React.FC = () => {
         <Button 
           className={cn(
             "w-full bg-black hover:bg-black/90 text-white",
-            "flex items-center justify-center rounded-lg h-10"
+            "flex items-center justify-center rounded-lg h-12"
           )}
           onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
         >

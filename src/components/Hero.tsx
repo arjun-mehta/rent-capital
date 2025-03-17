@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-[#fcf4ed] z-0"></div>
       
       <div className="section-container relative z-10 w-full py-0">
-        <div className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto px-4">
           <div className="max-w-xl">
             <h1 
               ref={headingRef}
@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
           {/* Calculator section */}
           <div 
             ref={calculatorRef}
-            className="opacity-0"
+            className="opacity-0 flex justify-center"
           >
             <MinimalCalculator />
           </div>
