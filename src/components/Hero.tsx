@@ -57,13 +57,6 @@ const Hero: React.FC = () => {
               Get Paid Upfront for Your Subscription Revenue.
             </h1>
             
-            <p 
-              ref={subheadingRef}
-              className="text-lg md:text-xl mb-8 opacity-0 text-gray-700"
-            >
-              Turn your future subscription earnings into cash today—no equity, no debt, no waiting.
-            </p>
-            
             <div 
               ref={ctaRef}
               className="flex flex-col sm:flex-row items-center justify-start gap-4 opacity-0 mb-8"
