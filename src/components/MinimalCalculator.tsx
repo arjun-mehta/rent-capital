@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
@@ -25,14 +26,14 @@ const MinimalCalculator: React.FC = () => {
             <div className="space-y-4">
               <Slider 
                 defaultValue={[10]} 
-                max={20} 
+                max={50} 
                 step={1} 
                 onValueChange={handleSliderChange}
               />
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-500">$1,000</span>
                 <span className="text-base font-medium">${monthlyRevenue.toLocaleString()}</span>
-                <span className="text-xs text-gray-500">$20,000</span>
+                <span className="text-xs text-gray-500">$50,000</span>
               </div>
             </div>
           </div>
