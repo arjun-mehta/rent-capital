@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,8 @@ import {
   PieChart,
   UserRound,
   ChevronRight,
-  DollarSign
+  DollarSign,
+  Upload
 } from "lucide-react";
 
 const DashboardMockup: React.FC = () => {
@@ -65,8 +65,9 @@ const DashboardMockup: React.FC = () => {
                 <ChevronRight className="h-4 w-4 text-gray-400 ml-1" />
               </div>
             </div>
-            <div className="text-xs font-medium text-gray-500 bg-white/60 px-3 py-1 rounded-full border border-black/5 shadow-sm">
-              Dashboard Preview
+            <div className="text-xs font-medium text-gray-500 bg-white/60 px-3 py-1.5 rounded-full border border-black/5 shadow-sm flex items-center gap-1.5">
+              <Upload className="h-3.5 w-3.5 text-gray-500" />
+              New Estimate
             </div>
           </div>
         </div>
