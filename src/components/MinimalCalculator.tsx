@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
@@ -9,7 +8,7 @@ import { cn } from "@/lib/utils";
 const MinimalCalculator: React.FC = () => {
   const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
   const annualRevenue = monthlyRevenue * 12;
-  const advanceAmount = Math.round(annualRevenue * 0.85 / 1000) * 1000; // 85% of annual, rounded to nearest 1000
+  const advanceAmount = Math.round(annualRevenue * 0.9 / 1000) * 1000; // Changed from 0.85 to 0.9
   
   const handleSliderChange = (value: number[]) => {
     setMonthlyRevenue(value[0] * 1000); // Convert slider value to revenue (1 = $1,000)
