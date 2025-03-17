@@ -107,10 +107,10 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          {/* Calculator section */}
+          {/* Calculator section - right-aligned */}
           <div 
             ref={calculatorRef}
-            className="opacity-0 flex justify-center"
+            className="opacity-0 flex justify-end"
           >
             <MinimalCalculator />
           </div>

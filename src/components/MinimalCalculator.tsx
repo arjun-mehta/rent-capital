@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const MinimalCalculator: React.FC = () => {
   const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
   const annualRevenue = monthlyRevenue * 12;
-  const advanceAmount = Math.round(annualRevenue * 0.9 / 1000) * 1000; // Changed from 0.85 to 0.9
+  const advanceAmount = Math.round(annualRevenue * 0.9 / 1000) * 1000;
   
   const handleSliderChange = (value: number[]) => {
     // Update to map slider value 10-100 to revenue $10,000-$100,000
@@ -17,7 +17,7 @@ const MinimalCalculator: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="w-full max-w-md ml-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <div className="p-6">
         <div className="mb-8">
           <h3 className="text-lg font-medium mb-4">See how much you could receive</h3>
@@ -27,7 +27,7 @@ const MinimalCalculator: React.FC = () => {
             <div className="space-y-4">
               <Slider 
                 defaultValue={[10]} 
-                min={10} // Set minimum value to 10 (representing $10,000)
+                min={10}
                 max={100} 
                 step={1} 
                 onValueChange={handleSliderChange}
