@@ -41,7 +41,7 @@ const MinimalCalculator: React.FC = () => {
         <div className="mb-8">
           <h3 className="text-xl font-medium mb-4">See how much you could receive</h3>
           
-          <div className="bg-black/[0.02] rounded-lg p-5 border border-black/5 mb-6">
+          <div className="mb-6">
             <div className="text-sm font-medium text-gray-700 mb-4">Monthly subscription revenue</div>
             <div className="space-y-4">
               <Slider 
