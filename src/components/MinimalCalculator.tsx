@@ -5,15 +5,27 @@ import { Slider } from "@/components/ui/slider";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+
+type PlanDuration = "3" | "6" | "12";
 
 const MinimalCalculator: React.FC = () => {
   const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
+  const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("12");
+  
+  // Calculate values based on plan duration
   const annualRevenue = monthlyRevenue * 12;
-  const advanceAmount = Math.round(annualRevenue * 0.9 / 1000) * 1000;
+  const planMultiplier = Number(selectedPlan) / 12;
+  const advanceAmount = Math.round(annualRevenue * planMultiplier * 0.9 / 1000) * 1000;
   
   const handleSliderChange = (value: number[]) => {
     // Update to map slider value 10-100 to revenue $10,000-$100,000
     setMonthlyRevenue(value[0] * 1000);
+  };
+
+  const handlePlanChange = (value: PlanDuration) => {
+    setSelectedPlan(value);
   };
 
   return (
@@ -38,6 +50,29 @@ const MinimalCalculator: React.FC = () => {
                 <span className="text-xs text-gray-500">$100,000</span>
               </div>
             </div>
+          </div>
+          
+          <div className="bg-black/[0.02] rounded-lg p-5 border border-black/5 mb-6">
+            <div className="text-sm font-medium text-gray-700 mb-4">Plan duration</div>
+            <RadioGroup 
+              defaultValue="12" 
+              className="grid grid-cols-3 gap-4"
+              value={selectedPlan}
+              onValueChange={handlePlanChange as (value: string) => void}
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="3" id="plan-3" className="text-[#017354]" />
+                <Label htmlFor="plan-3" className="cursor-pointer">3 months</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="6" id="plan-6" className="text-[#017354]" />
+                <Label htmlFor="plan-6" className="cursor-pointer">6 months</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="12" id="plan-12" className="text-[#017354]" />
+                <Label htmlFor="plan-12" className="cursor-pointer">12 months</Label>
+              </div>
+            </RadioGroup>
           </div>
           
           <Card className="border-0 shadow-md overflow-hidden mb-8">
