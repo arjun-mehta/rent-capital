@@ -5,7 +5,6 @@ import { Slider } from "@/components/ui/slider";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type PlanDuration = "3" | "6" | "12";
 
@@ -13,10 +12,19 @@ const MinimalCalculator: React.FC = () => {
   const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
   const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("12");
   
-  // Calculate values based on plan duration
+  // Calculate values based on plan duration with different multipliers
   const annualRevenue = monthlyRevenue * 12;
-  const planMultiplier = Number(selectedPlan) / 12;
-  const advanceAmount = Math.round(annualRevenue * planMultiplier * 0.9 / 1000) * 1000;
+  
+  // Apply different multipliers based on plan duration
+  let advanceMultiplier = 0.85; // Default for 12 months
+  if (selectedPlan === "3") {
+    advanceMultiplier = 0.95;
+  } else if (selectedPlan === "6") {
+    advanceMultiplier = 0.9;
+  }
+  
+  // Calculate advance amount based on selected plan duration and its specific multiplier
+  const advanceAmount = Math.round(monthlyRevenue * Number(selectedPlan) * advanceMultiplier / 1000) * 1000;
   
   const handleSliderChange = (value: number[]) => {
     // Update to map slider value 10-100 to revenue $10,000-$100,000
