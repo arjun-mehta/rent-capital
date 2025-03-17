@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center">
-      <div className="absolute inset-0 bg-[#fcf4ed] z-0"></div>
+      <div className="absolute inset-0 bg-[#FCF7F0] z-0"></div>
       
       <div className="section-container relative z-10 w-full py-0">
         <div className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto px-4">
