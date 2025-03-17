@@ -104,11 +104,10 @@ const HowItWorks: React.FC = () => {
               className="flex items-center space-x-2 opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.2 + index * 0.1}s`, animationFillMode: "forwards" }}
             >
-              <div className="p-1 rounded-full flex-shrink-0 bg-green-50">
-                <Check className="w-3 h-3 text-green-600" />
+              <div className="p-1 rounded-full flex-shrink-0 bg-[#E6F2ED]">
+                <Check className="w-3 h-3 text-[#017354]" />
               </div>
               <p className="text-sm text-gray-700">{benefit}</p>
-              {/* Removed the dot separators here */}
             </div>
           ))}
         </div>

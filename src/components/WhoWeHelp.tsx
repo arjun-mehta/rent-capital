@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
@@ -66,7 +67,7 @@ const WhoWeHelp: React.FC = () => {
             <ul className="space-y-4">
               {qualifications.map((item, index) => (
                 <li key={index} className="flex items-start space-x-3">
-                  <Check className="w-5 h-5 text-black flex-shrink-0 mt-1" />
+                  <Check className="w-5 h-5 text-[#017354] flex-shrink-0 mt-1" />
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
@@ -78,7 +79,7 @@ const WhoWeHelp: React.FC = () => {
             <ul className="space-y-4">
               {useCases.map((item, index) => (
                 <li key={index} className="flex items-start space-x-3">
-                  <Check className="w-5 h-5 text-black flex-shrink-0 mt-1" />
+                  <Check className="w-5 h-5 text-[#017354] flex-shrink-0 mt-1" />
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
