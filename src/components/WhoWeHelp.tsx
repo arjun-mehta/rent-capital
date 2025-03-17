@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 
 const WhoWeHelp: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const platformsRef = useRef<HTMLDivElement>(null);
   const qualificationsRef = useRef<HTMLDivElement>(null);
   const useCasesRef = useRef<HTMLDivElement>(null);
 
@@ -26,25 +25,15 @@ const WhoWeHelp: React.FC = () => {
     }, observerOptions);
 
     if (sectionRef.current) observer.observe(sectionRef.current);
-    if (platformsRef.current) observer.observe(platformsRef.current);
     if (qualificationsRef.current) observer.observe(qualificationsRef.current);
     if (useCasesRef.current) observer.observe(useCasesRef.current);
 
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
-      if (platformsRef.current) observer.unobserve(platformsRef.current);
       if (qualificationsRef.current) observer.unobserve(qualificationsRef.current);
       if (useCasesRef.current) observer.unobserve(useCasesRef.current);
     };
   }, []);
-
-  const platforms = [
-    { name: "Patreon", image: "/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" },
-    { name: "YouTube", image: "/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" },
-    { name: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
-    { name: "Twitch", image: "/lovable-uploads/09c16960-6097-4df5-ba5b-62d6d6d1cda8.png" },
-    { name: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
-  ];
 
   const qualifications = [
     "You upload content at least twice a month on a subscription platform.",
@@ -70,27 +59,6 @@ const WhoWeHelp: React.FC = () => {
           <p className="paragraph text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             We specialize in providing financing to creators with predictable, subscription-based income streams.
           </p>
-        </div>
-
-        <div ref={platformsRef} className="mb-16 opacity-0">
-          <h3 className="heading-md text-center mb-8">
-            We fund creators with predictable, subscription-based earnings from:
-          </h3>
-          
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 max-w-4xl mx-auto">
-            {platforms.map((platform, index) => (
-              <div 
-                key={index}
-                className="flex flex-col items-center justify-center p-4 md:p-5 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-24 md:h-28"
-              >
-                <img 
-                  src={platform.image} 
-                  alt={platform.name} 
-                  className="h-8 md:h-10 object-contain" 
-                />
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
