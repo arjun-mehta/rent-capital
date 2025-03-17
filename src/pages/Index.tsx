@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import WhoWeHelp from "@/components/WhoWeHelp";
+import FAQ from "@/components/FAQ";
 import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
@@ -43,6 +44,7 @@ const Index: React.FC = () => {
         <Hero />
         <HowItWorks />
         <WhoWeHelp />
+        <FAQ />
         <ApplicationForm />
       </main>
       <Footer />
