@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import DashboardMockup from "./DashboardMockup";
 
 const Hero: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -85,7 +86,7 @@ const Hero: React.FC = () => {
             </Button>
           </div>
           
-          {/* Platform section moved from WhoWeHelp component */}
+          {/* Platform section */}
           <div 
             ref={platformsRef}
             className="mt-16 opacity-0"
@@ -109,6 +110,9 @@ const Hero: React.FC = () => {
               ))}
             </div>
           </div>
+          
+          {/* Dashboard mockup */}
+          <DashboardMockup />
         </div>
       </div>
     </section>

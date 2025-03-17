@@ -10,13 +10,13 @@ import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
 const Index: React.FC = () => {
-  // Static navigation without animations
+  // Handle smooth scrolling with proper header offset
   const handleSectionScroll = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
       window.scrollTo({
         top: section.offsetTop - 80, // Header offset
-        behavior: 'auto'
+        behavior: 'smooth'
       });
     }
   };
