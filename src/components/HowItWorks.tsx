@@ -70,7 +70,7 @@ const HowItWorks: React.FC = () => {
       <div className="section-container pt-0">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
-            Unlock Growth Capital in 3 Easy Steps
+            How It Works
           </h2>
           <p className="paragraph text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             Our financing is simple, fast, and designed for creators.
