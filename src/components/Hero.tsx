@@ -48,8 +48,8 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-[#FCF7F0] z-0"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 relative z-10 w-full">
-        <div className="grid md:grid-cols-2 gap-4 items-center">
-          <div className="max-w-xl">
+        <div className="grid md:grid-cols-12 gap-8 items-center">
+          <div className="md:col-span-5 max-w-xl">
             <h1 
               ref={headingRef}
               className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 opacity-0 leading-[1.15]"
@@ -110,7 +110,7 @@ const Hero: React.FC = () => {
           {/* Calculator section - right-aligned */}
           <div 
             ref={calculatorRef}
-            className="opacity-0 flex justify-end"
+            className="opacity-0 md:col-span-7 flex justify-center md:justify-end"
           >
             <MinimalCalculator />
           </div>
