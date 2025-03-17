@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
               ref={headingRef}
               className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 opacity-0 leading-[1.1]"
             >
-              Get Paid Upfront for Your Subscription Revenue.
+              Get Your Annual Subscription Revenue Upfront.
             </h1>
             
             <div 
