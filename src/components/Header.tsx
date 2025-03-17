@@ -35,6 +35,23 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      // Close mobile menu if open
+      if (isMenuOpen) setIsMenuOpen(false);
+      
+      // Calculate the header height for proper offset
+      const headerHeight = 80; // Approximate header height
+      const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+      
+      window.scrollTo({
+        top: sectionPosition - headerHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const navItems = [
     { label: "How It Works", href: "#how-it-works" },
     { label: "Qualification", href: "#who-we-help" },
@@ -47,8 +64,8 @@ const Header: React.FC = () => {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4",
         isScrolled 
-          ? "bg-[#FCF7F0]/80 backdrop-blur-md shadow-sm" 
-          : "bg-transparent"
+          ? "bg-[#FCF7F0]/95 backdrop-blur-md shadow-sm" 
+          : "bg-[#FCF7F0]"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
@@ -70,13 +87,17 @@ const Header: React.FC = () => {
                 key={item.label}
                 href={item.href}
                 className="text-sm font-medium text-gray-700 hover-underline hover:text-black transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href.substring(1));
+                }}
               >
                 {item.label}
               </a>
             ))}
             <Button 
               className="bg-[#017354] hover:bg-[#017354]/90 text-white"
-              onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
+              onClick={() => scrollToSection('application-form')}
             >
               Apply Now
             </Button>
@@ -104,7 +125,10 @@ const Header: React.FC = () => {
                   key={item.label}
                   href={item.href}
                   className="text-xl font-medium text-gray-800 hover:text-black"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href.substring(1));
+                  }}
                 >
                   {item.label}
                 </a>
@@ -112,8 +136,7 @@ const Header: React.FC = () => {
               <Button 
                 className="bg-[#017354] hover:bg-[#017354]/90 text-white"
                 onClick={() => {
-                  setIsMenuOpen(false);
-                  document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});
+                  scrollToSection('application-form');
                 }}
               >
                 Apply Now

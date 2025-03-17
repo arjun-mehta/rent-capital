@@ -56,7 +56,10 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-50">
+    <section 
+      id="how-it-works" 
+      className="py-12 md:py-20 bg-white"
+    >
       <div className="section-container py-8 md:py-12">
         <div className="max-w-3xl mb-12">
           <h2 
