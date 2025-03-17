@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -65,9 +65,9 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-16 bg-gradient-to-b from-white to-gray-50">
-      <div className="section-container pt-0">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <section id="how-it-works" className="py-10 bg-gradient-to-b from-white to-gray-50">
+      <div className="section-container pt-0 pb-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
             How It Works
           </h2>
@@ -76,7 +76,7 @@ const HowItWorks: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-10">
           {steps.map((step, index) => {
             return (
               <div 
@@ -99,27 +99,25 @@ const HowItWorks: React.FC = () => {
           })}
         </div>
 
-        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 md:p-12 mt-16 shadow-sm">
-          <h3 className="heading-md mb-8 text-center opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-            Key Benefits
-          </h3>
+        <div className="mx-auto max-w-4xl">
+          <h3 className="text-xl font-semibold mb-4 text-center">Key Benefits</h3>
           
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 mb-10">
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-3 mb-10">
             {benefits.map((benefit, index) => (
               <div 
                 key={index} 
                 className="flex items-start space-x-3 opacity-0 animate-fade-in"
                 style={{ animationDelay: `${0.2 + index * 0.1}s`, animationFillMode: "forwards" }}
               >
-                <div className="bg-black/5 p-2 rounded-full flex-shrink-0">
-                  <ArrowRight className="w-4 h-4 text-black" />
+                <div className="p-1 rounded-full flex-shrink-0 bg-green-50">
+                  <Check className="w-4 h-4 text-green-600" />
                 </div>
-                <p className="text-gray-700">{benefit}</p>
+                <p className="text-gray-700 text-sm md:text-base">{benefit}</p>
               </div>
             ))}
           </div>
           
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-6">
             <Button 
               className="bg-[#017354] text-white px-8 py-6 rounded-md font-medium flex items-center gap-2 hover:bg-[#017354]/90 transition-colors"
               onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
