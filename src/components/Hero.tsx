@@ -47,8 +47,8 @@ const Hero: React.FC = () => {
     <section className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center">
       <div className="absolute inset-0 bg-[#FCF7F0] z-0"></div>
       
-      <div className="section-container relative z-10 w-full py-0">
-        <div className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 relative z-10 w-full">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="max-w-xl">
             <h1 
               ref={headingRef}
@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
               ref={platformsRef}
               className="opacity-0 hidden md:block"
             >
-              <h3 className="text-sm md:text-base font-normal text-gray-600 mb-4">
+              <h3 className="text-sm font-normal text-gray-500 mb-4">
                 We fund creators with subscription-based earnings from:
               </h3>
               
