@@ -50,7 +50,7 @@ const WhoWeHelp: React.FC = () => {
   ];
 
   return (
-    <section id="who-we-help" className="py-24 bg-[#FCF7F0]">
+    <section id="who-we-help" className="py-12 bg-[#FCF7F0]">
       <div className="section-container">
         <div className="max-w-3xl mb-12">
           <h2 
