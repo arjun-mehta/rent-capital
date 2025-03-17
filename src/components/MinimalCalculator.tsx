@@ -52,7 +52,7 @@ const MinimalCalculator: React.FC = () => {
           </div>
           
           <div className="mb-6">
-            <div className="text-sm font-medium text-gray-700 mb-4">Plan duration</div>
+            <div className="text-sm font-medium text-gray-700 mb-4">Advance size</div>
             <div className="grid grid-cols-3 gap-3">
               {[
                 { value: "3", label: "3 months" },
