@@ -71,7 +71,7 @@ const ApplicationForm: React.FC = () => {
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <h2 className="heading-lg mb-6">
-            Start Your Application in Minutes
+            Apply in Minutes
           </h2>
           <p className="paragraph text-gray-600 mx-auto max-w-2xl">
             Fill out this short form to get the ball rolling. We'll review your information and get back to you within 48 hours.
