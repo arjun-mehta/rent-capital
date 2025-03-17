@@ -1,9 +1,8 @@
 
 import React, { useEffect, useRef } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 
 const HowItWorks: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -90,18 +89,9 @@ const HowItWorks: React.FC = () => {
                 )}
                 style={{ animationDelay: step.delay, animationFillMode: "forwards" }}
               >
-                <div className={cn("w-16 h-16 flex items-center justify-center rounded-full mb-6", step.color)}>
-                  <Check className="w-8 h-8" />
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-xl font-bold mb-6">
+                  {index + 1}
                 </div>
-                <Badge 
-                  variant="outline" 
-                  className={cn(
-                    "mb-4 px-3 py-1 font-medium",
-                    "bg-gray-50 hover:bg-gray-50" 
-                  )}
-                >
-                  Step {index + 1}
-                </Badge>
                 <h3 className="heading-sm mb-3 font-bold">{step.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{step.description}</p>
               </div>
