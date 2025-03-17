@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
@@ -26,7 +25,7 @@ const WhoWeHelp: React.FC = () => {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     if (qualificationsRef.current) observer.observe(qualificationsRef.current);
-    if (useCasesRef.current) observer.unobserve(useCasesRef.current);
+    if (useCasesRef.current) observer.observe(useCasesRef.current);
 
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
