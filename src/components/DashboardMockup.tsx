@@ -8,7 +8,9 @@ import {
   Calendar, 
   Clock, 
   BarChart4, 
-  PieChart
+  PieChart,
+  UserRound,
+  ChevronRight
 } from "lucide-react";
 
 const DashboardMockup: React.FC = () => {
@@ -34,9 +36,27 @@ const DashboardMockup: React.FC = () => {
       ref={mockupRef}
       className="w-full max-w-4xl mx-auto mt-12 transition-all duration-700 ease-out transform translate-y-8 opacity-0"
     >
-      <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)]">
+      <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.25)] border border-black/10">
+        {/* Navigation Bar */}
+        <div className="bg-black/[0.03] border-b border-black/10">
+          <div className="px-8 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="h-9 w-9 rounded-full bg-black/5 flex items-center justify-center border border-black/10 overflow-hidden">
+                <UserRound className="h-5 w-5 text-gray-600" />
+              </div>
+              <div className="flex items-center">
+                <span className="text-sm font-medium text-gray-800">Alex Johnson</span>
+                <ChevronRight className="h-4 w-4 text-gray-400 ml-1" />
+              </div>
+            </div>
+            <div className="text-xs font-medium text-gray-500 bg-white/60 px-3 py-1 rounded-full border border-black/5">
+              Dashboard Preview
+            </div>
+          </div>
+        </div>
+        
         {/* Clean white background */}
-        <div className="absolute inset-0 bg-white"></div>
+        <div className="absolute inset-0 bg-white -z-10"></div>
         
         {/* Content container */}
         <div className="relative p-8 md:p-10">
