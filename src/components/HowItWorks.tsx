@@ -66,11 +66,14 @@ const HowItWorks: React.FC = () => {
     <section id="how-it-works" className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="section-container py-8 md:py-12">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 ref={sectionRef} className="text-3xl md:text-4xl font-semibold mb-4 opacity-0">
+          <h2 
+            ref={sectionRef} 
+            className="text-4xl md:text-5xl font-semibold mb-5 opacity-0"
+          >
             How It Works
           </h2>
-          <p className="text-base text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Our financing is simple, fast, and designed for creators.
+          <p className="text-lg md:text-xl text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            Unlock capital without giving up ownership or control
           </p>
         </div>
 
