@@ -1,9 +1,7 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { 
-  DollarSign, 
   ArrowRight, 
   Calendar, 
   Clock, 
@@ -62,12 +60,7 @@ const DashboardMockup: React.FC = () => {
         <div className="relative p-8 md:p-10">
           {/* Dashboard Header */}
           <div className="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
-            <div className="flex items-center">
-              <div className="bg-black/5 p-2 rounded-xl">
-                <DollarSign className="w-5 h-5 text-black" />
-              </div>
-              <h2 className="ml-3 text-xl font-medium text-gray-900">Funding Dashboard</h2>
-            </div>
+            <h2 className="text-xl font-medium text-gray-900">Creator Dashboard</h2>
             <div className="text-sm text-gray-500">Instant preview</div>
           </div>
           
