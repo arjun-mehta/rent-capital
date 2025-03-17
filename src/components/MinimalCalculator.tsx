@@ -23,8 +23,8 @@ const MinimalCalculator: React.FC = () => {
     advanceMultiplier = 0.9;
   }
   
-  // Calculate advance amount based on selected plan duration and its specific multiplier
-  const advanceAmount = Math.round(monthlyRevenue * Number(selectedPlan) * advanceMultiplier / 1000) * 1000;
+  // Calculate advance amount based on selected plan duration and its specific multiplier without rounding
+  const advanceAmount = monthlyRevenue * Number(selectedPlan) * advanceMultiplier;
   
   const handleSliderChange = (value: number[]) => {
     // Update to map slider value 10-100 to revenue $10,000-$100,000
