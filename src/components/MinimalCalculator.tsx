@@ -5,8 +5,7 @@ import { Slider } from "@/components/ui/slider";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type PlanDuration = "3" | "6" | "12";
 
@@ -24,8 +23,8 @@ const MinimalCalculator: React.FC = () => {
     setMonthlyRevenue(value[0] * 1000);
   };
 
-  const handlePlanChange = (value: PlanDuration) => {
-    setSelectedPlan(value);
+  const handlePlanChange = (value: string) => {
+    setSelectedPlan(value as PlanDuration);
   };
 
   return (
@@ -52,27 +51,29 @@ const MinimalCalculator: React.FC = () => {
             </div>
           </div>
           
-          <div className="bg-black/[0.02] rounded-lg p-5 border border-black/5 mb-6">
+          <div className="mb-6">
             <div className="text-sm font-medium text-gray-700 mb-4">Plan duration</div>
-            <RadioGroup 
-              defaultValue="12" 
-              className="grid grid-cols-3 gap-4"
-              value={selectedPlan}
-              onValueChange={handlePlanChange as (value: string) => void}
-            >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="3" id="plan-3" className="text-[#017354]" />
-                <Label htmlFor="plan-3" className="cursor-pointer">3 months</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="6" id="plan-6" className="text-[#017354]" />
-                <Label htmlFor="plan-6" className="cursor-pointer">6 months</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="12" id="plan-12" className="text-[#017354]" />
-                <Label htmlFor="plan-12" className="cursor-pointer">12 months</Label>
-              </div>
-            </RadioGroup>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { value: "3", label: "3 months" },
+                { value: "6", label: "6 months" },
+                { value: "12", label: "12 months" }
+              ].map((plan) => (
+                <button
+                  key={plan.value}
+                  onClick={() => handlePlanChange(plan.value)}
+                  className={cn(
+                    "py-3 px-2 rounded-lg text-center transition-all duration-200",
+                    "border text-sm font-medium",
+                    selectedPlan === plan.value
+                      ? "bg-[#017354] text-white border-[#017354]"
+                      : "bg-white text-gray-700 border-gray-200 hover:border-[#017354]/50"
+                  )}
+                >
+                  {plan.label}
+                </button>
+              ))}
+            </div>
           </div>
           
           <Card className="border-0 shadow-md overflow-hidden mb-8">
