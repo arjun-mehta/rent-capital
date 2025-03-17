@@ -44,10 +44,10 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className="relative pt-32 pb-8 md:pt-44 md:pb-16 overflow-hidden">
+    <section className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center">
       <div className="absolute inset-0 bg-[#fcf4ed] z-0"></div>
       
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 w-full py-0">
         <div className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
           <div className="max-w-xl">
             <h1 
@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
             {/* Platform section */}
             <div 
               ref={platformsRef}
-              className="opacity-0"
+              className="opacity-0 hidden md:block"
             >
               <h3 className="text-base md:text-lg font-medium mb-4">
                 We fund creators with subscription-based earnings from:
