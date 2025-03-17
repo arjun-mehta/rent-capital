@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,8 @@ import {
   BarChart4, 
   PieChart,
   UserRound,
-  ChevronRight
+  ChevronRight,
+  DollarSign
 } from "lucide-react";
 
 const DashboardMockup: React.FC = () => {
