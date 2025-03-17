@@ -16,7 +16,7 @@ const MinimalCalculator: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto bg-white rounded-xl border-[3px] border-black/10 shadow-lg overflow-hidden">
+    <div className="w-full max-w-xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <div className="absolute inset-0 rounded-xl pointer-events-none" style={{
         boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.5)",
         zIndex: 5
@@ -43,7 +43,7 @@ const MinimalCalculator: React.FC = () => {
             </div>
           </div>
           
-          <Card className="border border-black/5 shadow-md overflow-hidden mb-6">
+          <Card className="border-0 shadow-md overflow-hidden mb-6">
             <CardContent className="p-5">
               <div className="flex flex-col text-left">
                 <div className="text-sm font-medium text-gray-500 mb-1">Estimated advance amount</div>
