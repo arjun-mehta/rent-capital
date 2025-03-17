@@ -18,9 +18,9 @@ const MinimalCalculator: React.FC = () => {
 
   return (
     <div className="w-full max-w-md ml-auto bg-white rounded-xl shadow-lg overflow-hidden">
-      <div className="p-6">
+      <div className="p-8">
         <div className="mb-8">
-          <h3 className="text-lg font-medium mb-4">See how much you could receive</h3>
+          <h3 className="text-xl font-medium mb-4">See how much you could receive</h3>
           
           <div className="bg-black/[0.02] rounded-lg p-5 border border-black/5 mb-6">
             <div className="text-sm font-medium text-gray-700 mb-4">Monthly subscription revenue</div>
