@@ -12,7 +12,8 @@ const MinimalCalculator: React.FC = () => {
   const advanceAmount = Math.round(annualRevenue * 0.9 / 1000) * 1000; // Changed from 0.85 to 0.9
   
   const handleSliderChange = (value: number[]) => {
-    setMonthlyRevenue(value[0] * 1000); // Convert slider value to revenue (1 = $1,000)
+    // Update to map slider value 10-50 to revenue $10,000-$50,000
+    setMonthlyRevenue(value[0] * 1000);
   };
 
   return (
@@ -26,12 +27,13 @@ const MinimalCalculator: React.FC = () => {
             <div className="space-y-4">
               <Slider 
                 defaultValue={[10]} 
+                min={10} // Set minimum value to 10 (representing $10,000)
                 max={50} 
                 step={1} 
                 onValueChange={handleSliderChange}
               />
               <div className="flex justify-between items-center">
-                <span className="text-xs text-gray-500">$1,000</span>
+                <span className="text-xs text-gray-500">$10,000</span>
                 <span className="text-base font-medium">${monthlyRevenue.toLocaleString()}</span>
                 <span className="text-xs text-gray-500">$50,000</span>
               </div>
