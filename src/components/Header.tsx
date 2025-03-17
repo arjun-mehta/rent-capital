@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,7 +37,6 @@ const Header: React.FC = () => {
   const navItems = [
     { label: "How It Works", href: "#how-it-works" },
     { label: "Qualification", href: "#who-we-help" },
-    { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
   ];
 
