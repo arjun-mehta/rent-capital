@@ -38,7 +38,7 @@ const HowItWorks: React.FC = () => {
   const steps = [
     {
       title: "Apply in Minutes",
-      description: "Share your revenue details & get an offer fast.",
+      description: "No lengthy applications required. The most important thing we need to know is your revenue volume on Patreon, Substack, or comparable platform.",
       delay: "0.1s",
       color: "bg-green-50 text-green-500"
     },
