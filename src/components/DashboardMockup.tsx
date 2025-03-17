@@ -43,12 +43,18 @@ const DashboardMockup: React.FC = () => {
       ref={mockupRef}
       className="w-full max-w-4xl mx-auto mt-12 transition-all duration-700 ease-out transform translate-y-8 opacity-0"
     >
-      <div className="relative overflow-hidden rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.25)] border border-black/10">
+      <div className="relative overflow-hidden rounded-3xl border-[3px] border-black/10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-gradient-to-b from-gray-50 to-white">
+        {/* Apple-style inner border glow effect */}
+        <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{
+          boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.5)",
+          zIndex: 5
+        }}></div>
+        
         {/* Navigation Bar */}
-        <div className="bg-black/[0.03] border-b border-black/10">
+        <div className="bg-black/[0.03] border-b border-black/10 backdrop-blur-sm bg-white/80">
           <div className="px-8 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Avatar className="h-9 w-9 border border-black/10">
+              <Avatar className="h-9 w-9 border border-black/10 shadow-sm">
                 <AvatarImage src="/lovable-uploads/7e03b3ad-f9ee-43d6-b27f-2bc4e73805e6.png" alt="Profile" />
                 <AvatarFallback>
                   <UserRound className="h-5 w-5 text-gray-600" />
@@ -59,14 +65,14 @@ const DashboardMockup: React.FC = () => {
                 <ChevronRight className="h-4 w-4 text-gray-400 ml-1" />
               </div>
             </div>
-            <div className="text-xs font-medium text-gray-500 bg-white/60 px-3 py-1 rounded-full border border-black/5">
+            <div className="text-xs font-medium text-gray-500 bg-white/60 px-3 py-1 rounded-full border border-black/5 shadow-sm">
               Dashboard Preview
             </div>
           </div>
         </div>
         
-        {/* Clean white background */}
-        <div className="absolute inset-0 bg-white -z-10"></div>
+        {/* Clean white background with subtle gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50/30 -z-10"></div>
         
         {/* Content container */}
         <div className="relative p-8 md:p-10">
