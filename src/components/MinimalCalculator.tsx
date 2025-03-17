@@ -17,11 +17,6 @@ const MinimalCalculator: React.FC = () => {
 
   return (
     <div className="w-full max-w-xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-      <div className="absolute inset-0 rounded-xl pointer-events-none" style={{
-        boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.5)",
-        zIndex: 5
-      }}></div>
-      
       <div className="p-6">
         <div className="mb-6">
           <h3 className="text-lg font-medium mb-2">See how much you could receive</h3>
