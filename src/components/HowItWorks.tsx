@@ -56,7 +56,6 @@ const HowItWorks: React.FC = () => {
     }
   ];
 
-  // Removed the "More Growth, Less Stress" benefit and kept only 3
   const benefits = [
     "Fast & Flexible: Apply in minutes, receive funding in days.",
     "No Equity, No Debt: Keep full ownership of your content and business.",
@@ -64,41 +63,41 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-8 bg-gradient-to-b from-white to-gray-50">
-      <div className="section-container pt-0 pb-6">
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 ref={sectionRef} className="heading-lg mb-4 opacity-0">
+    <section id="how-it-works" className="py-4 md:py-6 bg-gradient-to-b from-white to-gray-50">
+      <div className="section-container py-4 md:py-8">
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <h2 ref={sectionRef} className="text-3xl md:text-4xl font-semibold mb-3 opacity-0">
             How It Works
           </h2>
-          <p className="paragraph text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <p className="text-base text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             Our financing is simple, fast, and designed for creators.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
           {steps.map((step, index) => {
             return (
               <div 
                 key={index}
                 ref={stepsRefs[index]}
                 className={cn(
-                  "flex flex-col items-center text-center p-6 rounded-xl border border-gray-200",
+                  "flex flex-col items-center text-center p-4 md:p-5 rounded-xl border border-gray-200",
                   "bg-white shadow-sm hover:shadow-md transition-all duration-300 opacity-0",
                   "transform hover:-translate-y-1"
                 )}
                 style={{ animationDelay: step.delay, animationFillMode: "forwards" }}
               >
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-xl font-bold mb-4">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-black text-white text-xl font-bold mb-3">
                   {index + 1}
                 </div>
-                <h3 className="heading-sm mb-2 font-bold">{step.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                <h3 className="text-lg font-bold mb-1">{step.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
               </div>
             );
           })}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mt-6">
+        <div className="flex flex-wrap justify-center gap-3 mt-4">
           {benefits.map((benefit, index) => (
             <div 
               key={index} 
@@ -108,7 +107,7 @@ const HowItWorks: React.FC = () => {
               <div className="p-1 rounded-full flex-shrink-0 bg-green-50">
                 <Check className="w-3 h-3 text-green-600" />
               </div>
-              <p className="text-gray-700 text-sm">{benefit}</p>
+              <p className="text-sm text-gray-700">{benefit}</p>
               {index < benefits.length - 1 && (
                 <span className="text-gray-300 mx-1">•</span>
               )}
