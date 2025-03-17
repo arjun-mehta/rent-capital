@@ -52,11 +52,14 @@ const WhoWeHelp: React.FC = () => {
   return (
     <section id="who-we-help" className="py-24 bg-[#FCF7F0]">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0">
+        <div className="max-w-3xl mb-12">
+          <h2 
+            ref={sectionRef} 
+            className="text-5xl md:text-6xl lg:text-7xl font-semibold mb-5 opacity-0 text-left"
+          >
             Qualification
           </h2>
-          <p className="paragraph text-gray-600 mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
+          <p className="text-xl md:text-2xl text-gray-600 max-w-full opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             We specialize in providing financing to creators with predictable, subscription-based income streams.
           </p>
         </div>

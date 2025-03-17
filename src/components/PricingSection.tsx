@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
@@ -45,11 +46,14 @@ const PricingSection: React.FC = () => {
   return (
     <section id="pricing" className="py-24 bg-black text-white">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 ref={sectionRef} className="heading-lg mb-6 opacity-0 text-white">
-            Fair, Flexible, and Built for Growth
+        <div className="max-w-3xl mb-12">
+          <h2 
+            ref={sectionRef} 
+            className="text-5xl md:text-6xl lg:text-7xl font-semibold mb-5 opacity-0 text-left text-white"
+          >
+            Pricing
           </h2>
-          <p className="paragraph text-white mx-auto max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
+          <p className="text-xl md:text-2xl text-white max-w-full opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             Our transparent pricing model is designed to help you grow without the stress of traditional financing.
           </p>
         </div>
