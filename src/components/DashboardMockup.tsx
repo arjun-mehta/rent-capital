@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   ArrowRight, 
   Calendar, 
@@ -47,9 +48,12 @@ const DashboardMockup: React.FC = () => {
         <div className="bg-black/[0.03] border-b border-black/10">
           <div className="px-8 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-full bg-black/5 flex items-center justify-center border border-black/10 overflow-hidden">
-                <UserRound className="h-5 w-5 text-gray-600" />
-              </div>
+              <Avatar className="h-9 w-9 border border-black/10">
+                <AvatarImage src="/lovable-uploads/7e03b3ad-f9ee-43d6-b27f-2bc4e73805e6.png" alt="Profile" />
+                <AvatarFallback>
+                  <UserRound className="h-5 w-5 text-gray-600" />
+                </AvatarFallback>
+              </Avatar>
               <div className="flex items-center">
                 <span className="text-sm font-medium text-gray-800">Alex Johnson</span>
                 <ChevronRight className="h-4 w-4 text-gray-400 ml-1" />
