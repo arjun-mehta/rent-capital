@@ -50,8 +50,8 @@ const WhoWeHelp: React.FC = () => {
   ];
 
   return (
-    <section id="who-we-help" className="py-12 bg-[#FCF7F0]">
-      <div className="section-container">
+    <section id="who-we-help" className="py-12 md:py-20 bg-[#FCF7F0]">
+      <div className="section-container py-8 md:py-12">
         <div className="max-w-3xl mb-12">
           <h2 
             ref={sectionRef} 
