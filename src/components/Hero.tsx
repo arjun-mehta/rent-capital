@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
           <div className="max-w-xl">
             <h1 
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 opacity-0 leading-[1.2]"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 opacity-0 leading-[1.15]"
             >
               Get your annual subscription revenue upfront.
             </h1>
