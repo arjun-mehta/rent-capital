@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const HowItWorks: React.FC = () => {
@@ -55,11 +56,14 @@ const HowItWorks: React.FC = () => {
     }
   ];
 
+  const benefits = [
+    "Fast & Flexible: Apply in minutes, receive funding in days.",
+    "No Equity, No Debt: Keep full ownership of your content and business.",
+    "Predictable Repayment: Payments come directly from your platform revenue—no manual transfers."
+  ];
+
   return (
-    <section 
-      id="how-it-works" 
-      className="py-12 md:py-20 bg-white"
-    >
+    <section id="how-it-works" className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="section-container py-8 md:py-12">
         <div className="max-w-3xl mb-12">
           <h2 
@@ -73,27 +77,42 @@ const HowItWorks: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-10">
+        <div className="grid md:grid-cols-3 gap-6 mb-10">
           {steps.map((step, index) => {
             return (
               <div 
                 key={index}
                 ref={stepsRefs[index]}
                 className={cn(
-                  "flex flex-col items-start text-left p-8 md:p-10 rounded-xl border border-gray-200",
+                  "flex flex-col items-start text-left p-6 md:p-8 rounded-xl border border-gray-200",
                   "bg-white shadow-sm hover:shadow-md transition-all duration-300 opacity-0",
                   "transform hover:-translate-y-1"
                 )}
                 style={{ animationDelay: step.delay, animationFillMode: "forwards" }}
               >
-                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-black text-white text-xl font-bold mb-6">
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-xl font-bold mb-4">
                   {index + 1}
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-4">{step.title}</h3>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed">{step.description}</p>
+                <h3 className="text-lg font-bold mb-2">{step.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
               </div>
             );
           })}
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-3 mt-8 mb-4">
+          {benefits.map((benefit, index) => (
+            <div 
+              key={index} 
+              className="flex items-center space-x-2 opacity-0 animate-fade-in"
+              style={{ animationDelay: `${0.2 + index * 0.1}s`, animationFillMode: "forwards" }}
+            >
+              <div className="p-1 rounded-full flex-shrink-0 bg-[#E6F2ED]">
+                <Check className="w-3 h-3 text-[#017354]" />
+              </div>
+              <p className="text-sm text-gray-700">{benefit}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
