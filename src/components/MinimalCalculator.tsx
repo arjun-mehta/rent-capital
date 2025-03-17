@@ -64,10 +64,10 @@ const MinimalCalculator: React.FC = () => {
                   onClick={() => handlePlanChange(plan.value)}
                   className={cn(
                     "py-3 px-2 rounded-lg text-center transition-all duration-200",
-                    "border text-sm font-medium",
+                    "text-sm font-medium",
                     selectedPlan === plan.value
-                      ? "bg-[#017354] text-white border-[#017354]"
-                      : "bg-white text-gray-700 border-gray-200 hover:border-[#017354]/50"
+                      ? "border-2 border-[#017354] text-[#017354] bg-white"
+                      : "border border-gray-200 text-gray-700 bg-white hover:border-[#017354]/50"
                   )}
                 >
                   {plan.label}
