@@ -43,7 +43,7 @@ const HowItWorks: React.FC = () => {
       color: "bg-green-50 text-green-500"
     },
     {
-      title: "Get Upfront Cash",
+      title: "Receive Cash Advance",
       description: "If approved for an advance, you'll receive an offer based on your projected earnings, minus our fee. Once you accept, funds will be wired to your bank account within days.",
       delay: "0.3s",
       color: "bg-green-50 text-green-500"
