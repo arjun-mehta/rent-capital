@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
@@ -7,6 +7,7 @@ import WhoWeHelp from "@/components/WhoWeHelp";
 import FAQ from "@/components/FAQ";
 import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
+import html2canvas from "html2canvas";
 
 const Index: React.FC = () => {
   // Handle smooth scrolling with proper header offset
@@ -35,6 +36,38 @@ const Index: React.FC = () => {
 
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
+  }, []);
+
+  // Capture hero section as OpenGraph image
+  useEffect(() => {
+    // Only execute this in development/preview mode to generate the image
+    if (process.env.NODE_ENV === 'development') {
+      const captureHeroSection = async () => {
+        const heroElement = document.getElementById('hero-section');
+        if (heroElement) {
+          try {
+            console.log('Capturing hero section...');
+            const canvas = await html2canvas(heroElement, {
+              scale: 2, // Higher resolution
+              useCORS: true, // Allow images from other domains
+              logging: false,
+            });
+            
+            // Convert to data URL
+            const imageDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+            console.log('Hero section captured as OpenGraph image:', imageDataUrl.substring(0, 50) + '...');
+            
+            // In a real app, you would save this image to your server
+            // Here we just log it for demonstration
+          } catch (error) {
+            console.error('Error capturing hero section:', error);
+          }
+        }
+      };
+      
+      // Wait for components to render fully
+      setTimeout(captureHeroSection, 2000);
+    }
   }, []);
 
   return (

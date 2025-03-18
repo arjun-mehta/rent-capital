@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center">
+    <section id="hero-section" className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center">
       <div className="absolute inset-0 bg-[#FCF7F0] z-0"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 relative z-10 w-full">
