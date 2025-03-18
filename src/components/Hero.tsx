@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -59,7 +58,7 @@ const Hero: React.FC = () => {
           <div className="md:col-span-5 max-w-xl">
             <h1 
               ref={headingRef}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 opacity-0 leading-[1.15]"
+              className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 opacity-0 leading-[1.15]"
             >
               Get your annual subscription revenue upfront.
             </h1>
