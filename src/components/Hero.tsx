@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import MinimalCalculator from "./MinimalCalculator";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -12,6 +13,7 @@ const Hero: React.FC = () => {
   const platformsRef = useRef<HTMLDivElement>(null);
   const calculatorRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Staggered animation effect for hero elements
@@ -48,7 +50,7 @@ const Hero: React.FC = () => {
     <section 
       id="hero-section" 
       ref={heroSectionRef}
-      className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center"
+      className="relative min-h-[600px] md:min-h-[700px] md:max-h-[900px] pt-20 pb-16 md:pb-0 md:h-screen overflow-hidden flex flex-col md:flex-row items-center"
     >
       <div className="absolute inset-0 bg-[#FCF7F0] z-0"></div>
       
@@ -57,18 +59,27 @@ const Hero: React.FC = () => {
           <div className="md:col-span-5 max-w-xl">
             <h1 
               ref={headingRef}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 opacity-0 leading-[1.15]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 opacity-0 leading-[1.15]"
             >
               Get your annual subscription revenue upfront.
             </h1>
             
             <div 
+              ref={subheadingRef}
+              className="opacity-0 mb-4 md:mb-6"
+            >
+              <p className="text-base md:text-lg text-gray-700">
+                We provide capital to creators with predictable subscription revenue. No loans, no equity.
+              </p>
+            </div>
+            
+            <div 
               ref={ctaRef}
-              className="flex flex-col sm:flex-row items-center justify-start gap-4 opacity-0 mb-8"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-3 opacity-0 mb-8"
             >
               <Button 
                 className={cn(
-                  "primary-button group",
+                  "primary-button group w-full sm:w-auto",
                   "bg-[#017354] hover:bg-[#017354]/90 text-base h-12 px-6"
                 )}
                 onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
@@ -79,32 +90,32 @@ const Hero: React.FC = () => {
               
               <Button 
                 variant="outline" 
-                className="secondary-button text-base h-12 px-6"
+                className="secondary-button text-base h-12 px-6 w-full sm:w-auto"
                 onClick={() => document.getElementById('how-it-works')?.scrollIntoView({behavior: 'smooth'})}
               >
                 Learn How It Works
               </Button>
             </div>
             
-            {/* Platform section */}
+            {/* Platform section - shown on both mobile and desktop */}
             <div 
               ref={platformsRef}
-              className="opacity-0 hidden md:block"
+              className="opacity-0 mb-8 md:mb-0"
             >
               <h3 className="text-sm font-normal text-gray-500 mb-4">
                 We fund creators with subscription-based earnings from:
               </h3>
               
-              <div className="grid grid-cols-5 gap-3 max-w-md">
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 max-w-md">
                 {platforms.map((platform, index) => (
                   <div 
                     key={index}
-                    className="flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm h-16"
+                    className="flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm h-12 sm:h-16"
                   >
                     <img 
                       src={platform.image} 
                       alt={platform.name} 
-                      className="h-6 object-contain" 
+                      className="h-5 sm:h-6 object-contain" 
                     />
                   </div>
                 ))}
@@ -112,10 +123,10 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          {/* Calculator section - right-aligned */}
+          {/* Calculator section - full width on mobile, right-aligned on desktop */}
           <div 
             ref={calculatorRef}
-            className="opacity-0 md:col-span-7 flex justify-center md:justify-end"
+            className="opacity-0 md:col-span-7 flex justify-center md:justify-end mt-6 md:mt-0"
           >
             <MinimalCalculator />
           </div>

@@ -5,12 +5,14 @@ import { Slider } from "@/components/ui/slider";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type PlanDuration = "3" | "6" | "12";
 
 const MinimalCalculator: React.FC = () => {
   const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
   const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("12");
+  const isMobile = useIsMobile();
   
   // Calculate values based on plan duration with different multipliers
   const annualRevenue = monthlyRevenue * 12;
@@ -37,13 +39,13 @@ const MinimalCalculator: React.FC = () => {
 
   return (
     <div className="w-full max-w-lg ml-auto bg-white rounded-xl shadow-lg overflow-hidden">
-      <div className="p-8 md:p-10">
-        <div className="mb-8">
-          <h3 className="text-xl font-medium mb-4">See how much you could receive</h3>
+      <div className="p-5 sm:p-8 md:p-10">
+        <div className="mb-6 md:mb-8">
+          <h3 className="text-lg md:text-xl font-medium mb-4">See how much you could receive</h3>
           
-          <div className="bg-black/[0.02] rounded-lg p-5 border border-black/5 mb-6">
-            <div className="text-sm font-medium text-gray-700 mb-4">Monthly subscription revenue</div>
-            <div className="space-y-4">
+          <div className="bg-black/[0.02] rounded-lg p-4 md:p-5 border border-black/5 mb-5 md:mb-6">
+            <div className="text-sm font-medium text-gray-700 mb-3 md:mb-4">Monthly subscription revenue</div>
+            <div className="space-y-3 md:space-y-4">
               <Slider 
                 defaultValue={[10]} 
                 min={10}
@@ -59,9 +61,9 @@ const MinimalCalculator: React.FC = () => {
             </div>
           </div>
           
-          <div className="mb-6">
-            <div className="text-sm font-medium text-gray-700 mb-4">Advance size</div>
-            <div className="grid grid-cols-3 gap-3">
+          <div className="mb-5 md:mb-6">
+            <div className="text-sm font-medium text-gray-700 mb-3 md:mb-4">Advance size</div>
+            <div className="grid grid-cols-3 gap-2 md:gap-3">
               {[
                 { value: "3", label: "3 months" },
                 { value: "6", label: "6 months" },
@@ -71,8 +73,8 @@ const MinimalCalculator: React.FC = () => {
                   key={plan.value}
                   onClick={() => handlePlanChange(plan.value)}
                   className={cn(
-                    "py-3 px-2 rounded-lg text-center transition-all duration-200",
-                    "text-sm font-medium",
+                    "py-2.5 md:py-3 px-1 md:px-2 rounded-lg text-center transition-all duration-200",
+                    "text-xs md:text-sm font-medium",
                     selectedPlan === plan.value
                       ? "border-2 border-[#017354] text-[#017354] bg-white"
                       : "border border-gray-200 text-gray-700 bg-white hover:border-[#017354]/50"
@@ -84,11 +86,11 @@ const MinimalCalculator: React.FC = () => {
             </div>
           </div>
           
-          <Card className="border-0 shadow-md overflow-hidden mb-8">
-            <CardContent className="p-6">
+          <Card className="border-0 shadow-md overflow-hidden mb-6 md:mb-8">
+            <CardContent className="p-4 md:p-6">
               <div className="flex flex-col text-left">
-                <div className="text-sm font-medium text-gray-500 mb-2">Estimated advance amount</div>
-                <span className="text-3xl font-semibold text-[#017354]">${advanceAmount.toLocaleString()}</span>
+                <div className="text-sm font-medium text-gray-500 mb-1 md:mb-2">Estimated advance amount</div>
+                <span className="text-2xl md:text-3xl font-semibold text-[#017354]">${advanceAmount.toLocaleString()}</span>
               </div>
             </CardContent>
           </Card>
@@ -97,7 +99,7 @@ const MinimalCalculator: React.FC = () => {
         <Button 
           className={cn(
             "w-full bg-[#017354] hover:bg-[#017354]/90 text-white",
-            "flex items-center justify-center rounded-lg h-12"
+            "flex items-center justify-center rounded-lg h-10 md:h-12"
           )}
           onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
         >
