@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
@@ -20,7 +19,7 @@ const MinimalCalculator: React.FC = () => {
   // Apply different multipliers based on plan duration
   let advanceMultiplier = 0.85; // Default for 12 months
   if (selectedPlan === "3") {
-    advanceMultiplier = 0.95;
+    advanceMultiplier = 0.925; // Updated from 0.95 to 0.925 (92.5%)
   } else if (selectedPlan === "6") {
     advanceMultiplier = 0.9;
   }
