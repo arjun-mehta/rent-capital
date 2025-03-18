@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
     { name: "Patreon", image: "/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" },
     { name: "YouTube", image: "/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" },
     { name: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
-    { name: "Twitch", image: "/lovable-uploads/09c16960-6097-4df5-ba5b-62d6d6d1cda8.png" },
+    { name: "Creator Capital", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
     { name: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
   ];
 
