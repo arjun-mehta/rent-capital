@@ -38,35 +38,47 @@ const Index: React.FC = () => {
     return () => document.removeEventListener('click', handleClick);
   }, []);
 
-  // Capture hero section as OpenGraph image
+  // Generate static OpenGraph image for production
   useEffect(() => {
-    // Only execute this in development/preview mode to generate the image
+    // Only execute this in development mode to generate the image
     if (process.env.NODE_ENV === 'development') {
-      const captureHeroSection = async () => {
-        const heroElement = document.getElementById('hero-section');
-        if (heroElement) {
-          try {
-            console.log('Capturing hero section...');
-            const canvas = await html2canvas(heroElement, {
-              scale: 2, // Higher resolution
-              useCORS: true, // Allow images from other domains
-              logging: false,
-            });
-            
-            // Convert to data URL
-            const imageDataUrl = canvas.toDataURL('image/jpeg', 0.9);
-            console.log('Hero section captured as OpenGraph image:', imageDataUrl.substring(0, 50) + '...');
-            
-            // In a real app, you would save this image to your server
-            // Here we just log it for demonstration
-          } catch (error) {
-            console.error('Error capturing hero section:', error);
+      const generateOgImage = async () => {
+        console.log('Preparing to generate OpenGraph image...');
+        // Wait for the hero section to be fully rendered
+        setTimeout(async () => {
+          const heroElement = document.getElementById('hero-section');
+          if (heroElement) {
+            try {
+              console.log('Generating OpenGraph image...');
+              const canvas = await html2canvas(heroElement, {
+                scale: 2, // Higher resolution
+                useCORS: true, // Allow images from other domains
+                backgroundColor: '#FCF7F0',
+                width: 1200, // Standard OG image width
+                height: 630, // Standard OG image height
+              });
+              
+              // Save as PNG for better quality
+              const imageDataUrl = canvas.toDataURL('image/png', 1.0);
+              console.log('OpenGraph image generated successfully');
+              
+              // Create a downloadable link for developers to save the image
+              const link = document.createElement('a');
+              link.download = 'og-image.png';
+              link.href = imageDataUrl;
+              link.click();
+              
+              console.log('You can now save this image to public/og-image.png for social sharing');
+            } catch (error) {
+              console.error('Error generating OpenGraph image:', error);
+            }
+          } else {
+            console.error('Hero section element not found');
           }
-        }
+        }, 3000); // Longer delay to ensure everything is rendered
       };
       
-      // Wait for components to render fully
-      setTimeout(captureHeroSection, 2000);
+      generateOgImage();
     }
   }, []);
 

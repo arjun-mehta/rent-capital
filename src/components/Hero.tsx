@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import MinimalCalculator from "./MinimalCalculator";
+import html2canvas from "html2canvas";
 
 const Hero: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -11,6 +12,7 @@ const Hero: React.FC = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
   const platformsRef = useRef<HTMLDivElement>(null);
   const calculatorRef = useRef<HTMLDivElement>(null);
+  const heroSectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Staggered animation effect for hero elements
@@ -34,6 +36,50 @@ const Hero: React.FC = () => {
     return () => clearTimeout(animationTimer);
   }, []);
 
+  // Capture hero section as OpenGraph image
+  useEffect(() => {
+    const captureHeroSection = async () => {
+      if (heroSectionRef.current) {
+        try {
+          console.log('Capturing hero section for OpenGraph image...');
+          
+          // Wait a bit for everything to render
+          setTimeout(async () => {
+            const canvas = await html2canvas(heroSectionRef.current, {
+              scale: 2, // Higher resolution
+              useCORS: true, // Allow images from other domains
+              backgroundColor: '#FCF7F0', // Match the background color
+              width: 1200, // Standard OG image width
+              height: 630, // Standard OG image height
+            });
+            
+            // Convert to data URL
+            const imageDataUrl = canvas.toDataURL('image/png', 0.9);
+            console.log('Hero section captured for OpenGraph image');
+            
+            // Create a downloadable link (in development only)
+            if (process.env.NODE_ENV === 'development') {
+              const link = document.createElement('a');
+              link.download = 'og-image.png';
+              link.href = imageDataUrl;
+              link.click();
+              console.log('OpenGraph image download triggered');
+            }
+          }, 1000);
+        } catch (error) {
+          console.error('Error capturing hero section:', error);
+        }
+      }
+    };
+    
+    // Only run in development mode
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Preparing to capture hero section...');
+      // Wait for components to render fully
+      setTimeout(captureHeroSection, 2000);
+    }
+  }, []);
+
   // Platform logos
   const platforms = [
     { name: "Patreon", image: "/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" },
@@ -44,7 +90,11 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section id="hero-section" className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center">
+    <section 
+      id="hero-section" 
+      ref={heroSectionRef}
+      className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden flex items-center"
+    >
       <div className="absolute inset-0 bg-[#FCF7F0] z-0"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 relative z-10 w-full">
@@ -121,3 +171,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
