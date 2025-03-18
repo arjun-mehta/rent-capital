@@ -1,199 +1,153 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { 
+  Card, 
+  CardContent, 
+  CardDescription, 
+  CardFooter, 
+  CardHeader, 
+  CardTitle 
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
-import { toast } from "sonner";
-import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
+import { CheckCircle } from "lucide-react";
 
 const ApplicationForm: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    platform: "",
-    revenue: "",
-    link: ""
-  });
-  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [revenue, setRevenue] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const { toast } = useToast();
 
-  const platforms = [
-    { value: "patreon", label: "Patreon", image: "/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" },
-    { value: "youtube", label: "YouTube", image: "/lovable-uploads/8d03313e-767e-4c31-bca6-07b5e0c8fa02.png" },
-    { value: "substack", label: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
-    { value: "twitch", label: "Twitch", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
-    { value: "supercast", label: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
-    { value: "other", label: "Other", image: "" }
-  ];
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSelectChange = (value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      platform: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success("Application submitted successfully! We'll be in touch soon.");
-      setFormData({
-        name: "",
-        email: "",
-        platform: "",
-        revenue: "",
-        link: ""
+    // Basic form validation
+    if (!name || !email || !revenue) {
+      toast({
+        title: "Error",
+        description: "Please fill out all fields.",
+        variant: "destructive",
       });
-      setLoading(false);
-    }, 1500);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, revenue }),
+      });
+
+      if (response.ok) {
+        console.log('Form submitted successfully');
+        setSubmitted(true);
+        toast({
+          title: "Success",
+          description: "Your application has been submitted!",
+        });
+        // Clear form fields
+        setName("");
+        setEmail("");
+        setRevenue("");
+      } else {
+        console.error('Form submission failed');
+        toast({
+          title: "Error",
+          description: "Failed to submit application. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
-    <section id="application-form" className="py-24 bg-white">
-      <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <h2 className="heading-lg mb-6">
+    <section id="application-form" className="bg-white py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight mb-4">
             Apply in Minutes
           </h2>
-          <p className="paragraph text-gray-600 mx-auto max-w-2xl">
-            Fill out this short form to get the ball rolling. We'll review your information and get back to you within 48 hours.
+          
+          <p className="text-gray-600 text-lg">
+            Fill out the form below to start your application.
           </p>
         </div>
-
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100 animate-scale-in">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-4">
-                <div>
+        
+        <Card className="max-w-lg mx-auto shadow-md">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-semibold">
+              {submitted ? "Application Submitted!" : "Enter Your Details"}
+            </CardTitle>
+            <CardDescription>
+              {submitted ? (
+                <div className="flex items-center justify-center text-green-500">
+                  <CheckCircle className="mr-2 h-5 w-5" />
+                  Thank you for applying! We'll be in touch soon.
+                </div>
+              ) : (
+                "Please provide the following information to apply."
+              )}
+            </CardDescription>
+          </CardHeader>
+          
+          <CardContent>
+            <form onSubmit={handleSubmit} className={submitted ? "hidden" : ""}>
+              <div className="grid gap-4">
+                <div className="space-y-2">
                   <Label htmlFor="name">Full Name</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Your name"
-                    required
-                    className="h-12 mt-1"
+                  <Input 
+                    id="name" 
+                    placeholder="Enter your full name" 
+                    type="text" 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 
-                <div>
+                <div className="space-y-2">
                   <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="you@example.com"
-                    required
-                    className="h-12 mt-1"
+                  <Input 
+                    id="email" 
+                    placeholder="Enter your email" 
+                    type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 
-                <div>
-                  <Label htmlFor="platform">Platform(s) Used</Label>
-                  <Select 
-                    value={formData.platform} 
-                    onValueChange={handleSelectChange}
-                    required
-                  >
-                    <SelectTrigger className="h-12 mt-1">
-                      <SelectValue placeholder="Select platform" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {platforms.map((platform) => (
-                        <SelectItem key={platform.value} value={platform.value}>
-                          <div className="flex items-center gap-2">
-                            {platform.image && (
-                              <img 
-                                src={platform.image} 
-                                alt={platform.label} 
-                                className="h-5 w-auto object-contain"
-                              />
-                            )}
-                            <span>{platform.label}</span>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
-                  <Label htmlFor="revenue">Monthly Recurring Revenue ($)</Label>
-                  <Input
-                    id="revenue"
-                    name="revenue"
-                    type="text"
-                    value={formData.revenue}
-                    onChange={handleInputChange}
-                    placeholder="5,000"
-                    required
-                    className="h-12 mt-1"
-                  />
-                </div>
-                
-                <div>
-                  <Label htmlFor="link">Link to Subscription Page</Label>
-                  <Input
-                    id="link"
-                    name="link"
-                    type="url"
-                    value={formData.link}
-                    onChange={handleInputChange}
-                    placeholder="https://"
-                    required
-                    className="h-12 mt-1"
+                <div className="space-y-2">
+                  <Label htmlFor="revenue">
+                    Annual Subscription Revenue ($USD)
+                  </Label>
+                  <Input 
+                    id="revenue" 
+                    placeholder="Enter your annual revenue" 
+                    type="number" 
+                    value={revenue}
+                    onChange={(e) => setRevenue(e.target.value)}
                   />
                 </div>
               </div>
-              
-              <div className="pt-4">
-                <Button 
-                  type="submit" 
-                  className={cn(
-                    "primary-button group w-full",
-                    "bg-[#017354] hover:bg-[#017354]/90 h-14"
-                  )}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    "Processing..."
-                  ) : (
-                    <>
-                      Submit Application
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </>
-                  )}
-                </Button>
-              </div>
-              
-              <p className="text-xs text-gray-500 text-center mt-4">
-                By submitting this form, you agree to our Terms of Service and Privacy Policy.
-                We'll never share your information with third parties.
-              </p>
             </form>
-          </div>
-        </div>
+          </CardContent>
+          
+          <CardFooter className="flex justify-end">
+            <Button type="submit" disabled={submitted} onClick={handleSubmit}>
+              Submit Application
+            </Button>
+          </CardFooter>
+        </Card>
       </div>
     </section>
   );
