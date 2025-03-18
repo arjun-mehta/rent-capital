@@ -13,11 +13,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from "@/components/ui/select";
 
 const ApplicationForm: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [platform, setPlatform] = useState("");
   const [revenue, setRevenue] = useState("");
+  const [subscriptionUrl, setSubscriptionUrl] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
@@ -25,10 +34,10 @@ const ApplicationForm: React.FC = () => {
     e.preventDefault();
     
     // Basic form validation
-    if (!name || !email || !revenue) {
+    if (!name || !email || !platform || !revenue) {
       toast({
         title: "Error",
-        description: "Please fill out all fields.",
+        description: "Please fill out all required fields.",
         variant: "destructive",
       });
       return;
@@ -40,7 +49,13 @@ const ApplicationForm: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, revenue }),
+        body: JSON.stringify({ 
+          name, 
+          email, 
+          platform, 
+          revenue, 
+          subscriptionUrl 
+        }),
       });
 
       if (response.ok) {
@@ -53,7 +68,9 @@ const ApplicationForm: React.FC = () => {
         // Clear form fields
         setName("");
         setEmail("");
+        setPlatform("");
         setRevenue("");
+        setSubscriptionUrl("");
       } else {
         console.error('Form submission failed');
         toast({
@@ -109,7 +126,7 @@ const ApplicationForm: React.FC = () => {
                   <Label htmlFor="name">Full Name</Label>
                   <Input 
                     id="name" 
-                    placeholder="Enter your full name" 
+                    placeholder="Your name" 
                     type="text" 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -120,7 +137,7 @@ const ApplicationForm: React.FC = () => {
                   <Label htmlFor="email">Email Address</Label>
                   <Input 
                     id="email" 
-                    placeholder="Enter your email" 
+                    placeholder="you@example.com" 
                     type="email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -128,25 +145,65 @@ const ApplicationForm: React.FC = () => {
                 </div>
                 
                 <div className="space-y-2">
+                  <Label htmlFor="platform">Platform(s) Used</Label>
+                  <Select onValueChange={setPlatform} value={platform}>
+                    <SelectTrigger id="platform">
+                      <SelectValue placeholder="Select a platform" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="patreon">Patreon</SelectItem>
+                      <SelectItem value="substack">Substack</SelectItem>
+                      <SelectItem value="youtube">YouTube</SelectItem>
+                      <SelectItem value="twitch">Twitch</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div className="space-y-2">
                   <Label htmlFor="revenue">
-                    Annual Subscription Revenue ($USD)
+                    Monthly Recurring Revenue ($)
                   </Label>
                   <Input 
                     id="revenue" 
-                    placeholder="Enter your annual revenue" 
-                    type="number" 
+                    placeholder="5,000" 
+                    type="text" 
                     value={revenue}
                     onChange={(e) => setRevenue(e.target.value)}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="subscription-url">
+                    Link to Subscription Page
+                  </Label>
+                  <Input 
+                    id="subscription-url" 
+                    placeholder="https://" 
+                    type="url" 
+                    value={subscriptionUrl}
+                    onChange={(e) => setSubscriptionUrl(e.target.value)}
                   />
                 </div>
               </div>
             </form>
           </CardContent>
           
-          <CardFooter className="flex justify-end">
-            <Button type="submit" disabled={submitted} onClick={handleSubmit}>
+          <CardFooter className="flex flex-col space-y-4">
+            <Button 
+              type="submit" 
+              disabled={submitted} 
+              onClick={handleSubmit}
+              className="w-full bg-green-700 hover:bg-green-800"
+            >
               Submit Application
             </Button>
+            {!submitted && (
+              <p className="text-sm text-gray-500 text-center">
+                By submitting this form, you agree to our Terms of Service and Privacy Policy. 
+                We'll never share your information with third parties.
+              </p>
+            )}
           </CardFooter>
         </Card>
       </div>
