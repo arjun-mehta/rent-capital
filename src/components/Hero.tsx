@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -121,7 +122,7 @@ const Hero: React.FC = () => {
                       <img 
                         src={platform.image} 
                         alt={platform.name} 
-                        className="h-5 sm:h-6"
+                        className="max-h-6 sm:max-h-8 w-auto object-contain"
                       />
                     )}
                   </div>
