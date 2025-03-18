@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -114,7 +115,7 @@ const Hero: React.FC = () => {
                     <img 
                       src={platform.image} 
                       alt={platform.name} 
-                      className="h-5 sm:h-6 object-contain" 
+                      className={`object-contain ${platform.name === "Apple Podcasts" ? "h-8 sm:h-10" : "h-5 sm:h-6"}`}
                     />
                   </div>
                 ))}
