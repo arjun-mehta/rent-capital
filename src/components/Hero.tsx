@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -111,11 +112,19 @@ const Hero: React.FC = () => {
                     key={index}
                     className="flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm h-12 sm:h-16"
                   >
-                    <img 
-                      src={platform.image} 
-                      alt={platform.name} 
-                      className="max-h-6 sm:max-h-8 w-auto object-contain"
-                    />
+                    {platform.name === "Apple Podcasts" ? (
+                      <img 
+                        src={platform.image} 
+                        alt={platform.name} 
+                        className="max-h-8 sm:max-h-8 w-auto object-contain scale-125"
+                      />
+                    ) : (
+                      <img 
+                        src={platform.image} 
+                        alt={platform.name} 
+                        className="max-h-6 sm:max-h-8 w-auto object-contain"
+                      />
+                    )}
                   </div>
                 ))}
               </div>
