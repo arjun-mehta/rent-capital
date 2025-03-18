@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -43,6 +44,7 @@ const Hero: React.FC = () => {
     { name: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
     { name: "Creator Capital", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
     { name: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
+    { name: "Apple Podcasts", image: "/lovable-uploads/1b16303a-1ae7-46b9-9573-972b844af9f1.png" },
   ];
 
   return (
@@ -104,7 +106,7 @@ const Hero: React.FC = () => {
                 We fund creators with subscription-based earnings from:
               </h3>
               
-              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 max-w-md mx-auto sm:mx-0">
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3 max-w-md mx-auto sm:mx-0">
                 {platforms.map((platform, index) => (
                   <div 
                     key={index}
