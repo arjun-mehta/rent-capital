@@ -60,7 +60,7 @@ const WhoWeHelp: React.FC = () => {
             Qualification
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-full opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
-            We specialize in providing financing to creators with predictable, subscription-based income streams.
+            We understand creators in ways traditional financial institutions do not.
           </p>
         </div>
 
