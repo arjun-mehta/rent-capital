@@ -98,7 +98,7 @@ const ApplicationForm: React.FC = () => {
           </h2>
           
           <p className="text-gray-600 text-lg">
-            Fill out the form below to start your application.
+            Fill out this short form to get the ball rolling. We'll review your information and get back to you within 48 hours.
           </p>
         </div>
         
