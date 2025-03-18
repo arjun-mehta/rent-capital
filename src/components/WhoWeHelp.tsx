@@ -55,7 +55,7 @@ const WhoWeHelp: React.FC = () => {
         <div className="max-w-3xl mb-12">
           <h2 
             ref={sectionRef} 
-            className="text-5xl md:text-6xl lg:text-7xl font-semibold mb-5 opacity-0 text-left"
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 opacity-0 text-left"
           >
             Qualification
           </h2>

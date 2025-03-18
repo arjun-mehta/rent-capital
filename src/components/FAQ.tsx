@@ -41,7 +41,7 @@ const FAQ = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="heading-lg mb-4">Frequently Asked Questions</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4">Frequently Asked Questions</h2>
             <p className="paragraph text-gray-300 max-w-2xl mx-auto">
               Find answers to common questions about Creator Capital and how we can help you grow your creator business.
             </p>
