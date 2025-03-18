@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
                 We fund creators with subscription-based earnings from:
               </h3>
               
-              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 max-w-md">
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 max-w-md mx-auto sm:mx-0">
                 {platforms.map((platform, index) => (
                   <div 
                     key={index}
