@@ -7,7 +7,6 @@ import WhoWeHelp from "@/components/WhoWeHelp";
 import FAQ from "@/components/FAQ";
 import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
-import html2canvas from "html2canvas";
 
 const Index: React.FC = () => {
   // Handle smooth scrolling with proper header offset
@@ -36,50 +35,6 @@ const Index: React.FC = () => {
 
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
-  }, []);
-
-  // Generate static OpenGraph image for production
-  useEffect(() => {
-    // Only execute this in development mode to generate the image
-    if (process.env.NODE_ENV === 'development') {
-      const generateOgImage = async () => {
-        console.log('Preparing to generate OpenGraph image...');
-        // Wait for the hero section to be fully rendered
-        setTimeout(async () => {
-          const heroElement = document.getElementById('hero-section');
-          if (heroElement) {
-            try {
-              console.log('Generating OpenGraph image...');
-              const canvas = await html2canvas(heroElement, {
-                scale: 2, // Higher resolution
-                useCORS: true, // Allow images from other domains
-                backgroundColor: '#FCF7F0',
-                width: 1200, // Standard OG image width
-                height: 630, // Standard OG image height
-              });
-              
-              // Save as PNG for better quality
-              const imageDataUrl = canvas.toDataURL('image/png', 1.0);
-              console.log('OpenGraph image generated successfully');
-              
-              // Create a downloadable link for developers to save the image
-              const link = document.createElement('a');
-              link.download = 'og-image.png';
-              link.href = imageDataUrl;
-              link.click();
-              
-              console.log('You can now save this image to public/og-image.png for social sharing');
-            } catch (error) {
-              console.error('Error generating OpenGraph image:', error);
-            }
-          } else {
-            console.error('Hero section element not found');
-          }
-        }, 3000); // Longer delay to ensure everything is rendered
-      };
-      
-      generateOgImage();
-    }
   }, []);
 
   return (

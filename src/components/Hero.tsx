@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import MinimalCalculator from "./MinimalCalculator";
-import html2canvas from "html2canvas";
 
 const Hero: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -34,50 +33,6 @@ const Hero: React.FC = () => {
     }, 100);
 
     return () => clearTimeout(animationTimer);
-  }, []);
-
-  // Capture hero section as OpenGraph image
-  useEffect(() => {
-    const captureHeroSection = async () => {
-      if (heroSectionRef.current) {
-        try {
-          console.log('Capturing hero section for OpenGraph image...');
-          
-          // Wait a bit for everything to render
-          setTimeout(async () => {
-            const canvas = await html2canvas(heroSectionRef.current, {
-              scale: 2, // Higher resolution
-              useCORS: true, // Allow images from other domains
-              backgroundColor: '#FCF7F0', // Match the background color
-              width: 1200, // Standard OG image width
-              height: 630, // Standard OG image height
-            });
-            
-            // Convert to data URL
-            const imageDataUrl = canvas.toDataURL('image/png', 0.9);
-            console.log('Hero section captured for OpenGraph image');
-            
-            // Create a downloadable link (in development only)
-            if (process.env.NODE_ENV === 'development') {
-              const link = document.createElement('a');
-              link.download = 'og-image.png';
-              link.href = imageDataUrl;
-              link.click();
-              console.log('OpenGraph image download triggered');
-            }
-          }, 1000);
-        } catch (error) {
-          console.error('Error capturing hero section:', error);
-        }
-      }
-    };
-    
-    // Only run in development mode
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Preparing to capture hero section...');
-      // Wait for components to render fully
-      setTimeout(captureHeroSection, 2000);
-    }
   }, []);
 
   // Platform logos
@@ -171,4 +126,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-
