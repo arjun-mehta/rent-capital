@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -44,7 +43,7 @@ const Hero: React.FC = () => {
     { name: "Substack", image: "/lovable-uploads/df18836f-8cd4-462f-84b0-d917f20195ef.png" },
     { name: "Creator Capital", image: "/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" },
     { name: "Supercast", image: "/lovable-uploads/c065b0eb-11e5-4a1b-9b11-a51fda9242d3.png" },
-    { name: "Apple Podcasts", image: "https://i.imgur.com/hFAsE4r.png" },
+    { name: "Apple Podcasts", image: "/lovable-uploads/fa618ef5-0992-48ff-9d97-deeb98eaca42.png" },
   ];
 
   return (
@@ -112,19 +111,11 @@ const Hero: React.FC = () => {
                     key={index}
                     className="flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm h-12 sm:h-16"
                   >
-                    {platform.name === "Apple Podcasts" ? (
-                      <img 
-                        src={platform.image} 
-                        alt={platform.name} 
-                        className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
-                      />
-                    ) : (
-                      <img 
-                        src={platform.image} 
-                        alt={platform.name} 
-                        className="max-h-6 sm:max-h-8 w-auto object-contain"
-                      />
-                    )}
+                    <img 
+                      src={platform.image} 
+                      alt={platform.name} 
+                      className="max-h-6 sm:max-h-8 w-auto object-contain"
+                    />
                   </div>
                 ))}
               </div>
