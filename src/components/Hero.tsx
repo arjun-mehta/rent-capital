@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
                     <img 
                       src={platform.image} 
                       alt={platform.name} 
-                      className={`object-contain ${platform.name === "Apple Podcasts" ? "h-10 sm:h-12" : "h-5 sm:h-6"}`}
+                      className={`object-contain ${platform.name === "Apple Podcasts" ? "h-11 sm:h-14 w-11 sm:w-14" : "h-5 sm:h-6"}`}
                     />
                   </div>
                 ))}
