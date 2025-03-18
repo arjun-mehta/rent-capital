@@ -194,9 +194,9 @@ const ApplicationForm: React.FC = () => {
               type="submit" 
               disabled={submitted} 
               onClick={handleSubmit}
-              className="w-full bg-green-700 hover:bg-green-800"
+              className="w-full bg-green-800 hover:bg-green-900"
             >
-              Submit Application
+              Submit
             </Button>
             {!submitted && (
               <p className="text-sm text-gray-500 text-center">
