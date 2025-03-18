@@ -64,13 +64,12 @@ const Hero: React.FC = () => {
               Get your annual subscription revenue upfront.
             </h1>
             
+            {/* Removed the subheading with the text that needed to be removed */}
             <div 
               ref={subheadingRef}
               className="opacity-0 mb-4 md:mb-6"
             >
-              <p className="text-base md:text-lg text-gray-700">
-                We provide capital to creators with predictable subscription revenue. No loans, no equity.
-              </p>
+              {/* Text removed from here */}
             </div>
             
             <div 
