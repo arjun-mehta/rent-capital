@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -75,7 +76,7 @@ const ApplicationForm: React.FC = () => {
     <section id="application-form" className="bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl font-semibold tracking-tight mb-4">
             Apply in Minutes
           </h2>
           
