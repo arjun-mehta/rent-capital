@@ -116,13 +116,13 @@ const Hero: React.FC = () => {
                       <img 
                         src={platform.image} 
                         alt={platform.name} 
-                        className="max-h-8 sm:max-h-8 w-auto object-contain scale-125"
+                        className="max-h-[5.1px] sm:max-h-8 w-auto object-contain scale-[1.0625] sm:scale-125"
                       />
                     ) : (
                       <img 
                         src={platform.image} 
                         alt={platform.name} 
-                        className="max-h-6 sm:max-h-8 w-auto object-contain"
+                        className="max-h-[5.1px] sm:max-h-8 w-auto object-contain scale-[0.85] sm:scale-100"
                       />
                     )}
                   </div>
