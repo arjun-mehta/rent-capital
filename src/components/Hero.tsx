@@ -110,12 +110,12 @@ const Hero: React.FC = () => {
                 {platforms.map((platform, index) => (
                   <div 
                     key={index}
-                    className={`flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm ${platform.name === "Apple Podcasts" ? "h-16 sm:h-20" : "h-12 sm:h-16"}`}
+                    className="flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm h-12 sm:h-16"
                   >
                     <img 
                       src={platform.image} 
                       alt={platform.name} 
-                      className={`object-contain ${platform.name === "Apple Podcasts" ? "max-h-full max-w-full h-14 sm:h-18 w-14 sm:w-18" : "h-5 sm:h-6"}`}
+                      className={platform.name === "Apple Podcasts" ? "w-10 h-10 sm:w-14 sm:h-14" : "h-5 sm:h-6"}
                     />
                   </div>
                 ))}
