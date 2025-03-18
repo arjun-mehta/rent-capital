@@ -112,11 +112,19 @@ const Hero: React.FC = () => {
                     key={index}
                     className="flex items-center justify-center p-2 bg-white rounded-lg border border-gray-100 shadow-sm h-12 sm:h-16"
                   >
-                    <img 
-                      src={platform.image} 
-                      alt={platform.name} 
-                      className={platform.name === "Apple Podcasts" ? "w-10 h-10 sm:w-14 sm:h-14" : "h-5 sm:h-6"}
-                    />
+                    {platform.name === "Apple Podcasts" ? (
+                      <img 
+                        src={platform.image} 
+                        alt={platform.name} 
+                        className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+                      />
+                    ) : (
+                      <img 
+                        src={platform.image} 
+                        alt={platform.name} 
+                        className="h-5 sm:h-6"
+                      />
+                    )}
                   </div>
                 ))}
               </div>
