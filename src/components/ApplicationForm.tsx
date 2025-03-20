@@ -13,18 +13,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
-} from "@/components/ui/select";
 
 const ApplicationForm: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [platform, setPlatform] = useState("");
   const [revenue, setRevenue] = useState("");
   const [subscriptionUrl, setSubscriptionUrl] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -34,7 +26,7 @@ const ApplicationForm: React.FC = () => {
     e.preventDefault();
     
     // Basic form validation
-    if (!name || !email || !platform || !revenue) {
+    if (!name || !email || !revenue) {
       toast({
         title: "Error",
         description: "Please fill out all required fields.",
@@ -51,8 +43,7 @@ const ApplicationForm: React.FC = () => {
         },
         body: JSON.stringify({ 
           name, 
-          email, 
-          platform, 
+          email,
           revenue, 
           subscriptionUrl 
         }),
@@ -68,7 +59,6 @@ const ApplicationForm: React.FC = () => {
         // Clear form fields
         setName("");
         setEmail("");
-        setPlatform("");
         setRevenue("");
         setSubscriptionUrl("");
       } else {
@@ -145,37 +135,6 @@ const ApplicationForm: React.FC = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="platform">Platform(s) Used</Label>
-                  <div className="relative" style={{ touchAction: "manipulation", zIndex: 30 }}>
-                    <Select 
-                      onValueChange={(value) => {
-                        console.log("Select value changed:", value);
-                        setPlatform(value);
-                      }} 
-                      value={platform}
-                    >
-                      <SelectTrigger 
-                        id="platform" 
-                        className="w-full"
-                      >
-                        <SelectValue placeholder="Select a platform" />
-                      </SelectTrigger>
-                      <SelectContent 
-                        position="popper" 
-                        className="w-full bg-white z-50"
-                        sideOffset={5}
-                      >
-                        <SelectItem value="patreon">Patreon</SelectItem>
-                        <SelectItem value="substack">Substack</SelectItem>
-                        <SelectItem value="youtube">YouTube</SelectItem>
-                        <SelectItem value="twitch">Twitch</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
                   <Label htmlFor="revenue">
                     Monthly Recurring Revenue ($)
                   </Label>
@@ -190,7 +149,7 @@ const ApplicationForm: React.FC = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="subscription-url">
-                    Link to Subscription Page
+                    Link to Primary Subscription Page
                   </Label>
                   <Input 
                     id="subscription-url" 
