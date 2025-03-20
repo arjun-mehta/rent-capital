@@ -146,18 +146,20 @@ const ApplicationForm: React.FC = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="platform">Platform(s) Used</Label>
-                  <Select onValueChange={setPlatform} value={platform}>
-                    <SelectTrigger id="platform">
-                      <SelectValue placeholder="Select a platform" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="patreon">Patreon</SelectItem>
-                      <SelectItem value="substack">Substack</SelectItem>
-                      <SelectItem value="youtube">YouTube</SelectItem>
-                      <SelectItem value="twitch">Twitch</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <div className="relative z-20 touch-manipulation">
+                    <Select onValueChange={setPlatform} value={platform}>
+                      <SelectTrigger id="platform" className="w-full">
+                        <SelectValue placeholder="Select a platform" />
+                      </SelectTrigger>
+                      <SelectContent position="popper" className="w-full bg-white z-50">
+                        <SelectItem value="patreon">Patreon</SelectItem>
+                        <SelectItem value="substack">Substack</SelectItem>
+                        <SelectItem value="youtube">YouTube</SelectItem>
+                        <SelectItem value="twitch">Twitch</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
                 
                 <div className="space-y-2">
