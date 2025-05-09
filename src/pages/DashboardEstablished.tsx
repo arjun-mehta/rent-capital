@@ -1,0 +1,264 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { BadgeCheck, CreditCard, Calendar, ArrowRight, Bell, Shield, CheckCircle2, Building, Zap } from "lucide-react";
+import { useAuth } from "@/lib/auth";
+
+const DashboardEstablished: React.FC = () => {
+  const [nextPaymentDays, setNextPaymentDays] = useState(14);
+  const { isAuthenticated, isPatreonConnected, user } = useAuth();
+  const navigate = useNavigate();
+
+  // Add calculation for estimated final month
+  const calculateFinalMonth = () => {
+    const today = new Date();
+    const finalDate = new Date(today);
+    finalDate.setMonth(today.getMonth() + repaymentData.remainingPayments);
+    return finalDate.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+  };
+
+  // Redirect if not authenticated or Patreon not connected
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/signin");
+    } else if (!isPatreonConnected) {
+      navigate("/connect-patreon");
+    }
+  }, [isAuthenticated, isPatreonConnected, navigate]);
+
+  // Countdown for next payment
+  useEffect(() => {
+    if (nextPaymentDays > 0) {
+      const timer = setTimeout(() => {
+        setNextPaymentDays(prevDays => prevDays - 1);
+      }, 60000); // Update every minute for demo purposes
+      return () => clearTimeout(timer);
+    }
+  }, [nextPaymentDays]);
+
+  // Mock repayment data for a user who is 3 months into their agreement
+  const repaymentData = {
+    totalAmount: 2850,
+    amountPaid: 1425,
+    remainingAmount: 1425,
+    progressPercent: 50, // 50% complete
+    nextPaymentAmount: 475,
+    nextPaymentDate: new Date(Date.now() + nextPaymentDays * 24 * 60 * 60 * 1000),
+    totalPayments: 6,
+    completedPayments: 3,
+    remainingPayments: 3
+  };
+
+  // Calculate renewal date (3 months from now)
+  const renewalDate = new Date();
+  renewalDate.setMonth(renewalDate.getMonth() + 3);
+
+  return (
+    <div className="min-h-screen bg-[#FCF7F0]">
+      {/* Header bar */}
+      <div className="bg-[#017354] text-white py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
+            </div>
+            <div className="flex items-center space-x-4">
+              <span className="text-sm opacity-90 cursor-pointer hover:underline">Sign Out</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left column - Repayment tracker */}
+          <div className="lg:col-span-2 space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Repayment Progress</CardTitle>
+                <CardDescription>You're halfway through your repayment!</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="mb-6">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm text-gray-500">
+                      ${repaymentData.amountPaid.toLocaleString()} paid
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      ${repaymentData.totalAmount.toLocaleString()} total
+                    </span>
+                  </div>
+                  <Progress value={repaymentData.progressPercent} className="h-2" />
+                  <div className="mt-2 text-center">
+                    <span className="text-sm font-medium text-gray-700">
+                      {repaymentData.progressPercent}% Complete
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="text-xs text-gray-500 mb-1">Total Repayment</div>
+                    <div className="text-lg font-semibold">${repaymentData.totalAmount}</div>
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="text-xs text-gray-500 mb-1">Paid So Far</div>
+                    <div className="text-lg font-semibold">${repaymentData.amountPaid}</div>
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="text-xs text-gray-500 mb-1">Remaining</div>
+                    <div className="text-lg font-semibold">${repaymentData.remainingAmount}</div>
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="text-xs text-gray-500 mb-1">Est. Final Month</div>
+                    <div className="text-lg font-semibold">{calculateFinalMonth()}</div>
+                  </div>
+                </div>
+
+                <div className="border-t pt-6">
+                  <h3 className="font-medium text-gray-900 mb-4">Upcoming Payments</h3>
+                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start space-x-4">
+                    <Calendar className="text-amber-500 h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-amber-800">Next payment: ${repaymentData.nextPaymentAmount}</h4>
+                      <p className="text-sm text-amber-700">
+                        Due in {nextPaymentDays} days on {repaymentData.nextPaymentDate.toLocaleDateString()}
+                      </p>
+                      <p className="text-xs text-amber-600 mt-1">
+                        Payments are automatically processed through your Patreon account
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Payment History</CardTitle>
+                <CardDescription>Your past repayments</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <CreditCard className="h-5 w-5 text-gray-400" />
+                      <div>
+                        <div className="font-medium text-gray-900">Payment #3</div>
+                        <div className="text-sm text-gray-500">{new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Completed</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <CreditCard className="h-5 w-5 text-gray-400" />
+                      <div>
+                        <div className="font-medium text-gray-900">Payment #2</div>
+                        <div className="text-sm text-gray-500">{new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toLocaleDateString()}</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Completed</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <CreditCard className="h-5 w-5 text-gray-400" />
+                      <div>
+                        <div className="font-medium text-gray-900">Payment #1</div>
+                        <div className="text-sm text-gray-500">{new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toLocaleDateString()}</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Completed</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right column - Info */}
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Upcoming Renewal</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start space-x-4 mb-4">
+                  <Zap className="text-blue-500 h-5 w-5 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-blue-800">Renewal Available: {renewalDate.toLocaleDateString()}</h4>
+                    <p className="text-sm text-blue-700 mb-2">
+                      Based on your current revenue trends and repayment health, you are eligible for a new advance - even before your current one is fully complete.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="text-center mt-4">
+                  <Button className="bg-[#017354] hover:bg-[#017354]/90 text-white">
+                    See Renewal Offers
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle>Important Information</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4 text-sm">
+                  <div className="flex items-start space-x-3">
+                    <Bell className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Payment Reminders</h4>
+                      <p className="text-gray-600">We'll send you email reminders 3 days before each scheduled payment.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Shield className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Security</h4>
+                      <p className="text-gray-600">Your data is encrypted and secure. We use industry-standard security measures.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle2 className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Automatic Repayments</h4>
+                      <p className="text-gray-600">Payments are automatically processed through your Patreon account each month.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Building className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Support</h4>
+                      <p className="text-gray-600">Need help? Contact our support team at support@creatorcapital.com</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DashboardEstablished; 

@@ -1,35 +1,23 @@
-
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 const NotFound: React.FC = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
-      <div className="max-w-md text-center">
-        <h1 className="heading-xl mb-6 animate-fade-in">404</h1>
-        <p className="text-xl text-gray-600 mb-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          The page you're looking for doesn't exist or has been moved.
+    <div className="min-h-screen bg-[#FCF7F0] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 text-center">
+        <h1 className="text-6xl font-extrabold text-gray-900">404</h1>
+        <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Page not found</h2>
+        <p className="mt-2 text-sm text-gray-600">
+          Sorry, we couldn't find the page you're looking for.
         </p>
-        <Button 
-          className="primary-button group animate-fade-in"
-          style={{ animationDelay: "0.2s" }}
-          onClick={() => window.location.href = '/'}
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Return Home
-        </Button>
+        <div className="mt-6">
+          <Link to="/">
+            <Button className="bg-[#017354] hover:bg-[#017354]/90 text-white">
+              Go back home
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

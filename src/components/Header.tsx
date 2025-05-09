@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,22 +63,34 @@ const Header: React.FC = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm font-medium text-gray-700 hover-underline hover:text-black transition-colors"
+          <nav className="hidden md:flex items-center">
+            <div className="flex items-center space-x-8 mr-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium text-gray-700 hover-underline hover:text-black transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+            <div className="flex items-center space-x-2">
+              <Link to="/signin">
+                <Button 
+                  variant="outline" 
+                  className="border-gray-300 text-gray-700 hover:bg-[#017354] hover:text-white hover:border-[#017354] transition-colors"
+                >
+                  Sign In
+                </Button>
+              </Link>
+              <Button 
+                className="bg-[#017354] hover:bg-[#017354]/90 text-white"
+                onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
               >
-                {item.label}
-              </a>
-            ))}
-            <Button 
-              className="bg-[#017354] hover:bg-[#017354]/90 text-white"
-              onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
-            >
-              Apply Now
-            </Button>
+                Apply Now
+              </Button>
+            </div>
           </nav>
 
           {/* Mobile Navigation Trigger */}
@@ -96,26 +109,38 @@ const Header: React.FC = () => {
               isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
             )}
           >
-            <nav className="flex flex-col items-center space-y-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-xl font-medium text-gray-800 hover:text-black"
-                  onClick={() => setIsMenuOpen(false)}
+            <nav className="flex flex-col items-center">
+              <div className="flex flex-col items-center space-y-6 mb-6">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="text-xl font-medium text-gray-800 hover:text-black"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-2">
+                <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
+                  <Button 
+                    variant="outline" 
+                    className="border-gray-300 text-gray-700 hover:bg-[#017354] hover:text-white hover:border-[#017354] transition-colors"
+                  >
+                    Sign In
+                  </Button>
+                </Link>
+                <Button 
+                  className="bg-[#017354] hover:bg-[#017354]/90 text-white"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});
+                  }}
                 >
-                  {item.label}
-                </a>
-              ))}
-              <Button 
-                className="bg-[#017354] hover:bg-[#017354]/90 text-white"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});
-                }}
-              >
-                Apply Now
-              </Button>
+                  Apply Now
+                </Button>
+              </div>
             </nav>
           </div>
         </div>
