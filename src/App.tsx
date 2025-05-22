@@ -18,6 +18,7 @@ import BusinessVerification from "./pages/BusinessVerification";
 import Contract from "./pages/Contract";
 import Dashboard from "./pages/Dashboard";
 import DashboardEstablished from "./pages/DashboardEstablished";
+import { HomePage } from "./pages/homepage";
 
 const queryClient = new QueryClient();
 
@@ -29,19 +30,28 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/select-platform" element={<SelectPlatform />} />
             <Route path="/connect-patreon" element={<ConnectPatreon />} />
-            <Route path="/connect-additional-accounts" element={<ConnectAdditionalAccounts />} />
+            <Route
+              path="/connect-additional-accounts"
+              element={<ConnectAdditionalAccounts />}
+            />
             <Route path="/processing" element={<Processing />} />
             <Route path="/offers" element={<Offers />} />
             <Route path="/entity-details" element={<EntityDetails />} />
             <Route path="/sign-irs-form" element={<SignIRSForm />} />
-            <Route path="/business-verification" element={<BusinessVerification />} />
+            <Route
+              path="/business-verification"
+              element={<BusinessVerification />}
+            />
             <Route path="/contract" element={<Contract />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard-established" element={<DashboardEstablished />} />
+            <Route
+              path="/dashboard-established"
+              element={<DashboardEstablished />}
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

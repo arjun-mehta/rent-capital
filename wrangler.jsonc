@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
+  "name": "greenlight",
+  "compatibility_date": "2025-04-03",
+  "routes": [
+    {
+      "pattern": "greenlight.gielcobben.com",
+      "custom_domain": true
+    }
+  ]
+}
