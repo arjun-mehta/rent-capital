@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/lib/auth";
+import { Logo } from "./homepage/navigation";
 
 const ConnectPatreon: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ const ConnectPatreon: React.FC = () => {
 
     try {
       const success = await connectPatreon(email, password);
-      
+
       if (success) {
         toast({
           title: "Success!",
@@ -37,7 +38,8 @@ const ConnectPatreon: React.FC = () => {
       } else {
         toast({
           title: "Error",
-          description: "Failed to connect your Patreon account. Please try again.",
+          description:
+            "Failed to connect your Patreon account. Please try again.",
           variant: "destructive",
         });
       }
@@ -53,21 +55,21 @@ const ConnectPatreon: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCF7F0] flex flex-col">
+    <div className="min-h-screen flex flex-col">
+      <header className="w-full p-4 flex justify-center px-8 md:px-12">
+        <Link to="/" className="flex items-center">
+          <Logo className="h-8" />
+        </Link>
+      </header>
+
       <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="flex justify-center">
-            <img 
-              src="/lovable-uploads/2eaf1022-49a3-438a-b943-6537f0bead7e.png" 
-              alt="Patreon" 
-              className="h-12 w-auto"
-            />
-          </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Connect your Patreon
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            We need access to your Patreon account to analyze your subscription revenue.
+          <p className="mt-2 text-balance text-center text-sm text-gray-600">
+            We need access to your Patreon account to analyze your subscription
+            revenue.
           </p>
         </div>
 
@@ -75,9 +77,7 @@ const ConnectPatreon: React.FC = () => {
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <Label htmlFor="patreon-email">
-                  Patreon Email
-                </Label>
+                <Label htmlFor="patreon-email">Patreon Email</Label>
                 <div className="mt-1">
                   <Input
                     id="patreon-email"
@@ -93,9 +93,7 @@ const ConnectPatreon: React.FC = () => {
               </div>
 
               <div>
-                <Label htmlFor="patreon-password">
-                  Patreon Password
-                </Label>
+                <Label htmlFor="patreon-password">Patreon Password</Label>
                 <div className="mt-1">
                   <Input
                     id="patreon-password"
@@ -113,16 +111,17 @@ const ConnectPatreon: React.FC = () => {
               <div>
                 <Button
                   type="submit"
-                  className="w-full bg-[#017354] hover:bg-[#017354]/90 text-white h-10"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-10"
                   disabled={isLoading}
                 >
                   {isLoading ? "Connecting..." : "Connect Patreon"}
                 </Button>
               </div>
-              
+
               <div className="text-center">
                 <p className="text-xs text-gray-500 mt-2">
-                  We use bank-level encryption to protect your Patreon credentials. Your information is never stored on our servers.
+                  We use bank-level encryption to protect your Patreon
+                  credentials. Your information is never stored on our servers.
                 </p>
               </div>
             </form>
@@ -130,10 +129,12 @@ const ConnectPatreon: React.FC = () => {
         </div>
       </div>
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">© 2025 Creator Capital. All rights reserved.</p>
+        <p className="text-xs text-gray-500">
+          © 2025 Creator Capital. All rights reserved.
+        </p>
       </div>
     </div>
   );
 };
 
-export default ConnectPatreon; 
+export default ConnectPatreon;

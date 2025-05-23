@@ -3,9 +3,9 @@ import { SVGProps } from "react";
 import { Link } from "react-router-dom";
 
 const items = [
-  { href: "/", label: "How it works" },
-  { href: "/", label: "Qualitication" },
-  { href: "/", label: "FAQ" },
+  { href: "#how-it-works", label: "How it works" },
+  { href: "#qualification", label: "Qualification" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export function Navigation() {

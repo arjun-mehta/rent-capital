@@ -7,6 +7,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/lib/auth";
 import { Eye, EyeOff, Lock, Mail, ArrowRight } from "lucide-react";
+import { Logo } from "./homepage/navigation";
+import { FitText } from "./homepage/fit-text";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +26,7 @@ const SignIn: React.FC = () => {
 
     try {
       const success = await login(email, password);
-      
+
       if (success) {
         toast({
           title: "Success!",
@@ -34,7 +36,8 @@ const SignIn: React.FC = () => {
       } else {
         toast({
           title: "Error",
-          description: "Invalid credentials. Try test@creatorcap.com with any password.",
+          description:
+            "Invalid credentials. Try test@creatorcap.com with any password.",
           variant: "destructive",
         });
       }
@@ -54,28 +57,17 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCF7F0] flex flex-col">
-      {/* Header with logo */}
+    <div className="min-h-screen flex flex-col">
       <header className="w-full p-4 flex justify-center px-8 md:px-12">
         <Link to="/" className="flex items-center">
-          <span className="text-xl font-poppins font-semibold tracking-tight text-black">Creator Capital</span>
+          <Logo className="h-8" />
         </Link>
       </header>
 
       <div className="flex-1 flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-2">
-              Welcome Back
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Sign in to access your dashboard
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white p-8 shadow-lg rounded-xl border border-gray-100">
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative">
+          <FitText className="translate-y-[32px] z-0">Welcome Back</FitText>
+          <div className="bg-white p-8 shadow-lg relative z-10 rounded-xl border border-gray-100">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label htmlFor="email" className="text-gray-700 font-medium">
@@ -93,7 +85,7 @@ const SignIn: React.FC = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-11 pl-10 w-full focus:border-[#017354] focus:ring-[#017354]"
+                    className="h-11 pl-10 w-full focus:border-primary focus:ring-primary"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -101,10 +93,16 @@ const SignIn: React.FC = () => {
 
               <div>
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password" className="text-gray-700 font-medium">
+                  <Label
+                    htmlFor="password"
+                    className="text-gray-700 font-medium"
+                  >
                     Password
                   </Label>
-                  <a href="#" className="text-sm font-medium text-[#017354] hover:text-[#017354]/80">
+                  <a
+                    href="#"
+                    className="text-sm font-medium text-primary hover:text-primary/80"
+                  >
                     Forgot password?
                   </a>
                 </div>
@@ -120,7 +118,7 @@ const SignIn: React.FC = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="h-11 pl-10 pr-10 w-full focus:border-[#017354] focus:ring-[#017354]"
+                    className="h-11 pl-10 pr-10 w-full focus:border-primary focus:ring-primary"
                     placeholder="••••••••"
                   />
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
@@ -144,10 +142,15 @@ const SignIn: React.FC = () => {
                   <Checkbox
                     id="remember-me"
                     checked={rememberMe}
-                    onCheckedChange={(checked) => setRememberMe(checked === true)}
-                    className="h-4 w-4 text-[#017354] focus:ring-[#017354]"
+                    onCheckedChange={(checked) =>
+                      setRememberMe(checked === true)
+                    }
+                    className="h-4 w-4 text-primary focus:ring-primary"
                   />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                  <label
+                    htmlFor="remember-me"
+                    className="ml-2 block text-sm text-gray-700"
+                  >
                     Remember me
                   </label>
                 </div>
@@ -156,7 +159,7 @@ const SignIn: React.FC = () => {
               <div>
                 <Button
                   type="submit"
-                  className="w-full bg-[#017354] hover:bg-[#017354]/90 text-white h-11 flex items-center justify-center gap-2 text-base"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-11 flex items-center justify-center gap-2 text-base"
                   disabled={isLoading}
                 >
                   {isLoading ? "Signing in..." : "Sign in"}
@@ -171,14 +174,20 @@ const SignIn: React.FC = () => {
                   <div className="w-full border-t border-gray-200"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white text-gray-500">Not a member?</span>
+                  <span className="px-4 bg-white text-gray-500">
+                    Not a member?
+                  </span>
                 </div>
               </div>
               <div className="mt-4">
                 <Button
                   variant="outline"
-                  className="w-full border-gray-300 text-gray-700 hover:bg-[#017354] hover:text-white hover:border-[#017354] transition-colors h-11"
-                  onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
+                  className="w-full border-gray-300 text-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-colors h-11"
+                  onClick={() =>
+                    document
+                      .getElementById("application-form")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                 >
                   Apply Now
                 </Button>
@@ -190,10 +199,12 @@ const SignIn: React.FC = () => {
 
       {/* Footer */}
       <footer className="py-4 text-center text-sm text-gray-500">
-        <p>© {new Date().getFullYear()} Creator Capital. All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()} Creator Capital. All rights reserved.
+        </p>
       </footer>
     </div>
   );
 };
 
-export default SignIn; 
+export default SignIn;

@@ -1,6 +1,13 @@
+import { cn } from "@/lib/utils";
 import { useEffect, useRef, ReactNode } from "react";
 
-export function FitText({ children }: { children: ReactNode }) {
+export function FitText({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
 
@@ -38,7 +45,7 @@ export function FitText({ children }: { children: ReactNode }) {
         fontSize: "calc(var(--scale, 1) * 1rem)",
         overflow: "hidden",
       }}
-      className="text-center leading-none"
+      className={cn("text-center leading-none", className)}
     >
       <span
         ref={textRef}

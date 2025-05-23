@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
+import { Logo } from "./homepage/navigation";
 
 const SelectPlatform: React.FC = () => {
   const navigate = useNavigate();
@@ -57,24 +58,28 @@ const SelectPlatform: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FCF7F0] flex flex-col">
+    <div className="min-h-screen flex flex-col">
+      <header className="w-full p-4 flex justify-center px-8 md:px-12">
+        <Link to="/" className="flex items-center">
+          <Logo className="h-8" />
+        </Link>
+      </header>
+
       <div className="flex-1 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           <div className="text-center mb-10">
-            <div className="mb-2">
-              <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
-            </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Select Your Platform
             </h1>
-            <p className="text-md text-gray-600">
-              Choose the subscription platform where you earn most of your recurring revenue
+            <p className="text-md text-balance text-gray-600">
+              Choose the subscription platform where you earn most of your
+              recurring revenue
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
             {platforms.map((platform) => (
-              <Card 
+              <Card
                 key={platform.name}
                 className={`p-6 cursor-pointer hover:shadow-md transition-shadow ${
                   !platform.available ? "opacity-70" : ""
@@ -82,11 +87,19 @@ const SelectPlatform: React.FC = () => {
                 onClick={platform.action}
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className={`w-16 h-16 rounded-full ${platform.color} flex items-center justify-center mb-3`}>
+                  <div
+                    className={`w-16 h-16 rounded-full ${platform.color} flex items-center justify-center mb-3`}
+                  >
                     {platform.logo ? (
-                      <img src={platform.logo} alt={platform.name} className="w-8 h-8" />
+                      <img
+                        src={platform.logo}
+                        alt={platform.name}
+                        className="w-8 h-8"
+                      />
                     ) : (
-                      <span className="text-white text-2xl font-bold">{platform.name.charAt(0)}</span>
+                      <span className="text-white text-2xl font-bold">
+                        {platform.name.charAt(0)}
+                      </span>
                     )}
                   </div>
                   <h3 className="font-medium text-gray-900">{platform.name}</h3>
@@ -101,10 +114,12 @@ const SelectPlatform: React.FC = () => {
         </div>
       </div>
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">© {new Date().getFullYear()} Creator Capital. All rights reserved.</p>
+        <p className="text-xs text-gray-500">
+          © {new Date().getFullYear()} Creator Capital. All rights reserved.
+        </p>
       </div>
     </div>
   );
 };
 
-export default SelectPlatform; 
+export default SelectPlatform;

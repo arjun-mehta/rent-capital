@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "lucide-react";
 import { Calculator } from "./calculator";
 
-const AnimtedButton = motion(Button);
+const AnimtedButton = motion.create(Button);
 
 const icons = [
   {
@@ -131,7 +131,7 @@ export function Header() {
             size="lg"
             className="flex mt-4 mx-auto w-fit"
           >
-            <Link to="/apply">
+            <Link to="/signin">
               Apply Now <ArrowRightIcon strokeWidth={2.5} />
             </Link>
           </AnimtedButton>

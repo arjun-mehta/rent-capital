@@ -28,7 +28,10 @@ export function How() {
       </AnimationChild>
       <AnimationChild className="flex flex-col gap-4 -mt-[80px]">
         {items.map((item, index) => (
-          <div className="w-full flex flex-col justify-between p-6 fit-container bg-card/70 backdrop-blur-sm min-h-[420px] rounded-3xl">
+          <div
+            key={item.title}
+            className="w-full flex flex-col justify-between p-6 fit-container bg-card/70 backdrop-blur-sm min-h-[420px] rounded-3xl"
+          >
             <div className="flex items-center size-16 text-background font-semibold justify-center leading-none text-center text-4xl rounded-full bg-foreground">
               {index + 1}
             </div>
