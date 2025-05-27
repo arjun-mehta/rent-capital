@@ -2,6 +2,9 @@
   "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
   "name": "greenlight",
   "compatibility_date": "2025-04-03",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  },
   "routes": [
     {
       "pattern": "greenlight.gielcobben.com",
