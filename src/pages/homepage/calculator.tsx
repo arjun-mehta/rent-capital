@@ -5,6 +5,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 type PlanDuration = "3" | "6" | "12";
 
@@ -110,8 +111,10 @@ export function Calculator() {
         <div className="text-sm font-normal mb-8">Estimated advance amount</div>
         <div className="flex items-center justify-between text-left">
           <div className="text-2xl">${advanceAmount.toLocaleString()}</div>
-          <Button className="w-fit" variant="secondary">
-            Apply Now <ArrowRight strokeWidth={2.5} />
+          <Button className="w-fit" variant="secondary" asChild>
+            <Link to="/signin">
+              Apply Now <ArrowRight strokeWidth={2.5} />
+            </Link>
           </Button>
         </div>
       </motion.div>
