@@ -97,7 +97,7 @@ const childIcons: Variants = {
 export function Header() {
   return (
     <motion.header variants={parentIcons} initial="hidden" animate="visible">
-      <div className="max-w-screen-xl my-8 sm:w-fit mx-auto flex justify-between flex-col items-center sm:p-40 py-24 relative">
+      <div className="max-w-screen-xl overflow-x-hidden sm:overflow-x-visible my-8 sm:w-fit mx-auto flex justify-between flex-col items-center sm:p-40 py-24 relative">
         {icons.map((icon) => (
           <motion.img
             variants={childIcons}
