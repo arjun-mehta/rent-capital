@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/lib/auth";
 import { Logo } from "./homepage/navigation";
+import { Title } from "@/components/Text";
 
 const ConnectPatreon: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -64,9 +65,7 @@ const ConnectPatreon: React.FC = () => {
 
       <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Connect your Patreon
-          </h2>
+          <Title>Connect your Patreon</Title>
           <p className="mt-2 text-balance text-center text-sm text-gray-600">
             We need access to your Patreon account to analyze your subscription
             revenue.

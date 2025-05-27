@@ -13,6 +13,7 @@ import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
 import { Logo } from "./homepage/navigation";
 import { PlusIcon } from "lucide-react";
+import { Title } from "@/components/Text";
 
 const ConnectAdditionalAccounts: React.FC = () => {
   const { isAuthenticated, isPatreonConnected } = useAuth();
@@ -70,9 +71,7 @@ const ConnectAdditionalAccounts: React.FC = () => {
 
       <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-2xl">
-          <h2 className="mt-6 text-balance text-center text-3xl font-extrabold text-gray-900">
-            Boost Your Funding Potential
-          </h2>
+          <Title>Boost Your Funding Potential</Title>
           <p className="mt-2 text-balance text-center text-sm text-gray-600 max-w-md mx-auto">
             Optionally connect your additional revenue streams to unlock higher
             funding amounts and better terms.

@@ -1,4 +1,3 @@
-import { ReactNode, useEffect, useRef } from "react";
 import { AnimationChild, AnimationParent } from "./animations";
 import { FitText } from "./fit-text";
 

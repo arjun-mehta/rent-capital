@@ -6,6 +6,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 import { Logo } from "./homepage/navigation";
+import { Title } from "@/components/Text";
 
 interface OfferOption {
   id: string;
@@ -87,9 +88,7 @@ const Offers: React.FC = () => {
       <div className="overflow-auto flex-1 flex items-center justify-center flex-col py-8 px-4 sm:px-6 lg:px-8">
         <div>
           <div className="text-center mb-6">
-            <h1 className="text-3xl text-balance md:text-4xl font-bold text-gray-900 mb-2">
-              Your Revenue Purchase Offers
-            </h1>
+            <Title>Your Revenue Purchase Offers</Title>
             <p className="text-md text-gray-600 text-balance max-w-5xl mx-auto">
               Based on your Patreon subscription revenue, we've prepared these
               funding options for you. Select the option that works best for

@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
 import { Logo } from "./homepage/navigation";
+import { Title } from "@/components/Text";
 
 const SelectPlatform: React.FC = () => {
   const navigate = useNavigate();
@@ -68,9 +69,7 @@ const SelectPlatform: React.FC = () => {
       <div className="flex-1 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           <div className="text-center mb-10">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Select Your Platform
-            </h1>
+            <Title>Connect your Patreon</Title>
             <p className="text-md text-balance text-gray-600">
               Choose the subscription platform where you earn most of your
               recurring revenue

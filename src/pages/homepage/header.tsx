@@ -1,4 +1,4 @@
-import { motion, Variants } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import iconCameraVideo from "./icons/camera-video.png";
 import iconDuffleBag from "./icons/duffle-bag.png";
 import iconCalendar from "./icons/calendar.png";

@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
 import { useAuth } from "@/lib/auth";
 import { Logo } from "./homepage/navigation";
+import { Title } from "@/components/Text";
 
 const Processing: React.FC = () => {
   const [progress, setProgress] = useState(0);
@@ -61,9 +62,7 @@ const Processing: React.FC = () => {
 
       <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="mt-6 text-balance text-center text-3xl font-extrabold text-gray-900">
-            Processing your account
-          </h2>
+          <Title>Processing your account</Title>
           <p className="mt-2 text-center text-balance text-sm text-gray-600">
             We're analyzing your subscription data to prepare your funding offer
           </p>

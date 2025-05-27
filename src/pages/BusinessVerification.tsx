@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
 import { useAuth } from "@/lib/auth";
 import { Logo } from "./homepage/navigation";
+import { Title } from "@/components/Text";
 
 const BusinessVerification: React.FC = () => {
   const [progress, setProgress] = useState(0);
@@ -58,9 +59,7 @@ const BusinessVerification: React.FC = () => {
 
       <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="mt-6 text-center text-balance text-3xl font-extrabold text-gray-900">
-            Verifying business information
-          </h2>
+          <Title>Verifying business information</Title>
           <p className="mt-2 text-center text-balance text-sm text-gray-600">
             We're conducting required verification checks before proceeding with
             your funding

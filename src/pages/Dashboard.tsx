@@ -88,39 +88,24 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col ">
       {/* Header bar */}
-      <div className="bg-primary text-primary-foreground py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <Link to="/dashboard" className="flex items-center">
-                <Logo className="h-8" />
-              </Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-sm opacity-90 cursor-pointer hover:underline">
-                Sign Out
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <header className="w-full p-4 flex justify-center px-8 md:px-12">
+        <Link to="/" className="flex items-center">
+          <Logo className="h-8" />
+        </Link>
+      </header>
 
       {/* Main content - Full viewport */}
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="max-w-7xl w-full mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">
-            Final Steps
-          </h2>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Connect Bank Card */}
             <Card className="overflow-hidden bg-white shadow-lg border-0 rounded-2xl">
               <CardContent className="p-0">
-                <div className="bg-gradient-to-r from-[#015e44] to-primary p-6">
-                  <div className="bg-white/10 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-white text-xl font-medium">1</span>
+                <div className="p-6 border-b border-gray-200">
+                  <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <span className="text-xl font-bold">1</span>
                   </div>
-                  <h3 className="text-white text-2xl font-semibold mt-4">
+                  <h3 className="text-2xl font-semibold mt-4">
                     Connect Bank Account
                   </h3>
                 </div>
@@ -161,7 +146,7 @@ const Dashboard: React.FC = () => {
                     </div>
 
                     <Button
-                      className="w-full bg-primary  text-primary-foreground py-6 text-lg font-medium rounded-xl transition-colors duration-200"
+                      className="w-full bg-primary text-primary-foreground py-6 text-lg font-medium rounded-xl transition-colors duration-200"
                       onClick={handleConnectBank}
                     >
                       Connect Your Bank Account
@@ -174,11 +159,11 @@ const Dashboard: React.FC = () => {
             {/* Download Extension Card */}
             <Card className="overflow-hidden bg-white shadow-lg border-0 rounded-2xl">
               <CardContent className="p-0">
-                <div className="bg-gradient-to-r from-[#015e44] to-primary p-6">
-                  <div className="bg-white/10 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-white text-xl font-medium">2</span>
+                <div className="p-6 border-b border-gray-200">
+                  <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <span className="text-xl font-bold">2</span>
                   </div>
-                  <h3 className="text-white text-2xl font-semibold mt-4">
+                  <h3 className="text-2xl font-semibold mt-4">
                     Download Chrome Extension
                   </h3>
                 </div>
@@ -230,6 +215,12 @@ const Dashboard: React.FC = () => {
             </Card>
           </div>
         </div>
+      </div>
+
+      <div className="py-4 text-center">
+        <p className="text-xs text-gray-500">
+          © 2025 Creator Capital. All rights reserved.
+        </p>
       </div>
     </div>
   );

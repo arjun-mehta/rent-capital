@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Title } from "@/components/Text";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Upload, Info, AlertCircle } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -12,11 +11,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/lib/auth";
-import { cn } from "@/lib/utils";
+import { AlertCircle, ArrowRight, Info, Upload } from "lucide-react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "./homepage/navigation";
 
 type Owner = {
@@ -74,8 +74,8 @@ const EntityDetails: React.FC = () => {
         (owner) =>
           !!owner.name &&
           !!owner.percentage &&
-          parseInt(owner.percentage) >= 25 &&
-          parseInt(owner.percentage) <= 100 &&
+          Number.parseInt(owner.percentage) >= 25 &&
+          Number.parseInt(owner.percentage) <= 100 &&
           !!owner.idDocument
       );
     const validDocuments =
@@ -131,7 +131,7 @@ const EntityDetails: React.FC = () => {
   const handleFileUpload =
     (setter: React.Dispatch<React.SetStateAction<File | null>>) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files && e.target.files[0]) {
+      if (e.target.files?.[0]) {
         setter(e.target.files[0]);
       }
     };
@@ -149,9 +149,9 @@ const EntityDetails: React.FC = () => {
   };
 
   const formatFileSize = (size: number) => {
-    if (size < 1024) return size + " bytes";
-    else if (size < 1024 * 1024) return (size / 1024).toFixed(1) + " KB";
-    else return (size / (1024 * 1024)).toFixed(1) + " MB";
+    if (size < 1024) return `${size} bytes`;
+    if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`;
+    return `${(size / (1024 * 1024)).toFixed(1)} MB`;
   };
 
   return (
@@ -164,9 +164,7 @@ const EntityDetails: React.FC = () => {
 
       <div className="flex-1 flex flex-col overflow-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6">
-          <h1 className="text-3xl text-balance md:text-4xl font-bold text-gray-900 mb-2">
-            Business Information
-          </h1>
+          <Title>Business Information</Title>
           <p className="text-md text-balance text-gray-600 max-w-2xl mx-auto">
             Please provide your business details to proceed with your revenue
             purchase agreement. This information is required for compliance and
@@ -240,7 +238,7 @@ const EntityDetails: React.FC = () => {
               </p>
 
               {owners.map((owner, index) => (
-                <div key={index} className="border rounded-md p-4 mb-4">
+                <div key={owner.name} className="border rounded-md p-4 mb-4">
                   <div className="flex justify-between items-center mb-2">
                     <h4 className="font-medium">Owner {index + 1}</h4>
                     {owners.length > 1 && (
@@ -317,7 +315,7 @@ const EntityDetails: React.FC = () => {
                               accept=".pdf,.jpg,.jpeg,.png"
                               className="hidden"
                               onChange={(e) => {
-                                if (e.target.files && e.target.files[0]) {
+                                if (e.target.files?.[0]) {
                                   handleOwnerChange(
                                     index,
                                     "idDocument",
@@ -337,7 +335,9 @@ const EntityDetails: React.FC = () => {
                                 className="h-5 w-5 text-green-600"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
+                                aria-label="Success icon"
                               >
+                                <title>Success icon</title>
                                 <path
                                   fillRule="evenodd"
                                   d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z"
@@ -428,6 +428,7 @@ const EntityDetails: React.FC = () => {
                               viewBox="0 0 20 20"
                               fill="currentColor"
                             >
+                              <title>Success icon</title>
                               <path
                                 fillRule="evenodd"
                                 d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z"
@@ -490,6 +491,7 @@ const EntityDetails: React.FC = () => {
                               viewBox="0 0 20 20"
                               fill="currentColor"
                             >
+                              <title>Success icon</title>
                               <path
                                 fillRule="evenodd"
                                 d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z"

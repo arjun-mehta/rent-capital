@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from "lucide-react";
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 import { Link } from "react-router-dom";
 
 const items = [
@@ -30,9 +30,10 @@ export function Navigation() {
             </Link>
           </li>
         ))}
+
         <li className="ml-8">
           <Link
-            to="/apply"
+            to="/signin"
             className="h-[37px] flex items-center bg-foreground text-primary rounded-full justify-center px-4 py-2"
           >
             Apply Now{" "}
@@ -52,6 +53,7 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 128 32"
       {...props}
     >
+      <title>Logo</title>
       <path
         fill="#93BA93"
         d="M125.015 25.16c-.71 0-1.294-.205-1.752-.616a2.089 2.089 0 0 1-.663-1.563c0-.631.221-1.16.663-1.587.458-.426 1.042-.64 1.752-.64.695 0 1.264.214 1.706.64.458.427.687.956.687 1.587 0 .616-.229 1.137-.687 1.563-.442.41-1.011.616-1.706.616Z"

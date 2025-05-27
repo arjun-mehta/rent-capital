@@ -1,10 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { BadgeCheck, CreditCard, Calendar, ArrowRight, Bell, Shield, CheckCircle2, Building, Zap } from "lucide-react";
+import {
+  BadgeCheck,
+  CreditCard,
+  Calendar,
+  ArrowRight,
+  Bell,
+  Shield,
+  CheckCircle2,
+  Building,
+  Zap,
+  ChevronDownIcon,
+  ChevronRightIcon,
+} from "lucide-react";
 import { useAuth } from "@/lib/auth";
+import { Logo } from "./homepage/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const DashboardEstablished: React.FC = () => {
   const [nextPaymentDays, setNextPaymentDays] = useState(14);
@@ -16,7 +44,10 @@ const DashboardEstablished: React.FC = () => {
     const today = new Date();
     const finalDate = new Date(today);
     finalDate.setMonth(today.getMonth() + repaymentData.remainingPayments);
-    return finalDate.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+    return finalDate.toLocaleDateString(undefined, {
+      month: "long",
+      year: "numeric",
+    });
   };
 
   // Redirect if not authenticated or Patreon not connected
@@ -32,7 +63,7 @@ const DashboardEstablished: React.FC = () => {
   useEffect(() => {
     if (nextPaymentDays > 0) {
       const timer = setTimeout(() => {
-        setNextPaymentDays(prevDays => prevDays - 1);
+        setNextPaymentDays((prevDays) => prevDays - 1);
       }, 60000); // Update every minute for demo purposes
       return () => clearTimeout(timer);
     }
@@ -45,10 +76,12 @@ const DashboardEstablished: React.FC = () => {
     remainingAmount: 1425,
     progressPercent: 50, // 50% complete
     nextPaymentAmount: 475,
-    nextPaymentDate: new Date(Date.now() + nextPaymentDays * 24 * 60 * 60 * 1000),
+    nextPaymentDate: new Date(
+      Date.now() + nextPaymentDays * 24 * 60 * 60 * 1000
+    ),
     totalPayments: 6,
     completedPayments: 3,
-    remainingPayments: 3
+    remainingPayments: 3,
   };
 
   // Calculate renewal date (3 months from now)
@@ -56,16 +89,39 @@ const DashboardEstablished: React.FC = () => {
   renewalDate.setMonth(renewalDate.getMonth() + 3);
 
   return (
-    <div className="min-h-screen bg-[#FCF7F0]">
+    <div className="min-h-screen">
       {/* Header bar */}
-      <div className="bg-[#017354] text-white py-4">
+      <div className=" py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
+              <Link to="/dashboard-established" className="flex items-center">
+                <Logo className="h-8" />
+              </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm opacity-90 cursor-pointer hover:underline">Sign Out</span>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center gap-1 hover:bg-white rounded-full p-1 pr-3">
+                  <Avatar className="size-8">
+                    <AvatarImage src={user.name} />
+                    <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <ChevronDownIcon className="size-4" strokeWidth={3} />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem>
+                    <Link to="/">Homepage</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Dashboard</DropdownMenuItem>
+                  <DropdownMenuItem>Settings</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <Link to="/">Sign Out</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
@@ -79,7 +135,9 @@ const DashboardEstablished: React.FC = () => {
             <Card>
               <CardHeader>
                 <CardTitle>Repayment Progress</CardTitle>
-                <CardDescription>You're halfway through your repayment!</CardDescription>
+                <CardDescription>
+                  You're halfway through your repayment!
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="mb-6">
@@ -91,7 +149,10 @@ const DashboardEstablished: React.FC = () => {
                       ${repaymentData.totalAmount.toLocaleString()} total
                     </span>
                   </div>
-                  <Progress value={repaymentData.progressPercent} className="h-2" />
+                  <Progress
+                    value={repaymentData.progressPercent}
+                    className="h-2"
+                  />
                   <div className="mt-2 text-center">
                     <span className="text-sm font-medium text-gray-700">
                       {repaymentData.progressPercent}% Complete
@@ -101,34 +162,54 @@ const DashboardEstablished: React.FC = () => {
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-xs text-gray-500 mb-1">Total Repayment</div>
-                    <div className="text-lg font-semibold">${repaymentData.totalAmount}</div>
+                    <div className="text-xs text-gray-500 mb-1">
+                      Total Repayment
+                    </div>
+                    <div className="text-lg font-semibold">
+                      ${repaymentData.totalAmount}
+                    </div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-xs text-gray-500 mb-1">Paid So Far</div>
-                    <div className="text-lg font-semibold">${repaymentData.amountPaid}</div>
+                    <div className="text-xs text-gray-500 mb-1">
+                      Paid So Far
+                    </div>
+                    <div className="text-lg font-semibold">
+                      ${repaymentData.amountPaid}
+                    </div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
                     <div className="text-xs text-gray-500 mb-1">Remaining</div>
-                    <div className="text-lg font-semibold">${repaymentData.remainingAmount}</div>
+                    <div className="text-lg font-semibold">
+                      ${repaymentData.remainingAmount}
+                    </div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-xs text-gray-500 mb-1">Est. Final Month</div>
-                    <div className="text-lg font-semibold">{calculateFinalMonth()}</div>
+                    <div className="text-xs text-gray-500 mb-1">
+                      Est. Final Month
+                    </div>
+                    <div className="text-lg font-semibold">
+                      {calculateFinalMonth()}
+                    </div>
                   </div>
                 </div>
 
                 <div className="border-t pt-6">
-                  <h3 className="font-medium text-gray-900 mb-4">Upcoming Payments</h3>
+                  <h3 className="font-medium text-gray-900 mb-4">
+                    Upcoming Payments
+                  </h3>
                   <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start space-x-4">
                     <Calendar className="text-amber-500 h-5 w-5 mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-amber-800">Next payment: ${repaymentData.nextPaymentAmount}</h4>
+                      <h4 className="font-medium text-amber-800">
+                        Next payment: ${repaymentData.nextPaymentAmount}
+                      </h4>
                       <p className="text-sm text-amber-700">
-                        Due in {nextPaymentDays} days on {repaymentData.nextPaymentDate.toLocaleDateString()}
+                        Due in {nextPaymentDays} days on{" "}
+                        {repaymentData.nextPaymentDate.toLocaleDateString()}
                       </p>
                       <p className="text-xs text-amber-600 mt-1">
-                        Payments are automatically processed through your Patreon account
+                        Payments are automatically processed through your
+                        Patreon account
                       </p>
                     </div>
                   </div>
@@ -147,41 +228,65 @@ const DashboardEstablished: React.FC = () => {
                     <div className="flex items-center space-x-3">
                       <CreditCard className="h-5 w-5 text-gray-400" />
                       <div>
-                        <div className="font-medium text-gray-900">Payment #3</div>
-                        <div className="text-sm text-gray-500">{new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}</div>
+                        <div className="font-medium text-gray-900">
+                          Payment #3
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {new Date(
+                            Date.now() - 30 * 24 * 60 * 60 * 1000
+                          ).toLocaleDateString()}
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="font-semibold text-gray-900">$475.00</div>
-                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Completed</span>
+                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                        Completed
+                      </span>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <CreditCard className="h-5 w-5 text-gray-400" />
                       <div>
-                        <div className="font-medium text-gray-900">Payment #2</div>
-                        <div className="text-sm text-gray-500">{new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toLocaleDateString()}</div>
+                        <div className="font-medium text-gray-900">
+                          Payment #2
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {new Date(
+                            Date.now() - 60 * 24 * 60 * 60 * 1000
+                          ).toLocaleDateString()}
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="font-semibold text-gray-900">$475.00</div>
-                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Completed</span>
+                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                        Completed
+                      </span>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <CreditCard className="h-5 w-5 text-gray-400" />
                       <div>
-                        <div className="font-medium text-gray-900">Payment #1</div>
-                        <div className="text-sm text-gray-500">{new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toLocaleDateString()}</div>
+                        <div className="font-medium text-gray-900">
+                          Payment #1
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {new Date(
+                            Date.now() - 90 * 24 * 60 * 60 * 1000
+                          ).toLocaleDateString()}
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="font-semibold text-gray-900">$475.00</div>
-                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Completed</span>
+                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                        Completed
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -199,21 +304,23 @@ const DashboardEstablished: React.FC = () => {
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start space-x-4 mb-4">
                   <Zap className="text-blue-500 h-5 w-5 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium text-blue-800">Renewal Available: {renewalDate.toLocaleDateString()}</h4>
+                    <h4 className="font-medium text-blue-800">
+                      Renewal Available: {renewalDate.toLocaleDateString()}
+                    </h4>
                     <p className="text-sm text-blue-700 mb-2">
-                      Based on your current revenue trends and repayment health, you are eligible for a new advance - even before your current one is fully complete.
+                      Based on your current revenue trends and repayment health,
+                      you are eligible for a new advance - even before your
+                      current one is fully complete.
                     </p>
                   </div>
                 </div>
-                
-                <div className="text-center mt-4">
-                  <Button className="bg-[#017354] hover:bg-[#017354]/90 text-white">
-                    See Renewal Offers
-                  </Button>
-                </div>
+
+                <Button>
+                  See Renewal Offers <ChevronRightIcon />
+                </Button>
               </CardContent>
             </Card>
-            
+
             <Card>
               <CardHeader>
                 <CardTitle>Important Information</CardTitle>
@@ -223,32 +330,48 @@ const DashboardEstablished: React.FC = () => {
                   <div className="flex items-start space-x-3">
                     <Bell className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-medium text-gray-900">Payment Reminders</h4>
-                      <p className="text-gray-600">We'll send you email reminders 3 days before each scheduled payment.</p>
+                      <h4 className="font-medium text-gray-900">
+                        Payment Reminders
+                      </h4>
+                      <p className="text-gray-600">
+                        We'll send you email reminders 3 days before each
+                        scheduled payment.
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <Shield className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-medium text-gray-900">Security</h4>
-                      <p className="text-gray-600">Your data is encrypted and secure. We use industry-standard security measures.</p>
+                      <p className="text-gray-600">
+                        Your data is encrypted and secure. We use
+                        industry-standard security measures.
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <CheckCircle2 className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-medium text-gray-900">Automatic Repayments</h4>
-                      <p className="text-gray-600">Payments are automatically processed through your Patreon account each month.</p>
+                      <h4 className="font-medium text-gray-900">
+                        Automatic Repayments
+                      </h4>
+                      <p className="text-gray-600">
+                        Payments are automatically processed through your
+                        Patreon account each month.
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <Building className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-medium text-gray-900">Support</h4>
-                      <p className="text-gray-600">Need help? Contact our support team at support@creatorcapital.com</p>
+                      <p className="text-gray-600">
+                        Need help? Contact our support team at
+                        support@creatorcapital.com
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -261,4 +384,4 @@ const DashboardEstablished: React.FC = () => {
   );
 };
 
-export default DashboardEstablished; 
+export default DashboardEstablished;

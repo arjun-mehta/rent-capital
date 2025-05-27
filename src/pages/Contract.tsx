@@ -7,6 +7,7 @@ import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
 import Confetti from "react-confetti";
 import { Logo } from "./homepage/navigation";
+import { Title } from "@/components/Text";
 
 const Contract: React.FC = () => {
   const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
@@ -135,9 +136,7 @@ const Contract: React.FC = () => {
 
       <main className="flex-1 container flex items-center justify-center flex-col mx-auto px-4 py-8 pb-16 max-w-5xl">
         <div className="text-center mb-6">
-          <h1 className="text-3xl text-balance md:text-4xl font-bold text-gray-900 mb-2">
-            Revenue Purchase Agreement
-          </h1>
+          <Title>Revenue Purchase Agreement</Title>
           <p className="text-md text-gray-600 text-balance max-w-3xl mx-auto">
             Please review and sign the agreement to receive your funding.
           </p>
@@ -329,9 +328,7 @@ const Contract: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h2 className="text-3xl font-bold text-primary mt-6 mb-3">
-              Congratulations!
-            </h2>
+            <Title>Congratulations!</Title>
             <p className="text-gray-700 text-lg mb-6">
               We're excited to help you level up.
             </p>

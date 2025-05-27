@@ -13,6 +13,7 @@ import {
 import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
 import { Logo } from "./homepage/navigation";
+import { Title } from "@/components/Text";
 
 const SignIRSForm: React.FC = () => {
   const [date, setDate] = useState("");
@@ -130,9 +131,7 @@ const SignIRSForm: React.FC = () => {
 
       <main className="flex-1 container mx-auto px-4 py-8 max-w-5xl">
         <div className="text-center mb-6">
-          <h1 className="text-3xl text-balance md:text-4xl font-bold text-gray-900 mb-2">
-            Sign IRS Form 4506-T
-          </h1>
+          <Title>Sign IRS Form 4506-T</Title>
           <p className="text-md text-balance text-gray-600 max-w-3xl mx-auto whitespace-nowrap">
             We need your authorization to verify your income. Please review the
             IRS Form 4506-T below.
