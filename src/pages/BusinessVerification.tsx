@@ -87,13 +87,13 @@ const BusinessVerification: React.FC = () => {
                       <div
                         className={`flex-shrink-0 h-5 w-5 rounded-full ${
                           step.complete
-                            ? "bg-green-500"
+                            ? "bg-primary text-primary-foreground"
                             : "border border-gray-300"
                         } mr-3 flex items-center justify-center`}
                       >
                         {step.complete && (
                           <svg
-                            className="h-3 w-3 text-white"
+                            className="h-3 w-3"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -116,14 +116,13 @@ const BusinessVerification: React.FC = () => {
                   ))}
                 </ul>
               </div>
-
-              <div className="text-center">
-                <p className="text-xs text-gray-500 mt-6">
-                  These verifications are required by our compliance standards.
-                  We appreciate your patience.
-                </p>
-              </div>
             </div>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-gray-500 mt-6 text-balance">
+              These verifications are required by our compliance standards. We
+              appreciate your patience.
+            </p>
           </div>
         </div>
       </div>

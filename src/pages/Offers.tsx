@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, CheckIcon } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 import { Logo } from "./homepage/navigation";
@@ -119,7 +119,7 @@ const Offers: React.FC = () => {
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
                       {offer.months}-Month Advance
                     </h3>
-                    <div className="text-3xl font-bold text-primary mb-2">
+                    <div className="text-3xl font-medium text-primary mb-2">
                       ${offer.amount.toLocaleString()}
                     </div>
                     <p className="text-sm text-gray-500">
@@ -131,8 +131,8 @@ const Offers: React.FC = () => {
                   <div className="mb-2">
                     <div className="grid grid-cols-1 gap-4">
                       <div className="flex items-start">
-                        <div className="flex-shrink-0 h-4 w-4 rounded-full bg-green-100 flex items-center justify-center mr-1.5">
-                          <Check size={10} className="text-green-600" />
+                        <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                          <Check size={10} className="" />
                         </div>
                         <span className="text-sm">
                           Projected Revenue: $
@@ -140,8 +140,8 @@ const Offers: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex items-start">
-                        <div className="flex-shrink-0 h-4 w-4 rounded-full bg-green-100 flex items-center justify-center mr-1.5">
-                          <Check size={10} className="text-green-600" />
+                        <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                          <Check size={10} className="" />
                         </div>
                         <span className="text-sm">
                           Flat Fee: ${offer.fee.toLocaleString()} (
@@ -149,8 +149,8 @@ const Offers: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex items-start">
-                        <div className="flex-shrink-0 h-4 w-4 rounded-full bg-green-100 flex items-center justify-center mr-1.5">
-                          <Check size={10} className="text-green-600" />
+                        <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                          <Check size={10} className="" />
                         </div>
                         <span className="text-sm">
                           Monthly Split: 90% to repayment / 10% to you
@@ -163,15 +163,19 @@ const Offers: React.FC = () => {
                     className={cn(
                       "w-full mt-auto",
                       selectedOffer === offer.id
-                        ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                        : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-50"
+                        ? "border-primary border bg-white text-primary-foreground hover:bg-white"
+                        : "bg-white border text-gray-400 border-gray-300 hover:bg-gray-50"
                     )}
                     onClick={() => handleSelectOffer(offer.id)}
                     size="sm"
                   >
-                    {selectedOffer === offer.id
-                      ? "Selected"
-                      : "Select This Plan"}
+                    {selectedOffer === offer.id ? (
+                      <>
+                        <CheckIcon /> Selected
+                      </>
+                    ) : (
+                      "Select This Plan"
+                    )}
                   </Button>
                 </div>
               </Card>

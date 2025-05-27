@@ -7,6 +7,7 @@ import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
 import { Logo } from "./homepage/navigation";
 import { Title } from "@/components/Text";
+import { cn } from "@/lib/utils";
 
 const SelectPlatform: React.FC = () => {
   const navigate = useNavigate();
@@ -32,28 +33,24 @@ const SelectPlatform: React.FC = () => {
       name: "Patreon",
       logo: "/logos/patreon.svg",
       action: () => navigate("/connect-patreon"),
-      color: "bg-[#F96854]",
       available: true,
     },
     {
       name: "Substack",
       logo: "/logos/substack.svg",
       action: () => handleUnsupportedPlatform("Substack"),
-      color: "bg-[#FF6719]",
       available: false,
     },
     {
       name: "Supercast",
       logo: "/logos/supercast.svg",
       action: () => handleUnsupportedPlatform("Supercast"),
-      color: "bg-[#3D65F9]",
       available: false,
     },
     {
       name: "Apple Podcast",
       logo: "/logos/apple-podcast.svg",
       action: () => handleUnsupportedPlatform("Apple Podcast"),
-      color: "bg-[#9933CC]",
       available: false,
     },
   ];
@@ -80,26 +77,20 @@ const SelectPlatform: React.FC = () => {
             {platforms.map((platform) => (
               <Card
                 key={platform.name}
-                className={`p-6 cursor-pointer hover:shadow-md transition-shadow ${
-                  !platform.available ? "opacity-70" : ""
-                }`}
+                className={cn(
+                  "p-6 cursor-pointer hover:shadow-md transition-shadow"
+                )}
                 onClick={platform.action}
               >
                 <div className="flex flex-col items-center text-center">
                   <div
-                    className={`w-16 h-16 rounded-full ${platform.color} flex items-center justify-center mb-3`}
+                    className={`size-[50px] rounded-full flex items-center justify-center mb-3`}
                   >
-                    {platform.logo ? (
-                      <img
-                        src={platform.logo}
-                        alt={platform.name}
-                        className="w-8 h-8"
-                      />
-                    ) : (
-                      <span className="text-white text-2xl font-bold">
-                        {platform.name.charAt(0)}
-                      </span>
-                    )}
+                    <img
+                      src={platform.logo}
+                      alt={platform.name}
+                      className="size-full"
+                    />
                   </div>
                   <h3 className="font-medium text-gray-900">{platform.name}</h3>
                 </div>

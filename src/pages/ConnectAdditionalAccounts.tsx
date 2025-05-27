@@ -1,19 +1,23 @@
+import { Title } from "@/components/Text";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/lib/auth";
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { useAuth } from "@/lib/auth";
-import { useToast } from "@/components/ui/use-toast";
 import { Logo } from "./homepage/navigation";
-import { PlusIcon } from "lucide-react";
-import { Title } from "@/components/Text";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+const platforms = [
+  {
+    name: "Shopify",
+    logo: "/logos/shopify.svg",
+  },
+  {
+    name: "Youtube",
+    logo: "/logos/youtube.svg",
+  },
+];
 
 const ConnectAdditionalAccounts: React.FC = () => {
   const { isAuthenticated, isPatreonConnected } = useAuth();
@@ -28,6 +32,15 @@ const ConnectAdditionalAccounts: React.FC = () => {
       navigate("/connect-patreon");
     }
   }, [isAuthenticated, isPatreonConnected, navigate]);
+
+  const handleConnect = (platform: string) => {
+    if (platform === "Shopify") {
+      handleConnectShopify();
+    }
+    if (platform === "Youtube") {
+      handleConnectYouTube();
+    }
+  };
 
   const handleConnectShopify = () => {
     toast({
@@ -78,41 +91,30 @@ const ConnectAdditionalAccounts: React.FC = () => {
           </p>
         </div>
 
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Shopify Card */}
-              <Button
-                onClick={handleConnectShopify}
-                className="h-40 w-full bg-[#95BF47] hover:bg-[#7EA639] text-white text-xl font-medium flex flex-col items-center justify-center gap-4 rounded-lg"
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            {platforms.map((platform) => (
+              <Card
+                key={platform.name}
+                className={cn(
+                  "p-6 cursor-pointer hover:shadow-md transition-shadow"
+                )}
+                onClick={() => handleConnect(platform.name)}
               >
-                <img
-                  src="https://firework.com/wp-content/uploads/2023/11/Shopify-Logo-500x313-1.png"
-                  alt="Shopify"
-                  className="h-10 w-auto"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      "https://cdn.shopify.com/s/files/1/0578/3432/1084/files/shopify-seeklogo.com_1_5e1e579f-3b19-4a5e-a33c-c3fa7e03b488.png?v=1680715727";
-                  }}
-                />
-              </Button>
-
-              {/* YouTube Card */}
-              <Button
-                onClick={handleConnectYouTube}
-                className="h-40 w-full bg-[#FF0000] hover:bg-[#D90000] text-white text-xl font-medium flex flex-col items-center justify-center gap-4 rounded-lg"
-              >
-                <img
-                  src="https://freepnglogo.com/images/all_img/1701508998white-youtube-logo-png.png"
-                  alt="YouTube"
-                  className="h-8 w-auto"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/800px-YouTube_full-color_icon_%282017%29.svg.png";
-                  }}
-                />
-              </Button>
-            </div>
+                <div className="flex flex-col items-center text-center">
+                  <div
+                    className={`size-[50px] rounded-full flex items-center justify-center mb-3`}
+                  >
+                    <img
+                      src={platform.logo}
+                      alt={platform.name}
+                      className="size-full"
+                    />
+                  </div>
+                  <h3 className="font-medium text-gray-900">{platform.name}</h3>
+                </div>
+              </Card>
+            ))}
           </div>
           <div className="mt-8 flex justify-center">
             <Button

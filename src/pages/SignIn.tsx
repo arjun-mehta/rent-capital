@@ -99,12 +99,6 @@ const SignIn: React.FC = () => {
                   >
                     Password
                   </Label>
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-primary hover:text-primary/80"
-                  >
-                    Forgot password?
-                  </a>
                 </div>
                 <div className="mt-1.5 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -124,6 +118,7 @@ const SignIn: React.FC = () => {
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
                     <button
                       type="button"
+                      tabIndex={-1}
                       onClick={togglePasswordVisibility}
                       className="text-gray-400 hover:text-gray-500 focus:outline-none"
                     >
@@ -154,6 +149,12 @@ const SignIn: React.FC = () => {
                     Remember me
                   </label>
                 </div>
+                <a
+                  href="#"
+                  className="text-sm text-grey-700 underline underline-offset-2"
+                >
+                  Forgot password?
+                </a>
               </div>
 
               <div>
