@@ -48,7 +48,7 @@ export function Calculator() {
   };
 
   return (
-    <div className="w-full max-w-container mx-auto grid gap-2 grid-cols-3">
+    <div className="w-full px-4 max-w-container mx-auto grid gap-2 sm:grid-cols-3">
       <motion.div
         variants={child}
         className="bg-card p-4 rounded-3xl shadow-xs"

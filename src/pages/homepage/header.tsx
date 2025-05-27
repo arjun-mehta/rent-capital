@@ -97,30 +97,30 @@ const childIcons: Variants = {
 export function Header() {
   return (
     <motion.header variants={parentIcons} initial="hidden" animate="visible">
-      <div className="max-w-screen-xl my-8 w-fit mx-auto flex justify-between flex-col items-center p-40 py-24 relative">
+      <div className="max-w-screen-xl my-8 sm:w-fit mx-auto flex justify-between flex-col items-center sm:p-40 py-24 relative">
         {icons.map((icon) => (
           <motion.img
             variants={childIcons}
             key={icon.src}
             src={icon.src}
             style={{ ...icon.position }}
-            className="size-[200px] absolute"
+            className="sm:size-[200px] size-[120px] absolute"
           />
         ))}
         <motion.div variants={parent} initial="hidden" animate="visible">
-          <h1 className="text-[150px] mx-auto leading-[110px] text-foreground text-center font-thunder uppercase font-extrabold">
+          <h1 className="xl:text-[150px] md:text-[100px] leading-[0.8] text-[60px] mx-auto  text-foreground text-center font-thunder uppercase font-extrabold">
             <span className="block overflow-hidden pt-4">
-              <motion.span variants={child} className="block">
+              <motion.span variants={child} className="block whitespace-nowrap">
                 Your annual
               </motion.span>
             </span>
             <span className="block overflow-hidden pt-4">
-              <motion.span variants={child} className="block">
+              <motion.span variants={child} className="block whitespace-nowrap">
                 subscription
               </motion.span>
             </span>
             <span className="block overflow-hidden pt-4">
-              <motion.span variants={child} className="block">
+              <motion.span variants={child} className="block whitespace-nowrap">
                 revenue upfront
               </motion.span>
             </span>

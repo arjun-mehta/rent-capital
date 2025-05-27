@@ -18,13 +18,14 @@ const who = [
 
 export function Qualification() {
   return (
-    <AnimationParent className="w-full max-w-container mx-auto pb-32">
+    <AnimationParent className="w-full max-w-container mx-auto pb-32 px-4">
       <AnimationChild>
         <FitText>Qualification</FitText>
       </AnimationChild>
-      <AnimationChild className="flex gap-4 -mt-[80px]">
+
+      <AnimationChild className="flex flex-col sm:flex-row gap-4 sm:-mt-[80px]">
         <div className="w-full flex flex-col justify-start h-fit p-6 fit-container bg-card/70 backdrop-blur-sm rounded-3xl">
-          <h2 className="font-thunder mb-8 text-7xl leading-none uppercase">
+          <h2 className="font-thunder mb-8 text-4xl sm:text-7xl leading-none uppercase">
             Ways Creators Use Their Funding
           </h2>
           <ul>
@@ -33,7 +34,7 @@ export function Qualification() {
                 key={item}
                 className="text-balance gap-4 py-2 text-xl flex items-center"
               >
-                <span className="flex items-center size-12 flex-shrink-0 text-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
+                <span className="flex items-center size-8 sm:size-12 flex-shrink-0 text-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
                   <CheckIcon className="size-5" strokeWidth={2.5} />
                 </span>
                 {item}
@@ -42,7 +43,7 @@ export function Qualification() {
           </ul>
         </div>
         <div className="w-full flex flex-col justify-start h-fit p-6 fit-container bg-card/70 backdrop-blur-sm rounded-3xl">
-          <h2 className="font-thunder mb-8 text-7xl leading-none uppercase">
+          <h2 className="font-thunder mb-8 text-4xl sm:text-7xl leading-none uppercase">
             Who Qualifies? <br /> <span className="opacity-0">.</span>
           </h2>
           <ul>
@@ -51,8 +52,8 @@ export function Qualification() {
                 key={item}
                 className="text-balance gap-4 py-2 text-xl flex items-center"
               >
-                <span className="flex items-center size-12 flex-shrink-0 text-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
-                  <CheckIcon className="size-5" strokeWidth={2.5} />
+                <span className="flex items-center size-8 sm:size-12 flex-shrink-0 text-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
+                  <CheckIcon className="size-4 sm:size-5" strokeWidth={2.5} />
                 </span>
                 {item}
               </li>

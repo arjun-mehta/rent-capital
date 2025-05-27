@@ -27,22 +27,22 @@ const items = [
 
 export function How() {
   return (
-    <AnimationParent className="w-full max-w-container mx-auto py-32">
+    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32">
       <AnimationChild>
         <FitText>How it works</FitText>
       </AnimationChild>
-      <AnimationChild className="flex flex-col gap-4 -mt-[80px]">
+      <AnimationChild className="flex flex-col gap-4 sm:-mt-[80px]">
         {items.map((item, index) => (
           <div
             key={item.title}
-            className="w-full flex p-6 fit-container bg-card/70 backdrop-blur-sm min-h-[420px] rounded-3xl"
+            className="w-full flex sm:flex-row flex-col-reverse p-6 fit-container bg-card/70 backdrop-blur-sm sm:min-h-[420px] rounded-3xl"
           >
             <div className="flex flex-col justify-between">
-              <div className="flex items-center size-16 text-background font-semibold justify-center leading-none text-center text-4xl rounded-full bg-foreground">
+              <div className="flex mb-4 items-center size-10 sm:size-16 text-background font-semibold justify-center leading-none text-center text-lg sm:text-4xl rounded-full bg-foreground">
                 {index + 1}
               </div>
               <div>
-                <h2 className="font-thunder text-7xl leading-none uppercase">
+                <h2 className="font-thunder text-4xl sm:text-7xl leading-none uppercase">
                   {item.title}
                 </h2>
                 <p className="text-xl w-full text-balance">
@@ -50,7 +50,7 @@ export function How() {
                 </p>
               </div>
             </div>
-            <div className="size-[420px] flex-shrink-0 flex items-center justify-center">
+            <div className="sm:size-[420px] flex-shrink-0 flex items-center justify-center">
               <img
                 src={item.image}
                 alt={item.title}

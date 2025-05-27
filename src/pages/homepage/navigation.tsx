@@ -10,18 +10,18 @@ const items = [
 
 export function Navigation() {
   return (
-    <nav className="w-full py-4">
-      <ul className="flex w-full max-w-fit mx-auto items-center gap-4 text-sm text-muted-foreground">
+    <nav className="w-full py-4 px-4">
+      <ul className="flex w-full justify-between md:justify-start md:max-w-fit mx-auto items-center gap-4 text-sm text-muted-foreground">
         <li>
           <Link
             to="/"
-            className="h-[37px] flex items-center justify-center px-4 py-2"
+            className="h-[37px] flex items-center justify-center md:px-4 py-2"
           >
             <Logo className="h-8" />
           </Link>
         </li>
         {items.map((item) => (
-          <li key={item.href}>
+          <li className="hidden md:block" key={item.href}>
             <Link
               to={item.href}
               className="h-[37px] flex items-center justify-center px-4 py-2"
@@ -34,7 +34,7 @@ export function Navigation() {
         <li className="ml-8">
           <Link
             to="/signin"
-            className="h-[37px] flex items-center bg-foreground text-primary rounded-full justify-center px-4 py-2"
+            className="h-[37px] flex font-semibold items-center bg-foreground text-primary rounded-full justify-center px-4 py-2"
           >
             Apply Now{" "}
             <ArrowRightIcon className="size-4 ml-1" strokeWidth={2.5} />

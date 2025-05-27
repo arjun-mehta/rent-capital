@@ -43,12 +43,12 @@ const items = [
 
 export function Questions() {
   return (
-    <AnimationParent className="w-full max-w-container mx-auto py-32 pt-0">
+    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 pt-0">
       <AnimationChild>
         <FitText>Questions</FitText>
       </AnimationChild>
 
-      <div className="w-full -mt-20">
+      <div className="w-full -mt-10 sm:-mt-20">
         {items.map((item, index) => (
           <AnimationChild key={item.question}>
             <Collapsible
@@ -57,13 +57,13 @@ export function Questions() {
                 index === 0 && "bg-card/70 backdrop-blur-sm"
               )}
             >
-              <CollapsibleTrigger className="w-full p-4 px-6 flex items-center justify-between text-xl">
+              <CollapsibleTrigger className="w-full p-4 text-left text-balance px-6 flex items-center justify-between text-xl">
                 <span>{item.question}</span>
-                <div className="flex items-center size-10 text-primary-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
+                <div className="flex flex-shrink-0 items-center size-10 text-primary-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
                   <ChevronDownIcon className="size-6" />
                 </div>
               </CollapsibleTrigger>
-              <CollapsibleContent className="p-4 px-6 text-neutral-600 pt-0 text-lg">
+              <CollapsibleContent className="p-4 px-6 text-balance text-neutral-600 pt-0 text-lg">
                 <p>{item.anwer}</p>
               </CollapsibleContent>
             </Collapsible>
