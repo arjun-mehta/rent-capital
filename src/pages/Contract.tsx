@@ -10,7 +10,7 @@ import { Logo } from "./homepage/navigation";
 import { Title } from "@/components/Text";
 
 const Contract: React.FC = () => {
-  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
+  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(true);
   const [hasAgreed, setHasAgreed] = useState(false);
   const [signature, setSignature] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -108,212 +108,204 @@ const Contract: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden flex flex-col ">
+    <div className="min-h-screen relative flex flex-col">
       <header className="w-full p-4 flex justify-center px-8 md:px-12">
         <Link to="/" className="flex items-center">
           <Logo className="h-8" />
         </Link>
       </header>
 
-      {/* Confetti overlay */}
-      {showConfetti && (
-        <Confetti
-          width={windowDimensions.width}
-          height={windowDimensions.height}
-          recycle={false}
-          numberOfPieces={500}
-          initialVelocityY={15}
-          gravity={0.2}
-          colors={["#017354", "#64D2B1", "#FFC700", "#FF6B6B", "#5D5FEF"]}
-          confettiSource={{
-            x: 0,
-            y: -50, // Start from above the screen
-            w: windowDimensions.width,
-            h: 0,
-          }}
-        />
-      )}
-
-      <main className="flex-1 container flex items-center justify-center flex-col mx-auto px-4 py-8 pb-16 max-w-5xl">
-        <div className="text-center mb-6">
+      <main className="flex-1 h-[calc(100svh-112px)] container flex items-center justify-center flex-col mx-auto px-4 py-8 max-w-5xl">
+        {/* <div className="text-center mb-6">
           <Title>Revenue Purchase Agreement</Title>
           <p className="text-md text-gray-600 text-balance max-w-3xl mx-auto">
             Please review and sign the agreement to receive your funding.
           </p>
-        </div>
+        </div> */}
+        <div className="bg-white flex-1 flex items-start shadow-md rounded-xl overflow-hidden">
+          <div
+            ref={contractRef}
+            className="overflow-y-auto w-full h-full p-4 mb-6 bg-gray-50 text-sm border-r"
+          >
+            <h3 className="font-bold mb-4">REVENUE PURCHASE AGREEMENT</h3>
 
-        <div className="bg-white shadow-md rounded-xl overflow-hidden mb-12">
-          <div className="p-6">
-            <div className="flex justify-between items-center mb-4">
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900">
-                  Revenue Purchase Agreement
-                </h2>
-                <p className="text-sm text-gray-500">
-                  Document ID: {documentId}
-                </p>
+            <p className="mb-4">
+              This Revenue Purchase Agreement ("Agreement") is entered into as
+              of {new Date().toLocaleDateString()}, by and between Creator
+              Capital Inc., a Delaware corporation ("Company") and{" "}
+              {user?.name || "Creator"} ("Creator").
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">1. REVENUE PURCHASE</h4>
+            <p className="mb-4">
+              Subject to the terms and conditions of this Agreement, Company
+              agrees to provide Creator with funds in the amount specified in
+              the selected plan ("Purchase Amount") in exchange for the right to
+              receive a portion of Creator's future Subscription Revenue (as
+              defined below).
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">2. REPAYMENT TERMS</h4>
+            <p className="mb-4">
+              Creator agrees to pay the Purchase Amount plus the fee according
+              to the selected plan's monthly payment schedule. Payments will be
+              automatically deducted from Creator's connected Patreon account on
+              a monthly basis until the total repayment amount has been
+              satisfied.
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">
+              3. SUBSCRIPTION REVENUE DEFINED
+            </h4>
+            <p className="mb-4">
+              "Subscription Revenue" means all revenue earned by Creator through
+              subscription payments from supporters on Patreon or other
+              subscription platforms. This includes all tiers and membership
+              levels offered by Creator.
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">4. CREATOR OBLIGATIONS</h4>
+            <p className="mb-4">
+              Creator agrees to:
+              <br />
+              (a) Maintain their creator account in good standing;
+              <br />
+              (b) Continue creating content according to their established
+              schedule;
+              <br />
+              (c) Not take actions specifically designed to reduce subscription
+              revenue during the repayment period;
+              <br />
+              (d) Provide access to subscription revenue data during the
+              repayment period.
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">5. DEFAULT</h4>
+            <p className="mb-4">
+              Creator will be in default if any monthly payment is more than 15
+              days late. In the event of default, the entire unpaid balance may
+              become immediately due and payable.
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">6. TERM</h4>
+            <p className="mb-4">
+              This Agreement begins on the date of signing and continues until
+              the Purchase Amount plus fee has been repaid in full.
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">7. CONFIDENTIALITY</h4>
+            <p className="mb-4">
+              The terms of this Agreement are confidential and shall not be
+              disclosed except as required by law.
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">8. GOVERNING LAW</h4>
+            <p className="mb-4">
+              This Agreement is governed by the laws of the State of Delaware.
+            </p>
+
+            <h4 className="font-bold mt-6 mb-2">9. ENTIRE AGREEMENT</h4>
+            <p className="mb-4">
+              This Agreement constitutes the entire understanding between the
+              parties concerning the subject matter hereof.
+            </p>
+
+            <div className="h-20"></div>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            className="p-6 w-full h-full flex flex-col justify-between max-w-[400px]"
+          >
+            <div className="flex-1">
+              <div className="items-center mb-4">
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900">
+                    Revenue Purchase Agreement
+                  </h2>
+                  <p className="text-sm text-gray-500">
+                    Document ID: {documentId}
+                  </p>
+                </div>
               </div>
               <Button
+                type="button"
                 variant="outline"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 w-full"
                 onClick={handleDownload}
               >
                 <Download size={16} /> Download PDF
               </Button>
             </div>
 
-            {/* Contract content */}
-            <div
-              ref={contractRef}
-              className="h-80 overflow-y-auto border border-gray-200 rounded-md p-4 mb-6 bg-gray-50 text-sm"
-            >
-              <h3 className="font-bold mb-4">REVENUE PURCHASE AGREEMENT</h3>
-
-              <p className="mb-4">
-                This Revenue Purchase Agreement ("Agreement") is entered into as
-                of {new Date().toLocaleDateString()}, by and between Creator
-                Capital Inc., a Delaware corporation ("Company") and{" "}
-                {user?.name || "Creator"} ("Creator").
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">1. REVENUE PURCHASE</h4>
-              <p className="mb-4">
-                Subject to the terms and conditions of this Agreement, Company
-                agrees to provide Creator with funds in the amount specified in
-                the selected plan ("Purchase Amount") in exchange for the right
-                to receive a portion of Creator's future Subscription Revenue
-                (as defined below).
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">2. REPAYMENT TERMS</h4>
-              <p className="mb-4">
-                Creator agrees to pay the Purchase Amount plus the fee according
-                to the selected plan's monthly payment schedule. Payments will
-                be automatically deducted from Creator's connected Patreon
-                account on a monthly basis until the total repayment amount has
-                been satisfied.
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">
-                3. SUBSCRIPTION REVENUE DEFINED
-              </h4>
-              <p className="mb-4">
-                "Subscription Revenue" means all revenue earned by Creator
-                through subscription payments from supporters on Patreon or
-                other subscription platforms. This includes all tiers and
-                membership levels offered by Creator.
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">4. CREATOR OBLIGATIONS</h4>
-              <p className="mb-4">
-                Creator agrees to:
-                <br />
-                (a) Maintain their creator account in good standing;
-                <br />
-                (b) Continue creating content according to their established
-                schedule;
-                <br />
-                (c) Not take actions specifically designed to reduce
-                subscription revenue during the repayment period;
-                <br />
-                (d) Provide access to subscription revenue data during the
-                repayment period.
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">5. DEFAULT</h4>
-              <p className="mb-4">
-                Creator will be in default if any monthly payment is more than
-                15 days late. In the event of default, the entire unpaid balance
-                may become immediately due and payable.
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">6. TERM</h4>
-              <p className="mb-4">
-                This Agreement begins on the date of signing and continues until
-                the Purchase Amount plus fee has been repaid in full.
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">7. CONFIDENTIALITY</h4>
-              <p className="mb-4">
-                The terms of this Agreement are confidential and shall not be
-                disclosed except as required by law.
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">8. GOVERNING LAW</h4>
-              <p className="mb-4">
-                This Agreement is governed by the laws of the State of Delaware.
-              </p>
-
-              <h4 className="font-bold mt-6 mb-2">9. ENTIRE AGREEMENT</h4>
-              <p className="mb-4">
-                This Agreement constitutes the entire understanding between the
-                parties concerning the subject matter hereof.
-              </p>
-
-              <div className="h-20"></div>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex items-start space-x-3">
+            <div className="flex items-start space-x-3">
+              <div className="py-1">
                 <Checkbox
+                  className="size-6 rounded-lg"
                   id="agreement"
                   checked={hasAgreed}
                   onCheckedChange={(checked) => setHasAgreed(checked === true)}
                   disabled={!hasScrolledToBottom}
                 />
-                <label
-                  htmlFor="agreement"
-                  className={`text-sm ${
-                    !hasScrolledToBottom ? "text-gray-400" : "text-gray-700"
-                  }`}
-                >
-                  I have read and agree to the terms and conditions outlined in
-                  this agreement.
-                  {!hasScrolledToBottom && (
-                    <span className="block text-amber-600 mt-1">
-                      Please scroll to the bottom of the contract first.
-                    </span>
-                  )}
-                </label>
               </div>
+              <label
+                htmlFor="agreement"
+                className={`text-sm text-balance ${
+                  !hasScrolledToBottom ? "text-gray-400" : "text-gray-700"
+                }`}
+              >
+                I have read and agree to the terms and conditions outlined in
+                this agreement.
+                {!hasScrolledToBottom && (
+                  <span className="block text-amber-600 mt-1">
+                    Please scroll to the bottom of the contract first.
+                  </span>
+                )}
+              </label>
+            </div>
 
-              <div>
-                <label
-                  htmlFor="signature"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Electronic Signature (Type your full name)
-                </label>
-                <input
-                  id="signature"
-                  type="text"
-                  value={signature}
-                  onChange={(e) => setSignature(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
-                  placeholder="Type your full name"
-                  disabled={!hasAgreed}
-                  required
-                />
-                <p className="mt-1 text-xs text-gray-500">
+            <div className="my-4">
+              <label
+                htmlFor="signature"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Electronic Signature (Type your full name)
+              </label>
+              <input
+                id="signature"
+                type="text"
+                value={signature}
+                onChange={(e) => setSignature(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                placeholder="Full name"
+                disabled={!hasAgreed}
+                required
+              />
+              {/* <p className="mt-1 text-xs text-gray-500">
                   By typing your name above, you are signing this agreement
                   electronically.
-                </p>
-              </div>
+                </p> */}
+            </div>
 
-              <div className="flex justify-end">
-                <Button
-                  type="submit"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 gap-2"
-                  disabled={!hasAgreed || !signature || isSubmitting}
-                >
-                  {isSubmitting ? "Processing..." : "Sign & Continue"}
-                  {!isSubmitting && <ArrowRight size={16} />}
-                </Button>
-              </div>
-            </form>
-          </div>
+            <footer className="flex mt-4 flex-col gap-2 sm:flex-row">
+              <Button
+                type="submit"
+                className="bg-primary w-full hover:bg-primary/90 text-primary-foreground px-6 py-2 gap-2"
+                disabled={!hasAgreed || !signature || isSubmitting}
+              >
+                {isSubmitting ? "Processing..." : "Sign & Continue"}
+                {!isSubmitting && <ArrowRight size={16} />}
+              </Button>
+            </footer>
+          </form>
         </div>
       </main>
+
+      <div className="py-4 text-center">
+        <p className="text-xs text-gray-500">
+          © 2025 Creator Capital. All rights reserved.
+        </p>
+      </div>
 
       {/* Enhanced celebration modal */}
       {showCelebration && (
@@ -341,11 +333,25 @@ const Contract: React.FC = () => {
           </div>
         </div>
       )}
-      <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">
-          © 2025 Creator Capital. All rights reserved.
-        </p>
-      </div>
+
+      {/* Confetti overlay */}
+      {showConfetti && (
+        <Confetti
+          width={windowDimensions.width}
+          height={windowDimensions.height}
+          recycle={false}
+          numberOfPieces={500}
+          initialVelocityY={15}
+          gravity={0.2}
+          colors={["#017354", "#64D2B1", "#FFC700", "#FF6B6B", "#5D5FEF"]}
+          confettiSource={{
+            x: 0,
+            y: -50, // Start from above the screen
+            w: windowDimensions.width,
+            h: 0,
+          }}
+        />
+      )}
     </div>
   );
 };
