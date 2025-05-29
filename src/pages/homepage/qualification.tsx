@@ -18,12 +18,13 @@ const who = [
 
 export function Qualification() {
   return (
-    <AnimationParent className="w-full max-w-container mx-auto pb-32 px-4">
+    <AnimationParent className="w-full max-w-container mx-auto pb-32 px-4 relative">
+      <a id="qualification" className="absolute top-0 left-0" />
       <AnimationChild>
         <FitText>Qualification</FitText>
       </AnimationChild>
 
-      <AnimationChild className="flex flex-col sm:flex-row gap-4 sm:-mt-[80px]">
+      <AnimationChild className="flex flex-col sm:flex-row gap-4 sm:-mt-[50px]">
         <div className="w-full flex flex-col justify-start h-fit p-6 fit-container bg-card/70 backdrop-blur-sm rounded-3xl">
           <h2 className="font-thunder mb-8 text-4xl sm:text-7xl leading-none uppercase">
             Ways Creators Use Their Funding

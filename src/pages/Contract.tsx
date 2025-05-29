@@ -108,7 +108,7 @@ const Contract: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="h-screen relative flex flex-col">
       <header className="w-full p-4 flex justify-center px-8 md:px-12">
         <Link to="/" className="flex items-center">
           <Logo className="h-8" />
@@ -116,13 +116,7 @@ const Contract: React.FC = () => {
       </header>
 
       <main className="flex-1 h-[calc(100svh-112px)] container flex items-center justify-center flex-col mx-auto px-4 py-8 max-w-5xl">
-        {/* <div className="text-center mb-6">
-          <Title>Revenue Purchase Agreement</Title>
-          <p className="text-md text-gray-600 text-balance max-w-3xl mx-auto">
-            Please review and sign the agreement to receive your funding.
-          </p>
-        </div> */}
-        <div className="bg-white flex-1 flex items-start shadow-md rounded-xl overflow-hidden">
+        <div className="bg-white w-full flex-1 grid grid-cols-[1fr_400px] items-start shadow-md rounded-xl overflow-hidden">
           <div
             ref={contractRef}
             className="overflow-y-auto w-full h-full p-4 mb-6 bg-gray-50 text-sm border-r"

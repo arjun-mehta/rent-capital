@@ -1,5 +1,6 @@
 import React from "react";
 import { Logo } from "./navigation";
+import { AnimationChild, AnimationParent } from "./animations";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -36,8 +37,8 @@ const Footer: React.FC = () => {
   return (
     <footer className="pb-8 w-full max-w-[1080px] mx-auto px-4">
       <div className=" border-t pt-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
-          <div className="md:col-span-2">
+        <AnimationParent className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
+          <AnimationChild className="md:col-span-2">
             <div className="mb-6">
               <Logo className="h-8" />
             </div>
@@ -45,10 +46,10 @@ const Footer: React.FC = () => {
               Providing creators with the financial tools they need to grow
               their business and focus on what they do best.
             </p>
-          </div>
+          </AnimationChild>
 
           {sections.map((section, index) => (
-            <div key={index} className="md:col-span-1">
+            <AnimationChild key={index} className="md:col-span-1">
               <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
               <ul className="space-y-3">
                 {section.links.map((link, linkIndex) => (
@@ -62,9 +63,9 @@ const Footer: React.FC = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </AnimationChild>
           ))}
-        </div>
+        </AnimationParent>
 
         <div className="border-t pt-8 flex text-sm flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">

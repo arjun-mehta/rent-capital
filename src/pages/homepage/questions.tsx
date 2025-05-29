@@ -43,7 +43,8 @@ const items = [
 
 export function Questions() {
   return (
-    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 pt-0">
+    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 pt-0 relative">
+      <a id="faq" className="absolute top-0 left-0" />
       <AnimationChild>
         <FitText>Questions</FitText>
       </AnimationChild>

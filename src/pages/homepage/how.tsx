@@ -29,7 +29,8 @@ const items = [
 
 export function How() {
   return (
-    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32">
+    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 relative">
+      <a id="how" className="absolute top-0 left-0" />
       <AnimationChild>
         <FitText>How it works</FitText>
       </AnimationChild>

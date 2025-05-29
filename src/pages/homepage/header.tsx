@@ -5,6 +5,8 @@ import iconCalendar from "./icons/calendar.png";
 import iconMic from "./icons/mic.png";
 import iconCameraPhoto from "./icons/camera-photo.png";
 import iconNotebook from "./icons/notebook.png";
+import iconLightbulb from "./icons/lightbulb.png";
+import iconRocket from "./icons/rocket.png";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "lucide-react";
@@ -21,6 +23,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useScrollToElement } from "./scroll";
 
 const logos = [
   {
@@ -67,7 +70,7 @@ const icons = [
     },
   },
   {
-    src: iconCalendar,
+    src: iconRocket,
     position: {
       top: "50%",
       left: "-100px",
@@ -90,7 +93,7 @@ const icons = [
     },
   },
   {
-    src: iconNotebook,
+    src: iconLightbulb,
     position: {
       bottom: 0,
       right: 0,
@@ -134,6 +137,8 @@ const childIcons: Variants = {
 };
 
 export function Header() {
+  const { scrollToElement } = useScrollToElement();
+
   return (
     <motion.header variants={parentIcons} initial="hidden" animate="visible">
       <div className="max-w-screen-xl overflow-x-hidden sm:overflow-x-visible my-8 sm:w-fit mx-auto flex justify-between flex-col items-center px-20 py-24 sm:py-44 relative">
@@ -166,7 +171,22 @@ export function Header() {
               </motion.span>
             </span>
           </h1>
-          <div className="mt-4 absolute bottom-0 sm:bottom-20 left-1/2 -translate-x-1/2">
+          <div className="mt-4 flex flex-col sm:flex-row items-center gap-2 absolute bottom-0 sm:bottom-20 left-1/2 -translate-x-1/2">
+            <AnimtedButton
+              variants={childButton}
+              size="lg"
+              className="hidden sm:flex"
+              variant="secondary"
+              onClick={() =>
+                scrollToElement("calculator", {
+                  behavior: "smooth",
+                  block: "center",
+                  inline: "center",
+                })
+              }
+            >
+              Estimate Your Advance
+            </AnimtedButton>
             <AnimtedButton
               variants={childButton}
               asChild

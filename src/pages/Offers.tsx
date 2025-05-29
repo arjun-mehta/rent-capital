@@ -116,11 +116,14 @@ const Offers: React.FC = () => {
                 )}
                 <div className="p-5 pb-3 flex flex-col h-full flex-1">
                   <div className="mb-8">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <h3 className="text-lg font-semibold text-primary mb-1">
                       {offer.months}-Month Advance
                     </h3>
-                    <div className="text-3xl font-medium text-primary mb-2">
-                      ${offer.amount.toLocaleString()}
+                    <div className="text-4xl font-bold tracking-tighter text-primary-foreground mb-2">
+                      <span className="font-normal text-primary-foreground mr-1">
+                        $
+                      </span>
+                      {offer.amount.toLocaleString()}
                     </div>
                     <p className="text-sm text-gray-500">
                       ${offer.monthlyPayment.toLocaleString()} estimated monthly

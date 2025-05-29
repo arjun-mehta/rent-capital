@@ -123,7 +123,7 @@ const SignIRSForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="h-screen relative flex flex-col">
       <header className="w-full p-4 flex justify-center px-8 md:px-12">
         <Link to="/" className="flex items-center">
           <Logo className="h-8" />
@@ -131,10 +131,10 @@ const SignIRSForm: React.FC = () => {
       </header>
 
       <main className="flex-1 h-[calc(100svh-112px)] container flex items-center justify-center flex-col mx-auto px-4 py-8 max-w-5xl">
-        <div className="bg-white w-full flex-1 flex items-start shadow-md rounded-xl overflow-hidden">
+        <div className="bg-white w-full flex-1 grid grid-cols-[1fr_400px] items-start shadow-md rounded-xl overflow-hidden">
           <div
             ref={pdfContainerRef}
-            className="overflow-y-auto w-full h-full mb-6 bg-gray-50 text-sm border-r"
+            className="overflow-y-auto size-full flex flex-col bg-gray-50 text-sm border-r"
           >
             <object
               data={IRS_FORM_URL}
