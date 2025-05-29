@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import { Header } from "./header";
 import { How } from "./how";
 import { Navigation } from "./navigation";
@@ -12,6 +13,7 @@ export function HomePage() {
       <How />
       <Qualification />
       <Questions />
+      <Footer />
     </>
   );
 }

@@ -24,7 +24,7 @@ export function AnimationParent(props: MotionProps & ComponentProps<"div">) {
       initial="hidden"
       whileInView="visible"
       variants={parentAppear}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.3 }}
       {...props}
     />
   );

@@ -8,20 +8,22 @@ const items = [
   {
     title: "Apply in Minutes",
     description:
-      "No lengthy applications or credit checks. The most important thing we need to know is your revenue on Patreon, Substack, or comparable platform.",
-    image: iconCalendar,
+      "No long forms or credit checks. Just connect your account and share your revenue from Patreon, Substack, or a similar platform.",
   },
   {
-    title: "Receive Cash Advance",
+    title: "Select Your Offer",
     description:
-      "If approved for an advance, you'll receive an offer based on your projected earnings. Once you accept, funds will be wired to your bank account within days.",
-    image: iconNotebook,
+      "Pick the funding amount that works for you. Your fee is based on the amount you choose, no hidden terms.",
   },
   {
-    title: "Repay Without Stress",
+    title: "Receive Your Funds",
     description:
-      "We'll automatically receive payments from the subscription platform. No manual transfers. No hidden fees.",
-    image: iconDuffleBag,
+      "Once approved, your funds are sent directly to your bank account within a few business days.",
+  },
+  {
+    title: "Pay as You Earn",
+    description:
+      "Repay automatically through a fixed share of your monthly income until the full amount is covered.",
   },
 ];
 
@@ -31,35 +33,28 @@ export function How() {
       <AnimationChild>
         <FitText>How it works</FitText>
       </AnimationChild>
-      <AnimationChild className="flex flex-col gap-4 sm:-mt-[80px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:-mt-[80px]">
         {items.map((item, index) => (
-          <div
+          <AnimationChild
             key={item.title}
-            className="w-full flex sm:flex-row flex-col-reverse p-6 fit-container bg-card/70 backdrop-blur-sm sm:min-h-[420px] rounded-3xl"
+            className="w-full flex sm:flex-row p-6 fit-container bg-card/70 backdrop-blur-sm rounded-3xl"
           >
-            <div className="flex flex-col justify-between">
-              <div className="flex mb-4 items-center size-10 sm:size-16 text-background font-semibold justify-center leading-none text-center text-lg sm:text-4xl rounded-full bg-foreground">
-                {index + 1}
-              </div>
+            <div className="flex flex-col">
               <div>
-                <h2 className="font-thunder text-4xl sm:text-7xl leading-none uppercase">
+                <div className="flex mb-4 items-center size-10 text-primary-foreground font-semibold justify-center leading-none text-center text-lg rounded-full bg-primary">
+                  {index + 1}
+                </div>
+                <h2 className="font-thunder text-3xl leading-none uppercase">
                   {item.title}
                 </h2>
-                <p className="text-xl w-full text-balance">
-                  {item.description}
-                </p>
               </div>
+              <p className="text-base w-full mt-4 text-balance">
+                {item.description}
+              </p>
             </div>
-            <div className="sm:size-[420px] flex-shrink-0 flex items-center justify-center">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="size-[280px] object-cover"
-              />
-            </div>
-          </div>
+          </AnimationChild>
         ))}
-      </AnimationChild>
+      </div>
     </AnimationParent>
   );
 }

@@ -149,10 +149,7 @@ const DashboardEstablished: React.FC = () => {
                       ${repaymentData.totalAmount.toLocaleString()} total
                     </span>
                   </div>
-                  <Progress
-                    value={repaymentData.progressPercent}
-                    className="h-2"
-                  />
+                  <Progress value={repaymentData.progressPercent} />
                   <div className="mt-2 text-center">
                     <span className="text-sm font-medium text-gray-700">
                       {repaymentData.progressPercent}% Complete
@@ -197,17 +194,15 @@ const DashboardEstablished: React.FC = () => {
                   <h3 className="font-medium text-gray-900 mb-4">
                     Upcoming Payments
                   </h3>
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start space-x-4">
-                    <Calendar className="text-amber-500 h-5 w-5 mt-0.5 flex-shrink-0" />
+                  <div className="bg-gray-50 text-primary-foreground rounded-lg p-4 flex items-start space-x-4">
+                    <Calendar className="h-5 w-5 mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-amber-800">
-                        Next payment: ${repaymentData.nextPaymentAmount}
-                      </h4>
-                      <p className="text-sm text-amber-700">
-                        Due in {nextPaymentDays} days on{" "}
+                      <h4 className="font-medium">Next payment:</h4>
+                      <p className="text-sm">
+                        In {nextPaymentDays} days on{" "}
                         {repaymentData.nextPaymentDate.toLocaleDateString()}
                       </p>
-                      <p className="text-xs text-amber-600 mt-1">
+                      <p className="text-xs mt-1">
                         Payments are automatically processed through your
                         Patreon account
                       </p>
@@ -240,7 +235,7 @@ const DashboardEstablished: React.FC = () => {
                     </div>
                     <div className="text-right">
                       <div className="font-semibold text-gray-900">$475.00</div>
-                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
                     </div>
@@ -262,7 +257,7 @@ const DashboardEstablished: React.FC = () => {
                     </div>
                     <div className="text-right">
                       <div className="font-semibold text-gray-900">$475.00</div>
-                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
                     </div>
@@ -284,7 +279,7 @@ const DashboardEstablished: React.FC = () => {
                     </div>
                     <div className="text-right">
                       <div className="font-semibold text-gray-900">$475.00</div>
-                      <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">
+                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
                     </div>
@@ -301,13 +296,13 @@ const DashboardEstablished: React.FC = () => {
                 <CardTitle>Upcoming Renewal</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start space-x-4 mb-4">
-                  <Zap className="text-blue-500 h-5 w-5 mt-0.5 flex-shrink-0" />
+                <div className="bg-primary/10 rounded-lg p-4 flex items-start space-x-4 mb-4">
+                  <Zap className="text-primary-500 h-5 w-5 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium text-blue-800">
+                    <h4 className="font-medium text-primary-800">
                       Renewal Available: {renewalDate.toLocaleDateString()}
                     </h4>
-                    <p className="text-sm text-blue-700 mb-2">
+                    <p className="text-sm text-primary-700 mb-2">
                       Based on your current revenue trends and repayment health,
                       you are eligible for a new advance - even before your
                       current one is fully complete.
@@ -315,7 +310,11 @@ const DashboardEstablished: React.FC = () => {
                   </div>
                 </div>
 
-                <Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="w-full bg-primary/10 text-primary-foreground px-0"
+                >
                   See Renewal Offers <ChevronRightIcon />
                 </Button>
               </CardContent>
