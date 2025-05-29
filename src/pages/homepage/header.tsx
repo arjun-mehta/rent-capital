@@ -192,8 +192,8 @@ export function Header() {
         <div className="flex flex-wrap px-4 items-center justify-between my-8 sm:justify-center">
           {logos.map((logo) => (
             <Tooltip key={logo.name} delayDuration={0}>
-              <TooltipTrigger className="cursor-default">
-                <div className="h-[40px] sm:px-5 opacity-50">
+              <TooltipTrigger className="cursor-default" asChild>
+                <div className="h-[40px] sm:px-5 opacity-50 transition-opacity data-[state=delayed-open]:opacity-100 data-[state=instant-open]:opacity-100">
                   <motion.img
                     variants={child}
                     src={logo.src}
