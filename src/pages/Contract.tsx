@@ -16,6 +16,8 @@ const Contract: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [pdfLoaded, setPdfLoaded] = useState(false);
+  const [pdfError, setPdfError] = useState(false);
   const [documentId] = useState(
     () => `CCA-${Math.floor(Math.random() * 1000000)}`
   );
@@ -70,6 +72,14 @@ const Contract: React.FC = () => {
   }, []);
 
   const handleDownload = () => {
+    // Create a download link for the local PDF
+    const link = document.createElement("a");
+    link.href = "/forms/contract.pdf";
+    link.download = "contract.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
     // In a real app, this would download the PDF
     toast({
       title: "Download started",
@@ -119,92 +129,36 @@ const Contract: React.FC = () => {
         <div className="bg-white w-full flex-1 grid grid-cols-[1fr_400px] items-start shadow-md rounded-xl overflow-hidden">
           <div
             ref={contractRef}
-            className="overflow-y-auto w-full h-full p-4 mb-6 bg-gray-50 text-sm border-r"
+            className="overflow-y-auto size-full flex flex-col bg-gray-50 text-sm border-r"
           >
-            <h3 className="font-bold mb-4">REVENUE PURCHASE AGREEMENT</h3>
-
-            <p className="mb-4">
-              This Revenue Purchase Agreement ("Agreement") is entered into as
-              of {new Date().toLocaleDateString()}, by and between Creator
-              Capital Inc., a Delaware corporation ("Company") and{" "}
-              {user?.name || "Creator"} ("Creator").
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">1. REVENUE PURCHASE</h4>
-            <p className="mb-4">
-              Subject to the terms and conditions of this Agreement, Company
-              agrees to provide Creator with funds in the amount specified in
-              the selected plan ("Purchase Amount") in exchange for the right to
-              receive a portion of Creator's future Subscription Revenue (as
-              defined below).
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">2. REPAYMENT TERMS</h4>
-            <p className="mb-4">
-              Creator agrees to pay the Purchase Amount plus the fee according
-              to the selected plan's monthly payment schedule. Payments will be
-              automatically deducted from Creator's connected Patreon account on
-              a monthly basis until the total repayment amount has been
-              satisfied.
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">
-              3. SUBSCRIPTION REVENUE DEFINED
-            </h4>
-            <p className="mb-4">
-              "Subscription Revenue" means all revenue earned by Creator through
-              subscription payments from supporters on Patreon or other
-              subscription platforms. This includes all tiers and membership
-              levels offered by Creator.
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">4. CREATOR OBLIGATIONS</h4>
-            <p className="mb-4">
-              Creator agrees to:
-              <br />
-              (a) Maintain their creator account in good standing;
-              <br />
-              (b) Continue creating content according to their established
-              schedule;
-              <br />
-              (c) Not take actions specifically designed to reduce subscription
-              revenue during the repayment period;
-              <br />
-              (d) Provide access to subscription revenue data during the
-              repayment period.
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">5. DEFAULT</h4>
-            <p className="mb-4">
-              Creator will be in default if any monthly payment is more than 15
-              days late. In the event of default, the entire unpaid balance may
-              become immediately due and payable.
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">6. TERM</h4>
-            <p className="mb-4">
-              This Agreement begins on the date of signing and continues until
-              the Purchase Amount plus fee has been repaid in full.
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">7. CONFIDENTIALITY</h4>
-            <p className="mb-4">
-              The terms of this Agreement are confidential and shall not be
-              disclosed except as required by law.
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">8. GOVERNING LAW</h4>
-            <p className="mb-4">
-              This Agreement is governed by the laws of the State of Delaware.
-            </p>
-
-            <h4 className="font-bold mt-6 mb-2">9. ENTIRE AGREEMENT</h4>
-            <p className="mb-4">
-              This Agreement constitutes the entire understanding between the
-              parties concerning the subject matter hereof.
-            </p>
-
-            <div className="h-20"></div>
+            <object
+              data="/forms/contract.pdf"
+              type="application/pdf"
+              className="w-full h-full"
+              onLoad={() => setPdfLoaded(true)}
+              onError={() => setPdfError(true)}
+            >
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-50 p-4">
+                <div className="text-center max-w-md">
+                  <div className="text-amber-600 text-4xl mb-4">⚠️</div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    Unable to display the PDF
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    Your browser may not support embedded PDFs. You can download
+                    the form or view it on the IRS website.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                    <Button
+                      onClick={handleDownload}
+                      className="flex items-center gap-2"
+                    >
+                      <Download size={16} /> Download PDF
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </object>
           </div>
 
           <form
