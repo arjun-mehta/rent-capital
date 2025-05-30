@@ -1,4 +1,5 @@
-import Footer from "./Footer";
+import { Estimate } from "./estimate";
+import { Footer } from "./footer";
 import { Header } from "./header";
 import { How } from "./how";
 import { Navigation } from "./navigation";
@@ -10,6 +11,7 @@ export function HomePage() {
     <>
       <Navigation />
       <Header />
+      <Estimate />
       <How />
       <Qualification />
       <Questions />

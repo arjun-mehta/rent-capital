@@ -313,7 +313,7 @@ const DashboardEstablished: React.FC = () => {
                 <Button
                   size="sm"
                   variant="ghost"
-                  className="w-full bg-primary/10 text-primary-foreground px-0"
+                  className="w-full bg-primary text-primary-foreground px-0"
                 >
                   See Renewal Offers <ChevronRightIcon />
                 </Button>

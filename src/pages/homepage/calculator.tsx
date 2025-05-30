@@ -48,68 +48,67 @@ export function Calculator() {
   };
 
   return (
-    <div className="w-full px-4 max-w-container mx-auto grid gap-2 sm:grid-cols-3 relative">
+    <div className="w-full px-4 max-w-container mx-auto relative">
       <a id="calculator" className="absolute top-0 left-0" />
       <motion.div
         variants={child}
-        className="bg-card p-4 rounded-3xl shadow-xs"
+        className="bg-card p-6 mb-2 rounded-3xl shadow-xs"
       >
-        <div className="text-sm text-muted-foreground font-normal mb-8">
-          Monthly subscription revenue
+        <div>
+          <div className="text-sm text-muted-foreground font-normal mb-4">
+            Monthly subscription revenue
+          </div>
+          <div className="space-y-3 md:space-y-4">
+            <Slider
+              defaultValue={[10]}
+              min={10}
+              max={100}
+              step={1}
+              onValueChange={handleSliderChange}
+            />
+            <div className="flex justify-between items-center">
+              <span className="text-xs text-gray-500">$10,000</span>
+              <span className="text-2xl font-medium">
+                ${monthlyRevenue.toLocaleString()}
+              </span>
+              <span className="text-xs text-gray-500">$100,000</span>
+            </div>
+          </div>
         </div>
-        <div className="space-y-3 md:space-y-4">
-          <Slider
-            defaultValue={[10]}
-            min={10}
-            max={100}
-            step={1}
-            onValueChange={handleSliderChange}
-          />
-          <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-500">$10,000</span>
-            <span className="text-base font-medium">
-              ${monthlyRevenue.toLocaleString()}
-            </span>
-            <span className="text-xs text-gray-500">$100,000</span>
+
+        <div>
+          <div className="text-sm text-muted-foreground font-normal mt-4 mb-4">
+            Advance size
+          </div>
+          <div className="grid grid-cols-3 gap-2 md:gap-3">
+            {[
+              { value: "3", label: "3 months" },
+              { value: "6", label: "6 months" },
+              { value: "12", label: "12 months" },
+            ].map((plan) => (
+              <button
+                key={plan.value}
+                onClick={() => handlePlanChange(plan.value)}
+                className={cn(
+                  "py-2.5 md:py-3 px-1 md:px-2 rounded-lg text-center transition-all duration-200",
+                  "text-xs md:text-sm font-medium",
+                  selectedPlan === plan.value
+                    ? "border border-[#017354] text-[#017354] bg-white"
+                    : "border border-gray-200 text-gray-700 bg-white hover:border-[#017354]/50"
+                )}
+              >
+                {plan.label}
+              </button>
+            ))}
           </div>
         </div>
       </motion.div>
 
       <motion.div
         variants={child}
-        className="bg-card p-4 rounded-3xl shadow-xs"
+        className="bg-primary text-foreground p-6 rounded-3xl"
       >
-        <div className="text-sm text-muted-foreground font-normal mb-8">
-          Advance size
-        </div>
-        <div className="grid grid-cols-3 gap-2 md:gap-3">
-          {[
-            { value: "3", label: "3 months" },
-            { value: "6", label: "6 months" },
-            { value: "12", label: "12 months" },
-          ].map((plan) => (
-            <button
-              key={plan.value}
-              onClick={() => handlePlanChange(plan.value)}
-              className={cn(
-                "py-2.5 md:py-3 px-1 md:px-2 rounded-lg text-center transition-all duration-200",
-                "text-xs md:text-sm font-medium",
-                selectedPlan === plan.value
-                  ? "border border-[#017354] text-[#017354] bg-white"
-                  : "border border-gray-200 text-gray-700 bg-white hover:border-[#017354]/50"
-              )}
-            >
-              {plan.label}
-            </button>
-          ))}
-        </div>
-      </motion.div>
-
-      <motion.div
-        variants={child}
-        className="bg-primary text-foreground p-4 rounded-3xl"
-      >
-        <div className="text-sm font-normal mb-8">Estimated advance amount</div>
+        <div className="text-sm font-normal mb-4">Estimated advance amount</div>
         <div className="flex items-center justify-between text-left">
           <div className="text-2xl">${advanceAmount.toLocaleString()}</div>
           <Button className="w-fit" variant="secondary" asChild>

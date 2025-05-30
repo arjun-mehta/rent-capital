@@ -2,7 +2,7 @@ import React from "react";
 import { Logo } from "./navigation";
 import { AnimationChild, AnimationParent } from "./animations";
 
-const Footer: React.FC = () => {
+export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const sections = [
@@ -98,6 +98,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

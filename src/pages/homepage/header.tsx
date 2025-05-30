@@ -227,7 +227,6 @@ export function Header() {
           ))}
         </div>
       </motion.div>
-      <Calculator />
     </motion.header>
   );
 }

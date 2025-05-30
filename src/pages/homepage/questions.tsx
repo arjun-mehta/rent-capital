@@ -12,32 +12,69 @@ const items = [
   {
     question: "What is Creator Capital?",
     anwer:
-      "Creator Capital is a financial platform that provides funding to content creators, influencers, and online entrepreneurs to help them grow their businesses. We offer simple, transparent capital advances without taking ownership of your content or business.",
+      "Creator Capital provides upfront payments to subscription-based creators in exchange for the right to collect a fixed amount of future revenue. This is not a loan, but a purchase of future receivables, repaid through a share of your platform earnings. No interest. No impact to your credit score. No personal guarantees.",
   },
   {
-    question: "How does the application process work?",
-    anwer:
-      "Our application process is simple and straightforward. Fill out the application form with your details and creator statistics. We'll review your application and get back to you within 48 hours. If approved, you'll receive funding within 3-5 business days.",
+    question: "Who qualifies for funding?",
+    anwer: (
+      <>
+        We work with creators who:
+        <ul className="list-disc list-inside my-2">
+          <li>Earn recurring revenue on platforms like Patreon or Substack</li>
+          <li>Have at least 12 months of consistent subscription income</li>
+          <li>
+            Are U.S.-based and operate as a registered business (LLC or higher)
+          </li>
+        </ul>
+        We don’t currently support sole proprietors or creators without
+        recurring revenue.
+      </>
+    ),
   },
   {
-    question: "What are the eligibility requirements?",
+    question: "How does it work?",
     anwer:
-      "To be eligible, you need to be an active content creator with at least 10,000 followers across your platforms, consistent content posting for at least 6 months, and a stable revenue stream from your content creation activities.",
+      "Connect your subscription account and verify your business. Most creators see a preliminary offer within minutes, based on revenue data. All offers are subject to final review, and we may request additional information or decline funding after further evaluation. If approved and signed, funds are typically deposited in your bank account within 2–3 business days.",
   },
   {
-    question: "How do repayments work?",
+    question: "How much can I get?",
     anwer:
-      "Repayments are made as a percentage of your monthly revenue. This means if you earn less in a month, you pay less, and if you earn more, you pay more. This ensures that repayments scale with your business performance.",
+      "Funding amounts are based on factors like your subscription revenue, account performance, and overall business health. Once connected, you’ll see a personalized offer with clear terms and a fixed repayment amount before you commit.",
   },
   {
-    question: "Do you take ownership of my content or channel?",
+    question: "How are repayments structured?",
     anwer:
-      "No, we never take ownership of your content, channels, or business. You maintain 100% control and ownership of everything you create. Our funding is simply an advance on your future earnings.",
+      "During the advance period, we’re in the flow of funds — your platform payouts are redirected to a secure account we manage. A fixed percentage is applied toward repayment, and the remainder is distributed to you monthly. If earnings dip, repayments adjust automatically. No interest, no late fees, no penalties.",
   },
   {
-    question: "How fast can I get funded?",
+    question: "Is this a loan?",
     anwer:
-      "Once approved, you can receive funds within 3-5 business days. The entire process from application to funding typically takes about a week.",
+      "No — it’s a cash advance, not a loan. We purchase a fixed portion of your future subscription revenue, repaid through a predetermined share of your monthly earnings. There’s no debt, no credit impact, and no personal guarantees.",
+  },
+  {
+    question: "Do I still control my account?",
+    anwer:
+      "You maintain full access to manage your content and community. To secure repayment, we manage subscription platform login credentials and payout settings during the funding period. While sensitive areas like payment details are locked, your ability to use the platform remains unaffected.",
+  },
+  {
+    question: "Is my data secure?",
+    anwer:
+      "Yes. We use encrypted integrations and read-only APIs (e.g. Patreon OAuth) to access only the data needed for underwriting and repayment. Your information is never sold or shared.",
+  },
+  {
+    question: "Can I repay early?",
+    anwer:
+      "Yes. You can repay the advance at any time with no penalties. The total repayment amount is fixed once your offer is accepted.",
+  },
+  {
+    question: "What happens after I repay?",
+    anwer:
+      "Once your balance is repaid in full, payouts are redirected back to your original account and our access ends. You may receive a renewal offer before your current advance is complete, or reapply for additional funding at any time.",
+  },
+  {
+    question: "Does Creator Capital take equity or ownership in my business? ",
+    anwer:
+      "No — we don’t take any equity, ownership, or creative control. This is not an investment or licensing deal. You retain full ownership of your business and your content.",
   },
 ];
 

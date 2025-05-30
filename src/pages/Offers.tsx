@@ -102,7 +102,7 @@ const Offers: React.FC = () => {
               <Card
                 key={offer.id}
                 className={cn(
-                  "relative flex flex-col border rounded-xl shadow-md h-fit min-h-[400px] transition-all duration-200 overflow-hidden cursor-pointer",
+                  "relative flex flex-col border rounded-xl shadow-md h-fit min-h-[350px] transition-all duration-200 overflow-hidden cursor-pointer",
                   selectedOffer === offer.id
                     ? "border-primary ring-2 ring-primary ring-opacity-50 transform scale-[1.02]"
                     : "border-gray-200 hover:border-primary hover:shadow-lg"
@@ -115,15 +115,12 @@ const Offers: React.FC = () => {
                   </div>
                 )}
                 <div className="p-5 pb-3 flex flex-col h-full flex-1">
-                  <div className="mb-8">
-                    <h3 className="text-lg font-semibold text-primary mb-1">
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-primary-foreground mb-1">
                       {offer.months}-Month Advance
                     </h3>
-                    <div className="text-4xl font-bold tracking-tighter text-primary-foreground mb-2">
-                      <span className="font-normal text-primary-foreground mr-1">
-                        $
-                      </span>
-                      {offer.amount.toLocaleString()}
+                    <div className="text-4xl font-bold tracking-tighter text-primary mb-2">
+                      ${offer.amount.toLocaleString()}
                     </div>
                     <p className="text-sm text-gray-500">
                       ${offer.monthlyPayment.toLocaleString()} estimated monthly
@@ -132,7 +129,7 @@ const Offers: React.FC = () => {
                   </div>
 
                   <div className="mb-2">
-                    <div className="grid grid-cols-1 gap-4">
+                    <div className="grid grid-cols-1 gap-2">
                       <div className="flex items-start">
                         <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
                           <Check size={10} className="" />
