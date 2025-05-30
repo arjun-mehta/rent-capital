@@ -10,7 +10,7 @@ import {
   FileX,
   Check,
   ArrowRightIcon,
-} from "lucide-react";
+} from "lucide-react"; 
 import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
 import { Logo } from "./homepage/navigation";
