@@ -210,12 +210,12 @@ export function Header() {
         variants={parent(0.4)}
         initial="hidden"
         animate="visible"
-        className="my-20 mt-10"
+        className="my-10"
       >
         <motion.p variants={child} className="text-balance text-center">
           We fund creators with subscription-based earnings from:
         </motion.p>
-        <div className="flex flex-wrap px-4 items-center justify-between my-8 sm:justify-center">
+        <div className="flex flex-wrap px-4 items-center justify-between mt-8 sm:justify-center">
           {logos.map((logo) => (
             <Tooltip key={logo.name} delayDuration={0}>
               <TooltipTrigger className="cursor-default" asChild>
