@@ -140,8 +140,13 @@ export function Header() {
   const { scrollToElement } = useScrollToElement();
 
   return (
-    <motion.header variants={parentIcons} initial="hidden" animate="visible">
-      <div className="max-w-screen-xl overflow-x-hidden sm:overflow-x-visible my-8 sm:w-fit mx-auto flex justify-between flex-col items-center px-20 py-24 sm:py-44 relative">
+    <motion.header
+      variants={parentIcons}
+      initial="hidden"
+      animate="visible"
+      className="px-4 sm:px-0"
+    >
+      <div className="max-w-screen-xl overflow-x-hidden sm:overflow-x-visible mt-8 sm:w-fit mx-auto flex justify-between flex-col items-center px-20 py-24 sm:py-44 relative">
         <div className="absolute inset-0 z-0 pointer-events-none">
           {icons.map((icon) => (
             <motion.img
@@ -200,11 +205,12 @@ export function Header() {
           </div>
         </motion.div>
       </div>
+
       <motion.div
         variants={parent(0.4)}
         initial="hidden"
         animate="visible"
-        className="mb-20"
+        className="my-20 mt-10"
       >
         <motion.p variants={child} className="text-balance text-center">
           We fund creators with subscription-based earnings from:
@@ -218,7 +224,7 @@ export function Header() {
                     variants={child}
                     src={logo.src}
                     alt="logo"
-                    className="block size-[40px] object-contain"
+                    className="block size-[32px] sm:size-[40px] object-contain"
                   />
                 </div>
               </TooltipTrigger>
