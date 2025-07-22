@@ -13,7 +13,7 @@ const why = [
 const who = [
   "You upload content at least twice a month on a subscription platform.",
   "You've been earning subscription revenue for at least 12 months.",
-  "You generate $20,000+ per month from Patreon, Substack, or similar platforms.",
+  "You generate $10,000+ per month from Patreon, Substack, or similar platforms.",
 ];
 
 export function Qualification() {
