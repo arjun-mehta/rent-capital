@@ -66,7 +66,7 @@ const SelectPlatform: React.FC = () => {
       <div className="flex-1 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           <div className="text-center mb-10">
-            <Title>Connect your Patreon</Title>
+            <Title>Connect your Platform</Title>
             <p className="text-md text-balance text-gray-600">
               Choose the subscription platform where you earn most of your
               recurring revenue
