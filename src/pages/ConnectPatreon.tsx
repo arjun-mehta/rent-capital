@@ -35,7 +35,7 @@ const ConnectPatreon: React.FC = () => {
           title: "Success!",
           description: "Your Patreon account has been connected.",
         });
-        navigate("/connect-additional-accounts");
+        navigate("/processing");
       } else {
         toast({
           title: "Error",
@@ -113,7 +113,7 @@ const ConnectPatreon: React.FC = () => {
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-10"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Connecting..." : "Connect Patreon"}
+                  {isLoading ? "Connecting..." : "Show my advance offers"}
                 </Button>
               </div>
 

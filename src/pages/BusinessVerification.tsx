@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
 import { useAuth } from "@/lib/auth";
 import { Logo } from "./homepage/navigation";
@@ -9,6 +9,8 @@ const BusinessVerification: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const { isAuthenticated, isPatreonConnected } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const entityType = searchParams.get('type') || 'business';
 
   // Redirect if not authenticated or Patreon not connected
   useEffect(() => {
@@ -43,11 +45,17 @@ const BusinessVerification: React.FC = () => {
   }, [navigate]);
 
   // List of verification steps
-  const verificationSteps = [
-    { step: "Business status", complete: progress >= 33 },
-    { step: "Existing funding obligations", complete: progress >= 66 },
-    { step: "Tax standing", complete: progress >= 100 },
-  ];
+  const verificationSteps = entityType === 'business' 
+    ? [
+        { step: "Business status", complete: progress >= 33 },
+        { step: "Existing funding obligations", complete: progress >= 66 },
+        { step: "Tax standing", complete: progress >= 100 },
+      ]
+    : [
+        { step: "Personal identity", complete: progress >= 33 },
+        { step: "Existing funding obligations", complete: progress >= 66 },
+        { step: "Tax standing", complete: progress >= 100 },
+      ];
 
   return (
     <div className="min-h-screen  flex flex-col">
@@ -59,7 +67,9 @@ const BusinessVerification: React.FC = () => {
 
       <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <Title>Verifying business information</Title>
+          <Title>
+            Verifying {entityType === 'business' ? 'business' : 'personal'} information
+          </Title>
           <p className="mt-2 text-center text-balance text-sm text-gray-600">
             We're conducting required verification checks before proceeding with
             your funding

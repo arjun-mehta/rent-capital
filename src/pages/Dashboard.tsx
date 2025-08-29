@@ -97,14 +97,14 @@ const Dashboard: React.FC = () => {
       {/* Main content - Full viewport */}
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="max-w-[768px] w-full mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="grid grid-cols-1">
             {/* Connect Bank Card */}
             <div className="">
               <div className="p-4 pb-0">
-                <div className="bg-primary text-primary-foreground size-10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <span className="text-lg font-bold">1</span>
+                <div className="text-primary font-semibold text-lg mb-2 uppercase tracking-wide">
+                  Final Step
                 </div>
-                <h3 className="text-2xl font-semibold mt-4">
+                <h3 className="text-2xl font-semibold">
                   Connect Bank Account
                 </h3>
               </div>
@@ -154,8 +154,8 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Download Extension Card */}
-            <div className="">
+            {/* Download Extension Card - Commented out for future use */}
+            {/* <div className="">
               <div className="p-4 pb-0">
                 <div className="bg-primary text-primary-foreground size-10 rounded-full flex items-center justify-center backdrop-blur-sm">
                   <span className="text-lg font-bold">2</span>
@@ -208,7 +208,7 @@ const Dashboard: React.FC = () => {
                   </Button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

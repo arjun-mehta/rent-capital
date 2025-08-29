@@ -9,11 +9,11 @@ import NotFound from "./pages/NotFound";
 import SignIn from "./pages/SignIn";
 import SelectPlatform from "./pages/SelectPlatform";
 import ConnectPatreon from "./pages/ConnectPatreon";
-import ConnectAdditionalAccounts from "./pages/ConnectAdditionalAccounts";
+
 import Processing from "./pages/Processing";
 import Offers from "./pages/Offers";
 import EntityDetails from "./pages/EntityDetails";
-import SignIRSForm from "./pages/SignIRSForm";
+// import SignIRSForm from "./pages/SignIRSForm"; // Commented out - may need in future
 import BusinessVerification from "./pages/BusinessVerification";
 import Contract from "./pages/Contract";
 import Dashboard from "./pages/Dashboard";
@@ -34,14 +34,10 @@ const App = () => (
             <Route path="/signin" element={<SignIn />} />
             <Route path="/select-platform" element={<SelectPlatform />} />
             <Route path="/connect-patreon" element={<ConnectPatreon />} />
-            <Route
-              path="/connect-additional-accounts"
-              element={<ConnectAdditionalAccounts />}
-            />
             <Route path="/processing" element={<Processing />} />
             <Route path="/offers" element={<Offers />} />
             <Route path="/entity-details" element={<EntityDetails />} />
-            <Route path="/sign-irs-form" element={<SignIRSForm />} />
+            {/* <Route path="/sign-irs-form" element={<SignIRSForm />} /> */}
             <Route
               path="/business-verification"
               element={<BusinessVerification />}
