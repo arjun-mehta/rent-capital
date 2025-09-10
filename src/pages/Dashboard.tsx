@@ -96,28 +96,25 @@ const Dashboard: React.FC = () => {
 
       {/* Main content - Full viewport */}
       <div className="flex-1 flex items-center justify-center p-8">
-        <div className="max-w-[768px] w-full mx-auto">
+        <div className="max-w-sm w-full mx-auto">
           <div className="grid grid-cols-1">
             {/* Connect Bank Card */}
             <div className="">
-              <div className="p-4 pb-0">
-                <div className="text-primary font-semibold text-lg mb-2 uppercase tracking-wide">
+              <div className="p-4">
+                <div className="text-primary font-semibold text-lg uppercase tracking-wide">
                   Final Step
                 </div>
-                <h3 className="text-2xl font-semibold">
+                <h3 className="text-2xl font-semibold my-2">
                   Connect Bank Account
                 </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Link your bank account securely to receive your funds. Our
+                  bank connection process uses industry-standard encryption to
+                  protect your information.
+                </p>
               </div>
 
               <div className="p-4">
-                <div className="mb-8">
-                  <p className="text-gray-600 leading-relaxed">
-                    Link your bank account securely to receive your funds. Our
-                    bank connection process uses industry-standard encryption to
-                    protect your information.
-                  </p>
-                </div>
-
                 <div className="bg-card p-6 rounded-xl">
                   <div className="flex items-center mb-4">
                     <div className="h-10 w-10 rounded-full bg-[#e6f2ee] flex items-center justify-center">
@@ -145,7 +142,7 @@ const Dashboard: React.FC = () => {
                   </div>
 
                   <Button
-                    className="w-full bg-primary text-primary-foreground py-6 text-lg font-medium rounded-xl transition-colors duration-200"
+                    className="w-full bg-primary text-primary-foreground rounded-xl transition-colors duration-200"
                     onClick={handleConnectBank}
                   >
                     Connect Your Bank Account

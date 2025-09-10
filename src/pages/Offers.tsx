@@ -17,7 +17,7 @@ interface OfferOption {
   totalRepayment: number;
   monthlyPayment: number;
   projectedRevenue: number;
-  type: 'standard' | 'contact';
+  type: "standard" | "contact";
 }
 
 const Offers: React.FC = () => {
@@ -45,7 +45,7 @@ const Offers: React.FC = () => {
       totalRepayment: 249750,
       monthlyPayment: Math.round((250000 / 3) * 0.9),
       projectedRevenue: 250000,
-      type: 'standard',
+      type: "standard",
     },
     {
       id: "6-month",
@@ -56,18 +56,7 @@ const Offers: React.FC = () => {
       totalRepayment: 500000,
       monthlyPayment: Math.round((500000 / 6) * 0.9),
       projectedRevenue: 500000,
-      type: 'standard',
-    },
-    {
-      id: "12-month",
-      months: 12,
-      amount: 850000,
-      fee: 150000,
-      feePercentage: 15,
-      totalRepayment: 1000000,
-      monthlyPayment: Math.round((1000000 / 12) * 0.9),
-      projectedRevenue: 1000000,
-      type: 'contact',
+      type: "standard",
     },
   ];
 
@@ -87,7 +76,10 @@ const Offers: React.FC = () => {
     const body = encodeURIComponent(
       "Hi Creator Capital team,\n\nI'm interested in learning more about the 12-month advance option.\n\nPlease contact me to discuss this opportunity.\n\nBest regards"
     );
-    window.open(`mailto:hello@creatorcapital.com?subject=${subject}&body=${body}`, '_blank');
+    window.open(
+      `mailto:hello@creatorcapital.com?subject=${subject}&body=${body}`,
+      "_blank"
+    );
   };
 
   return (
@@ -110,7 +102,7 @@ const Offers: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-6 flex-1 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 mb-6 flex-1 max-w-3xl mx-auto">
             {offerOptions.map((offer) => (
               <Card
                 key={offer.id}
@@ -121,7 +113,7 @@ const Offers: React.FC = () => {
                     : "border-gray-200 hover:border-primary hover:shadow-lg"
                 )}
                 onClick={() => {
-                  if (offer.type === 'standard') {
+                  if (offer.type === "standard") {
                     handleSelectOffer(offer.id);
                   }
                 }}
@@ -131,132 +123,134 @@ const Offers: React.FC = () => {
                     <Check size={16} />
                   </div>
                 )}
-                <div className="p-5 pb-3 flex flex-col h-full flex-1">
-                  {offer.type === 'contact' ? (
-                    <>
-                      <div className="mb-4">
-                        <h3 className="text-lg font-semibold text-primary-foreground mb-1">
-                          Custom Advance
-                        </h3>
-                        <div className="text-4xl font-bold tracking-tighter text-primary mb-2">
-                          Let's Talk
-                        </div>
-                        <p className="text-sm text-gray-500">
-                          For larger advances, we create custom terms tailored to your specific needs
-                        </p>
+                <div className="p-5 flex flex-col h-full flex-1">
+                  <>
+                    <div className="mb-4">
+                      <h3 className="text-lg font-semibold text-primary-foreground mb-1">
+                        {offer.months}-Month Advance
+                      </h3>
+                      <div className="text-4xl font-bold tracking-tighter text-primary mb-2">
+                        ${offer.amount.toLocaleString()}
                       </div>
+                      <p className="text-sm text-gray-500">
+                        ${offer.monthlyPayment.toLocaleString()} estimated
+                        monthly collection for approx. {offer.months} months
+                      </p>
+                    </div>
 
-                      <div className="mb-2">
-                        <div className="grid grid-cols-1 gap-2">
-                          <div className="flex items-start">
-                            <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                              <Check size={10} className="" />
-                            </div>
-                            <span className="text-sm">
-                              Personalized terms and structure
-                            </span>
+                    <div className="mb-2">
+                      <div className="grid grid-cols-1 gap-2">
+                        <div className="flex items-start">
+                          <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                            <Check size={10} className="" />
                           </div>
-                          <div className="flex items-start">
-                            <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                              <Check size={10} className="" />
-                            </div>
-                            <span className="text-sm">
-                              Higher funding amounts available
-                            </span>
+                          <span className="text-sm">
+                            Projected Revenue: $
+                            {offer.projectedRevenue.toLocaleString()}
+                          </span>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                            <Check size={10} className="" />
                           </div>
-                          <div className="flex items-start">
-                            <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                              <Check size={10} className="" />
-                            </div>
-                            <span className="text-sm">
-                              Flexible repayment schedules
-                            </span>
+                          <span className="text-sm">
+                            Flat Fee: ${offer.fee.toLocaleString()} (
+                            {offer.feePercentage}% of Projected Revenue)
+                          </span>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                            <Check size={10} className="" />
                           </div>
+                          <span className="text-sm">
+                            Monthly Split: 90% to repayment / 10% to you
+                          </span>
                         </div>
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="mb-4">
-                        <h3 className="text-lg font-semibold text-primary-foreground mb-1">
-                          {offer.months}-Month Advance
-                        </h3>
-                        <div className="text-4xl font-bold tracking-tighter text-primary mb-2">
-                          ${offer.amount.toLocaleString()}
-                        </div>
-                        <p className="text-sm text-gray-500">
-                          ${offer.monthlyPayment.toLocaleString()} estimated monthly
-                          collection for approx. {offer.months} months
-                        </p>
-                      </div>
+                    </div>
+                  </>
 
-                      <div className="mb-2">
-                        <div className="grid grid-cols-1 gap-2">
-                          <div className="flex items-start">
-                            <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                              <Check size={10} className="" />
-                            </div>
-                            <span className="text-sm">
-                              Projected Revenue: $
-                              {offer.projectedRevenue.toLocaleString()}
-                            </span>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                              <Check size={10} className="" />
-                            </div>
-                            <span className="text-sm">
-                              Flat Fee: ${offer.fee.toLocaleString()} (
-                              {offer.feePercentage}% of Projected Revenue)
-                            </span>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                              <Check size={10} className="" />
-                            </div>
-                            <span className="text-sm">
-                              Monthly Split: 90% to repayment / 10% to you
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {offer.type === 'contact' ? (
-                    <Button
-                      className="w-full mt-auto bg-primary hover:bg-primary/90 text-primary-foreground"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleContactUs();
-                      }}
-                      size="sm"
-                    >
-                      Contact Us
-                    </Button>
-                  ) : (
-                    <Button
-                      className={cn(
-                        "w-full mt-auto",
-                        selectedOffer === offer.id
-                          ? "border-primary border bg-white text-primary-foreground hover:bg-white"
-                          : "bg-white border text-gray-400 border-gray-300 hover:bg-gray-50"
-                      )}
-                      onClick={() => handleSelectOffer(offer.id)}
-                      size="sm"
-                    >
-                      {selectedOffer === offer.id ? (
-                        <>
-                          <CheckIcon /> Selected
-                        </>
-                      ) : (
-                        "Select This Plan"
-                      )}
-                    </Button>
-                  )}
+                  <Button
+                    className={cn(
+                      "w-full mt-auto",
+                      selectedOffer === offer.id
+                        ? "border-primary border bg-white text-primary-foreground hover:bg-white"
+                        : "bg-white border text-gray-400 border-gray-300 hover:bg-gray-50"
+                    )}
+                    onClick={() => handleSelectOffer(offer.id)}
+                    size="sm"
+                  >
+                    {selectedOffer === offer.id ? (
+                      <>
+                        <CheckIcon /> Selected
+                      </>
+                    ) : (
+                      "Select This Plan"
+                    )}
+                  </Button>
                 </div>
               </Card>
             ))}
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <Card
+              className={cn(
+                "relative flex gap-14 p-5 border rounded-xl shadow-md h-fit transition-all duration-200 overflow-hidden cursor-pointer group items-center",
+                selectedOffer === "contact"
+                  ? "border-primary ring-2 ring-primary ring-opacity-50 transform scale-[1.02]"
+                  : "border-gray-200 hover:border-primary hover:shadow-lg"
+              )}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleContactUs();
+              }}
+            >
+              <div className="flex-1">
+                <div className="text-2xl font-bold tracking-tighter text-primary">
+                  Custom Advance
+                </div>
+                <p className="text-sm text-gray-500 my-2">
+                  For larger advances, we create custom terms tailored to your
+                  specific needs
+                </p>
+                <Button
+                  className="mt-auto border bg-transparent group-hover:bg-secondary/90 text-primary-foreground px-8"
+                  size="sm"
+                >
+                  Contact Us
+                </Button>
+              </div>
+
+              <div className="flex-1">
+                <div className="grid grid-cols-1 gap-2">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                      <Check size={10} className="" />
+                    </div>
+                    <span className="text-sm">
+                      Personalized terms and structure
+                    </span>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                      <Check size={10} className="" />
+                    </div>
+                    <span className="text-sm">
+                      Higher funding amounts available
+                    </span>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
+                      <Check size={10} className="" />
+                    </div>
+                    <span className="text-sm">
+                      Flexible repayment schedules
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
 
           <div className="flex flex-col gap-2 mt-8 max-w-lg mx-auto items-center justify-center">

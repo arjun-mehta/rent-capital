@@ -1,43 +1,51 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import {
-  BadgeCheck,
-  CreditCard,
-  Calendar,
-  ArrowRight,
-  Bell,
-  Shield,
-  CheckCircle2,
-  Building,
-  Zap,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from "lucide-react";
-import { useAuth } from "@/lib/auth";
-import { Logo } from "./homepage/navigation";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import { useAuth } from "@/lib/auth";
+import {
+  BadgeInfoIcon,
+  Bell,
+  Building,
+  Calendar,
+  CheckCircle2,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  CreditCard,
+  Shield,
+  Zap,
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import imageStack from "../../public/assets/homepage/stack.png";
+import { Logo } from "./homepage/navigation";
+import { ContractContent } from "@/pages/Contract";
 
 const DashboardEstablished: React.FC = () => {
   const [nextPaymentDays, setNextPaymentDays] = useState(14);
   const { isAuthenticated, isPatreonConnected, user } = useAuth();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   // Add calculation for estimated final month
   const calculateFinalMonth = () => {
@@ -74,7 +82,7 @@ const DashboardEstablished: React.FC = () => {
     totalAmount: 2850,
     amountPaid: 1425,
     remainingAmount: 1425,
-    progressPercent: 50, // 50% complete
+    progressPercent: 42,
     nextPaymentAmount: 475,
     nextPaymentDate: new Date(
       Date.now() + nextPaymentDays * 24 * 60 * 60 * 1000
@@ -134,27 +142,45 @@ const DashboardEstablished: React.FC = () => {
           <div className="lg:col-span-2 space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Repayment Progress</CardTitle>
-                <CardDescription>
-                  You're halfway through your repayment!
-                </CardDescription>
+                <div className="flex items-center gap-2">
+                  <CardTitle className="grow">
+                    Keep marketing your FanFix account
+                  </CardTitle>
+                  <div className="text-2xl text-right font-semibold leading-none tracking-tight">
+                    $50.000
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CardDescription className="flex items-center grow gap-1">
+                    <BadgeInfoIcon className="w-4 h-4" />
+                    You’re 46% there–promote your FanFix to speed it up
+                  </CardDescription>
+                  <div className="text-sm text-muted-foreground text-right">
+                    Next 3-Month Advance
+                  </div>
+                </div>
               </CardHeader>
+
               <CardContent>
+                <div className="flex items-center gap-2 -mt-6 justify-end">
+                  <img
+                    src={imageStack}
+                    alt="Dashboard Established"
+                    className="h-[180px]"
+                    draggable={false}
+                  />
+                </div>
+
                 <div className="mb-6">
-                  <div className="flex justify-between mb-2">
-                    <span className="text-sm text-gray-500">
-                      ${repaymentData.amountPaid.toLocaleString()} paid
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      ${repaymentData.totalAmount.toLocaleString()} total
-                    </span>
-                  </div>
-                  <Progress value={repaymentData.progressPercent} />
-                  <div className="mt-2 text-center">
-                    <span className="text-sm font-medium text-gray-700">
-                      {repaymentData.progressPercent}% Complete
-                    </span>
-                  </div>
+                  <ProgressBar value={repaymentData.progressPercent} />
+
+                  <ul className="flex justify-between text-lg font-semibold text-gray-900 mt-4">
+                    <li className="w-[46px] opacity-20">0%</li>
+                    <li className="w-[46px] text-center opacity-40">25%</li>
+                    <li className="w-[46px] text-center opacity-60">50%</li>
+                    <li className="w-[46px] text-center opacity-80">75%</li>
+                    <li className="w-[46px] text-center">100%</li>
+                  </ul>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
@@ -310,13 +336,32 @@ const DashboardEstablished: React.FC = () => {
                   </div>
                 </div>
 
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="w-full bg-primary text-primary-foreground px-0"
-                >
-                  See Renewal Offers <ChevronRightIcon />
-                </Button>
+                <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                  <DialogTrigger asChild>
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      className="w-full bg-primary text-primary-foreground px-0"
+                    >
+                      See Renewal Offers <ChevronRightIcon />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
+                    <ContractContent
+                      height="70svh"
+                      navigateTo="/dashboard-established"
+                      setIsOpen={setIsOpen}
+                      notes={
+                        <p className="bg-amber-100 text-amber-600 p-6 rounded-xl mt-6">
+                          This would be an important note. Paste whatever text
+                          you want here. This is important to note. This is
+                          important to note.
+                        </p>
+                      }
+                    />
+                  </DialogContent>
+                </Dialog>
               </CardContent>
             </Card>
 

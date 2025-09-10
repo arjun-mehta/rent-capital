@@ -132,6 +132,17 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
+
+  .progress-gradient {
+    background: linear-gradient(
+      90deg,
+      #f32620 0%,
+      #ff8600 25%,
+      #ffe900 50%,
+      #5dc31d 75%,
+      #05a323 100%
+    );
+  }
 }
 
 /* Animation classes */
