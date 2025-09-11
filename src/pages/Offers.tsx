@@ -163,7 +163,7 @@ const Offers: React.FC = () => {
                             <Check size={10} className="" />
                           </div>
                           <span className="text-sm">
-                            Monthly Split: 90% to repayment / 10% to you
+                            Repayment automatically collected from your platform earnings
                           </span>
                         </div>
                       </div>
