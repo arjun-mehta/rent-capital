@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Title } from "@/components/Text";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Download, ArrowRight } from "lucide-react";
-import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/lib/auth";
+import { ArrowRight, CheckCircle2Icon, Download } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import Confetti from "react-confetti";
+import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "./homepage/navigation";
-import { Title } from "@/components/Text";
 
 const Contract: React.FC = () => {
   const navigate = useNavigate();
@@ -35,20 +35,48 @@ const Contract: React.FC = () => {
         navigateTo="/dashboard"
         notes={
           <>
-            <p className="bg-amber-100 text-amber-600 p-6 rounded-xl mt-6">
-              This would be an important note. Paste whatever text you want
-              here. This is important to note. This is important to note.
-            </p>
+            <div className="space-y-4 text-sm mt-6">
+              <div className="flex items-start space-x-2 text-gray-600">
+                <CheckCircle2Icon
+                  className="size-6 text-primary flex-shrink-0"
+                  strokeWidth={1.5}
+                />
+                <p className="text-base text-balance">
+                  No penalties if repayment <br /> happens early or late.
+                </p>
+              </div>
 
-            <p className="bg-sky-100 text-sky-600 p-6 rounded-xl mt-6">
-              This would be an important note. Paste whatever text you want
-              here. This is important to note. This is important to note.
-            </p>
+              <div className="flex items-start space-x-2 text-gray-600">
+                <CheckCircle2Icon
+                  className="size-6 text-primary flex-shrink-0"
+                  strokeWidth={1.5}
+                />
+                <p className="text-base text-balance">
+                  Only platform earnings <br /> are used for repayment.
+                </p>
+              </div>
 
-            <p className="bg-secondary text-secondary-foreground p-6 rounded-xl mt-6">
-              This would be an important note. Paste whatever text you want
-              here. This is important to note. This is important to note.
-            </p>
+              <div className="flex items-start space-x-2 text-gray-600">
+                <CheckCircle2Icon
+                  className="size-6 text-primary flex-shrink-0"
+                  strokeWidth={1.5}
+                />
+                <p className="text-base text-balance">
+                  Earnings collected automatically through your platform.
+                </p>
+              </div>
+
+              <div className="flex items-start space-x-2 text-gray-600">
+                <CheckCircle2Icon
+                  className="size-6 text-primary flex-shrink-0"
+                  strokeWidth={1.5}
+                />
+                <p className="text-base text-balance">
+                  Payout settings locked to us until fully repaid, then
+                  restored.
+                </p>
+              </div>
+            </div>
           </>
         }
       />
@@ -67,11 +95,13 @@ export default Contract;
 export const ContractContent = ({
   navigateTo,
   setIsOpen,
+  onComplete,
   height = "calc(100svh-112px)",
   notes,
 }: {
   navigateTo: string;
   setIsOpen?: (isOpen: boolean) => void;
+  onComplete?: () => void;
   height?: string;
   notes?: React.ReactNode;
 }) => {
@@ -115,6 +145,7 @@ export const ContractContent = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    onComplete?.();
 
     // Simulate API call for contract signing
     setTimeout(() => {

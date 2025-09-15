@@ -7,13 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,32 +16,34 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ProgressBar } from "@/components/ui/progress-bar";
+import { Switch } from "@/components/ui/switch";
 import { useAuth } from "@/lib/auth";
+import { ContractContent } from "@/pages/Contract";
+import { PulsingBorder } from "@paper-design/shaders-react";
 import {
   BadgeInfoIcon,
   Bell,
   Building,
   Calendar,
   CheckCircle2,
+  CheckCircle2Icon,
   ChevronDownIcon,
   ChevronRightIcon,
   CreditCard,
   Shield,
-  Zap,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import avatar from "../../public/assets/homepage/avatar.png";
 import imageStack from "../../public/assets/homepage/stack.png";
 import { Logo } from "./homepage/navigation";
-import { ContractContent } from "@/pages/Contract";
-import { Toggle } from "@/components/ui/toggle";
-import { Switch } from "@/components/ui/switch";
 
 const DashboardEstablished: React.FC = () => {
   const [nextPaymentDays, setNextPaymentDays] = useState(14);
   const { isAuthenticated, isPatreonConnected, user } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [isAutoRenew, setIsAutoRenew] = useState(false);
 
   // Add calculation for estimated final month
   const calculateFinalMonth = () => {
@@ -101,7 +97,7 @@ const DashboardEstablished: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Header bar */}
-      <div className=" py-4">
+      <div className="py-4 pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -111,9 +107,9 @@ const DashboardEstablished: React.FC = () => {
             </div>
             <div className="flex items-center space-x-4">
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1 hover:bg-white rounded-full p-1 pr-3">
+                <DropdownMenuTrigger className="flex items-center gap-1 bg-white hover:bg-gray-200 shadow-xs transition-colors rounded-full p-1 pr-3">
                   <Avatar className="size-8">
-                    <AvatarImage src={user.name} />
+                    <AvatarImage src={avatar} />
                     <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <ChevronDownIcon className="size-4" strokeWidth={3} />
@@ -138,10 +134,10 @@ const DashboardEstablished: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 mb-10">
+        <div className="grid grid-cols-[1fr_320px] gap-5">
           {/* Left column - Repayment tracker */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-6">
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-2">
@@ -174,7 +170,25 @@ const DashboardEstablished: React.FC = () => {
                 </div>
 
                 <div className="mb-6">
-                  <ProgressBar value={repaymentData.progressPercent} />
+                  <ProgressBar value={repaymentData.progressPercent}>
+                    <PulsingBorder
+                      colors={["#0dc1fd", "#d915ef", "#ff3f2ecc", "#F2BD00"]}
+                      colorBack="#ffffff00"
+                      roundness={1}
+                      thickness={0.2}
+                      softness={0.75}
+                      intensity={0.2}
+                      bloom={0.05}
+                      spots={3}
+                      spotSize={0.4}
+                      pulse={0.5}
+                      smoke={0.35}
+                      smokeSize={0.6}
+                      scale={0.9}
+                      speed={1}
+                      className="size-[88px] -ml-[4px] -mt-[4px] absolute inset-0"
+                    />
+                  </ProgressBar>
 
                   <ul className="flex justify-between text-lg font-semibold text-gray-900 mt-4">
                     <li className="w-[46px] opacity-20">0%</li>
@@ -320,78 +334,70 @@ const DashboardEstablished: React.FC = () => {
           {/* Right column - Info */}
           <div className="space-y-6">
             <Card>
-              <CardHeader>
-                <CardTitle>Upcoming Renewal</CardTitle>
+              <CardHeader className="flex pb-2 items-center justify-between w-full flex-row">
+                {/* <div className="flex items-center justify-center mb-4 flex-shrink-0 bg-white rounded-full size-10">
+                  <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
+                </div> */}
+                <CardTitle className="text-lg w-full">
+                  Renewal Available
+                </CardTitle>
+                <span className="!mt-0 text-sm font-normal">
+                  {renewalDate.toLocaleDateString()}
+                </span>
               </CardHeader>
               <CardContent>
-                <div className="bg-primary/10 rounded-lg p-4 mb-4">
-                  {/* <div className="flex items-center justify-center mb-4 flex-shrink-0 bg-white rounded-full size-10">
-                    <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
-                  </div> */}
-                  <div className="flex items-center mb-2 justify-between">
-                    <h4 className="font-medium text-primary-800">
-                      Renewal Available
-                    </h4>
-                    <span>{renewalDate.toLocaleDateString()}</span>
-                  </div>
-                  <p className="text-sm text-gray-600 my-2 text-balance">
-                    Based on your current revenue trends and repayment health,
-                    you are eligible for a new advance - even before your
-                    current one is fully complete.
-                  </p>
-                  <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                    <DialogTrigger asChild>
-                      <Button
-                        type="button"
-                        size="sm"
-                        variant="ghost"
-                        className="w-full bg-primary text-primary-foreground px-0 mt-2"
-                      >
-                        See Renewal Offers <ChevronRightIcon />
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
-                      <ContractContent
-                        height="70svh"
-                        navigateTo="/dashboard-established"
-                        setIsOpen={setIsOpen}
-                        notes={
-                          <p className="bg-amber-100 text-amber-600 p-6 rounded-xl mt-6">
-                            This would be an important note. Paste whatever text
-                            you want here. This is important to note. This is
-                            important to note.
-                          </p>
-                        }
-                      />
-                    </DialogContent>
-                  </Dialog>
-                </div>
+                <CardDescription className="mb-4">
+                  Based on your current revenue trends and repayment health, you
+                  are eligible for a new advance - even before your current one
+                  is fully complete.
+                </CardDescription>
+                <Button
+                  size="sm"
+                  type="button"
+                  className="w-full bg-amber-400 hover:bg-amber-400/80"
+                >
+                  See Renewal Offers <ChevronRightIcon />
+                </Button>
+              </CardContent>
+            </Card>
 
-                <div className="bg-sky-50 rounded-lg p-4 mb-4">
-                  {/* <div className="flex items-center justify-center mb-4 flex-shrink-0 bg-white rounded-full size-10">
-                    <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
-                  </div> */}
-                  <div className="flex items-center mb-2 justify-between">
-                    <h4 className="font-medium text-primary-800">
-                      Auto-Renew Advances
-                    </h4>
-                    <Switch defaultChecked={true} />
-                  </div>
-                  <p className="text-sm text-gray-600 mb-2">
-                    Every 3 or 6 months, future revenue advances are deposited
-                    automatically.{" "}
-                    <Link to="/" className="underline underline-offset-2">
-                      Cancel anytime
-                    </Link>
-                    .
-                  </p>
-                </div>
+            <Card>
+              <CardHeader className="flex pb-2 items-center justify-between w-full flex-row">
+                {/* <div className="flex items-center justify-center mb-4 flex-shrink-0 bg-white rounded-full size-10">
+                  <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
+                </div> */}
+                <CardTitle className="text-lg w-full">
+                  Auto-Renew Advances
+                </CardTitle>
+                <Switch
+                  className="!mt-0"
+                  checked={isAutoRenew}
+                  onCheckedChange={(value) => {
+                    if (!value) {
+                      setIsAutoRenew(false);
+                    }
+
+                    setIsOpen(value);
+                  }}
+                />
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Every 3 or 6 months, future revenue advances are deposited
+                  automatically.{" "}
+                  <Link to="#" className="underline underline-offset-2">
+                    Cancel anytime
+                  </Link>
+                  .
+                </CardDescription>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Important Information</CardTitle>
+                <CardTitle className="text-lg w-full">
+                  Important Information
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4 text-sm">
@@ -445,6 +451,66 @@ const DashboardEstablished: React.FC = () => {
                 </div>
               </CardContent>
             </Card>
+
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+              <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
+                <ContractContent
+                  height="80svh"
+                  setIsOpen={setIsOpen}
+                  navigateTo="/dashboard-established"
+                  onComplete={() => setIsAutoRenew(true)}
+                  notes={
+                    <>
+                      <div className="space-y-4 text-sm mt-6">
+                        <div className="flex items-start space-x-2 text-gray-600">
+                          <CheckCircle2Icon
+                            className="size-6 text-primary flex-shrink-0"
+                            strokeWidth={1.5}
+                          />
+                          <p className="text-base text-balance">
+                            No penalties if repayment <br /> happens early or
+                            late.
+                          </p>
+                        </div>
+
+                        <div className="flex items-start space-x-2 text-gray-600">
+                          <CheckCircle2Icon
+                            className="size-6 text-primary flex-shrink-0"
+                            strokeWidth={1.5}
+                          />
+                          <p className="text-base text-balance">
+                            Only platform earnings <br /> are used for
+                            repayment.
+                          </p>
+                        </div>
+
+                        <div className="flex items-start space-x-2 text-gray-600">
+                          <CheckCircle2Icon
+                            className="size-6 text-primary flex-shrink-0"
+                            strokeWidth={1.5}
+                          />
+                          <p className="text-base text-balance">
+                            Earnings collected automatically through your
+                            platform.
+                          </p>
+                        </div>
+
+                        <div className="flex items-start space-x-2 text-gray-600">
+                          <CheckCircle2Icon
+                            className="size-6 text-primary flex-shrink-0"
+                            strokeWidth={1.5}
+                          />
+                          <p className="text-base text-balance">
+                            Payout settings locked to us until fully repaid,
+                            then restored.
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  }
+                />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
