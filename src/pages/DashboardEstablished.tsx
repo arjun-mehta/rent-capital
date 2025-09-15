@@ -40,6 +40,8 @@ import { Link, useNavigate } from "react-router-dom";
 import imageStack from "../../public/assets/homepage/stack.png";
 import { Logo } from "./homepage/navigation";
 import { ContractContent } from "@/pages/Contract";
+import { Toggle } from "@/components/ui/toggle";
+import { Switch } from "@/components/ui/switch";
 
 const DashboardEstablished: React.FC = () => {
   const [nextPaymentDays, setNextPaymentDays] = useState(14);
@@ -322,46 +324,68 @@ const DashboardEstablished: React.FC = () => {
                 <CardTitle>Upcoming Renewal</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-primary/10 rounded-lg p-4 flex items-start space-x-4 mb-4">
-                  <Zap className="text-primary-500 h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <div>
+                <div className="bg-primary/10 rounded-lg p-4 mb-4">
+                  {/* <div className="flex items-center justify-center mb-4 flex-shrink-0 bg-white rounded-full size-10">
+                    <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
+                  </div> */}
+                  <div className="flex items-center mb-2 justify-between">
                     <h4 className="font-medium text-primary-800">
-                      Renewal Available: {renewalDate.toLocaleDateString()}
+                      Renewal Available
                     </h4>
-                    <p className="text-sm text-primary-700 mb-2">
-                      Based on your current revenue trends and repayment health,
-                      you are eligible for a new advance - even before your
-                      current one is fully complete.
-                    </p>
+                    <span>{renewalDate.toLocaleDateString()}</span>
                   </div>
+                  <p className="text-sm text-gray-600 my-2 text-balance">
+                    Based on your current revenue trends and repayment health,
+                    you are eligible for a new advance - even before your
+                    current one is fully complete.
+                  </p>
+                  <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                    <DialogTrigger asChild>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="ghost"
+                        className="w-full bg-primary text-primary-foreground px-0 mt-2"
+                      >
+                        See Renewal Offers <ChevronRightIcon />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
+                      <ContractContent
+                        height="70svh"
+                        navigateTo="/dashboard-established"
+                        setIsOpen={setIsOpen}
+                        notes={
+                          <p className="bg-amber-100 text-amber-600 p-6 rounded-xl mt-6">
+                            This would be an important note. Paste whatever text
+                            you want here. This is important to note. This is
+                            important to note.
+                          </p>
+                        }
+                      />
+                    </DialogContent>
+                  </Dialog>
                 </div>
 
-                <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                  <DialogTrigger asChild>
-                    <Button
-                      type="button"
-                      size="sm"
-                      variant="ghost"
-                      className="w-full bg-primary text-primary-foreground px-0"
-                    >
-                      See Renewal Offers <ChevronRightIcon />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
-                    <ContractContent
-                      height="70svh"
-                      navigateTo="/dashboard-established"
-                      setIsOpen={setIsOpen}
-                      notes={
-                        <p className="bg-amber-100 text-amber-600 p-6 rounded-xl mt-6">
-                          This would be an important note. Paste whatever text
-                          you want here. This is important to note. This is
-                          important to note.
-                        </p>
-                      }
-                    />
-                  </DialogContent>
-                </Dialog>
+                <div className="bg-sky-50 rounded-lg p-4 mb-4">
+                  {/* <div className="flex items-center justify-center mb-4 flex-shrink-0 bg-white rounded-full size-10">
+                    <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
+                  </div> */}
+                  <div className="flex items-center mb-2 justify-between">
+                    <h4 className="font-medium text-primary-800">
+                      Auto-Renew Advances
+                    </h4>
+                    <Switch defaultChecked={true} />
+                  </div>
+                  <p className="text-sm text-gray-600 mb-2">
+                    Every 3 or 6 months, future revenue advances are deposited
+                    automatically.{" "}
+                    <Link to="/" className="underline underline-offset-2">
+                      Cancel anytime
+                    </Link>
+                    .
+                  </p>
+                </div>
               </CardContent>
             </Card>
 
