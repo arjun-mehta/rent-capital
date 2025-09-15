@@ -145,7 +145,7 @@ const DashboardEstablished: React.FC = () => {
                     Keep marketing your FanFix account
                   </CardTitle>
                   <div className="text-2xl text-right font-semibold leading-none tracking-tight">
-                    $50.000
+                    $50,000
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -276,7 +276,7 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <div className="font-semibold text-gray-900">$8,300.00</div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
@@ -298,7 +298,7 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <div className="font-semibold text-gray-900">$8,300.00</div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
@@ -320,7 +320,7 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <div className="font-semibold text-gray-900">$8,300.00</div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
