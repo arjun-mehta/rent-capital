@@ -17,6 +17,8 @@ import {
   Upload
 } from "lucide-react";
 
+// deploy trigger: no-op change
+
 const DashboardMockup: React.FC = () => {
   const mockupRef = useRef<HTMLDivElement>(null);
   const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
