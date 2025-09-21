@@ -48,9 +48,9 @@ const SelectPlatform: React.FC = () => {
       available: false,
     },
     {
-      name: "Apple Podcast",
-      logo: "/logos/apple-podcast.svg",
-      action: () => handleUnsupportedPlatform("Apple Podcast"),
+      name: "Fanfix",
+      logo: "/logos/apple-podcast-new.png",
+      action: () => handleUnsupportedPlatform("Fanfix"),
       available: false,
     },
   ];
