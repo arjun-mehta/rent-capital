@@ -142,7 +142,7 @@ const DashboardEstablished: React.FC = () => {
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <CardTitle className="grow">
-                    You're 42% to your next advance
+                    You're 42% toward your next advance
                   </CardTitle>
                   <div className="text-2xl text-right font-semibold leading-none tracking-tight">
                     $50,000
