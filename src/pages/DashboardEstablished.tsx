@@ -142,16 +142,16 @@ const DashboardEstablished: React.FC = () => {
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <CardTitle className="grow">
-                    Keep marketing your FanFix account
+                    You're 42% toward your next advance
                   </CardTitle>
                   <div className="text-2xl text-right font-semibold leading-none tracking-tight">
-                    $50.000
+                    $50,000
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <CardDescription className="flex items-center grow gap-1">
                     <BadgeInfoIcon className="w-4 h-4" />
-                    You’re 46% there–promote your FanFix to speed it up
+                    Promote your Fanfix to unlock next advance sooner
                   </CardDescription>
                   <div className="text-sm text-muted-foreground text-right">
                     Next 3-Month Advance
@@ -276,7 +276,7 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <div className="font-semibold text-gray-900">$8,300.00</div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
@@ -298,7 +298,7 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <div className="font-semibold text-gray-900">$8,300.00</div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
@@ -320,7 +320,7 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$475.00</div>
+                      <div className="font-semibold text-gray-900">$8,300.00</div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
