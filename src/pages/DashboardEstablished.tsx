@@ -142,7 +142,7 @@ const DashboardEstablished: React.FC = () => {
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <CardTitle className="grow">
-                    Keep marketing your FanFix account
+                    You're 42% to your next advance
                   </CardTitle>
                   <div className="text-2xl text-right font-semibold leading-none tracking-tight">
                     $50,000
@@ -151,7 +151,7 @@ const DashboardEstablished: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <CardDescription className="flex items-center grow gap-1">
                     <BadgeInfoIcon className="w-4 h-4" />
-                    You’re 46% there–promote your FanFix to speed it up
+                    Promote your Fanfix to unlock next advance sooner
                   </CardDescription>
                   <div className="text-sm text-muted-foreground text-right">
                     Next 3-Month Advance
