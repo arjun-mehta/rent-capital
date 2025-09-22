@@ -10,7 +10,6 @@ import iconRocket from "./icons/rocket.png";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "lucide-react";
-import { Calculator } from "./calculator";
 
 import iconPatreon from "./icons/patreon.svg";
 import iconYouTube from "./icons/youtube.svg";
@@ -18,6 +17,7 @@ import iconSupercast from "./icons/supercast.svg";
 import iconTwitch from "./icons/twitch.svg";
 import iconApplePodcasts from "./icons/apple-podcasts.svg";
 import iconSubstack from "./icons/substack.svg";
+import iconFanFix from "./icons/fanfix.svg";
 import {
   Tooltip,
   TooltipContent,
@@ -37,6 +37,10 @@ const logos = [
   {
     src: iconSupercast,
     name: "Supercast",
+  },
+  {
+    src: iconFanFix,
+    name: "FanFix",
   },
   {
     src: iconTwitch,
