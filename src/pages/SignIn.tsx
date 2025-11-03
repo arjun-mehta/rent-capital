@@ -24,14 +24,21 @@ const SignIn: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    // Validate email before attempting login (silent validation)
+    if (email !== "test@rentcapital.us") {
+      toast({
+        title: "Error",
+        description: "Invalid credentials.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const success = await login(email, password);
 
       if (success) {
-        toast({
-          title: "Success!",
-          description: "You have successfully signed in.",
-        });
         navigate("/select-platform");
       } else {
         toast({
