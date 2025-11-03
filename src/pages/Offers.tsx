@@ -1,85 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Check, CheckIcon } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import { ArrowRight, Check } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 import { Logo } from "./homepage/navigation";
 import { Title } from "@/components/Text";
 
-interface OfferOption {
-  id: string;
-  months: number;
-  amount: number;
-  fee: number;
-  feePercentage: number;
-  totalRepayment: number;
-  monthlyPayment: number;
-  projectedRevenue: number;
-  type: "standard" | "contact";
-}
-
 const Offers: React.FC = () => {
-  const [selectedOffer, setSelectedOffer] = useState<string | null>(null);
-  const { isAuthenticated, isPatreonConnected } = useAuth();
+  // Slider configuration
+  const minAmount = 50000;
+  const maxAmount = 1000000;
+  const step = 1000;
+  const defaultAmount = Math.round((minAmount + maxAmount) / 2); // Middle of the range
+  
+  const [amount, setAmount] = useState([defaultAmount]);
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if not authenticated or Patreon not connected
+  // Redirect if not authenticated
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/signin");
-    } else if (!isPatreonConnected) {
-      navigate("/connect-patreon");
     }
-  }, [isAuthenticated, isPatreonConnected, navigate]);
+  }, [isAuthenticated, navigate]);
 
-  // Mock offer options
-  const offerOptions: OfferOption[] = [
-    {
-      id: "3-month",
-      months: 3,
-      amount: 231000,
-      fee: 18750,
-      feePercentage: 7.5,
-      totalRepayment: 249750,
-      monthlyPayment: Math.round((250000 / 3) * 0.9),
-      projectedRevenue: 250000,
-      type: "standard",
-    },
-    {
-      id: "6-month",
-      months: 6,
-      amount: 450000,
-      fee: 50000,
-      feePercentage: 10,
-      totalRepayment: 500000,
-      monthlyPayment: Math.round((500000 / 6) * 0.9),
-      projectedRevenue: 500000,
-      type: "standard",
-    },
-  ];
-
-  const handleSelectOffer = (offerId: string) => {
-    setSelectedOffer(offerId);
-  };
+  // Calculate offer details based on selected amount
+  const offerDetails = useMemo(() => {
+    const selectedAmount = amount[0];
+    
+    // Fee calculation: 10% of total repayment (not advance amount)
+    // If fee = 10% of totalRepayment, then:
+    // totalRepayment = selectedAmount + fee
+    // fee = totalRepayment * 0.10
+    // fee = (selectedAmount + fee) * 0.10
+    // fee = selectedAmount / 9
+    const feePercentage = 10;
+    const fee = Math.round(selectedAmount / 9);
+    
+    // Total repayment is amount + fee
+    const totalRepayment = selectedAmount + fee;
+    
+    return {
+      amount: selectedAmount,
+      fee,
+      feePercentage,
+      totalRepayment,
+    };
+  }, [amount]);
 
   const handleContinue = () => {
-    if (selectedOffer) {
-      navigate("/entity-details");
-    }
+    // Store selected amount for next steps
+    navigate("/entity-details");
   };
 
-  const handleContactUs = () => {
-    // Open email client with pre-filled subject and body
-    const subject = encodeURIComponent("12-Month Advance Inquiry");
-    const body = encodeURIComponent(
-      "Hi Rent Capital team,\n\nI'm interested in learning more about the 12-month advance option.\n\nPlease contact me to discuss this opportunity.\n\nBest regards"
-    );
-    window.open(
-      `mailto:hello@creatorcapital.com?subject=${subject}&body=${body}`,
-      "_blank"
-    );
+  // Format currency helper
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
   };
 
   return (
@@ -91,188 +75,101 @@ const Offers: React.FC = () => {
       </header>
 
       <div className="overflow-auto flex-1 flex items-center justify-center flex-col py-8 px-4 sm:px-6 lg:px-8">
-        <div>
-          <div className="text-center mb-6">
-            <Title>Your Revenue Purchase Offers</Title>
-            <p className="text-md text-gray-600 text-balance max-w-5xl mx-auto">
-              Based on your Patreon subscription revenue, we've prepared these
-              funding options for you. Select the option that works best for
-              your needs. Collections are made directly from your Patreon — no
-              manual payments needed.
+        <div className="w-full max-w-2xl">
+          <div className="text-center mb-10">
+            <Title>How much would you like to be advanced?</Title>
+            <p className="text-md text-gray-600 text-balance max-w-2xl mx-auto mt-4">
+              Repayment is automatically collected from your rental income each month.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-6 flex-1 max-w-3xl mx-auto">
-            {offerOptions.map((offer) => (
-              <Card
-                key={offer.id}
-                className={cn(
-                  "relative flex flex-col border rounded-xl shadow-md h-fit min-h-[350px] transition-all duration-200 overflow-hidden cursor-pointer",
-                  selectedOffer === offer.id
-                    ? "border-primary ring-2 ring-primary ring-opacity-50 transform scale-[1.02]"
-                    : "border-gray-200 hover:border-primary hover:shadow-lg"
-                )}
-                onClick={() => {
-                  if (offer.type === "standard") {
-                    handleSelectOffer(offer.id);
-                  }
-                }}
-              >
-                {selectedOffer === offer.id && (
-                  <div className="absolute top-0 right-0 bg-primary text-primary-foreground p-2 rounded-bl-lg">
-                    <Check size={16} />
-                  </div>
-                )}
-                <div className="p-5 flex flex-col h-full flex-1">
-                  <>
-                    <div className="mb-4">
-                      <h3 className="text-lg font-semibold text-primary-foreground mb-1">
-                        {offer.months}-Month Advance
-                      </h3>
-                      <div className="text-4xl font-bold tracking-tighter text-primary mb-2">
-                        ${offer.amount.toLocaleString()}
-                      </div>
-                      <p className="text-sm text-gray-500">
-                        ${offer.monthlyPayment.toLocaleString()} estimated
-                        monthly collection for approx. {offer.months} months
-                      </p>
-                    </div>
+          <Card className="p-8 md:p-12 border rounded-xl shadow-md">
+            {/* Amount Display */}
+            <div className="text-center mb-10">
+              <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-3">
+                Advance Amount
+              </div>
+              <div className="text-5xl md:text-6xl font-bold tracking-tight text-primary">
+                {formatCurrency(offerDetails.amount)}
+              </div>
+            </div>
 
-                    <div className="mb-2">
-                      <div className="grid grid-cols-1 gap-2">
-                        <div className="flex items-start">
-                          <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                            <Check size={10} className="" />
-                          </div>
-                          <span className="text-sm">
-                            Projected Revenue: $
-                            {offer.projectedRevenue.toLocaleString()}
-                          </span>
-                        </div>
-                        <div className="flex items-start">
-                          <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                            <Check size={10} className="" />
-                          </div>
-                          <span className="text-sm">
-                            Flat Fee: ${offer.fee.toLocaleString()} (
-                            {offer.feePercentage}% of Projected Revenue)
-                          </span>
-                        </div>
-                        <div className="flex items-start">
-                          <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                            <Check size={10} className="" />
-                          </div>
-                          <span className="text-sm">
-                            Repayment automatically collected from your platform earnings
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </>
+            {/* Slider */}
+            <div className="mb-8">
+              <Slider
+                value={amount}
+                onValueChange={setAmount}
+                min={minAmount}
+                max={maxAmount}
+                step={step}
+                className="w-full"
+              />
+              <div className="flex justify-between text-xs text-gray-500 mt-2">
+                <span>{formatCurrency(minAmount)}</span>
+                <span>{formatCurrency(maxAmount)}</span>
+              </div>
+            </div>
 
-                  <Button
-                    className={cn(
-                      "w-full mt-auto",
-                      selectedOffer === offer.id
-                        ? "border-primary border bg-white text-primary-foreground hover:bg-white"
-                        : "bg-white border text-gray-400 border-gray-300 hover:bg-gray-50"
-                    )}
-                    onClick={() => handleSelectOffer(offer.id)}
-                    size="sm"
-                  >
-                    {selectedOffer === offer.id ? (
-                      <>
-                        <CheckIcon /> Selected
-                      </>
-                    ) : (
-                      "Select This Plan"
-                    )}
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <Card
-              className={cn(
-                "relative flex gap-14 p-5 border rounded-xl shadow-md h-fit transition-all duration-200 overflow-hidden cursor-pointer group items-center",
-                selectedOffer === "contact"
-                  ? "border-primary ring-2 ring-primary ring-opacity-50 transform scale-[1.02]"
-                  : "border-gray-200 hover:border-primary hover:shadow-lg"
-              )}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleContactUs();
-              }}
-            >
-              <div className="flex-1">
-                <div className="text-2xl font-bold tracking-tighter text-primary">
-                  Custom Advance
-                </div>
-                <p className="text-sm text-gray-500 my-2">
-                  For larger advances, we create custom terms tailored to your
-                  specific needs
-                </p>
+            {/* Quick Amount Buttons */}
+            <div className="grid grid-cols-4 gap-2 mb-8">
+              {[100000, 250000, 500000, 750000].map((value) => (
                 <Button
-                  className="mt-auto border bg-transparent group-hover:bg-secondary/90 text-primary-foreground px-8"
+                  key={value}
+                  variant="outline"
                   size="sm"
+                  className={cn(
+                    "text-xs",
+                    amount[0] === value
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "hover:border-primary/50"
+                  )}
+                  onClick={() => setAmount([value])}
                 >
-                  Contact Us
+                  {formatCurrency(value)}
                 </Button>
-              </div>
+              ))}
+            </div>
 
-              <div className="flex-1">
-                <div className="grid grid-cols-1 gap-2">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                      <Check size={10} className="" />
-                    </div>
-                    <span className="text-sm">
-                      Personalized terms and structure
-                    </span>
+            {/* Offer Details */}
+            <div className="border-t pt-6 mt-6">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+                <div className="text-center">
+                  <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                    Flat Fee ({offerDetails.feePercentage}%)
                   </div>
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                      <Check size={10} className="" />
-                    </div>
-                    <span className="text-sm">
-                      Higher funding amounts available
-                    </span>
+                  <div className="text-2xl md:text-3xl font-bold text-gray-900">
+                    {formatCurrency(offerDetails.fee)}
                   </div>
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 size-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center mr-1.5">
-                      <Check size={10} className="" />
-                    </div>
-                    <span className="text-sm">
-                      Flexible repayment schedules
-                    </span>
+                </div>
+                
+                <div className="hidden md:block w-px h-12 bg-gray-200"></div>
+                
+                <div className="text-center">
+                  <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                    Total Repayment
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-gray-900">
+                    {formatCurrency(offerDetails.totalRepayment)}
                   </div>
                 </div>
               </div>
-            </Card>
-          </div>
+            </div>
+          </Card>
 
-          <div className="flex flex-col gap-2 mt-8 max-w-lg mx-auto items-center justify-center">
+          <div className="flex flex-col gap-2 mt-8 items-center justify-center">
             <Button
-              className={cn(
-                "bg-primary mx-auto hover:bg-primary/90 text-primary-foreground h-10 text-base w-full",
-                selectedOffer
-                  ? "bg-primary hover:bg-primary/90"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed opacity-70"
-              )}
-              disabled={!selectedOffer}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-base w-full max-w-md"
               onClick={handleContinue}
             >
-              Continue
-              <ArrowRight className="h-5 w-5" />
+              Continue with {formatCurrency(offerDetails.amount)}
+              <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
 
-            <div className="text-center text-xs text-gray-500">
+            <div className="text-center text-xs text-gray-500 max-w-2xl mx-auto">
               <p>
                 Rent Capital provides revenue-based funding, not loans. We
-                purchase a fixed portion of your future subscription revenue at
-                a set rate. Repayment timelines may vary with revenue
+                purchase a fixed portion of your future rental income at
+                a set rate. Repayment timelines may vary with rental income
                 performance. No personal guarantees or credit checks are
                 required. All offers are subject to final approval. Funding
                 typically begins within 24–48 hours of contract execution.
