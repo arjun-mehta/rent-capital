@@ -11,7 +11,7 @@ export function Footer() {
       links: [
         { label: "How It Works", href: "#how-it-works" },
         { label: "Who We Help", href: "#who-we-help" },
-        { label: "Why Creator Capital", href: "#why-us" },
+        { label: "Why Rent Capital", href: "#why-us" },
         { label: "Pricing", href: "#pricing" },
       ],
     },
@@ -40,7 +40,7 @@ export function Footer() {
         <AnimationParent className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
           <AnimationChild className="md:col-span-2">
             <div className="mb-6">
-              <Logo className="h-8" />
+              <Logo className="h-8" align="left" />
             </div>
             <p className="text-gray-600 mb-4 max-w-xs">
               Providing creators with the financial tools they need to grow
@@ -70,7 +70,7 @@ export function Footer() {
         <div className="border-t pt-8 flex text-sm flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
             © {currentYear}{" "}
-            <span className="font-poppins font-semibold">Greenlight</span>. All
+            <span className="font-poppins font-semibold">Rent Capital</span>. All
             rights reserved.
           </div>
 

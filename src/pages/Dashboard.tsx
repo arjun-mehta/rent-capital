@@ -167,7 +167,7 @@ const Dashboard: React.FC = () => {
                   <p className="text-gray-600 leading-relaxed">
                     Our Chrome extension enables seamless payment processing
                     from your Patreon account and provides easy access to your
-                    Creator Capital dashboard.
+                    Rent Capital dashboard.
                   </p>
                 </div>
 
@@ -212,7 +212,7 @@ const Dashboard: React.FC = () => {
 
       <div className="py-4 text-center">
         <p className="text-xs text-gray-500">
-          © 2025 Creator Capital. All rights reserved.
+          © 2025 Rent Capital. All rights reserved.
         </p>
       </div>
     </div>

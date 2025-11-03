@@ -74,7 +74,7 @@ const Offers: React.FC = () => {
     // Open email client with pre-filled subject and body
     const subject = encodeURIComponent("12-Month Advance Inquiry");
     const body = encodeURIComponent(
-      "Hi Creator Capital team,\n\nI'm interested in learning more about the 12-month advance option.\n\nPlease contact me to discuss this opportunity.\n\nBest regards"
+      "Hi Rent Capital team,\n\nI'm interested in learning more about the 12-month advance option.\n\nPlease contact me to discuss this opportunity.\n\nBest regards"
     );
     window.open(
       `mailto:hello@creatorcapital.com?subject=${subject}&body=${body}`,
@@ -270,7 +270,7 @@ const Offers: React.FC = () => {
 
             <div className="text-center text-xs text-gray-500">
               <p>
-                Creator Capital provides revenue-based funding, not loans. We
+                Rent Capital provides revenue-based funding, not loans. We
                 purchase a fixed portion of your future subscription revenue at
                 a set rate. Repayment timelines may vary with revenue
                 performance. No personal guarantees or credit checks are
@@ -283,7 +283,7 @@ const Offers: React.FC = () => {
       </div>
       <div className="py-4 text-center">
         <p className="text-xs text-gray-500">
-          © 2025 Creator Capital. All rights reserved.
+          © 2025 Rent Capital. All rights reserved.
         </p>
       </div>
     </div>

@@ -130,7 +130,7 @@ const Processing: React.FC = () => {
       </div>
       <div className="py-4 text-center">
         <p className="text-xs text-gray-500">
-          © 2025 Creator Capital. All rights reserved.
+          © 2025 Rent Capital. All rights reserved.
         </p>
       </div>
     </div>

@@ -59,7 +59,7 @@ const Header: React.FC = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
             )}
           >
-            <span className="text-xl font-poppins font-semibold tracking-tight">Creator Capital</span>
+            <span className="text-xl font-poppins font-semibold tracking-tight">Rent Capital</span>
           </a>
 
           {/* Desktop Navigation */}

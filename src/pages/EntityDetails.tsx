@@ -193,7 +193,7 @@ const EntityDetails: React.FC = () => {
                   htmlFor="authorization"
                   className="text-sm text-gray-700 font-normal cursor-pointer"
                 >
-                  I authorize Creator Capital to verify my {entityType === 'business' ? 'business' : 'personal'} information and
+                  I authorize Rent Capital to verify my {entityType === 'business' ? 'business' : 'personal'} information and
                   creditworthiness. This may include a soft {entityType === 'business' ? 'business' : 'personal'} credit inquiry, 
                   which will not affect my personal credit.
                 </Label>
@@ -222,7 +222,7 @@ const EntityDetails: React.FC = () => {
 
       <div className="py-4 text-center">
         <p className="text-xs text-gray-500">
-          © 2025 Creator Capital. All rights reserved.
+          © 2025 Rent Capital. All rights reserved.
         </p>
       </div>
     </div>

@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 
 const items = [
   {
-    question: "What is Creator Capital?",
+    question: "What is Rent Capital?",
     anwer:
-      "Creator Capital provides upfront payments to subscription-based creators in exchange for the right to collect a fixed amount of future revenue. This is not a loan, but a purchase of future receivables, repaid through a share of your platform earnings. No interest. No impact to your credit score. No personal guarantees.",
+      "Rent Capital provides upfront payments to subscription-based creators in exchange for the right to collect a fixed amount of future revenue. This is not a loan, but a purchase of future receivables, repaid through a share of your platform earnings. No interest. No impact to your credit score. No personal guarantees.",
   },
   {
     question: "Who qualifies for funding?",
@@ -72,7 +72,7 @@ const items = [
       "Once your balance is repaid in full, payouts are redirected back to your original account and our access ends. You may receive a renewal offer before your current advance is complete, or reapply for additional funding at any time.",
   },
   {
-    question: "Does Creator Capital take equity or ownership in my business? ",
+    question: "Does Rent Capital take equity or ownership in my business? ",
     anwer:
       "No — we don’t take any equity, ownership, or creative control. This is not an investment or licensing deal. You retain full ownership of your business and your content.",
   },

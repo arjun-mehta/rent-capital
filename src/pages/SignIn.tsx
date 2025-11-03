@@ -201,7 +201,7 @@ const SignIn: React.FC = () => {
       {/* Footer */}
       <footer className="py-4 text-center text-sm text-gray-500">
         <p>
-          © {new Date().getFullYear()} Creator Capital. All rights reserved.
+          © {new Date().getFullYear()} Rent Capital. All rights reserved.
         </p>
       </footer>
     </div>

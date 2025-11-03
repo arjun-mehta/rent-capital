@@ -10,8 +10,8 @@ type FAQItem = {
 
 const faqItems: FAQItem[] = [
   {
-    question: "What is Creator Capital?",
-    answer: "Creator Capital is a financial platform that provides funding to content creators, influencers, and online entrepreneurs to help them grow their businesses. We offer simple, transparent capital advances without taking ownership of your content or business."
+    question: "What is Rent Capital?",
+    answer: "Rent Capital is a financial platform that provides funding to content creators, influencers, and online entrepreneurs to help them grow their businesses. We offer simple, transparent capital advances without taking ownership of your content or business."
   },
   {
     question: "How does the application process work?",
@@ -43,7 +43,7 @@ const FAQ = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4">Frequently Asked Questions</h2>
             <p className="paragraph text-gray-300 max-w-2xl mx-auto">
-              Find answers to common questions about Creator Capital and how we can help you grow your creator business.
+              Find answers to common questions about Rent Capital and how we can help you grow your creator business.
             </p>
           </div>
           

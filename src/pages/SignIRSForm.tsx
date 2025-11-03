@@ -234,7 +234,7 @@ const SignIRSForm: React.FC = () => {
             <div className="flex flex-col items-center">
               <p className="text-gray-600 mb-4 max-w-xl">
                 By continuing, you acknowledge that you have reviewed the IRS
-                Form 4506-T and authorize Creator Capital to use it for income
+                Form 4506-T and authorize Rent Capital to use it for income
                 verification.
               </p>
 
@@ -251,7 +251,7 @@ const SignIRSForm: React.FC = () => {
       </main>
       <div className="py-4 text-center">
         <p className="text-xs text-gray-500">
-          © 2025 Creator Capital. All rights reserved.
+          © 2025 Rent Capital. All rights reserved.
         </p>
       </div>
     </div>

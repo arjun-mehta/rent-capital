@@ -154,7 +154,7 @@ const WhyCreatorCapital: React.FC = () => {
                 <TableRow>
                   <TableHead className="text-left p-4 border-b-2 border-gray-100">Feature</TableHead>
                   <TableHead className="p-4 border-b-2 border-gray-100 bg-black text-white rounded-tl-lg text-center">
-                    <span className="font-poppins font-semibold">Creator Capital</span>
+                    <span className="font-poppins font-semibold">Rent Capital</span>
                   </TableHead>
                   <TableHead className="p-4 border-b-2 border-gray-100 text-center">Traditional Loans</TableHead>
                   <TableHead className="p-4 border-b-2 border-gray-100 text-center">Venture Capital</TableHead>

@@ -31,7 +31,7 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ password, child
       localStorage.setItem("authenticated", "true");
       toast({
         title: "Access granted",
-        description: "Welcome to Creator Capital",
+        description: "Welcome to Rent Capital",
       });
     } else {
       setError(true);
@@ -53,10 +53,10 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ password, child
         <div className="text-center">
           <img 
             src="/lovable-uploads/ffdad90a-7332-4fbe-add4-1edb2c536b21.png" 
-            alt="Creator Capital" 
+            alt="Rent Capital" 
             className="h-16 mx-auto mb-4" 
           />
-          <h1 className="text-2xl font-bold text-gray-900">Creator Capital</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Rent Capital</h1>
           <p className="mt-2 text-gray-600">This site is password protected</p>
         </div>
 
