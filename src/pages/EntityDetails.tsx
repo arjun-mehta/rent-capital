@@ -6,55 +6,43 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/lib/auth";
-import { ArrowRight, Info, Building2, User } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "./homepage/navigation";
-import { cn } from "@/lib/utils";
 
 const EntityDetails: React.FC = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, isPatreonConnected } = useAuth();
+  const { isAuthenticated } = useAuth();
 
-  const [entityType, setEntityType] = useState<'business' | 'individual'>('business');
   const [legalName, setLegalName] = useState<string>("");
-  const [ssn, setSsn] = useState<string>("");
   const [ein, setEin] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
-  // Redirect if not authenticated or Patreon not connected
+  // Redirect if not authenticated
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/signin");
-    } else if (!isPatreonConnected) {
-      navigate("/connect-patreon");
     }
-  }, [isAuthenticated, isPatreonConnected, navigate]);
+  }, [isAuthenticated, navigate]);
 
   // Validate form
   useEffect(() => {
     const validLegalName = !!legalName.trim();
     const validAddress = !!address.trim();
     const validPhone = !!phone.trim();
-    
-    let validId = false;
-    if (entityType === 'business') {
-      validId = /^[0-9]{2}-[0-9]{7}$/.test(ein) || /^[0-9]{9}$/.test(ein);
-    } else {
-      validId = /^[0-9]{3}-[0-9]{2}-[0-9]{4}$/.test(ssn) || /^[0-9]{9}$/.test(ssn);
-    }
+    const validEin = /^[0-9]{2}-[0-9]{7}$/.test(ein) || /^[0-9]{9}$/.test(ein);
 
     setIsFormValid(
-      validLegalName && validId && validAddress && validPhone && isAuthorized
+      validLegalName && validEin && validAddress && validPhone && isAuthorized
     );
-  }, [legalName, ssn, ein, address, phone, isAuthorized, entityType]);
+  }, [legalName, ein, address, phone, isAuthorized]);
 
   const handleContinue = () => {
-    // navigate("/sign-irs-form"); // Commented out - may need in future
-    navigate(`/business-verification?type=${entityType}`);
+    navigate('/business-verification?type=business');
   };
 
   return (
@@ -74,109 +62,59 @@ const EntityDetails: React.FC = () => {
           </p>
         </div>
 
-        {/* Entity Type Switcher */}
-        <div className="max-w-2xl mx-auto mb-6">
-          <div className="bg-gray-100 rounded-lg p-1 flex">
-            <button
-              type="button"
-              onClick={() => setEntityType('business')}
-              className={cn(
-                "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-md font-medium transition-all duration-200",
-                entityType === 'business'
-                  ? "bg-white text-primary shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
-              )}
-            >
-              <Building2 className="h-4 w-4" />
-              Business
-            </button>
-            <button
-              type="button"
-              onClick={() => setEntityType('individual')}
-              className={cn(
-                "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-md font-medium transition-all duration-200",
-                entityType === 'individual'
-                  ? "bg-white text-primary shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
-              )}
-            >
-              <User className="h-4 w-4" />
-              Individual
-            </button>
-          </div>
-        </div>
-
         <Card className="max-w-2xl mx-auto p-6 mb-8">
           <div className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="legal-name">
-                {entityType === 'business' ? 'Legal Business Name' : 'Full Legal Name'}
+                Legal Business Name
               </Label>
               <Input
                 id="legal-name"
                 value={legalName}
                 onChange={(e) => setLegalName(e.target.value)}
-                placeholder={entityType === 'business' ? "Enter your legal business name" : "Enter your full legal name"}
+                placeholder="Enter your legal business name"
                 className="h-10"
               />
             </div>
 
-            {entityType === 'business' ? (
-              <div className="space-y-2">
-                <Label htmlFor="ein">
-                  Tax ID (EIN)
-                  <span className="text-xs text-gray-500 ml-1">
-                    Format: XX-XXXXXXX or XXXXXXXXX
-                  </span>
-                </Label>
-                <Input
-                  id="ein"
-                  value={ein}
-                  onChange={(e) => setEin(e.target.value)}
-                  placeholder="XX-XXXXXXX"
-                  className="h-10"
-                />
-              </div>
-            ) : (
-              <div className="space-y-2">
-                <Label htmlFor="ssn">
-                  Social Security Number (SSN)
-                  <span className="text-xs text-gray-500 ml-1">
-                    Format: XXX-XX-XXXX or XXXXXXXXX
-                  </span>
-                </Label>
-                <Input
-                  id="ssn"
-                  value={ssn}
-                  onChange={(e) => setSsn(e.target.value)}
-                  placeholder="XXX-XX-XXXX"
-                  className="h-10"
-                />
-              </div>
-            )}
+            <div className="space-y-2">
+              <Label htmlFor="ein">
+                Tax ID (EIN)
+                <span className="text-xs text-gray-500 ml-1">
+                  Format: XX-XXXXXXX or XXXXXXXXX
+                </span>
+              </Label>
+              <Input
+                id="ein"
+                value={ein}
+                onChange={(e) => setEin(e.target.value)}
+                placeholder="XX-XXXXXXX"
+                className="h-10"
+              />
+            </div>
 
             <div className="space-y-2">
               <Label htmlFor="address">
-                {entityType === 'business' ? 'Business Address' : 'Address'}
+                Business Address
               </Label>
               <Textarea
                 id="address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                placeholder={entityType === 'business' ? "Enter your full business address" : "Enter your full address"}
+                placeholder="Enter your full business address"
                 rows={3}
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="phone">
-                {entityType === 'business' ? 'Business Phone Number' : 'Phone Number'}
+                Business Phone Number
               </Label>
               <Input
                 id="phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder={entityType === 'business' ? "Enter your business phone number" : "Enter your phone number"}
+                placeholder="Enter your business phone number"
                 className="h-10"
               />
             </div>
@@ -193,8 +131,8 @@ const EntityDetails: React.FC = () => {
                   htmlFor="authorization"
                   className="text-sm text-gray-700 font-normal cursor-pointer"
                 >
-                  I authorize Rent Capital to verify my {entityType === 'business' ? 'business' : 'personal'} information and
-                  creditworthiness. This may include a soft {entityType === 'business' ? 'business' : 'personal'} credit inquiry, 
+                  I authorize Rent Capital to verify my business information and
+                  creditworthiness. This may include a soft business credit inquiry, 
                   which will not affect my personal credit.
                 </Label>
               </div>

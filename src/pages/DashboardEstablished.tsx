@@ -15,7 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ProgressBar } from "@/components/ui/progress-bar";
+import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
 import { useAuth } from "@/lib/auth";
 import { ContractContent } from "@/pages/Contract";
@@ -40,7 +40,7 @@ import { Logo } from "./homepage/navigation";
 
 const DashboardEstablished: React.FC = () => {
   const [nextPaymentDays, setNextPaymentDays] = useState(14);
-  const { isAuthenticated, isPatreonConnected, user } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isAutoRenew, setIsAutoRenew] = useState(false);
@@ -56,14 +56,12 @@ const DashboardEstablished: React.FC = () => {
     });
   };
 
-  // Redirect if not authenticated or Patreon not connected
+  // Redirect if not authenticated
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/signin");
-    } else if (!isPatreonConnected) {
-      navigate("/connect-patreon");
     }
-  }, [isAuthenticated, isPatreonConnected, navigate]);
+  }, [isAuthenticated, navigate]);
 
   // Countdown for next payment
   useEffect(() => {
@@ -76,18 +74,24 @@ const DashboardEstablished: React.FC = () => {
   }, [nextPaymentDays]);
 
   // Mock repayment data for a user who is 3 months into their agreement
+  // Monthly rent payment: $8,300
+  const monthlyPayment = 8300;
+  const totalPayments = 6;
+  const completedPayments = 3;
+  const remainingPayments = totalPayments - completedPayments;
+  
   const repaymentData = {
-    totalAmount: 2850,
-    amountPaid: 1425,
-    remainingAmount: 1425,
-    progressPercent: 42,
-    nextPaymentAmount: 475,
+    totalAmount: monthlyPayment * totalPayments, // $49,800
+    amountPaid: monthlyPayment * completedPayments, // $24,900
+    remainingAmount: monthlyPayment * remainingPayments, // $24,900
+    progressPercent: Math.round((completedPayments / totalPayments) * 100), // 50%
+    nextPaymentAmount: monthlyPayment, // $8,300
     nextPaymentDate: new Date(
       Date.now() + nextPaymentDays * 24 * 60 * 60 * 1000
     ),
-    totalPayments: 6,
-    completedPayments: 3,
-    remainingPayments: 3,
+    totalPayments: totalPayments,
+    completedPayments: completedPayments,
+    remainingPayments: remainingPayments,
   };
 
   // Calculate renewal date (3 months from now)
@@ -142,53 +146,26 @@ const DashboardEstablished: React.FC = () => {
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <CardTitle className="grow">
-                    You're 42% toward your next advance
+                    Repayment Progress
                   </CardTitle>
                   <div className="text-2xl text-right font-semibold leading-none tracking-tight">
-                    $50,000
+                    {repaymentData.progressPercent}%
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <CardDescription className="flex items-center grow gap-1">
                     <BadgeInfoIcon className="w-4 h-4" />
-                    Promote your Fanfix to unlock next advance sooner
+                    Based on your rental income history
                   </CardDescription>
                   <div className="text-sm text-muted-foreground text-right">
-                    Next 3-Month Advance
+                    {repaymentData.completedPayments} of {repaymentData.totalPayments} payments
                   </div>
                 </div>
               </CardHeader>
 
               <CardContent>
-                <div className="flex items-center gap-2 -mt-6 justify-end">
-                  <img
-                    src={imageStack}
-                    alt="Dashboard Established"
-                    className="h-[180px]"
-                    draggable={false}
-                  />
-                </div>
-
                 <div className="mb-6">
-                  <ProgressBar value={repaymentData.progressPercent}>
-                    <PulsingBorder
-                      colors={["#0dc1fd", "#d915ef", "#ff3f2ecc", "#F2BD00"]}
-                      colorBack="#ffffff00"
-                      roundness={1}
-                      thickness={0.2}
-                      softness={0.75}
-                      intensity={0.2}
-                      bloom={0.05}
-                      spots={3}
-                      spotSize={0.4}
-                      pulse={0.5}
-                      smoke={0.35}
-                      smokeSize={0.6}
-                      scale={0.9}
-                      speed={1}
-                      className="size-[88px] -ml-[4px] -mt-[4px] absolute inset-0"
-                    />
-                  </ProgressBar>
+                  <Progress value={repaymentData.progressPercent} />
 
                   <ul className="flex justify-between text-lg font-semibold text-gray-900 mt-4">
                     <li className="w-[46px] opacity-20">0%</li>
@@ -205,7 +182,7 @@ const DashboardEstablished: React.FC = () => {
                       Total Repayment
                     </div>
                     <div className="text-lg font-semibold">
-                      ${repaymentData.totalAmount}
+                      ${repaymentData.totalAmount.toLocaleString()}
                     </div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
@@ -213,18 +190,18 @@ const DashboardEstablished: React.FC = () => {
                       Paid So Far
                     </div>
                     <div className="text-lg font-semibold">
-                      ${repaymentData.amountPaid}
+                      ${repaymentData.amountPaid.toLocaleString()}
                     </div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
                     <div className="text-xs text-gray-500 mb-1">Remaining</div>
                     <div className="text-lg font-semibold">
-                      ${repaymentData.remainingAmount}
+                      ${repaymentData.remainingAmount.toLocaleString()}
                     </div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
                     <div className="text-xs text-gray-500 mb-1">
-                      Est. Final Month
+                      Final Month
                     </div>
                     <div className="text-lg font-semibold">
                       {calculateFinalMonth()}
@@ -245,8 +222,7 @@ const DashboardEstablished: React.FC = () => {
                         {repaymentData.nextPaymentDate.toLocaleDateString()}
                       </p>
                       <p className="text-xs mt-1">
-                        Payments are automatically processed through your
-                        Patreon account
+                        Payments are automatically ACH-debited from your bank account each month
                       </p>
                     </div>
                   </div>
@@ -276,7 +252,9 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$8,300.00</div>
+                      <div className="font-semibold text-gray-900">
+                        ${monthlyPayment.toLocaleString()}.00
+                      </div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
@@ -298,7 +276,9 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$8,300.00</div>
+                      <div className="font-semibold text-gray-900">
+                        ${monthlyPayment.toLocaleString()}.00
+                      </div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
@@ -320,7 +300,9 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">$8,300.00</div>
+                      <div className="font-semibold text-gray-900">
+                        ${monthlyPayment.toLocaleString()}.00
+                      </div>
                       <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
                         Completed
                       </span>
@@ -339,33 +321,49 @@ const DashboardEstablished: React.FC = () => {
                   <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
                 </div> */}
                 <CardTitle className="text-lg w-full">
-                  Renewal Available
+                  Eligible for Renewal
                 </CardTitle>
-                <span className="!mt-0 text-sm font-normal">
+                {/* <span className="!mt-0 text-sm font-normal">
                   {renewalDate.toLocaleDateString()}
-                </span>
+                </span> */}
               </CardHeader>
               <CardContent>
                 <CardDescription className="mb-4">
-                  Based on your current revenue trends and repayment health, you
-                  are eligible for a new advance - even before your current one
-                  is fully complete.
-                </CardDescription>
+                Based on your tenant’s payment history, you’re eligible to receive 12 months of rent upfront once they renew with a new fixed-term lease.</CardDescription>
                 <Button
                   size="sm"
                   type="button"
                   className="w-full bg-amber-400 hover:bg-amber-400/80"
                 >
-                  See Renewal Offers <ChevronRightIcon />
+                  Upload New Lease <ChevronRightIcon />
                 </Button>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex pb-2 items-center justify-between w-full flex-row">
-                {/* <div className="flex items-center justify-center mb-4 flex-shrink-0 bg-white rounded-full size-10">
-                  <Zap className="text-primary-500 h-5 w-5 flex-shrink-0" />
-                </div> */}
+                <CardTitle className="text-lg w-full">
+                  New Property Advance
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="mb-4">
+                  Have another rental property? Get an advance on a new fixed-term lease for a property you own.
+                </CardDescription>
+                <Button
+                  size="sm"
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => navigate("/select-platform")}
+                >
+                  Start New Advance <ChevronRightIcon />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* <Card>
+              <CardHeader className="flex pb-2 items-center justify-between w-full flex-row">
                 <CardTitle className="text-lg w-full">
                   Auto-Renew Advances
                 </CardTitle>
@@ -383,15 +381,15 @@ const DashboardEstablished: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Every 3 or 6 months, future revenue advances are deposited
-                  automatically.{" "}
+                  Every 3 or 6 months, additional advances are deposited
+                  automatically based on your rental income.{" "}
                   <Link to="#" className="underline underline-offset-2">
                     Cancel anytime
                   </Link>
                   .
                 </CardDescription>
               </CardContent>
-            </Card>
+            </Card> */}
 
             <Card>
               <CardHeader>
@@ -432,8 +430,7 @@ const DashboardEstablished: React.FC = () => {
                         Automatic Repayments
                       </h4>
                       <p className="text-gray-600">
-                        Payments are automatically processed through your
-                        Patreon account each month.
+                        Payments are automatically ACH-debited from your bank account each month.
                       </p>
                     </div>
                   </div>
@@ -444,7 +441,7 @@ const DashboardEstablished: React.FC = () => {
                       <h4 className="font-medium text-gray-900">Support</h4>
                       <p className="text-gray-600">
                         Need help? Contact our support team at
-                        support@creatorcapital.com
+                        support@rentcapital.com
                       </p>
                     </div>
                   </div>
@@ -468,8 +465,7 @@ const DashboardEstablished: React.FC = () => {
                             strokeWidth={1.5}
                           />
                           <p className="text-base text-balance">
-                            No penalties if repayment <br /> happens early or
-                            late.
+                            Repayments are automatically ACH-debited from your bank account each month.
                           </p>
                         </div>
 
@@ -479,30 +475,7 @@ const DashboardEstablished: React.FC = () => {
                             strokeWidth={1.5}
                           />
                           <p className="text-base text-balance">
-                            Only platform earnings <br /> are used for
-                            repayment.
-                          </p>
-                        </div>
-
-                        <div className="flex items-start space-x-2 text-gray-600">
-                          <CheckCircle2Icon
-                            className="size-6 text-primary flex-shrink-0"
-                            strokeWidth={1.5}
-                          />
-                          <p className="text-base text-balance">
-                            Earnings collected automatically through your
-                            platform.
-                          </p>
-                        </div>
-
-                        <div className="flex items-start space-x-2 text-gray-600">
-                          <CheckCircle2Icon
-                            className="size-6 text-primary flex-shrink-0"
-                            strokeWidth={1.5}
-                          />
-                          <p className="text-base text-balance">
-                            Payout settings locked to us until fully repaid,
-                            then restored.
+                            We never access or handle any funds other than rent payments by this tenant.
                           </p>
                         </div>
                       </div>

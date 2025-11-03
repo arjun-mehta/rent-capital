@@ -42,7 +42,7 @@ const Contract: React.FC = () => {
                   strokeWidth={1.5}
                 />
                 <p className="text-base text-balance">
-                  No penalties if repayment <br /> happens early or late.
+                  Repayments are automatically ACH-debited from your bank account each month.
                 </p>
               </div>
 
@@ -52,28 +52,7 @@ const Contract: React.FC = () => {
                   strokeWidth={1.5}
                 />
                 <p className="text-base text-balance">
-                  Only platform earnings <br /> are used for repayment.
-                </p>
-              </div>
-
-              <div className="flex items-start space-x-2 text-gray-600">
-                <CheckCircle2Icon
-                  className="size-6 text-primary flex-shrink-0"
-                  strokeWidth={1.5}
-                />
-                <p className="text-base text-balance">
-                  Earnings collected automatically through your platform.
-                </p>
-              </div>
-
-              <div className="flex items-start space-x-2 text-gray-600">
-                <CheckCircle2Icon
-                  className="size-6 text-primary flex-shrink-0"
-                  strokeWidth={1.5}
-                />
-                <p className="text-base text-balance">
-                  Payout settings locked to us until fully repaid, then
-                  restored.
+                  We never access or handle any funds other than rent payments by this tenant.
                 </p>
               </div>
             </div>
