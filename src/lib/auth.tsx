@@ -55,7 +55,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const login = async (email: string, password: string): Promise<boolean> => {
     // Simple validation for the dummy account
-    if (email === 'test@creatorcap.com' && password) {
+    if (email === 'test@rentcapital.us' && password) {
       setIsAuthenticated(true);
       setUser({
         email,
