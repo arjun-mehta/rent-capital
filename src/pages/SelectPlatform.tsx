@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,8 @@ import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/use-toast";
 import { Logo } from "./homepage/navigation";
 import { Title } from "@/components/Text";
-import { Loader2 } from "lucide-react";
+import { Loader2, CheckCircle2, Upload, FileText } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const SelectPlatform: React.FC = () => {
   const navigate = useNavigate();
@@ -15,6 +16,11 @@ const SelectPlatform: React.FC = () => {
   const { toast } = useToast();
   const [linkToken, setLinkToken] = useState<string | null>(null);
   const [isLoadingToken, setIsLoadingToken] = useState(true);
+  const [isBankConnected, setIsBankConnected] = useState(false);
+  const [isLeaseUploaded, setIsLeaseUploaded] = useState(false);
+  const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Redirect if not authenticated
   useEffect(() => {
@@ -132,13 +138,12 @@ const SelectPlatform: React.FC = () => {
         const data = await response.json();
         console.log('Access token obtained (demo only):', data.access_token);
         
+        setIsBankConnected(true);
+        
         toast({
           title: "Success!",
           description: `Your bank account (${metadata.institution?.name || 'bank'}) has been connected successfully.`,
         });
-        
-        // Navigate to next step
-        navigate("/processing");
       } catch (error) {
         console.error('Error exchanging public token:', error);
         toast({
@@ -171,6 +176,70 @@ const SelectPlatform: React.FC = () => {
 
   const { open, ready } = usePlaidLink(config);
 
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type (PDF, images, etc.)
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if (!allowedTypes.includes(file.type)) {
+      toast({
+        title: "Invalid File Type",
+        description: "Please upload a PDF, Word document, or image file.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate file size (max 10MB)
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    if (file.size > maxSize) {
+      toast({
+        title: "File Too Large",
+        description: "Please upload a file smaller than 10MB.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsUploading(true);
+    
+    try {
+      // Simulate file upload - in production, you would upload to your backend
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setUploadedFileName(file.name);
+      setIsLeaseUploaded(true);
+      
+      toast({
+        title: "Success!",
+        description: "Your lease agreement has been uploaded successfully.",
+      });
+    } catch (error) {
+      toast({
+        title: "Upload Failed",
+        description: "Failed to upload lease agreement. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleRemoveFile = () => {
+    setUploadedFileName(null);
+    setIsLeaseUploaded(false);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleContinue = () => {
+    if (isBankConnected && isLeaseUploaded) {
+      navigate("/offers");
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="w-full p-4 flex justify-center px-8 md:px-12">
@@ -180,62 +249,189 @@ const SelectPlatform: React.FC = () => {
       </header>
 
       <div className="flex-1 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-2xl">
           <div className="text-center mb-10">
-            <Title>Connect your Bank Account</Title>
+            <Title>We just need two things</Title>
             <p className="text-md text-balance text-gray-600 mt-4">
-              Securely connect your bank account to verify your identity and
-              receive your advance.
+              Connect your bank account and upload your lease agreement to see your offers.
             </p>
           </div>
 
-          <Card className="p-8">
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                    />
-                  </svg>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {/* Bank Account Connection Step */}
+            <Card className={cn("p-6 transition-all", isBankConnected && "border-green-500 border-2")}>
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-4 relative">
+                  <div className={cn(
+                    "w-14 h-14 rounded-full flex items-center justify-center mb-4 mx-auto transition-colors",
+                    isBankConnected 
+                      ? "bg-green-100" 
+                      : "bg-gradient-to-br from-blue-500 to-purple-600"
+                  )}>
+                    {isBankConnected ? (
+                      <CheckCircle2 className="w-8 h-8 text-green-600" />
+                    ) : (
+                      <svg
+                        className="w-7 h-7 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                        />
+                      </svg>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Connect with Plaid
-              </h3>
-              <p className="text-sm text-gray-600 mb-6">
-                Plaid is used by thousands of financial institutions to securely
-                connect bank accounts.
-              </p>
-              <Button
-                onClick={() => open()}
-                disabled={!ready || isLoadingToken}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-base"
-                size="lg"
-              >
-                {isLoadingToken ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Loading...
-                  </>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Connect Bank Account
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Securely connect your bank account through Plaid.
+                </p>
+                {isBankConnected ? (
+                  <div className="w-full">
+                    <div className="flex items-center justify-center text-green-600 text-sm mb-2">
+                      <CheckCircle2 className="w-4 h-4 mr-2" />
+                      Connected
+                    </div>
+                    <Button
+                      onClick={() => open()}
+                      variant="outline"
+                      className="w-full"
+                      size="sm"
+                    >
+                      Reconnect
+                    </Button>
+                  </div>
                 ) : (
-                  "Connect Bank Account"
+                  <Button
+                    onClick={() => open()}
+                    disabled={!ready || isLoadingToken}
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                    size="lg"
+                  >
+                    {isLoadingToken ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Loading...
+                      </>
+                    ) : (
+                      "Connect Bank Account"
+                    )}
+                  </Button>
                 )}
-              </Button>
-              <p className="text-xs text-gray-500 mt-4">
-                Your credentials are never shared with us. Plaid uses bank-level
-                encryption.
+              </div>
+            </Card>
+
+            {/* Lease Agreement Upload Step */}
+            <Card className={cn("p-6 transition-all", isLeaseUploaded && "border-green-500 border-2")}>
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-4">
+                  <div className={cn(
+                    "w-14 h-14 rounded-full flex items-center justify-center mb-4 mx-auto transition-colors",
+                    isLeaseUploaded 
+                      ? "bg-green-100" 
+                      : "bg-gradient-to-br from-blue-500 to-purple-600"
+                  )}>
+                    {isLeaseUploaded ? (
+                      <CheckCircle2 className="w-8 h-8 text-green-600" />
+                    ) : (
+                      <FileText className="w-7 h-7 text-white" />
+                    )}
+                  </div>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Upload Lease Agreement
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Upload your signed lease agreement (PDF, Word, or image).
+                </p>
+                {isLeaseUploaded ? (
+                  <div className="w-full">
+                    <div className="flex items-center justify-center text-green-600 text-sm mb-2">
+                      <CheckCircle2 className="w-4 h-4 mr-2" />
+                      Uploaded
+                    </div>
+                    <div className="text-xs text-gray-600 mb-3 truncate w-full px-2">
+                      {uploadedFileName}
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        onClick={() => fileInputRef.current?.click()}
+                        variant="outline"
+                        className="flex-1"
+                        size="sm"
+                      >
+                        <Upload className="w-4 h-4 mr-2" />
+                        Replace
+                      </Button>
+                      <Button
+                        onClick={handleRemoveFile}
+                        variant="outline"
+                        size="sm"
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-full">
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                      onChange={handleFileUpload}
+                      className="hidden"
+                      disabled={isUploading}
+                    />
+                    <Button
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={isUploading}
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                      size="lg"
+                    >
+                      {isUploading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Uploading...
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="mr-2 h-4 w-4" />
+                          Upload Lease Agreement
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                )}
+                <p className="text-xs text-gray-500 mt-3">
+                  Max file size: 10MB
+                </p>
+              </div>
+            </Card>
+          </div>
+
+          {/* Continue Button */}
+          <div className="mt-8">
+            <Button
+              onClick={handleContinue}
+              disabled={!isBankConnected || !isLeaseUploaded}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-base"
+              size="lg"
+            >
+              See Advance Offers
+            </Button>
+            {(!isBankConnected || !isLeaseUploaded) && (
+              <p className="text-xs text-gray-500 text-center mt-2">
+                Please complete both steps to continue
               </p>
-            </div>
-          </Card>
+            )}
+          </div>
         </div>
       </div>
       <div className="py-4 text-center">
