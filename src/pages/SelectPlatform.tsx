@@ -236,7 +236,7 @@ const SelectPlatform: React.FC = () => {
 
   const handleContinue = () => {
     if (isBankConnected && isLeaseUploaded) {
-      navigate("/offers");
+      navigate("/processing");
     }
   };
 

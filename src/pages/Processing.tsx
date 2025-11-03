@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
 import { useAuth } from "@/lib/auth";
 import { Logo } from "./homepage/navigation";
@@ -7,18 +7,15 @@ import { Title } from "@/components/Text";
 
 const Processing: React.FC = () => {
   const [progress, setProgress] = useState(0);
-  const { isAuthenticated, isPatreonConnected } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
 
-  // Redirect if not authenticated or Patreon not connected
+  // Redirect if not authenticated
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/signin");
-    } else if (!isPatreonConnected) {
-      navigate("/connect-patreon");
     }
-  }, [isAuthenticated, isPatreonConnected, navigate]);
+  }, [isAuthenticated, navigate]);
 
   // Simulate progress and redirect after 7 seconds
   useEffect(() => {
@@ -45,11 +42,11 @@ const Processing: React.FC = () => {
 
   // List of processing steps
   const processingSteps = [
-    { step: "Connecting to Patreon", complete: progress >= 20 },
-    { step: "Fetching subscription data", complete: progress >= 40 },
-    { step: "Analyzing revenue streams", complete: progress >= 60 },
-    { step: "Calculating funding options", complete: progress >= 80 },
-    { step: "Preparing your offer", complete: progress >= 100 },
+    { step: "Verifying bank account connection", complete: progress >= 20 },
+    { step: "Analyzing lease agreement", complete: progress >= 40 },
+    { step: "Processing tenant payment history", complete: progress >= 60 },
+    { step: "Calculating rental income", complete: progress >= 80 },
+    { step: "Preparing your advance offer", complete: progress >= 100 },
   ];
 
   return (
@@ -64,7 +61,7 @@ const Processing: React.FC = () => {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <Title>Processing your account</Title>
           <p className="mt-2 text-center text-balance text-sm text-gray-600">
-            We're analyzing your subscription data to prepare your funding offer
+            We're analyzing your lease agreement and rental income to prepare your advance offer
           </p>
         </div>
 
