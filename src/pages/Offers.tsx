@@ -11,9 +11,9 @@ import { Title } from "@/components/Text";
 
 const Offers: React.FC = () => {
   // Slider configuration
-  const minAmount = 50000;
-  const maxAmount = 1000000;
-  const step = 1000;
+  const minAmount = 5000;
+  const maxAmount = 100000;
+  const step = 100;
   const defaultAmount = Math.round((minAmount + maxAmount) / 2); // Middle of the range
   
   const [amount, setAmount] = useState([defaultAmount]);
@@ -78,7 +78,7 @@ const Offers: React.FC = () => {
         <div className="w-full max-w-2xl">
           <div className="text-center mb-10">
             <Title>How much would you like to be advanced?</Title>
-            <p className="text-md text-gray-600 text-balance max-w-2xl mx-auto mt-4">
+            <p className="text-md text-muted-foreground text-balance max-w-2xl mx-auto mt-4">
               Repayment is automatically collected from your rental income each month.
             </p>
           </div>
@@ -86,7 +86,7 @@ const Offers: React.FC = () => {
           <Card className="p-8 md:p-12 border rounded-xl shadow-md">
             {/* Amount Display */}
             <div className="text-center mb-10">
-              <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-3">
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-3">
                 Advance Amount
               </div>
               <div className="text-5xl md:text-6xl font-bold tracking-tight text-primary">
@@ -104,7 +104,7 @@ const Offers: React.FC = () => {
                 step={step}
                 className="w-full"
               />
-              <div className="flex justify-between text-xs text-gray-500 mt-2">
+              <div className="flex justify-between text-xs text-muted-foreground mt-2">
                 <span>{formatCurrency(minAmount)}</span>
                 <span>{formatCurrency(maxAmount)}</span>
               </div>
@@ -112,7 +112,7 @@ const Offers: React.FC = () => {
 
             {/* Quick Amount Buttons */}
             <div className="grid grid-cols-4 gap-2 mb-8">
-              {[100000, 250000, 500000, 750000].map((value) => (
+              {[10000, 25000, 50000, 75000].map((value) => (
                 <Button
                   key={value}
                   variant="outline"
@@ -134,21 +134,21 @@ const Offers: React.FC = () => {
             <div className="border-t pt-6 mt-6">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
                 <div className="text-center">
-                  <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
                     Flat Fee ({offerDetails.feePercentage}%)
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-gray-900">
+                  <div className="text-2xl md:text-3xl font-bold text-foreground">
                     {formatCurrency(offerDetails.fee)}
                   </div>
                 </div>
                 
-                <div className="hidden md:block w-px h-12 bg-gray-200"></div>
+                <div className="hidden md:block w-px h-12 bg-border"></div>
                 
                 <div className="text-center">
-                  <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
                     Total Repayment
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-gray-900">
+                  <div className="text-2xl md:text-3xl font-bold text-foreground">
                     {formatCurrency(offerDetails.totalRepayment)}
                   </div>
                 </div>
@@ -165,7 +165,7 @@ const Offers: React.FC = () => {
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
 
-            <div className="text-center text-xs text-gray-500 max-w-2xl mx-auto">
+            <div className="text-center text-xs text-muted-foreground max-w-2xl mx-auto">
               <p>
                 Rent Capital provides revenue-based funding, not loans. We
                 purchase a fixed portion of your future rental income at
@@ -179,7 +179,7 @@ const Offers: React.FC = () => {
         </div>
       </div>
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           © 2025 Rent Capital. All rights reserved.
         </p>
       </div>

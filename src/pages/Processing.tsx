@@ -60,16 +60,16 @@ const Processing: React.FC = () => {
       <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <Title>Processing your account</Title>
-          <p className="mt-2 text-center text-balance text-sm text-gray-600">
+          <p className="mt-2 text-center text-balance text-sm text-muted-foreground">
             We're analyzing your lease agreement and rental income to prepare your advance offer
           </p>
         </div>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="bg-card py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <div className="space-y-6">
               <div>
-                <div className="flex justify-between text-sm text-gray-500 mb-2">
+                <div className="flex justify-between text-sm text-muted-foreground mb-2">
                   <span>Progress</span>
                   <span>{progress}%</span>
                 </div>
@@ -77,7 +77,7 @@ const Processing: React.FC = () => {
               </div>
 
               <div className="space-y-4 mt-6">
-                <h3 className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm font-medium text-foreground">
                   Processing steps:
                 </h3>
                 <ul className="space-y-3">
@@ -87,7 +87,7 @@ const Processing: React.FC = () => {
                         className={`flex-shrink-0 h-5 w-5 rounded-full ${
                           step.complete
                             ? "bg-primary"
-                            : "border border-gray-300"
+                            : "border border-border"
                         } mr-3 flex items-center justify-center`}
                       >
                         {step.complete && (
@@ -106,7 +106,7 @@ const Processing: React.FC = () => {
                       </div>
                       <span
                         className={`text-sm ${
-                          step.complete ? "text-gray-900" : "text-gray-500"
+                          step.complete ? "text-foreground" : "text-muted-foreground"
                         }`}
                       >
                         {step.step}
@@ -118,7 +118,7 @@ const Processing: React.FC = () => {
             </div>
           </div>
           <div className="text-center mt-8">
-            <p className="text-xs text-balance text-gray-500 mt-6">
+            <p className="text-xs text-balance text-muted-foreground mt-6">
               This process typically takes a few moments. Please don't close
               this window.
             </p>
@@ -126,7 +126,7 @@ const Processing: React.FC = () => {
         </div>
       </div>
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           © 2025 Rent Capital. All rights reserved.
         </p>
       </div>

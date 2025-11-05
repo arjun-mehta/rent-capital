@@ -10,7 +10,7 @@ export function Title({
   return (
     <h1
       className={cn(
-        "text-3xl text-center font-bold text-gray-900 mb-2",
+        "text-3xl text-center font-bold text-foreground mb-2",
         className
       )}
     >

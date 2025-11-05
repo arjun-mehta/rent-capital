@@ -56,7 +56,7 @@ const EntityDetails: React.FC = () => {
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <Title>Entity Information</Title>
-          <p className="text-md text-balance text-gray-600 max-w-2xl mx-auto">
+          <p className="text-md text-balance text-muted-foreground max-w-2xl mx-auto">
             Please provide your basic details to proceed with your revenue
             purchase agreement.
           </p>
@@ -80,7 +80,7 @@ const EntityDetails: React.FC = () => {
             <div className="space-y-2">
               <Label htmlFor="ein">
                 Tax ID (EIN)
-                <span className="text-xs text-gray-500 ml-1">
+                <span className="text-xs text-muted-foreground ml-1">
                   Format: XX-XXXXXXX or XXXXXXXXX
                 </span>
               </Label>
@@ -129,7 +129,7 @@ const EntityDetails: React.FC = () => {
                 />
                 <Label
                   htmlFor="authorization"
-                  className="text-sm text-gray-700 font-normal cursor-pointer"
+                  className="text-sm text-foreground font-normal cursor-pointer"
                 >
                   I authorize Rent Capital to verify my business information and
                   creditworthiness. This may include a soft business credit inquiry, 
@@ -141,7 +141,7 @@ const EntityDetails: React.FC = () => {
         </Card>
 
         <div className="flex flex-col items-center justify-center">
-          <div className="flex items-center justify-center text-amber-600 text-sm mb-4">
+          <div className="flex items-center justify-center text-muted-foreground text-sm mb-4">
             <Info className="h-4 w-4 mr-2" />
             <p>
               All information is securely stored and used only for verification purposes.
@@ -159,7 +159,7 @@ const EntityDetails: React.FC = () => {
       </div>
 
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           © 2025 Rent Capital. All rights reserved.
         </p>
       </div>

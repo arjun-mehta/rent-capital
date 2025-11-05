@@ -71,7 +71,7 @@ export function Logo({
       <text
         x={isLeftAligned ? "0" : "80"}
         y="24"
-        fill="#3F3F46"
+        fill="currentColor"
         fontSize="22"
         fontWeight="700"
         fontFamily="Poppins, sans-serif"

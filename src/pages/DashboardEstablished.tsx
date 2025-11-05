@@ -111,7 +111,7 @@ const DashboardEstablished: React.FC = () => {
             </div>
             <div className="flex items-center space-x-4">
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1 bg-white hover:bg-gray-200 shadow-xs transition-colors rounded-full p-1 pr-3">
+                <DropdownMenuTrigger className="flex items-center gap-1 bg-card hover:bg-muted shadow-xs transition-colors rounded-full p-1 pr-3">
                   <Avatar className="size-8">
                     <AvatarImage src={avatar} />
                     <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
@@ -167,7 +167,7 @@ const DashboardEstablished: React.FC = () => {
                 <div className="mb-6">
                   <Progress value={repaymentData.progressPercent} />
 
-                  <ul className="flex justify-between text-lg font-semibold text-gray-900 mt-4">
+                  <ul className="flex justify-between text-lg font-semibold text-foreground mt-4">
                     <li className="w-[46px] opacity-20">0%</li>
                     <li className="w-[46px] text-center opacity-40">25%</li>
                     <li className="w-[46px] text-center opacity-60">50%</li>
@@ -177,30 +177,30 @@ const DashboardEstablished: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-xs text-gray-500 mb-1">
+                  <div className="bg-muted p-3 rounded-lg">
+                    <div className="text-xs text-muted-foreground mb-1">
                       Total Repayment
                     </div>
                     <div className="text-lg font-semibold">
                       ${repaymentData.totalAmount.toLocaleString()}
                     </div>
                   </div>
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-xs text-gray-500 mb-1">
+                  <div className="bg-muted p-3 rounded-lg">
+                    <div className="text-xs text-muted-foreground mb-1">
                       Paid So Far
                     </div>
                     <div className="text-lg font-semibold">
                       ${repaymentData.amountPaid.toLocaleString()}
                     </div>
                   </div>
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-xs text-gray-500 mb-1">Remaining</div>
+                  <div className="bg-muted p-3 rounded-lg">
+                    <div className="text-xs text-muted-foreground mb-1">Remaining</div>
                     <div className="text-lg font-semibold">
                       ${repaymentData.remainingAmount.toLocaleString()}
                     </div>
                   </div>
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-xs text-gray-500 mb-1">
+                  <div className="bg-muted p-3 rounded-lg">
+                    <div className="text-xs text-muted-foreground mb-1">
                       Final Month
                     </div>
                     <div className="text-lg font-semibold">
@@ -209,19 +209,19 @@ const DashboardEstablished: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border-t pt-6">
-                  <h3 className="font-medium text-gray-900 mb-4">
+                <div className="border-t border-border pt-6">
+                  <h3 className="font-medium text-foreground mb-4">
                     Upcoming Payments
                   </h3>
-                  <div className="bg-gray-50 text-primary-foreground rounded-lg p-4 flex items-start space-x-4">
-                    <Calendar className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                  <div className="bg-muted rounded-lg p-4 flex items-start space-x-4">
+                    <Calendar className="h-5 w-5 mt-0.5 flex-shrink-0 text-foreground" />
                     <div>
-                      <h4 className="font-medium">Next payment:</h4>
-                      <p className="text-sm">
+                      <h4 className="font-medium text-foreground">Next payment:</h4>
+                      <p className="text-sm text-foreground">
                         In {nextPaymentDays} days on{" "}
                         {repaymentData.nextPaymentDate.toLocaleDateString()}
                       </p>
-                      <p className="text-xs mt-1">
+                      <p className="text-xs mt-1 text-muted-foreground">
                         Payments are automatically ACH-debited from your bank account each month
                       </p>
                     </div>
@@ -237,14 +237,14 @@ const DashboardEstablished: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
                     <div className="flex items-center space-x-3">
-                      <CreditCard className="h-5 w-5 text-gray-400" />
+                      <CreditCard className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium text-foreground">
                           Payment #3
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-muted-foreground">
                           {new Date(
                             Date.now() - 30 * 24 * 60 * 60 * 1000
                           ).toLocaleDateString()}
@@ -252,23 +252,23 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">
+                      <div className="font-semibold text-foreground">
                         ${monthlyPayment.toLocaleString()}.00
                       </div>
-                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
+                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">
                         Completed
                       </span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
                     <div className="flex items-center space-x-3">
-                      <CreditCard className="h-5 w-5 text-gray-400" />
+                      <CreditCard className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium text-foreground">
                           Payment #2
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-muted-foreground">
                           {new Date(
                             Date.now() - 60 * 24 * 60 * 60 * 1000
                           ).toLocaleDateString()}
@@ -276,23 +276,23 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">
+                      <div className="font-semibold text-foreground">
                         ${monthlyPayment.toLocaleString()}.00
                       </div>
-                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
+                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">
                         Completed
                       </span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
                     <div className="flex items-center space-x-3">
-                      <CreditCard className="h-5 w-5 text-gray-400" />
+                      <CreditCard className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium text-foreground">
                           Payment #1
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-muted-foreground">
                           {new Date(
                             Date.now() - 90 * 24 * 60 * 60 * 1000
                           ).toLocaleDateString()}
@@ -300,10 +300,10 @@ const DashboardEstablished: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-gray-900">
+                      <div className="font-semibold text-foreground">
                         ${monthlyPayment.toLocaleString()}.00
                       </div>
-                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary-foreground rounded-full">
+                      <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">
                         Completed
                       </span>
                     </div>
@@ -333,7 +333,7 @@ const DashboardEstablished: React.FC = () => {
                 <Button
                   size="sm"
                   type="button"
-                  className="w-full bg-amber-400 hover:bg-amber-400/80"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   Upload New Lease <ChevronRightIcon />
                 </Button>
@@ -353,8 +353,7 @@ const DashboardEstablished: React.FC = () => {
                 <Button
                   size="sm"
                   type="button"
-                  variant="outline"
-                  className="w-full"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                   onClick={() => navigate("/select-platform")}
                 >
                   Start New Advance <ChevronRightIcon />
@@ -402,10 +401,10 @@ const DashboardEstablished: React.FC = () => {
                   <div className="flex items-start space-x-3">
                     <Bell className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-medium text-gray-900">
+                      <h4 className="font-medium text-foreground">
                         Payment Reminders
                       </h4>
-                      <p className="text-gray-600">
+                      <p className="text-muted-foreground">
                         We'll send you email reminders 3 days before each
                         scheduled payment.
                       </p>
@@ -415,8 +414,8 @@ const DashboardEstablished: React.FC = () => {
                   <div className="flex items-start space-x-3">
                     <Shield className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-medium text-gray-900">Security</h4>
-                      <p className="text-gray-600">
+                      <h4 className="font-medium text-foreground">Security</h4>
+                      <p className="text-muted-foreground">
                         Your data is encrypted and secure. We use
                         industry-standard security measures.
                       </p>
@@ -426,10 +425,10 @@ const DashboardEstablished: React.FC = () => {
                   <div className="flex items-start space-x-3">
                     <CheckCircle2 className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-medium text-gray-900">
+                      <h4 className="font-medium text-foreground">
                         Automatic Repayments
                       </h4>
-                      <p className="text-gray-600">
+                      <p className="text-muted-foreground">
                         Payments are automatically ACH-debited from your bank account each month.
                       </p>
                     </div>
@@ -438,8 +437,8 @@ const DashboardEstablished: React.FC = () => {
                   <div className="flex items-start space-x-3">
                     <Building className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-medium text-gray-900">Support</h4>
-                      <p className="text-gray-600">
+                      <h4 className="font-medium text-foreground">Support</h4>
+                      <p className="text-muted-foreground">
                         Need help? Contact our support team at
                         support@rentcapital.com
                       </p>
@@ -459,7 +458,7 @@ const DashboardEstablished: React.FC = () => {
                   notes={
                     <>
                       <div className="space-y-4 text-sm mt-6">
-                        <div className="flex items-start space-x-2 text-gray-600">
+                        <div className="flex items-start space-x-2 text-muted-foreground">
                           <CheckCircle2Icon
                             className="size-6 text-primary flex-shrink-0"
                             strokeWidth={1.5}
@@ -469,7 +468,7 @@ const DashboardEstablished: React.FC = () => {
                           </p>
                         </div>
 
-                        <div className="flex items-start space-x-2 text-gray-600">
+                        <div className="flex items-start space-x-2 text-muted-foreground">
                           <CheckCircle2Icon
                             className="size-6 text-primary flex-shrink-0"
                             strokeWidth={1.5}

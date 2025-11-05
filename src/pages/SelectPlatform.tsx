@@ -252,27 +252,27 @@ const SelectPlatform: React.FC = () => {
         <div className="w-full max-w-2xl">
           <div className="text-center mb-10">
             <Title>We just need two things</Title>
-            <p className="text-md text-balance text-gray-600 mt-4">
+            <p className="text-md text-balance text-muted-foreground mt-4">
               Connect your bank account and upload your lease agreement to see your offers.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {/* Bank Account Connection Step */}
-            <Card className={cn("p-6 transition-all", isBankConnected && "border-green-500 border-2")}>
+            <Card className={cn("p-6 transition-all", isBankConnected && "border-primary border-2")}>
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4 relative">
                   <div className={cn(
                     "w-14 h-14 rounded-full flex items-center justify-center mb-4 mx-auto transition-colors",
                     isBankConnected 
-                      ? "bg-green-100" 
-                      : "bg-gradient-to-br from-blue-500 to-purple-600"
+                      ? "bg-primary/20" 
+                      : "bg-primary/10"
                   )}>
                     {isBankConnected ? (
-                      <CheckCircle2 className="w-8 h-8 text-green-600" />
+                      <CheckCircle2 className="w-8 h-8 text-primary" />
                     ) : (
                       <svg
-                        className="w-7 h-7 text-white"
+                        className="w-7 h-7 text-primary"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -287,15 +287,15 @@ const SelectPlatform: React.FC = () => {
                     )}
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
                   Connect Bank Account
                 </h3>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-muted-foreground mb-4">
                   Securely connect your bank account through Plaid.
                 </p>
                 {isBankConnected ? (
                   <div className="w-full">
-                    <div className="flex items-center justify-center text-green-600 text-sm mb-2">
+                    <div className="flex items-center justify-center text-primary text-sm mb-2">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
                       Connected
                     </div>
@@ -329,35 +329,35 @@ const SelectPlatform: React.FC = () => {
             </Card>
 
             {/* Lease Agreement Upload Step */}
-            <Card className={cn("p-6 transition-all", isLeaseUploaded && "border-green-500 border-2")}>
+            <Card className={cn("p-6 transition-all", isLeaseUploaded && "border-primary border-2")}>
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4">
                   <div className={cn(
                     "w-14 h-14 rounded-full flex items-center justify-center mb-4 mx-auto transition-colors",
                     isLeaseUploaded 
-                      ? "bg-green-100" 
-                      : "bg-gradient-to-br from-blue-500 to-purple-600"
+                      ? "bg-primary/20" 
+                      : "bg-primary/10"
                   )}>
                     {isLeaseUploaded ? (
-                      <CheckCircle2 className="w-8 h-8 text-green-600" />
+                      <CheckCircle2 className="w-8 h-8 text-primary" />
                     ) : (
-                      <FileText className="w-7 h-7 text-white" />
+                      <FileText className="w-7 h-7 text-primary" />
                     )}
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
                   Upload Lease Agreement
                 </h3>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-muted-foreground mb-4">
                   Upload your signed lease agreement (PDF, Word, or image).
                 </p>
                 {isLeaseUploaded ? (
                   <div className="w-full">
-                    <div className="flex items-center justify-center text-green-600 text-sm mb-2">
+                    <div className="flex items-center justify-center text-primary text-sm mb-2">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
                       Uploaded
                     </div>
-                    <div className="text-xs text-gray-600 mb-3 truncate w-full px-2">
+                    <div className="text-xs text-muted-foreground mb-3 truncate w-full px-2">
                       {uploadedFileName}
                     </div>
                     <div className="flex gap-2">
@@ -409,7 +409,7 @@ const SelectPlatform: React.FC = () => {
                     </Button>
                   </div>
                 )}
-                <p className="text-xs text-gray-500 mt-3">
+                <p className="text-xs text-muted-foreground mt-3">
                   Max file size: 10MB
                 </p>
               </div>
@@ -427,7 +427,7 @@ const SelectPlatform: React.FC = () => {
               See Advance Offers
             </Button>
             {(!isBankConnected || !isLeaseUploaded) && (
-              <p className="text-xs text-gray-500 text-center mt-2">
+              <p className="text-xs text-muted-foreground text-center mt-2">
                 Please complete both steps to continue
               </p>
             )}
@@ -435,7 +435,7 @@ const SelectPlatform: React.FC = () => {
         </div>
       </div>
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Rent Capital. All rights reserved.
         </p>
       </div>

@@ -36,7 +36,7 @@ const Contract: React.FC = () => {
         notes={
           <>
             <div className="space-y-4 text-sm mt-6">
-              <div className="flex items-start space-x-2 text-gray-600">
+              <div className="flex items-start space-x-2 text-muted-foreground">
                 <CheckCircle2Icon
                   className="size-6 text-primary flex-shrink-0"
                   strokeWidth={1.5}
@@ -46,13 +46,13 @@ const Contract: React.FC = () => {
                 </p>
               </div>
 
-              <div className="flex items-start space-x-2 text-gray-600">
+              <div className="flex items-start space-x-2 text-muted-foreground">
                 <CheckCircle2Icon
                   className="size-6 text-primary flex-shrink-0"
                   strokeWidth={1.5}
                 />
                 <p className="text-base text-balance">
-                  We never access or handle any funds other than rent payments by this tenant.
+                  We never collect funds other than rent payments.
                 </p>
               </div>
             </div>
@@ -61,7 +61,7 @@ const Contract: React.FC = () => {
       />
 
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           © 2025 Rent Capital. All rights reserved.
         </p>
       </div>
@@ -189,10 +189,10 @@ export const ContractContent = ({
           className="flex-1 container flex items-center justify-center flex-col w-full p-0"
           style={{ height }}
         >
-          <div className="bg-white w-full flex-1 grid grid-cols-[1fr_400px] items-start shadow-md rounded-xl overflow-hidden">
+          <div className="bg-card w-full flex-1 grid grid-cols-[1fr_400px] items-start shadow-md rounded-xl overflow-hidden">
             <div
               ref={contractRef}
-              className="overflow-y-auto size-full flex flex-col bg-gray-50 text-sm border-r"
+              className="overflow-y-auto size-full flex flex-col bg-background text-sm border-r border-border"
             >
               <object
                 data="/forms/contract.pdf"
@@ -201,13 +201,13 @@ export const ContractContent = ({
                 onLoad={() => setPdfLoaded(true)}
                 onError={() => setPdfError(true)}
               >
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-50 p-4">
+                <div className="absolute inset-0 flex items-center justify-center bg-background p-4">
                   <div className="text-center max-w-md">
-                    <div className="text-amber-600 text-4xl mb-4">⚠️</div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    <div className="text-amber-500 text-4xl mb-4">⚠️</div>
+                    <h3 className="text-lg font-medium text-foreground mb-2">
                       Unable to display the PDF
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-muted-foreground mb-4">
                       Your browser may not support embedded PDFs. You can
                       download the form or view it on the IRS website.
                     </p>
@@ -231,10 +231,10 @@ export const ContractContent = ({
               <div className="flex-1">
                 <div className="items-center mb-4">
                   <div>
-                    <h2 className="text-lg font-semibold text-gray-900">
+                    <h2 className="text-lg font-semibold text-foreground">
                       Revenue Purchase Agreement
                     </h2>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-muted-foreground">
                       Document ID: {documentId}
                     </p>
                   </div>
@@ -266,13 +266,13 @@ export const ContractContent = ({
                 <label
                   htmlFor="agreement"
                   className={`text-sm text-balance ${
-                    !hasScrolledToBottom ? "text-gray-400" : "text-gray-700"
+                    !hasScrolledToBottom ? "text-muted-foreground/50" : "text-foreground"
                   }`}
                 >
                   I have read and agree to the terms and conditions outlined in
                   this agreement.
                   {!hasScrolledToBottom && (
-                    <span className="block text-amber-600 mt-1">
+                    <span className="block text-amber-500 mt-1">
                       Please scroll to the bottom of the contract first.
                     </span>
                   )}
@@ -282,7 +282,7 @@ export const ContractContent = ({
               <div className="my-4">
                 <label
                   htmlFor="signature"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-foreground mb-1"
                 >
                   Electronic Signature (Type your full name)
                 </label>
@@ -291,7 +291,7 @@ export const ContractContent = ({
                   type="text"
                   value={signature}
                   onChange={(e) => setSignature(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  className="w-full px-3 py-2 border border-border rounded-md shadow-sm bg-background text-foreground focus:outline-none focus:ring-primary focus:border-primary"
                   placeholder="Full name"
                   disabled={!hasAgreed}
                   required
@@ -317,10 +317,10 @@ export const ContractContent = ({
       {showCelebration && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="absolute inset-0 bg-black/20 backdrop-blur-sm animate-fade-in"></div>
-          <div className="relative bg-white rounded-xl p-8 shadow-xl animate-bounce-in text-center max-w-sm w-full mx-4">
+          <div className="relative bg-card rounded-xl p-8 shadow-xl animate-bounce-in text-center max-w-sm w-full mx-4">
             <div className="text-6xl mb-6">🎉</div>
             <Title>Congratulations!</Title>
-            <p className="text-gray-700 text-lg mb-6">
+            <p className="text-foreground text-lg mb-6">
               We're excited to help you level up.
             </p>
             <Button

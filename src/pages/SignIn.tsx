@@ -74,15 +74,15 @@ const SignIn: React.FC = () => {
       <div className="flex-1 flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative">
           <FitText className="translate-y-[32px] z-0">Welcome Back</FitText>
-          <div className="bg-white p-8 shadow-lg relative z-10 rounded-xl border border-gray-100">
+          <div className="bg-card p-8 shadow-lg relative z-10 rounded-xl border border-border">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <Label htmlFor="email" className="text-gray-700 font-medium">
+                <Label htmlFor="email" className="text-foreground font-medium">
                   Email address
                 </Label>
                 <div className="mt-1.5 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail className="h-5 w-5 text-gray-400" />
+                    <Mail className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <Input
                     id="email"
@@ -102,14 +102,14 @@ const SignIn: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <Label
                     htmlFor="password"
-                    className="text-gray-700 font-medium"
+                    className="text-foreground font-medium"
                   >
                     Password
                   </Label>
                 </div>
                 <div className="mt-1.5 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-gray-400" />
+                    <Lock className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <Input
                     id="password"
@@ -127,7 +127,7 @@ const SignIn: React.FC = () => {
                       type="button"
                       tabIndex={-1}
                       onClick={togglePasswordVisibility}
-                      className="text-gray-400 hover:text-gray-500 focus:outline-none"
+                      className="text-muted-foreground hover:text-foreground focus:outline-none"
                     >
                       {showPassword ? (
                         <EyeOff className="h-5 w-5" />
@@ -151,14 +151,14 @@ const SignIn: React.FC = () => {
                   />
                   <label
                     htmlFor="remember-me"
-                    className="ml-2 block text-sm text-gray-700"
+                    className="ml-2 block text-sm text-foreground"
                   >
                     Remember me
                   </label>
                 </div>
                 <a
                   href="#"
-                  className="text-sm text-grey-700 underline underline-offset-2"
+                  className="text-sm text-muted-foreground underline underline-offset-2"
                 >
                   Forgot password?
                 </a>
@@ -179,10 +179,10 @@ const SignIn: React.FC = () => {
             <div className="mt-8 text-center">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200"></div>
+                  <div className="w-full border-t border-border"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white text-gray-500">
+                  <span className="px-4 bg-card text-muted-foreground">
                     Not a member?
                   </span>
                 </div>
@@ -190,7 +190,7 @@ const SignIn: React.FC = () => {
               <div className="mt-4">
                 <Button
                   variant="outline"
-                  className="w-full border-gray-300 text-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-colors h-11"
+                  className="w-full border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors h-11"
                   onClick={() =>
                     document
                       .getElementById("application-form")
@@ -206,9 +206,9 @@ const SignIn: React.FC = () => {
       </div>
 
       {/* Footer */}
-      <footer className="py-4 text-center text-sm text-gray-500">
+      <footer className="py-4 text-center text-sm text-muted-foreground">
         <p>
-          © {new Date().getFullYear()} Creator Capital. All rights reserved.
+          © {new Date().getFullYear()} Rent Capital. All rights reserved.
         </p>
       </footer>
     </div>

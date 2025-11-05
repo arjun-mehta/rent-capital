@@ -70,17 +70,17 @@ const BusinessVerification: React.FC = () => {
           <Title>
             Verifying {entityType === 'business' ? 'business' : 'personal'} information
           </Title>
-          <p className="mt-2 text-center text-balance text-sm text-gray-600">
+          <p className="mt-2 text-center text-balance text-sm text-muted-foreground">
             We're conducting required verification checks before proceeding with
             your funding
           </p>
         </div>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="bg-card py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <div className="space-y-6">
               <div>
-                <div className="flex justify-between text-sm text-gray-500 mb-2">
+                <div className="flex justify-between text-sm text-muted-foreground mb-2">
                   <span>Progress</span>
                   <span>{progress}%</span>
                 </div>
@@ -88,7 +88,7 @@ const BusinessVerification: React.FC = () => {
               </div>
 
               <div className="space-y-4 mt-6">
-                <h3 className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm font-medium text-foreground">
                   Verification steps:
                 </h3>
                 <ul className="space-y-3">
@@ -98,7 +98,7 @@ const BusinessVerification: React.FC = () => {
                         className={`flex-shrink-0 h-5 w-5 rounded-full ${
                           step.complete
                             ? "bg-primary text-primary-foreground"
-                            : "border border-gray-300"
+                            : "border border-border"
                         } mr-3 flex items-center justify-center`}
                       >
                         {step.complete && (
@@ -117,7 +117,7 @@ const BusinessVerification: React.FC = () => {
                       </div>
                       <span
                         className={`text-sm ${
-                          step.complete ? "text-gray-900" : "text-gray-500"
+                          step.complete ? "text-foreground" : "text-muted-foreground"
                         }`}
                       >
                         {step.step}
@@ -129,7 +129,7 @@ const BusinessVerification: React.FC = () => {
             </div>
           </div>
           <div className="text-center">
-            <p className="text-xs text-gray-500 mt-6 text-balance">
+            <p className="text-xs text-muted-foreground mt-6 text-balance">
               These verifications are required by our compliance standards. We
               appreciate your patience.
             </p>
@@ -137,7 +137,7 @@ const BusinessVerification: React.FC = () => {
         </div>
       </div>
       <div className="py-4 text-center">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           © 2025 Rent Capital. All rights reserved.
         </p>
       </div>
