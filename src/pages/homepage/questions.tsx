@@ -89,22 +89,24 @@ export function Questions() {
       <div className="w-full -mt-10 sm:-mt-20">
         {items.map((item, index) => (
           <AnimationChild key={item.question}>
-            <Collapsible
+            <div
               className={cn(
-                "flex flex-col rounded-3xl w-full bg-white my-2",
-                index === 0 && "bg-card/70 backdrop-blur-sm"
+                "flex flex-col rounded-3xl w-full border border-border my-2",
+                index === 0 ? "bg-[hsl(0,0%,6%)]/70 backdrop-blur-sm" : "bg-[hsl(0,0%,6%)]"
               )}
             >
-              <CollapsibleTrigger className="w-full p-4 text-left text-balance px-6 flex items-center justify-between text-xl">
-                <span>{item.question}</span>
-                <div className="flex flex-shrink-0 items-center size-10 text-primary-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
-                  <ChevronDownIcon className="size-6" />
-                </div>
-              </CollapsibleTrigger>
-              <CollapsibleContent className="p-4 px-6 text-balance text-neutral-600 pt-0 text-lg">
-                <p>{item.anwer}</p>
-              </CollapsibleContent>
-            </Collapsible>
+              <Collapsible className="w-full">
+                <CollapsibleTrigger className="w-full p-4 text-left text-balance px-6 flex items-center justify-between text-xl text-foreground hover:text-foreground/80">
+                  <span>{item.question}</span>
+                  <div className="flex flex-shrink-0 items-center size-10 text-primary-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
+                    <ChevronDownIcon className="size-6" />
+                  </div>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="p-4 px-6 text-balance text-muted-foreground pt-0 text-lg">
+                  <p>{item.anwer}</p>
+                </CollapsibleContent>
+              </Collapsible>
+            </div>
           </AnimationChild>
         ))}
       </div>

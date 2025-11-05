@@ -70,7 +70,7 @@ const WhoWeHelp: React.FC = () => {
             <ul className="space-y-4">
               {qualifications.map((item, index) => (
                 <li key={index} className="flex items-start space-x-3">
-                  <Check className="w-5 h-5 text-[#017354] flex-shrink-0 mt-1" />
+                  <Check className="w-5 h-5 text-[#6EE7B7] flex-shrink-0 mt-1" />
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
@@ -82,7 +82,7 @@ const WhoWeHelp: React.FC = () => {
             <ul className="space-y-4">
               {useCases.map((item, index) => (
                 <li key={index} className="flex items-start space-x-3">
-                  <Check className="w-5 h-5 text-[#017354] flex-shrink-0 mt-1" />
+                  <Check className="w-5 h-5 text-[#6EE7B7] flex-shrink-0 mt-1" />
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
@@ -92,7 +92,7 @@ const WhoWeHelp: React.FC = () => {
 
         <div className="flex justify-center mt-10">
           <Button 
-            className="bg-[#017354] hover:bg-[#017354]/90 text-white group"
+            className="bg-[#6EE7B7] hover:bg-[#6EE7B7]/90 text-white group"
             onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
           >
             See If You Qualify

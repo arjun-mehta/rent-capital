@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from "lucide-react";
 import type { SVGProps } from "react";
 import { Link } from "react-router-dom";
 import { useScrollToElement } from "./scroll";
@@ -13,44 +12,51 @@ export function Navigation() {
   const { scrollToElement, scrollToTop } = useScrollToElement();
 
   return (
-    <nav className="w-full py-4 px-4 sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
-      <ul className="flex w-full justify-between md:justify-start md:max-w-fit mx-auto items-center gap-4 text-sm text-muted-foreground">
-        <li>
-          <Link
-            to="/"
-            onClick={scrollToTop}
-            className="h-[37px] flex items-center justify-center md:px-4 py-2"
-          >
-            <Logo className="h-8" />
-          </Link>
-        </li>
-        {items.map((item) => (
-          <li className="hidden md:block" key={item.href}>
+    <nav className="w-full py-4 sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
+          {/* Left side - Logo */}
+          <div className="flex items-center">
             <Link
-              to={item.href}
-              onClick={(e) =>
-                scrollToElement(item.href.replace("#", ""), {
-                  behavior: "smooth",
-                  block: "start",
-                })
-              }
-              className="h-[37px] flex items-center justify-center px-4 py-2"
+              to="/"
+              onClick={scrollToTop}
+              className="h-[37px] flex items-center py-2"
             >
-              {item.label}
+              <Logo className="h-8" />
             </Link>
-          </li>
-        ))}
+          </div>
 
-        <li className="ml-8">
-          <Link
-            to="/signin"
-            className="h-[37px] flex font-semibold items-center bg-foreground text-primary rounded-full justify-center px-4 py-2"
-          >
-            Apply Now{" "}
-            <ArrowRightIcon className="size-4 ml-1" strokeWidth={2.5} />
-          </Link>
-        </li>
-      </ul>
+          {/* Right side - Nav links and Sign In */}
+          <div className="flex items-center justify-end gap-4">
+            {/* Center nav links */}
+            <div className="hidden lg:flex items-center gap-4 text-sm text-muted-foreground flex-1 justify-center">
+              {items.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={(e) =>
+                    scrollToElement(item.href.replace("#", ""), {
+                      behavior: "smooth",
+                      block: "start",
+                    })
+                  }
+                  className="h-[37px] flex items-center justify-center px-4 py-2"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Sign In */}
+            <Link
+              to="/signin"
+              className="h-[37px] flex font-semibold items-center text-primary justify-center px-4 py-2 hover:text-primary/80 transition-colors"
+            >
+              Sign In
+            </Link>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }
@@ -74,7 +80,7 @@ export function Logo({
         fill="currentColor"
         fontSize="22"
         fontWeight="700"
-        fontFamily="Poppins, sans-serif"
+        fontFamily="Georgia, serif"
         letterSpacing="-0.5"
         textAnchor={isLeftAligned ? "start" : "middle"}
       >

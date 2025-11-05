@@ -79,13 +79,13 @@ const Header: React.FC = () => {
               <Link to="/signin">
                 <Button 
                   variant="outline" 
-                  className="border-gray-300 text-gray-700 hover:bg-[#017354] hover:text-white hover:border-[#017354] transition-colors"
+                  className="border-gray-300 text-gray-700 hover:bg-[#6EE7B7] hover:text-white hover:border-[#6EE7B7] transition-colors"
                 >
                   Sign In
                 </Button>
               </Link>
               <Button 
-                className="bg-[#017354] hover:bg-[#017354]/90 text-white"
+                className="bg-[#6EE7B7] hover:bg-[#6EE7B7]/90 text-white"
                 onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
               >
                 Apply Now
@@ -126,13 +126,13 @@ const Header: React.FC = () => {
                 <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
                   <Button 
                     variant="outline" 
-                    className="border-gray-300 text-gray-700 hover:bg-[#017354] hover:text-white hover:border-[#017354] transition-colors"
+                    className="border-gray-300 text-gray-700 hover:bg-[#6EE7B7] hover:text-white hover:border-[#6EE7B7] transition-colors"
                   >
                     Sign In
                   </Button>
                 </Link>
                 <Button 
-                  className="bg-[#017354] hover:bg-[#017354]/90 text-white"
+                  className="bg-[#6EE7B7] hover:bg-[#6EE7B7]/90 text-white"
                   onClick={() => {
                     setIsMenuOpen(false);
                     document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'});

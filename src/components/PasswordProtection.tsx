@@ -81,7 +81,7 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ password, child
               className="w-full"
             />
           </div>
-          <Button type="submit" className="w-full bg-[#017354] hover:bg-[#017354]/90">
+          <Button type="submit" className="w-full bg-[#6EE7B7] hover:bg-[#6EE7B7]/90">
             Enter Site
           </Button>
         </form>

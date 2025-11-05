@@ -75,8 +75,8 @@ const MinimalCalculator: React.FC = () => {
                     "py-2.5 md:py-3 px-1 md:px-2 rounded-lg text-center transition-all duration-200",
                     "text-xs md:text-sm font-medium",
                     selectedPlan === plan.value
-                      ? "border-2 border-[#017354] text-[#017354] bg-white"
-                      : "border border-gray-200 text-gray-700 bg-white hover:border-[#017354]/50"
+                      ? "border-2 border-[#6EE7B7] text-[#6EE7B7] bg-white"
+                      : "border border-gray-200 text-gray-700 bg-white hover:border-[#6EE7B7]/50"
                   )}
                 >
                   {plan.label}
@@ -89,7 +89,7 @@ const MinimalCalculator: React.FC = () => {
             <CardContent className="p-4 md:p-6">
               <div className="flex flex-col text-left">
                 <div className="text-sm font-medium text-gray-500 mb-1 md:mb-2">Estimated advance amount</div>
-                <span className="text-2xl md:text-3xl font-semibold text-[#017354]">${advanceAmount.toLocaleString()}</span>
+                <span className="text-2xl md:text-3xl font-semibold text-[#6EE7B7]">${advanceAmount.toLocaleString()}</span>
               </div>
             </CardContent>
           </Card>
@@ -97,7 +97,7 @@ const MinimalCalculator: React.FC = () => {
         
         <Button 
           className={cn(
-            "w-full bg-[#017354] hover:bg-[#017354]/90 text-white",
+            "w-full bg-[#6EE7B7] hover:bg-[#6EE7B7]/90 text-white",
             "flex items-center justify-center rounded-lg h-10 md:h-12"
           )}
           onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}

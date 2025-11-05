@@ -1,242 +1,233 @@
-import { circIn, motion, type Variants } from "motion/react";
-import iconCameraVideo from "./icons/camera-video.png";
-import iconDuffleBag from "./icons/duffle-bag.png";
-import iconCalendar from "./icons/calendar.png";
-import iconMic from "./icons/mic.png";
-import iconCameraPhoto from "./icons/camera-photo.png";
-import iconNotebook from "./icons/notebook.png";
-import iconLightbulb from "./icons/lightbulb.png";
-import iconRocket from "./icons/rocket.png";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRightIcon } from "lucide-react";
-
-import iconPatreon from "./icons/patreon.svg";
-import iconYouTube from "./icons/youtube.svg";
-import iconSupercast from "./icons/supercast.svg";
-import iconTwitch from "./icons/twitch.svg";
-import iconApplePodcasts from "./icons/apple-podcasts.svg";
-import iconSubstack from "./icons/substack.svg";
-import iconFanFix from "./icons/fanfix.svg";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { useScrollToElement } from "./scroll";
-
-const logos = [
-  {
-    src: iconPatreon,
-    name: "Patreon",
-  },
-  {
-    src: iconYouTube,
-    name: "YouTube",
-  },
-  {
-    src: iconSupercast,
-    name: "Supercast",
-  },
-  {
-    src: iconFanFix,
-    name: "FanFix",
-  },
-  {
-    src: iconTwitch,
-    name: "Twitch",
-  },
-  {
-    src: iconApplePodcasts,
-    name: "Apple Podcasts",
-  },
-  {
-    src: iconSubstack,
-    name: "Substack",
-  },
-];
-
-const AnimtedButton = motion.create(Button);
-
-const icons = [
-  {
-    src: iconCameraVideo,
-    position: {
-      top: 0,
-      left: 0,
-    },
-  },
-  {
-    src: iconMic,
-    position: {
-      top: 0,
-      right: 0,
-    },
-  },
-  {
-    src: iconRocket,
-    position: {
-      top: "50%",
-      left: "-100px",
-      marginTop: "-100px",
-    },
-  },
-  {
-    src: iconCameraPhoto,
-    position: {
-      top: "50%",
-      right: "-100px",
-      marginTop: "-100px",
-    },
-  },
-  {
-    src: iconDuffleBag,
-    position: {
-      bottom: 0,
-      left: 0,
-    },
-  },
-  {
-    src: iconLightbulb,
-    position: {
-      bottom: 0,
-      right: 0,
-    },
-  },
-];
-
-const parent: (delay?: number) => Variants = (delay: number = 0) => ({
-  visible: { transition: { staggerChildren: 0.1, delayChildren: delay } },
-});
-
-const child: Variants = {
-  hidden: { opacity: 0, y: 120 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 500, damping: 100 },
-  },
-};
-
-const childButton: Variants = {
-  hidden: { opacity: 0, y: 100 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 500, damping: 100 },
-  },
-};
-
-const parentIcons: Variants = {
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
-};
-
-const childIcons: Variants = {
-  hidden: { opacity: 0, scale: 0.5 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { type: "spring", stiffness: 500, damping: 100 },
-  },
-};
 
 export function Header() {
-  const { scrollToElement } = useScrollToElement();
+  const { toast } = useToast();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [units, setUnits] = useState("");
+  const [monthlyIncome, setMonthlyIncome] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!name || !email || !phone || !units || !monthlyIncome) {
+      toast({
+        title: "Please fill in all fields",
+        description: "All fields are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      toast({
+        title: "Thank you!",
+        description: "We'll be in touch soon with your advance offer.",
+      });
+      setName("");
+      setEmail("");
+      setPhone("");
+      setUnits("");
+      setMonthlyIncome("");
+    }, 1000);
+  };
+
+  const benefits = [
+    "Get up to 12 months of rent upfront",
+    "No personal guarantees required",
+    "Repayment based on rental income",
+  ];
 
   return (
-    <motion.header
-      variants={parentIcons}
-      initial="hidden"
-      animate="visible"
-      className="px-4 sm:px-0"
-    >
-      <div className="max-w-screen-xl overflow-x-hidden sm:overflow-x-visible mt-8 sm:w-fit mx-auto flex justify-between flex-col items-center px-20 py-24 sm:py-44 relative">
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          {icons.map((icon) => (
-            <motion.img
-              variants={childIcons}
-              key={icon.src}
-              src={icon.src}
-              style={{ ...icon.position }}
-              className="md:size-[200px] size-[120px] sm:size-[150px] absolute"
-            />
-          ))}
-        </div>
-        <motion.div
-          variants={parent()}
-          initial="hidden"
-          animate="visible"
-          className="z-10"
-        >
-          <h1 className="xl:text-[150px] text-balance md:text-[100px] leading-[0.8] text-[60px] mx-auto  text-foreground text-center font-thunder uppercase font-extrabold">
-            <span className="block overflow-hidden pt-4">
-              <motion.span variants={child} className="block whitespace-nowrap">
-                Get your future
-              </motion.span>
-            </span>
-            <span className="block overflow-hidden pt-4">
-              <motion.span variants={child} className="block whitespace-nowrap">
-                revenue now
-              </motion.span>
-            </span>
-          </h1>
-          <div className="mt-4 flex flex-col sm:flex-row items-center gap-2 absolute bottom-0 sm:bottom-20 left-1/2 -translate-x-1/2">
-            <AnimtedButton
-              variants={childButton}
-              size="lg"
-              className="hidden sm:flex"
-              variant="secondary"
-              onClick={() =>
-                scrollToElement("calculator", {
-                  behavior: "smooth",
-                  block: "center",
-                  inline: "center",
-                })
-              }
-            >
-              Estimate Your Advance
-            </AnimtedButton>
-            <AnimtedButton
-              variants={childButton}
+    <section className="relative w-full h-screen flex items-center justify-center -mt-[69px] pt-[69px]">
+      {/* Background Image - Full Width, starts from top of viewport */}
+      <div 
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://rentcapital.us/assets/hero-bg-HC0_oLit.jpg')",
+        }}
+      />
+      {/* Dark Overlay for readability */}
+      <div className="absolute inset-0 bg-background/75" />
+      
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
+        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
+        {/* Left Side - Hero Content */}
+        <div className="space-y-5">
+          <div className="space-y-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight text-foreground leading-tight">
+              <span className="block">Instant cash</span>
+              <span className="block">for landlords</span>
+            </h1>
+            <p className="text-base sm:text-lg text-foreground/90 leading-relaxed max-w-xl">
+              Rent Capital advances you 90% of your upcoming rental income in exchange for a small flat 10% fee. No loans, no credit checks — just fast, flexible capital for landlords.
+            </p>
+          </div>
+
+          {/* Key Benefits */}
+          <div className="space-y-3 pt-2">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-sm sm:text-base text-foreground">{benefit}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <Button
               asChild
               size="lg"
-              className="flex"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              <Link to="/signin">
-                Apply Now <ArrowRightIcon strokeWidth={2.5} />
-              </Link>
-            </AnimtedButton>
+              <a href="#waitlist">
+                Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+            >
+              <a href="#how">
+                Learn More
+              </a>
+            </Button>
           </div>
-        </motion.div>
-      </div>
+        </div>
 
-      <motion.div
-        variants={parent(0.4)}
-        initial="hidden"
-        animate="visible"
-        className="my-10"
-      >
-        <motion.p variants={child} className="text-balance text-center">
-          We fund creators with subscription-based earnings from:
-        </motion.p>
-        <div className="flex flex-wrap px-4 items-center justify-between mt-8 sm:justify-center">
-          {logos.map((logo) => (
-            <Tooltip key={logo.name} delayDuration={0}>
-              <TooltipTrigger className="cursor-default" asChild>
-                <div className="h-[40px] sm:px-5 opacity-50 transition-opacity data-[state=delayed-open]:opacity-100 data-[state=instant-open]:opacity-100">
-                  <motion.img
-                    variants={child}
-                    src={logo.src}
-                    alt="logo"
-                    className="block size-[32px] sm:size-[40px] object-contain"
+        {/* Right Side - Waitlist Form */}
+        <div className="lg:pl-8 max-w-lg" id="waitlist">
+          <Card className="p-5 sm:p-6 border border-border">
+            <div className="space-y-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-1.5">
+                  Join the Waitlist
+                </h2>
+                <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
+                  Get early access and priority processing when we launch.
+                </p>
+                <p className="text-xs sm:text-sm font-medium text-primary">
+                  Join 700+ landlords already on the waitlist
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="name" className="text-xs text-foreground">
+                      Full Name
+                    </Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="John Smith"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="h-9 text-sm"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email" className="text-xs text-foreground">
+                      Email Address
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="h-9 text-sm"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="phone" className="text-xs text-foreground">
+                      Phone Number
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="(555) 123-4567"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="h-9 text-sm"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="units" className="text-xs text-foreground">
+                      # of Units
+                    </Label>
+                    <Input
+                      id="units"
+                      type="number"
+                      placeholder="5"
+                      min="1"
+                      value={units}
+                      onChange={(e) => setUnits(e.target.value)}
+                      className="h-9 text-sm"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="monthlyIncome" className="text-xs text-foreground">
+                    Total Monthly Income
+                  </Label>
+                  <Input
+                    id="monthlyIncome"
+                    type="number"
+                    placeholder="15000"
+                    min="0"
+                    step="100"
+                    value={monthlyIncome}
+                    onChange={(e) => setMonthlyIncome(e.target.value)}
+                    className="h-9 text-sm"
+                    required
                   />
                 </div>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">{logo.name}</TooltipContent>
-            </Tooltip>
-          ))}
+
+                <Button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-9 text-sm"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Join Waitlist"}
+                  {!isSubmitting && <ArrowRight className="ml-2 h-3.5 w-3.5" />}
+                </Button>
+              </form>
+
+              <p className="text-xs text-muted-foreground text-center">
+                By joining, you agree to receive updates from Rent Capital. We respect your privacy.
+              </p>
+            </div>
+          </Card>
         </div>
-      </motion.div>
-    </motion.header>
+        </div>
+      </div>
+    </section>
   );
 }

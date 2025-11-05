@@ -93,7 +93,7 @@ const DashboardMockup: React.FC = () => {
               <CardContent className="p-6">
                 <div className="flex flex-col text-left">
                   <div className="text-sm font-medium text-gray-500 mb-2">You could receive based on your current subscription revenue</div>
-                  <span className="text-3xl md:text-4xl font-semibold text-[#017354]">${advanceAmount.toLocaleString()}</span>
+                  <span className="text-3xl md:text-4xl font-semibold text-[#6EE7B7]">${advanceAmount.toLocaleString()}</span>
                 </div>
               </CardContent>
             </Card>

@@ -342,7 +342,7 @@ export const ContractContent = ({
           numberOfPieces={500}
           initialVelocityY={15}
           gravity={0.2}
-          colors={["#017354", "#64D2B1", "#FFC700", "#FF6B6B", "#5D5FEF"]}
+          colors={["#6EE7B7", "#64D2B1", "#FFC700", "#FF6B6B", "#5D5FEF"]}
           confettiSource={{
             x: -50,
             y: -50, // Start from above the screen

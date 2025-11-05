@@ -8,7 +8,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/lib/auth";
 import { Eye, EyeOff, Lock, Mail, ArrowRight } from "lucide-react";
 import { Logo } from "./homepage/navigation";
-import { FitText } from "./homepage/fit-text";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -72,9 +71,13 @@ const SignIn: React.FC = () => {
       </header>
 
       <div className="flex-1 flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative">
-          <FitText className="translate-y-[32px] z-0">Welcome Back</FitText>
-          <div className="bg-card p-8 shadow-lg relative z-10 rounded-xl border border-border">
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+          <div className="text-center mb-6">
+            <h1 className="font-serif font-bold text-2xl sm:text-3xl text-foreground tracking-tight">
+              Welcome Back
+            </h1>
+          </div>
+          <div className="bg-card p-8 shadow-lg rounded-xl border border-border">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label htmlFor="email" className="text-foreground font-medium">

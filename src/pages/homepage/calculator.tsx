@@ -56,7 +56,7 @@ export function Calculator() {
       >
         <div>
           <div className="text-sm text-muted-foreground font-normal mb-4">
-            Monthly subscription revenue
+            Monthly rental income
           </div>
           <div className="space-y-3 md:space-y-4">
             <Slider
@@ -93,8 +93,8 @@ export function Calculator() {
                   "py-2.5 md:py-3 px-1 md:px-2 rounded-lg text-center transition-all duration-200",
                   "text-xs md:text-sm font-medium",
                   selectedPlan === plan.value
-                    ? "border border-[#017354] text-[#017354] bg-white"
-                    : "border border-gray-200 text-gray-700 bg-white hover:border-[#017354]/50"
+                    ? "border-2 border-[#6EE7B7] text-[#6EE7B7] bg-[#6EE7B7]/10"
+                    : "border border-border text-muted-foreground bg-card hover:border-[#6EE7B7]/50 hover:text-[#6EE7B7]"
                 )}
               >
                 {plan.label}

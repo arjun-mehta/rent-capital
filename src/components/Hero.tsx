@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
               <Button 
                 className={cn(
                   "primary-button group w-full sm:w-auto",
-                  "bg-[#017354] hover:bg-[#017354]/90 text-base h-12 px-6"
+                  "bg-[#6EE7B7] hover:bg-[#6EE7B7]/90 text-base h-12 px-6"
                 )}
                 onClick={() => document.getElementById('application-form')?.scrollIntoView({behavior: 'smooth'})}
               >
