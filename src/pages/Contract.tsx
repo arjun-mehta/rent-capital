@@ -55,6 +55,16 @@ const Contract: React.FC = () => {
                   We never collect funds other than rent payments.
                 </p>
               </div>
+
+              <div className="flex items-start space-x-2 text-muted-foreground">
+                <CheckCircle2Icon
+                  className="size-6 text-primary flex-shrink-0"
+                  strokeWidth={1.5}
+                />
+                <p className="text-base text-balance">
+                  No penalties on early repayment.
+                </p>
+              </div>
             </div>
           </>
         }
