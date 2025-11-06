@@ -294,16 +294,15 @@ const SelectPlatform: React.FC = () => {
                   Securely connect your bank account through Plaid.
                 </p>
                 {isBankConnected ? (
-                  <div className="w-full">
-                    <div className="flex items-center justify-center text-primary text-sm mb-2">
+                  <div className="w-full space-y-3">
+                    <div className="flex items-center justify-center text-primary text-sm font-medium">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
                       Connected
                     </div>
                     <Button
                       onClick={() => open()}
                       variant="outline"
-                      className="w-full"
-                      size="sm"
+                      className="w-full h-11 text-base font-medium"
                     >
                       Reconnect
                     </Button>
@@ -312,12 +311,11 @@ const SelectPlatform: React.FC = () => {
                   <Button
                     onClick={() => open()}
                     disabled={!ready || isLoadingToken}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                    size="lg"
+                    className="w-full h-11 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground"
                   >
                     {isLoadingToken ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                         Loading...
                       </>
                     ) : (
@@ -352,20 +350,19 @@ const SelectPlatform: React.FC = () => {
                   Upload your signed lease agreement (PDF, Word, or image).
                 </p>
                 {isLeaseUploaded ? (
-                  <div className="w-full">
-                    <div className="flex items-center justify-center text-primary text-sm mb-2">
+                  <div className="w-full space-y-3">
+                    <div className="flex items-center justify-center text-primary text-sm font-medium">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
                       Uploaded
                     </div>
-                    <div className="text-xs text-muted-foreground mb-3 truncate w-full px-2">
+                    <div className="text-xs text-muted-foreground truncate w-full px-2 py-1 bg-muted/50 rounded-md">
                       {uploadedFileName}
                     </div>
                     <div className="flex gap-2">
                       <Button
                         onClick={() => fileInputRef.current?.click()}
                         variant="outline"
-                        className="flex-1"
-                        size="sm"
+                        className="flex-1 h-11 text-base font-medium"
                       >
                         <Upload className="w-4 h-4 mr-2" />
                         Replace
@@ -373,7 +370,7 @@ const SelectPlatform: React.FC = () => {
                       <Button
                         onClick={handleRemoveFile}
                         variant="outline"
-                        size="sm"
+                        className="h-11 px-4 text-base font-medium"
                       >
                         Remove
                       </Button>
@@ -392,26 +389,19 @@ const SelectPlatform: React.FC = () => {
                     <Button
                       onClick={() => fileInputRef.current?.click()}
                       disabled={isUploading}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                      size="lg"
+                      className="w-full h-11 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground"
                     >
                       {isUploading ? (
                         <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                           Uploading...
                         </>
                       ) : (
-                        <>
-                          <Upload className="mr-2 h-4 w-4" />
-                          Upload Lease Agreement
-                        </>
+                        "Upload Lease Agreement"
                       )}
                     </Button>
                   </div>
                 )}
-                <p className="text-xs text-muted-foreground mt-3">
-                  Max file size: 10MB
-                </p>
               </div>
             </Card>
           </div>
