@@ -20,6 +20,7 @@ const SelectPlatform: React.FC = () => {
   const [isLeaseUploaded, setIsLeaseUploaded] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [isPlaidConfigured, setIsPlaidConfigured] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Redirect if not authenticated
@@ -41,7 +42,13 @@ const SelectPlatform: React.FC = () => {
         const env = import.meta.env.VITE_PLAID_ENV || 'sandbox';
         
         if (!clientId || !secret) {
-          throw new Error('Plaid credentials not configured');
+          setIsPlaidConfigured(false);
+          setIsLoadingToken(false);
+          // Silently handle missing credentials - don't show error to user in production
+          if (import.meta.env.DEV) {
+            console.warn('Plaid credentials not configured. Please set VITE_PLAID_CLIENT_ID and VITE_PLAID_SECRET_KEY in your environment variables.');
+          }
+          return;
         }
 
         // Create link token using CORS proxy for demo (DEMO ONLY - not secure for production)
@@ -80,14 +87,19 @@ const SelectPlatform: React.FC = () => {
         const data = await response.json();
         setLinkToken(data.link_token);
       } catch (error) {
-        console.error('Error fetching link token:', error);
-        toast({
-          title: "Error",
-          description: error instanceof Error 
-            ? error.message 
-            : "Failed to initialize bank connection. Please try again.",
-          variant: "destructive",
-        });
+        setIsPlaidConfigured(false);
+        // Only log errors in development
+        if (import.meta.env.DEV) {
+          console.error('Error fetching link token:', error);
+        }
+        // Don't show toast for missing credentials - handle silently
+        if (error instanceof Error && !error.message.includes('not configured')) {
+          toast({
+            title: "Error",
+            description: "Failed to initialize bank connection. Please try again.",
+            variant: "destructive",
+          });
+        }
       } finally {
         setIsLoadingToken(false);
       }
@@ -308,20 +320,27 @@ const SelectPlatform: React.FC = () => {
                     </Button>
                   </div>
                 ) : (
-                  <Button
-                    onClick={() => open()}
-                    disabled={!ready || isLoadingToken}
-                    className="w-full h-11 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground"
-                  >
-                    {isLoadingToken ? (
-                      <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Loading...
-                      </>
-                    ) : (
-                      "Connect Bank Account"
+                  <div className="w-full">
+                    <Button
+                      onClick={() => open()}
+                      disabled={!ready || isLoadingToken || !isPlaidConfigured}
+                      className="w-full h-11 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50"
+                    >
+                      {isLoadingToken ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Loading...
+                        </>
+                      ) : (
+                        "Connect Bank Account"
+                      )}
+                    </Button>
+                    {!isPlaidConfigured && (
+                      <p className="text-xs text-muted-foreground mt-2 text-center">
+                        Bank connection is not available. Please configure Plaid credentials.
+                      </p>
                     )}
-                  </Button>
+                  </div>
                 )}
               </div>
             </Card>
