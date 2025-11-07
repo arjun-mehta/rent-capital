@@ -1,18 +1,31 @@
 import type { SVGProps } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrollToElement } from "./scroll";
 
 const items = [
-  { href: "#how", label: "How it works" },
+  { href: "#how", label: "How It Works" },
   { href: "#qualification", label: "Qualification" },
   { href: "#faq", label: "FAQ" },
 ];
 
 export function Navigation() {
   const { scrollToElement, scrollToTop } = useScrollToElement();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="w-full py-4 sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
+    <nav className={`w-full py-4 sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled ? "bg-white/10 backdrop-blur-md" : "bg-transparent"
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
           {/* Left side - Logo */}

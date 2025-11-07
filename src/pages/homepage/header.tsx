@@ -57,11 +57,11 @@ export function Header() {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://rentcapital.us/assets/hero-bg-HC0_oLit.jpg')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1757137910873-504d97aa80de?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2938')",
         }}
       />
       {/* Dark Overlay for readability */}
-      <div className="absolute inset-0 bg-background/75" />
+      <div className="absolute inset-0 bg-background/40" />
       
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
