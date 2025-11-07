@@ -63,7 +63,7 @@ export function Navigation() {
             {/* Sign In */}
             <Link
               to="/signin"
-              className="h-[37px] flex font-semibold items-center text-primary justify-center px-4 py-2 hover:text-primary/80 transition-colors"
+              className="h-[37px] flex font-semibold items-center justify-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all"
             >
               Sign In
             </Link>

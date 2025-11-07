@@ -93,7 +93,7 @@ export function Header() {
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all"
             >
               <a href="#waitlist">
                 Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
@@ -212,7 +212,7 @@ export function Header() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-9 text-sm"
+                  className="w-full bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all h-9 text-sm disabled:opacity-50"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Submitting..." : "Join Waitlist"}
