@@ -10,13 +10,16 @@ import { Logo } from "./homepage/navigation";
 import { Title } from "@/components/Text";
 
 const Offers: React.FC = () => {
-  // Slider configuration
-  const minAmount = 5000;
-  const maxAmount = 100000;
-  const step = 100;
-  const defaultAmount = Math.round((minAmount + maxAmount) / 2); // Middle of the range
+  // Slider configuration - months (0-9)
+  const minMonths = 0;
+  const maxMonths = 9;
+  const step = 1;
+  const defaultMonths = 3; // Default to 3 months
   
-  const [amount, setAmount] = useState([defaultAmount]);
+  // Assume monthly rent - in production this would come from user data
+  const monthlyRent = 10000;
+  
+  const [months, setMonths] = useState([defaultMonths]);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -27,9 +30,10 @@ const Offers: React.FC = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  // Calculate offer details based on selected amount
+  // Calculate offer details based on selected months
   const offerDetails = useMemo(() => {
-    const selectedAmount = amount[0];
+    const selectedMonths = months[0];
+    const selectedAmount = selectedMonths * monthlyRent;
     
     // Fee calculation: 10% of total repayment (not advance amount)
     // If fee = 10% of totalRepayment, then:
@@ -44,12 +48,13 @@ const Offers: React.FC = () => {
     const totalRepayment = selectedAmount + fee;
     
     return {
+      months: selectedMonths,
       amount: selectedAmount,
       fee,
       feePercentage,
       totalRepayment,
     };
-  }, [amount]);
+  }, [months, monthlyRent]);
 
   const handleContinue = () => {
     // Store selected amount for next steps
@@ -77,10 +82,10 @@ const Offers: React.FC = () => {
       <div className="overflow-auto flex-1 flex items-center justify-center flex-col py-8 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-2xl">
           <div className="text-center mb-10">
-            <Title>How much would you like to be advanced?</Title>
-            <p className="text-md text-muted-foreground text-balance max-w-2xl mx-auto mt-4">
-              Repayment is automatically collected from your rental income each month.
-            </p>
+            <Title>
+              <span className="block">How many months of rent</span>
+              <span className="block">would you like to be advanced?</span>
+            </Title>
           </div>
 
           <Card className="p-8 md:p-12 border rounded-xl shadow-md">
@@ -92,40 +97,69 @@ const Offers: React.FC = () => {
               <div className="text-5xl md:text-6xl font-bold tracking-tight text-primary">
                 {formatCurrency(offerDetails.amount)}
               </div>
-            </div>
-
-            {/* Slider */}
-            <div className="mb-8">
-              <Slider
-                value={amount}
-                onValueChange={setAmount}
-                min={minAmount}
-                max={maxAmount}
-                step={step}
-                className="w-full"
-              />
-              <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                <span>{formatCurrency(minAmount)}</span>
-                <span>{formatCurrency(maxAmount)}</span>
+              <div className="text-sm text-muted-foreground mt-2">
+                {offerDetails.months} {offerDetails.months === 1 ? 'month' : 'months'} of rent
               </div>
             </div>
 
-            {/* Quick Amount Buttons */}
+            {/* Slider with Month Markers */}
+            <div className="mb-8">
+              <div className="relative px-2">
+                <Slider
+                  value={months}
+                  onValueChange={setMonths}
+                  min={minMonths}
+                  max={maxMonths}
+                  step={step}
+                  className="w-full"
+                />
+                {/* Month markers/ridges */}
+                <div className="absolute top-0 left-2 right-2 h-1 flex justify-between items-center pointer-events-none">
+                  {Array.from({ length: maxMonths + 1 }, (_, i) => (
+                    <div
+                      key={i}
+                      className="w-0.5 h-3 bg-border rounded-full"
+                      style={{
+                        position: 'absolute',
+                        left: `${(i / maxMonths) * 100}%`,
+                        transform: 'translateX(-50%)',
+                      }}
+                    />
+                  ))}
+                </div>
+                {/* Month labels */}
+                <div className="flex justify-between text-xs text-muted-foreground mt-3 px-2">
+                  {Array.from({ length: maxMonths + 1 }, (_, i) => (
+                    <span
+                      key={i}
+                      className={cn(
+                        "text-xs transition-colors",
+                        months[0] === i ? "text-primary font-semibold" : "text-muted-foreground"
+                      )}
+                    >
+                      {i}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Month Buttons */}
             <div className="grid grid-cols-4 gap-2 mb-8">
-              {[10000, 25000, 50000, 75000].map((value) => (
+              {[1, 3, 6, 9].map((value) => (
                 <Button
                   key={value}
                   variant="outline"
                   size="sm"
                   className={cn(
                     "text-xs",
-                    amount[0] === value
+                    months[0] === value
                       ? "border-primary bg-primary/10 text-primary"
                       : "hover:border-primary/50"
                   )}
-                  onClick={() => setAmount([value])}
+                  onClick={() => setMonths([value])}
                 >
-                  {formatCurrency(value)}
+                  {value} {value === 1 ? 'Month' : 'Months'}
                 </Button>
               ))}
             </div>
