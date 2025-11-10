@@ -70,8 +70,8 @@ export function Header() {
         <div className="space-y-5">
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight text-foreground leading-tight">
-              <span className="block">Instant cash</span>
-              <span className="block">for landlords</span>
+              <span className="block">Get your future rent</span>
+              <span className="block">income upfront</span>
             </h1>
             <p className="text-base sm:text-lg text-foreground/90 leading-relaxed max-w-xl">
               Rent Capital advances you 90% of your upcoming rental income in exchange for a small flat 10% fee. No loans, no credit checks — just fast, flexible capital for landlords.
