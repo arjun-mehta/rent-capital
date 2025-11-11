@@ -19,6 +19,7 @@ import Contract from "./pages/Contract";
 import Dashboard from "./pages/Dashboard";
 import DashboardEstablished from "./pages/DashboardEstablished";
 import { HomePage } from "./pages/homepage";
+import ForPropertyManagers from "./pages/ForPropertyManagers";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/for-property-managers" element={<ForPropertyManagers />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/select-platform" element={<SelectPlatform />} />
             <Route path="/connect-patreon" element={<ConnectPatreon />} />

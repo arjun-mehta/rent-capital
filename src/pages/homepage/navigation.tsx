@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrollToElement } from "./scroll";
 
-const items = [
+const items: Array<{ href: string; label: string; isRoute?: boolean }> = [
+  { href: "/for-property-managers", label: "For Property Managers", isRoute: true },
   { href: "#how", label: "How It Works" },
   { href: "#qualification", label: "Qualification" },
   { href: "#faq", label: "FAQ" },
@@ -47,13 +48,16 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   to={item.href}
-                  onClick={(e) =>
-                    scrollToElement(item.href.replace("#", ""), {
-                      behavior: "smooth",
-                      block: "start",
-                    })
-                  }
-                  className="h-[37px] flex items-center justify-center px-4 py-2"
+                  onClick={(e) => {
+                    if (!item.isRoute) {
+                      e.preventDefault();
+                      scrollToElement(item.href.replace("#", ""), {
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    }
+                  }}
+                  className="h-[37px] flex items-center justify-center px-4 py-2 whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
@@ -63,7 +67,7 @@ export function Navigation() {
             {/* Sign In */}
             <Link
               to="/signin"
-              className="h-[37px] flex font-semibold items-center justify-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all"
+              className="h-[37px] flex font-semibold items-center justify-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all whitespace-nowrap"
             >
               Sign In
             </Link>
