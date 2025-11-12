@@ -43,8 +43,8 @@ export function Footer() {
               <Logo className="h-8" align="left" />
             </div>
             <p className="text-gray-600 mb-4 max-w-xs">
-              Providing creators with the financial tools they need to grow
-              their business and focus on what they do best.
+              Providing landlords with the financial tools they need to grow
+              their portfolio and unlock capital from their rental income.
             </p>
           </AnimationChild>
 
