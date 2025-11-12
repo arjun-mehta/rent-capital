@@ -46,9 +46,9 @@ export function Header() {
   };
 
   const benefits = [
-    "Get up to 12 months of rent upfront",
-    "No personal guarantees required",
-    "Repayment based on rental income",
+    "Instant access to your future rent income",
+    "No credit checks or personal guarantees",
+    "Repay automatically as tenants pay",
   ];
 
   return (

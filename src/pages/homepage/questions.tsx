@@ -4,7 +4,6 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { AnimationChild, AnimationParent } from "./animations";
-import { FitText } from "./fit-text";
 import { ChevronDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -68,13 +67,15 @@ const items = [
 
 export function Questions() {
   return (
-    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 pt-0 relative">
+    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 relative">
       <a id="faq" className="absolute top-0 left-0" />
       <AnimationChild>
-        <FitText>Questions</FitText>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          FAQ
+        </h2>
       </AnimationChild>
 
-      <div className="w-full -mt-10 sm:-mt-20">
+      <div className="w-full">
         {items.map((item, index) => (
           <AnimationChild key={item.question}>
             <div

@@ -1,5 +1,4 @@
 import { AnimationChild, AnimationParent } from "./animations";
-import { FitText } from "./fit-text";
 
 const benefits = [
   {
@@ -33,19 +32,21 @@ export function Qualification() {
     <AnimationParent className="w-full max-w-container mx-auto pb-32 px-4 relative">
       <a id="qualification" className="absolute top-0 left-0" />
       <AnimationChild>
-        <FitText>Benefits</FitText>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          Benefits
+        </h2>
       </AnimationChild>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:-mt-[80px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
         {benefits.map((benefit, index) => (
           <AnimationChild
             key={benefit.title}
             className="w-full flex sm:flex-row p-6 fit-container bg-card/70 backdrop-blur-sm rounded-3xl"
           >
             <div className="flex flex-col">
-              <h2 className="font-thunder text-3xl leading-none uppercase mb-4">
+              <h3 className="text-xl font-semibold mb-4">
                 {benefit.title}
-              </h2>
+              </h3>
               <p className="text-base w-full text-balance">
                 {benefit.description}
               </p>
