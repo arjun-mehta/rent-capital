@@ -5,9 +5,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
-type PlanDuration = "3" | "6" | "12";
+type PlanDuration = "3" | "6" | "9";
 
 const child: Variants = {
   hidden: { opacity: 0, y: 120 },
@@ -18,25 +17,42 @@ const child: Variants = {
   },
 };
 
+// Dynamic fee percentage based on months (same as offers page)
+const getFeePercentage = (months: number): number => {
+  const feeTable: Record<number, number> = {
+    1: 5.00,
+    2: 6.00,
+    3: 7.00,
+    4: 8.00,
+    5: 9.00,
+    6: 10.00,
+    7: 11.00,
+    8: 12.00,
+    9: 13.00,
+    10: 14.00,
+    11: 14.50,
+    12: 15.00,
+  };
+  return feeTable[months] || 10.00;
+};
+
 export function Calculator() {
   const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
-  const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("12");
+  const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("6");
   const isMobile = useIsMobile();
 
-  // Calculate values based on plan duration with different multipliers
-  const annualRevenue = monthlyRevenue * 12;
-
-  // Apply different multipliers based on plan duration
-  let advanceMultiplier = 0.85; // Default for 12 months
-  if (selectedPlan === "3") {
-    advanceMultiplier = 0.925; // Updated from 0.95 to 0.925 (92.5%)
-  } else if (selectedPlan === "6") {
-    advanceMultiplier = 0.9;
-  }
-
-  // Calculate advance amount based on selected plan duration and its specific multiplier without rounding
-  const advanceAmount =
-    monthlyRevenue * Number(selectedPlan) * advanceMultiplier;
+  // Calculate values based on dynamic fee structure
+  const selectedMonths = Number(selectedPlan);
+  
+  // Total repayment = monthly rental income * selected months
+  const totalRepayment = monthlyRevenue * selectedMonths;
+  
+  // Fee calculation: dynamic percentage based on months
+  const feePercentage = getFeePercentage(selectedMonths);
+  const fee = Math.round(totalRepayment * (feePercentage / 100));
+  
+  // Advance amount = total repayment - fee
+  const advanceAmount = totalRepayment - fee;
 
   const handleSliderChange = (value: number[]) => {
     // Update to map slider value 10-100 to revenue $10,000-$100,000
@@ -84,7 +100,7 @@ export function Calculator() {
             {[
               { value: "3", label: "3 months" },
               { value: "6", label: "6 months" },
-              { value: "12", label: "12 months" },
+              { value: "9", label: "9 months" },
             ].map((plan) => (
               <button
                 key={plan.value}
@@ -106,15 +122,18 @@ export function Calculator() {
 
       <motion.div
         variants={child}
-        className="bg-primary text-foreground p-6 rounded-3xl"
+        className="bg-black border-2 border-primary text-foreground p-6 rounded-3xl"
       >
         <div className="text-sm font-normal mb-4">Estimated advance amount</div>
         <div className="flex items-center justify-between text-left">
           <div className="text-2xl">${advanceAmount.toLocaleString()}</div>
-          <Button className="w-fit" variant="secondary" asChild>
-            <Link to="/signin">
-              Apply Now <ArrowRight strokeWidth={2.5} />
-            </Link>
+          <Button 
+            className="w-fit bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all" 
+            asChild
+          >
+            <a href="#waitlist">
+              Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
           </Button>
         </div>
       </motion.div>
