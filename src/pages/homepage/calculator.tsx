@@ -126,7 +126,7 @@ export function Calculator() {
       >
         <div className="text-sm font-normal mb-4">Estimated advance amount</div>
         <div className="flex items-center justify-between text-left">
-          <div className="text-2xl">${advanceAmount.toLocaleString()}</div>
+          <div className="text-2xl text-[#6EE7B7]">${advanceAmount.toLocaleString()}</div>
           <Button 
             className="w-fit bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all" 
             asChild
