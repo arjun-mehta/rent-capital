@@ -106,8 +106,8 @@ const ForPropertyManagers: React.FC = () => {
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight text-foreground leading-tight">
                   <span className="block">Help your landlords</span>
-                  <span className="block">unlock capital and grow</span>
-                  <span className="block">your portfolio</span>
+                  <span className="block">unlock capital and</span>
+                  <span className="block">grow your portfolio</span>
                 </h1>
                 <p className="text-base sm:text-lg text-foreground/90 leading-relaxed max-w-xl">
                   Earn 2% on every funded advance — a recurring revenue stream that requires no setup or additional work.
