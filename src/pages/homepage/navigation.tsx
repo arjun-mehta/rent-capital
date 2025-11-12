@@ -6,7 +6,7 @@ import { useScrollToElement } from "./scroll";
 const items: Array<{ href: string; label: string; isRoute?: boolean }> = [
   { href: "/for-property-managers", label: "For Property Managers", isRoute: true },
   { href: "#how", label: "How It Works" },
-  { href: "#qualification", label: "Qualification" },
+  { href: "#qualification", label: "Benefits" },
   { href: "#faq", label: "FAQ" },
 ];
 

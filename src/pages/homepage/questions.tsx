@@ -12,69 +12,57 @@ const items = [
   {
     question: "What is Rent Capital?",
     anwer:
-      "Rent Capital provides upfront payments to subscription-based creators in exchange for the right to collect a fixed amount of future revenue. This is not a loan, but a purchase of future receivables, repaid through a share of your platform earnings. No interest. No impact to your credit score. No personal guarantees.",
-  },
-  {
-    question: "Who qualifies for funding?",
-    anwer: (
-      <>
-        We work with creators who:
-        <ul className="list-disc list-inside my-2">
-          <li>Earn recurring revenue on platforms like Patreon or Substack</li>
-          <li>Have at least 12 months of consistent subscription income</li>
-          <li>
-            Are U.S.-based and operate as a registered business (LLC or higher)
-          </li>
-        </ul>
-        We don’t currently support sole proprietors or creators without
-        recurring revenue.
-      </>
-    ),
+      "Rent Capital provides upfront cash in exchange for a fixed amount of your future rental income. It is not a loan or line of credit.",
   },
   {
     question: "How does it work?",
     anwer:
-      "Connect your subscription account and verify your business. Most creators see a preliminary offer within minutes, based on revenue data. All offers are subject to final review, and we may request additional information or decline funding after further evaluation. If approved and signed, funds are typically deposited in your bank account within 2–3 business days.",
+      "Connect your bank account and upload your lease. We review your rent history and offer an advance of 1–9 months of future rent. Once you accept, funds are sent within 24 hours and repayment happens automatically as new rent is received.",
   },
   {
     question: "How much can I get?",
     anwer:
-      "Funding amounts are based on factors like your subscription revenue, account performance, and overall business health. Once connected, you’ll see a personalized offer with clear terms and a fixed repayment amount before you commit.",
+      "You can receive up to 95% of your future rent upfront. The flat fee ranges from 5–15%, depending on the advance duration.",
   },
   {
-    question: "How are repayments structured?",
+    question: "Can I access longer advances?",
     anwer:
-      "During the advance period, we’re in the flow of funds — your platform payouts are redirected to a secure account we manage. A fixed percentage is applied toward repayment, and the remainder is distributed to you monthly. If earnings dip, repayments adjust automatically. No interest, no late fees, no penalties.",
+      "Yes. Landlords with a successful repayment history and no late payments or tenant defaults can qualify for advances of up to 12 months.",
+  },
+  {
+    question: "How do repayments work?",
+    anwer:
+      "When your tenant pays rent, Rent Capital collects 100% of that rent until the total advance amount plus the flat fee is repaid. After repayment, you resume receiving rent as usual.",
+  },
+  {
+    question: "Do I need good credit?",
+    anwer:
+      "Approval is based on rent history, lease terms, and tenant payment performance, not personal credit.",
+  },
+  {
+    question: "Can I qualify if I have a mortgage or other debt?",
+    anwer:
+      "Yes. Rent Capital purchases future rent receivables, not the property itself, so existing debt does not affect eligibility.",
   },
   {
     question: "Is this a loan?",
     anwer:
-      "No — it’s a cash advance, not a loan. We purchase a fixed portion of your future subscription revenue, repaid through a predetermined share of your monthly earnings. There’s no debt, no credit impact, and no personal guarantees.",
+      "No. It is a purchase of future receivables. You are not taking on debt, and there is no credit impact.",
   },
   {
-    question: "Do I still control my account?",
+    question: "What if my tenant misses rent?",
     anwer:
-      "You maintain full access to manage your content and community. To secure repayment, we manage subscription platform login credentials and payout settings during the funding period. While sensitive areas like payment details are locked, your ability to use the platform remains unaffected.",
+      "If a tenant misses rent, repayment simply pauses until new rent is received. You are never personally liable for tenant nonpayment.",
   },
   {
-    question: "Is my data secure?",
+    question: "How long does funding take?",
     anwer:
-      "Yes. We use encrypted integrations and read-only APIs (e.g. Patreon OAuth) to access only the data needed for underwriting and repayment. Your information is never sold or shared.",
+      "Once your lease and rent history are verified, funds are typically deposited within 24 hours.",
   },
   {
-    question: "Can I repay early?",
+    question: "Are there any upfront costs?",
     anwer:
-      "Yes. You can repay the advance at any time with no penalties. The total repayment amount is fixed once your offer is accepted.",
-  },
-  {
-    question: "What happens after I repay?",
-    anwer:
-      "Once your balance is repaid in full, payouts are redirected back to your original account and our access ends. You may receive a renewal offer before your current advance is complete, or reapply for additional funding at any time.",
-  },
-  {
-    question: "Does Rent Capital take equity or ownership in my business? ",
-    anwer:
-      "No — we don’t take any equity, ownership, or creative control. This is not an investment or licensing deal. You retain full ownership of your business and your content.",
+      "No. Applying is free and takes only a few minutes. You pay a flat fee that is repaid gradually through rent collections over the duration of your advance.",
   },
 ];
 

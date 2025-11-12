@@ -49,7 +49,7 @@ export function FitText({
     >
       <span
         ref={textRef}
-        className="inline-block font-thunder uppercase text-black/10 whitespace-nowrap"
+        className="inline-block font-thunder uppercase text-white/40 whitespace-nowrap"
         style={{ lineHeight: "1", marginBottom: "-20rem" }}
       >
         {children}

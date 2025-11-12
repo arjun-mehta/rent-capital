@@ -6,24 +6,24 @@ import iconNotebook from "./icons/notebook.png";
 
 const items = [
   {
-    title: "Apply in Minutes",
+    title: "Connect & Upload",
     description:
-      "No long forms or credit checks. Just connect your account and share your revenue from Patreon, Substack, or a similar platform.",
+      "Connect your account and upload your lease.",
   },
   {
-    title: "Select Your Offer",
+    title: "Receive Your Offer",
     description:
-      "Pick the funding amount that works for you. Your fee is based on the amount you choose, no hidden terms.",
+      "Receive your advance offer in minutes.",
   },
   {
-    title: "Receive Your Funds",
+    title: "Get Your Funds",
     description:
-      "Once approved, your funds are sent directly to your bank account within a few business days.",
+      "Get up to 95% of rent within 24 hours.",
   },
   {
-    title: "Pay as You Earn",
+    title: "Automatic Repayment",
     description:
-      "Repay automatically through a fixed share of your monthly income until the full amount is covered.",
+      "Repay automatically through future rent deposits.",
   },
 ];
 

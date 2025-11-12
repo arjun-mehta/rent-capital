@@ -2,10 +2,83 @@ import { Link } from "react-router-dom";
 import { Navigation } from "./homepage/navigation";
 import { Footer } from "./homepage/footer";
 import { AnimationParent, AnimationChild } from "./homepage/animations";
-import { Title } from "@/components/Text";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, TrendingUp, Users, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle2, TrendingUp, Users, Shield, ChevronDownIcon } from "lucide-react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
+
+const faqItems = [
+  {
+    question: "How does a landlord qualify for an advance?",
+    anwer:
+      "The lease must show at least three months of consistent rent deposits from the current tenant. Based on that payment history, Rent Capital can advance 1–9 months of future rent upfront.",
+  },
+  {
+    question: "Who is eligible to use Rent Capital?",
+    anwer:
+      "Any landlord with valid lease agreements, consistent rent history, and a U.S. business bank account — from single-unit owners to larger portfolios.",
+  },
+  {
+    question: "How quickly are landlords funded?",
+    anwer:
+      "Once approved, landlords typically receive funds within 24 hours.",
+  },
+  {
+    question: "Can my landlords qualify for longer advances?",
+    anwer:
+      "Yes. Once a landlord completes a successful advance with on-time tenant deposits, Rent Capital can waive the three-month rent history requirement and offer advances of up to 12 months on future leases.",
+  },
+  {
+    question: "How does Rent Capital make money?",
+    anwer:
+      "We charge landlords a small, transparent fee based on the term of the advance. You earn 2% of every dollar advanced to your landlords.",
+  },
+  {
+    question: "Does this affect tenants or rent collection?",
+    anwer:
+      "No. Tenants pay rent as usual. Repayments are automatically pulled from the landlord's account when rent is received — we never touch trust or operating accounts.",
+  },
+  {
+    question: "Can I see which landlords were funded?",
+    anwer:
+      "Yes. Your dashboard shows real-time status for every landlord you've referred: invited, approved, funded, and commission paid.",
+  },
+  {
+    question: "How and when do I get paid?",
+    anwer:
+      "You earn 2% of each funded advance, paid automatically via ACH.",
+  },
+  {
+    question: "What happens if a landlord or tenant defaults?",
+    anwer:
+      "Rent Capital absorbs that risk. Our structure is a purchase of receivables, not a loan. Neither you nor the landlord are personally liable for tenant nonpayment.",
+  },
+  {
+    question: "Is there any setup cost or commitment?",
+    anwer:
+      "No. Partnering is free, takes minutes, and requires no system changes. You can start inviting landlords immediately.",
+  },
+  {
+    question: "Can landlords qualify if they have a mortgage or other debt?",
+    anwer:
+      "Yes. Because we purchase future rent receivables, not the property itself, existing debt doesn't affect eligibility.",
+  },
+  {
+    question: "Can property managers advance rent for their own units?",
+    anwer:
+      "Yes. PMs who own properties can apply directly as landlords through their own entities.",
+  },
+  {
+    question: "Do property managers get their fees advanced?",
+    anwer:
+      "No. Rent Capital advances the landlord's share of rent, not management fees. You continue earning your standard management fees monthly.",
+  },
+];
 
 const ForPropertyManagers: React.FC = () => {
 
@@ -177,6 +250,41 @@ const ForPropertyManagers: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* FAQ Section */}
+      <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 relative">
+        <a id="faq" className="absolute top-0 left-0" />
+        <AnimationChild>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Questions
+          </h2>
+        </AnimationChild>
+
+        <div className="w-full">
+          {faqItems.map((item, index) => (
+            <AnimationChild key={item.question}>
+              <div
+                className={cn(
+                  "flex flex-col rounded-3xl w-full border border-border my-2",
+                  index === 0 ? "bg-[hsl(0,0%,6%)]/70 backdrop-blur-sm" : "bg-[hsl(0,0%,6%)]"
+                )}
+              >
+                <Collapsible className="w-full">
+                  <CollapsibleTrigger className="w-full p-4 text-left text-balance px-6 flex items-center justify-between text-xl text-foreground hover:text-foreground/80">
+                    <span>{item.question}</span>
+                    <div className="flex flex-shrink-0 items-center size-10 text-primary-foreground font-semibold justify-center leading-none text-center text-4xl rounded-full bg-primary">
+                      <ChevronDownIcon className="size-6" />
+                    </div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="p-4 px-6 text-balance text-muted-foreground pt-0 text-lg">
+                    <p>{item.anwer}</p>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            </AnimationChild>
+          ))}
+        </div>
+      </AnimationParent>
 
       {/* Full-width CTA Section */}
       <AnimationParent className="w-full bg-muted/50 py-16 px-4 sm:px-6 lg:px-8">

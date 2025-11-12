@@ -74,7 +74,7 @@ export function Header() {
               <span className="block">income upfront</span>
             </h1>
             <p className="text-base sm:text-lg text-foreground/90 leading-relaxed max-w-xl">
-              Rent Capital advances you 90% of your upcoming rental income in exchange for a small flat 10% fee. No loans, no credit checks — just fast, flexible capital for landlords.
+              Access 1–9 months of future rent instantly to expand your portfolio, upgrade existing properties, or stabilize cash flow.
             </p>
           </div>
 

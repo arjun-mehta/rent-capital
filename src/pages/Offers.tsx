@@ -10,14 +10,33 @@ import { Logo } from "./homepage/navigation";
 import { Title } from "@/components/Text";
 
 const Offers: React.FC = () => {
-  // Slider configuration - months (0-9)
-  const minMonths = 0;
+  // Slider configuration - months (1-9)
+  const minMonths = 1;
   const maxMonths = 9;
   const step = 1;
   const defaultMonths = 3; // Default to 3 months
   
-  // Assume monthly rent - in production this would come from user data
-  const monthlyRent = 10000;
+  // Total repayment per month increment (100K per month)
+  const repaymentPerMonth = 100000;
+  
+  // Dynamic fee percentage based on months
+  const getFeePercentage = (months: number): number => {
+    const feeTable: Record<number, number> = {
+      1: 5.00,
+      2: 6.00,
+      3: 7.00,
+      4: 8.00,
+      5: 9.00,
+      6: 10.00,
+      7: 11.00,
+      8: 12.00,
+      9: 13.00,
+      10: 14.00,
+      11: 14.50,
+      12: 15.00,
+    };
+    return feeTable[months] || 10.00;
+  };
   
   const [months, setMonths] = useState([defaultMonths]);
   const { isAuthenticated } = useAuth();
@@ -33,28 +52,25 @@ const Offers: React.FC = () => {
   // Calculate offer details based on selected months
   const offerDetails = useMemo(() => {
     const selectedMonths = months[0];
-    const selectedAmount = selectedMonths * monthlyRent;
     
-    // Fee calculation: 10% of total repayment (not advance amount)
-    // If fee = 10% of totalRepayment, then:
-    // totalRepayment = selectedAmount + fee
-    // fee = totalRepayment * 0.10
-    // fee = (selectedAmount + fee) * 0.10
-    // fee = selectedAmount / 9
-    const feePercentage = 10;
-    const fee = Math.round(selectedAmount / 9);
+    // Total repayment = months * 100K (100K-900K range)
+    const totalRepayment = selectedMonths * repaymentPerMonth;
     
-    // Total repayment is amount + fee
-    const totalRepayment = selectedAmount + fee;
+    // Fee calculation: dynamic percentage based on months
+    const feePercentage = getFeePercentage(selectedMonths);
+    const fee = Math.round(totalRepayment * (feePercentage / 100));
+    
+    // Advance amount = total repayment - fee
+    const amount = totalRepayment - fee;
     
     return {
       months: selectedMonths,
-      amount: selectedAmount,
+      amount,
       fee,
       feePercentage,
       totalRepayment,
     };
-  }, [months, monthlyRent]);
+  }, [months, repaymentPerMonth]);
 
   const handleContinue = () => {
     // Store selected amount for next steps
@@ -115,31 +131,37 @@ const Offers: React.FC = () => {
                 />
                 {/* Month markers/ridges */}
                 <div className="absolute top-0 left-2 right-2 h-1 flex justify-between items-center pointer-events-none">
-                  {Array.from({ length: maxMonths + 1 }, (_, i) => (
-                    <div
-                      key={i}
-                      className="w-0.5 h-3 bg-border rounded-full"
-                      style={{
-                        position: 'absolute',
-                        left: `${(i / maxMonths) * 100}%`,
-                        transform: 'translateX(-50%)',
-                      }}
-                    />
-                  ))}
+                  {Array.from({ length: maxMonths - minMonths + 1 }, (_, i) => {
+                    const monthValue = i + minMonths;
+                    return (
+                      <div
+                        key={monthValue}
+                        className="w-0.5 h-3 bg-border rounded-full"
+                        style={{
+                          position: 'absolute',
+                          left: `${((monthValue - minMonths) / (maxMonths - minMonths)) * 100}%`,
+                          transform: 'translateX(-50%)',
+                        }}
+                      />
+                    );
+                  })}
                 </div>
                 {/* Month labels */}
                 <div className="flex justify-between text-xs text-muted-foreground mt-3 px-2">
-                  {Array.from({ length: maxMonths + 1 }, (_, i) => (
-                    <span
-                      key={i}
-                      className={cn(
-                        "text-xs transition-colors",
-                        months[0] === i ? "text-primary font-semibold" : "text-muted-foreground"
-                      )}
-                    >
-                      {i}
-                    </span>
-                  ))}
+                  {Array.from({ length: maxMonths - minMonths + 1 }, (_, i) => {
+                    const monthValue = i + minMonths;
+                    return (
+                      <span
+                        key={monthValue}
+                        className={cn(
+                          "text-xs transition-colors",
+                          months[0] === monthValue ? "text-primary font-semibold" : "text-muted-foreground"
+                        )}
+                      >
+                        {monthValue}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -169,7 +191,7 @@ const Offers: React.FC = () => {
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
                 <div className="text-center">
                   <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-                    Flat Fee ({offerDetails.feePercentage}%)
+                    Fee ({offerDetails.feePercentage.toFixed(2)}%)
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-foreground">
                     {formatCurrency(offerDetails.fee)}
