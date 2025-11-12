@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Navigation } from "./homepage/navigation";
 import { Footer } from "./homepage/footer";
 import { AnimationParent, AnimationChild } from "./homepage/animations";
@@ -121,9 +120,9 @@ const ForPropertyManagers: React.FC = () => {
                   size="lg"
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all"
                 >
-                  <Link to="/signin">
+                  <a href="mailto:nigel@rentcapital.us">
                     Become a Partner <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </a>
                 </Button>
                 <Button
                   asChild
@@ -319,9 +318,9 @@ const ForPropertyManagers: React.FC = () => {
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
-                  <Link to="/signin">
+                  <a href="mailto:nigel@rentcapital.us">
                     Become a Partner <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </a>
                 </Button>
                 <Button
                   asChild
