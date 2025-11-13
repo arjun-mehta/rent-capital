@@ -37,15 +37,12 @@ const getFeePercentage = (months: number): number => {
 };
 
 export function Calculator() {
-  const [monthlyRevenue, setMonthlyRevenue] = useState(10000);
+  const [totalRepayment, setTotalRepayment] = useState(30000); // Default to 30k
   const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("6");
   const isMobile = useIsMobile();
 
   // Calculate values based on dynamic fee structure
   const selectedMonths = Number(selectedPlan);
-  
-  // Total repayment = monthly rental income * selected months
-  const totalRepayment = monthlyRevenue * selectedMonths;
   
   // Fee calculation: dynamic percentage based on months
   const feePercentage = getFeePercentage(selectedMonths);
@@ -55,8 +52,8 @@ export function Calculator() {
   const advanceAmount = totalRepayment - fee;
 
   const handleSliderChange = (value: number[]) => {
-    // Update to map slider value 10-100 to revenue $10,000-$100,000
-    setMonthlyRevenue(value[0] * 1000);
+    // Slider value is total repayment in thousands (10-90)
+    setTotalRepayment(value[0] * 1000);
   };
 
   const handlePlanChange = (value: string) => {
@@ -76,18 +73,18 @@ export function Calculator() {
           </div>
           <div className="space-y-3 md:space-y-4">
             <Slider
-              defaultValue={[10]}
+              defaultValue={[30]}
               min={10}
-              max={100}
-              step={1}
+              max={90}
+              step={10}
               onValueChange={handleSliderChange}
             />
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-500">$10,000</span>
               <span className="text-2xl font-medium">
-                ${monthlyRevenue.toLocaleString()}
+                ${totalRepayment.toLocaleString()}
               </span>
-              <span className="text-xs text-gray-500">$100,000</span>
+              <span className="text-xs text-gray-500">$90,000</span>
             </div>
           </div>
         </div>

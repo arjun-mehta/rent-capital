@@ -10,14 +10,16 @@ import { Logo } from "./homepage/navigation";
 import { Title } from "@/components/Text";
 
 const Offers: React.FC = () => {
+  // Slider configuration - total repayment (10k-90k, 10k increments)
+  const minRepayment = 10000;
+  const maxRepayment = 90000;
+  const step = 10000;
+  const defaultRepayment = 30000; // Default to 30k
+  
   // Slider configuration - months (1-9)
   const minMonths = 1;
   const maxMonths = 9;
-  const step = 1;
   const defaultMonths = 3; // Default to 3 months
-  
-  // Total repayment per month increment (100K per month)
-  const repaymentPerMonth = 100000;
   
   // Dynamic fee percentage based on months
   const getFeePercentage = (months: number): number => {
@@ -38,6 +40,7 @@ const Offers: React.FC = () => {
     return feeTable[months] || 10.00;
   };
   
+  const [totalRepayment, setTotalRepayment] = useState([defaultRepayment]);
   const [months, setMonths] = useState([defaultMonths]);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -49,28 +52,26 @@ const Offers: React.FC = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  // Calculate offer details based on selected months
+  // Calculate offer details based on selected total repayment and months
   const offerDetails = useMemo(() => {
+    const selectedRepayment = totalRepayment[0];
     const selectedMonths = months[0];
-    
-    // Total repayment = months * 100K (100K-900K range)
-    const totalRepayment = selectedMonths * repaymentPerMonth;
     
     // Fee calculation: dynamic percentage based on months
     const feePercentage = getFeePercentage(selectedMonths);
-    const fee = Math.round(totalRepayment * (feePercentage / 100));
+    const fee = Math.round(selectedRepayment * (feePercentage / 100));
     
     // Advance amount = total repayment - fee
-    const amount = totalRepayment - fee;
+    const amount = selectedRepayment - fee;
     
     return {
       months: selectedMonths,
       amount,
       fee,
       feePercentage,
-      totalRepayment,
+      totalRepayment: selectedRepayment,
     };
-  }, [months, repaymentPerMonth]);
+  }, [totalRepayment, months]);
 
   const handleContinue = () => {
     // Store selected amount for next steps
@@ -118,50 +119,38 @@ const Offers: React.FC = () => {
               </div>
             </div>
 
-            {/* Slider with Month Markers */}
+            {/* Total Repayment Slider */}
             <div className="mb-8">
               <div className="relative px-2">
                 <Slider
-                  value={months}
-                  onValueChange={setMonths}
-                  min={minMonths}
-                  max={maxMonths}
+                  value={totalRepayment}
+                  onValueChange={setTotalRepayment}
+                  min={minRepayment}
+                  max={maxRepayment}
                   step={step}
                   className="w-full"
                 />
-                {/* Month markers/ridges */}
+                {/* Repayment markers/ridges */}
                 <div className="absolute top-0 left-2 right-2 h-1 flex justify-between items-center pointer-events-none">
-                  {Array.from({ length: maxMonths - minMonths + 1 }, (_, i) => {
-                    const monthValue = i + minMonths;
+                  {Array.from({ length: (maxRepayment - minRepayment) / step + 1 }, (_, i) => {
+                    const repaymentValue = minRepayment + (i * step);
                     return (
                       <div
-                        key={monthValue}
+                        key={repaymentValue}
                         className="w-0.5 h-3 bg-border rounded-full"
                         style={{
                           position: 'absolute',
-                          left: `${((monthValue - minMonths) / (maxMonths - minMonths)) * 100}%`,
+                          left: `${((repaymentValue - minRepayment) / (maxRepayment - minRepayment)) * 100}%`,
                           transform: 'translateX(-50%)',
                         }}
                       />
                     );
                   })}
                 </div>
-                {/* Month labels */}
+                {/* Repayment labels */}
                 <div className="flex justify-between text-xs text-muted-foreground mt-3 px-2">
-                  {Array.from({ length: maxMonths - minMonths + 1 }, (_, i) => {
-                    const monthValue = i + minMonths;
-                    return (
-                      <span
-                        key={monthValue}
-                        className={cn(
-                          "text-xs transition-colors",
-                          months[0] === monthValue ? "text-primary font-semibold" : "text-muted-foreground"
-                        )}
-                      >
-                        {monthValue}
-                      </span>
-                    );
-                  })}
+                  <span>$10k</span>
+                  <span>$90k</span>
                 </div>
               </div>
             </div>
