@@ -214,7 +214,7 @@ const Offers: React.FC = () => {
             </div>
           </Card>
 
-          <div className="flex flex-col gap-2 mt-8 items-center justify-center">
+          <div className="flex flex-col gap-6 mt-8 items-center justify-center">
             <Button
               className="bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-base w-full max-w-md"
               onClick={handleContinue}
@@ -222,21 +222,10 @@ const Offers: React.FC = () => {
               Continue with {formatCurrency(offerDetails.amount)}
               <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
-
-            <div className="text-center text-xs text-muted-foreground max-w-2xl mx-auto">
-              <p>
-                Rent Capital provides revenue-based funding, not loans. We
-                purchase a fixed portion of your future rental income at
-                a set rate. Repayment timelines may vary with rental income
-                performance. No personal guarantees or credit checks are
-                required. All offers are subject to final approval. Funding
-                typically begins within 24–48 hours of contract execution.
-              </p>
-            </div>
           </div>
         </div>
       </div>
-      <div className="py-4 text-center">
+      <div className="py-4 text-center mt-2">
         <p className="text-xs text-muted-foreground">
           © 2025 Rent Capital. All rights reserved.
         </p>

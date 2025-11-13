@@ -440,7 +440,7 @@ const DashboardEstablished: React.FC = () => {
                       <h4 className="font-medium text-foreground">Support</h4>
                       <p className="text-muted-foreground">
                         Need help? Contact our support team at
-                        support@rentcapital.com
+                        support@rentcapital.us
                       </p>
                     </div>
                   </div>
