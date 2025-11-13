@@ -14,12 +14,7 @@ const Offers: React.FC = () => {
   const minRepayment = 10000;
   const maxRepayment = 90000;
   const step = 10000;
-  const defaultRepayment = 30000; // Default to 30k
-  
-  // Slider configuration - months (1-9)
-  const minMonths = 1;
-  const maxMonths = 9;
-  const defaultMonths = 3; // Default to 3 months
+  const defaultRepayment = 30000; // Default to 30k (3 months)
   
   // Dynamic fee percentage based on months
   const getFeePercentage = (months: number): number => {
@@ -41,7 +36,6 @@ const Offers: React.FC = () => {
   };
   
   const [totalRepayment, setTotalRepayment] = useState([defaultRepayment]);
-  const [months, setMonths] = useState([defaultMonths]);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -52,10 +46,14 @@ const Offers: React.FC = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  // Calculate offer details based on selected total repayment and months
+  // Calculate offer details based on selected total repayment
+  // Months are calculated dynamically from total repayment: months = totalRepayment / 10,000
   const offerDetails = useMemo(() => {
     const selectedRepayment = totalRepayment[0];
-    const selectedMonths = months[0];
+    // Calculate months from total repayment (10k = 1 month, 20k = 2 months, etc.)
+    const calculatedMonths = Math.round(selectedRepayment / 10000);
+    // Ensure months is between 1 and 9
+    const selectedMonths = Math.max(1, Math.min(9, calculatedMonths));
     
     // Fee calculation: dynamic percentage based on months
     const feePercentage = getFeePercentage(selectedMonths);
@@ -71,7 +69,7 @@ const Offers: React.FC = () => {
       feePercentage,
       totalRepayment: selectedRepayment,
     };
-  }, [totalRepayment, months]);
+  }, [totalRepayment]);
 
   const handleContinue = () => {
     // Store selected amount for next steps
@@ -157,27 +155,42 @@ const Offers: React.FC = () => {
 
             {/* Quick Month Buttons */}
             <div className="grid grid-cols-4 gap-2 mb-8">
-              {[1, 3, 6, 9].map((value) => (
-                <Button
-                  key={value}
-                  variant="outline"
-                  size="sm"
-                  className={cn(
-                    "text-xs",
-                    months[0] === value
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "hover:border-primary/50"
-                  )}
-                  onClick={() => setMonths([value])}
-                >
-                  {value} {value === 1 ? 'Month' : 'Months'}
-                </Button>
-              ))}
+              {[1, 3, 6, 9].map((value) => {
+                const repaymentForMonths = value * 10000;
+                const isSelected = offerDetails.months === value;
+                return (
+                  <Button
+                    key={value}
+                    variant="outline"
+                    size="sm"
+                    className={cn(
+                      "text-xs",
+                      isSelected
+                        ? "border-primary bg-primary/10 text-primary"
+                        : "hover:border-primary/50"
+                    )}
+                    onClick={() => setTotalRepayment([repaymentForMonths])}
+                  >
+                    {value} {value === 1 ? 'Month' : 'Months'}
+                  </Button>
+                );
+              })}
             </div>
 
             {/* Offer Details */}
             <div className="border-t pt-6 mt-6">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+                <div className="text-center">
+                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
+                    Months Advanced
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-foreground">
+                    {offerDetails.months}
+                  </div>
+                </div>
+                
+                <div className="hidden md:block w-px h-12 bg-border"></div>
+                
                 <div className="text-center">
                   <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
                     Fee ({offerDetails.feePercentage.toFixed(2)}%)
