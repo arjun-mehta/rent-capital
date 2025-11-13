@@ -14,13 +14,44 @@ const child: Variants = {
   },
 };
 
+// Dynamic fee percentage based on months (same as offers page)
+const getFeePercentage = (months: number): number => {
+  const feeTable: Record<number, number> = {
+    1: 5.00,
+    2: 6.00,
+    3: 7.00,
+    4: 8.00,
+    5: 9.00,
+    6: 10.00,
+    7: 11.00,
+    8: 12.00,
+    9: 13.00,
+    10: 14.00,
+    11: 14.50,
+    12: 15.00,
+  };
+  return feeTable[months] || 10.00;
+};
+
 export function PropertyManagerCalculator() {
   const [monthlyRent, setMonthlyRent] = useState(50000);
   const [selectedTerm, setSelectedTerm] = useState<AdvanceTerm>("6");
 
-  // Calculate commission: Monthly Rent x Term x 2%
+  // Calculate commission on advance amount (after fees)
   const termMonths = Number(selectedTerm);
-  const commission = monthlyRent * termMonths * 0.02;
+  
+  // Total repayment = monthly rent * term months
+  const totalRepayment = monthlyRent * termMonths;
+  
+  // Fee calculation: dynamic percentage based on months
+  const feePercentage = getFeePercentage(termMonths);
+  const fee = Math.round(totalRepayment * (feePercentage / 100));
+  
+  // Advance amount = total repayment - fee
+  const advanceAmount = totalRepayment - fee;
+  
+  // Commission = 2% of advance amount
+  const commission = Math.round(advanceAmount * 0.02);
 
   const handleSliderChange = (value: number[]) => {
     // Map slider value 10-200 to rent $10,000-$200,000
