@@ -20,9 +20,9 @@ const items = [
       "Get up to 95% of rent within 24 hours.",
   },
   {
-    title: "Automatic Repayment",
+    title: "Auto Repayment",
     description:
-      "Repay automatically through future rent deposits.",
+      "Repay automatically via future rent deposits.",
   },
 ];
 
@@ -42,7 +42,7 @@ export function How() {
             className="w-full flex sm:flex-row p-6 fit-container bg-card/70 backdrop-blur-sm rounded-3xl"
           >
             <div className="flex flex-col">
-              <div>
+              <div className="min-h-[100px]">
                 <div className="flex mb-4 items-center size-10 text-primary-foreground font-semibold justify-center leading-none text-center text-lg rounded-full bg-primary">
                   {index + 1}
                 </div>
