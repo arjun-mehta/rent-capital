@@ -18,6 +18,11 @@ export function Header() {
   const [monthlyIncome, setMonthlyIncome] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Google Apps Script Web App URL
+  const waitlistWebhook =
+    import.meta.env.VITE_GOOGLE_SCRIPT_WEBHOOK ??
+    "https://script.google.com/macros/s/AKfycbx7v770dncGBLhMGA6nuyo119E-nyVkRihygEZDCP9xelQD6ctkwD2WkDdT7-_t3mnAsw/exec";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -32,19 +37,48 @@ export function Header() {
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Google Apps Script web apps don't support CORS properly, so we use no-cors mode
+      // The data will still be saved even though we can't read the response
+      await fetch(waitlistWebhook, {
+        method: "POST",
+        mode: "no-cors", // Required for Google Apps Script web apps
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          number: phone,
+          units,
+          monthlyIncome,
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+
+      // With no-cors, we can't read the response, but assume success
+      // The data should be saved to the Google Sheet
+
       toast({
         title: "Thank you!",
         description: "We'll be in touch soon.",
       });
+
       setName("");
       setEmail("");
       setPhone("");
       setUnits("");
       setMonthlyIncome("");
-    }, 1000);
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const benefits = [
