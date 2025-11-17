@@ -91,12 +91,12 @@ const ForPropertyManagers: React.FC = () => {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat -top-[69px]"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1757137910873-504d97aa80de?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2938')",
+            backgroundImage: "url('/assets/homepage/neighbhorhood.png')",
             height: "calc(100% + 69px)",
           }}
         />
         {/* Dark Overlay for readability */}
-        <div className="absolute inset-0 bg-black/40 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
+        <div className="absolute inset-0 bg-black/70 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
         
         {/* Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
@@ -157,7 +157,7 @@ const ForPropertyManagers: React.FC = () => {
             </AnimationChild>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimationChild>
-                <Card className="p-8 border rounded-xl shadow-md">
+                <Card className="p-8 rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <TrendingUp className="h-8 w-8 text-primary" />
@@ -170,7 +170,7 @@ const ForPropertyManagers: React.FC = () => {
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 border rounded-xl shadow-md">
+                <Card className="p-8 rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <Users className="h-8 w-8 text-primary" />
@@ -183,7 +183,7 @@ const ForPropertyManagers: React.FC = () => {
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 border rounded-xl shadow-md">
+                <Card className="p-8 rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <Shield className="h-8 w-8 text-primary" />
@@ -211,7 +211,7 @@ const ForPropertyManagers: React.FC = () => {
             </AnimationChild>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimationChild>
-                <Card className="p-8 border rounded-xl shadow-md">
+                <Card className="p-8 rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <span className="text-primary font-bold text-2xl">1</span>
@@ -224,7 +224,7 @@ const ForPropertyManagers: React.FC = () => {
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 border rounded-xl shadow-md">
+                <Card className="p-8 rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <span className="text-primary font-bold text-2xl">2</span>
@@ -237,7 +237,7 @@ const ForPropertyManagers: React.FC = () => {
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 border rounded-xl shadow-md">
+                <Card className="p-8 rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <span className="text-primary font-bold text-2xl">3</span>

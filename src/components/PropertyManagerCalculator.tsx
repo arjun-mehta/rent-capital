@@ -66,7 +66,7 @@ export function PropertyManagerCalculator() {
     <div className="w-full relative">
       <motion.div
         variants={child}
-        className="bg-card p-6 mb-2 rounded-3xl shadow-xs"
+        className="bg-[#EFE7E3] p-6 mb-2 rounded-3xl shadow-xs"
       >
         <div>
           <div className="text-sm text-muted-foreground font-normal mb-4">
@@ -121,7 +121,7 @@ export function PropertyManagerCalculator() {
 
       <motion.div
         variants={child}
-        className="bg-card border-2 border-primary text-foreground p-6 rounded-3xl"
+        className="bg-[#EFE7E3] border-2 border-primary text-foreground p-6 rounded-3xl"
       >
         <div className="text-sm font-normal mb-4 text-foreground">Your Annual Commission Potential</div>
         <div className="text-2xl text-primary mb-2">

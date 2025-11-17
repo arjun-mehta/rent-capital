@@ -59,12 +59,12 @@ export function Header() {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat -top-[69px]"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1757137910873-504d97aa80de?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2938')",
+          backgroundImage: "url('/assets/homepage/neighbhorhood.png')",
           height: "calc(100% + 69px)",
         }}
       />
       {/* Dark Overlay for readability */}
-      <div className="absolute inset-0 bg-black/40 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
+      <div className="absolute inset-0 bg-black/70 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
       
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
@@ -77,7 +77,7 @@ export function Header() {
               <span className="block">income upfront</span>
             </h1>
             <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl">
-              Access 1–9 months of future rent instantly to expand your portfolio, upgrade existing properties, or stabilize cash flow.
+               Access 1 to 9 months of future rent instantly to expand your portfolio, upgrade existing properties, or stabilize cash flow.
             </p>
           </div>
 
@@ -118,7 +118,7 @@ export function Header() {
 
         {/* Right Side - Waitlist Form */}
         <div className="lg:pl-8 max-w-lg" id="waitlist">
-          <Card className="p-5 sm:p-6 border border-border">
+          <Card className="p-5 sm:p-6 border border-border bg-[#EFE7E3]">
             <div className="space-y-4">
               <div>
                 <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-1.5">

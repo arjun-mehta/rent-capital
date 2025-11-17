@@ -7,7 +7,7 @@ const items = [
   {
     title: "Connect & Upload",
     description:
-      "Connect your account and upload your lease.",
+      "Connect bank and upload lease agreement.",
   },
   {
     title: "Receive Your Offer",
