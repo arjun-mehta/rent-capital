@@ -6,9 +6,11 @@ import { useToast } from "@/components/ui/use-toast";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useScrollToElement } from "./scroll";
 
 export function Header() {
   const { toast } = useToast();
+  const { scrollToTop } = useScrollToElement();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -92,13 +94,14 @@ export function Header() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Button
-              asChild
               size="lg"
               className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToTop();
+              }}
             >
-              <a href="#waitlist">
-                Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               asChild

@@ -5,6 +5,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { useScrollToElement } from "./scroll";
 
 type PlanDuration = "3" | "6" | "9";
 
@@ -37,8 +38,9 @@ const getFeePercentage = (months: number): number => {
 };
 
 export function Calculator() {
-  const [totalRepayment, setTotalRepayment] = useState(30000); // Default to 30k
+  const [totalRepayment, setTotalRepayment] = useState(30000);
   const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("6");
+  const { scrollToTop } = useScrollToElement();
   const isMobile = useIsMobile();
 
   // Calculate values based on dynamic fee structure
@@ -125,12 +127,13 @@ export function Calculator() {
         <div className="flex items-center justify-between text-left">
           <div className="text-2xl text-primary font-medium">${advanceAmount.toLocaleString()}</div>
           <Button 
-            className="w-fit bg-primary hover:bg-primary/90 text-primary-foreground transition-all" 
-            asChild
+            className="w-fit bg-primary hover:bg-primary/90 text-primary-foreground transition-all"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToTop();
+            }}
           >
-            <a href="#waitlist">
-              Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+            Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </motion.div>

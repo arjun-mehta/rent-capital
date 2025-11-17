@@ -98,16 +98,18 @@ export function Navigation() {
 
           {/* Center - Role Switcher (absolutely positioned) */}
           <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2">
-            <ToggleGroup
-              type="single"
-              value={isPropertyManager ? "property-manager" : "landlord"}
-              onValueChange={(value) => {
-                if (value === "property-manager") {
-                  navigate("/for-property-managers");
-                } else if (value === "landlord") {
-                  navigate("/");
-                }
-              }}
+              <ToggleGroup
+                type="single"
+                value={isPropertyManager ? "property-manager" : "landlord"}
+                onValueChange={(value) => {
+                  if (value === "property-manager") {
+                    scrollToTop();
+                    navigate("/for-property-managers");
+                  } else if (value === "landlord") {
+                    scrollToTop();
+                    navigate("/");
+                  }
+                }}
               className={cn(
                 "rounded-full p-1 transition-all duration-300 ease-in-out",
                 isPastHeader
