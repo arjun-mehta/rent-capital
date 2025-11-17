@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Favicon</title>
+  <style>
+    @font-face {
+      font-family: 'Emilio';
+      src: url('/fonts/Emilio-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    canvas {
+      border: 1px solid #ddd;
+      margin: 20px 0;
+      display: block;
+    }
+    button {
+      padding: 10px 20px;
+      background: #3F5A36;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #2d4226;
+    }
+    .instructions {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Favicon Generator</h1>
+    <p>This will generate a favicon with a black "R" in Emilio font on a cream background.</p>
+    
+    <canvas id="faviconCanvas" width="64" height="64"></canvas>
+    
+    <div>
+      <button onclick="generateFavicon()">Generate Favicon</button>
+      <button onclick="downloadFavicon()" style="margin-left: 10px;">Download PNG</button>
+    </div>
+    
+    <div class="instructions">
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Click "Generate Favicon" to render the R on the canvas</li>
+        <li>Click "Download PNG" to save the favicon</li>
+        <li>Save the file as <code>favicon.png</code> in the <code>public</code> folder</li>
+        <li>Update <code>index.html</code> to use <code>favicon.png</code> instead of <code>favicon.svg</code></li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('faviconCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    function generateFavicon() {
+      // Cream background
+      ctx.fillStyle = '#EFE7E3';
+      ctx.fillRect(0, 0, 64, 64);
+      
+      // Set font
+      ctx.font = '38px Emilio';
+      ctx.fillStyle = '#433E3C';
+      ctx.textBaseline = 'middle';
+      
+      // Draw RC with tight letter spacing (draw letters separately)
+      const letterSpacing = -2;
+      const text = 'RC';
+      const metrics = ctx.measureText(text);
+      const totalWidth = metrics.width;
+      const startX = 32 - (totalWidth / 2) - (letterSpacing / 2);
+      
+      ctx.textAlign = 'left';
+      let x = startX;
+      for (let i = 0; i < text.length; i++) {
+        ctx.fillText(text[i], x, 35);
+        const charWidth = ctx.measureText(text[i]).width;
+        x += charWidth + letterSpacing;
+      }
+    }
+    
+    function downloadFavicon() {
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'favicon.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+    
+    // Auto-generate on load
+    window.addEventListener('load', function() {
+      // Wait for font to load
+      if (document.fonts) {
+        document.fonts.ready.then(function() {
+          generateFavicon();
+        });
+      } else {
+        setTimeout(generateFavicon, 500);
+      }
+    });
+  </script>
+</body>
+</html>
+

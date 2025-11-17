@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <style>
+      @font-face {
+        font-family: 'Emilio';
+        src: url('/fonts/Emilio-Light.otf') format('opentype');
+        font-weight: 300;
+        font-style: normal;
+      }
+    </style>
+  </defs>
+  <!-- Cream background -->
+  <rect width="64" height="64" fill="#EFE7E3"/>
+  <!-- Black RC letters - centered with tight letter spacing -->
+  <text 
+    x="32" 
+    y="47" 
+    font-family="Emilio, sans-serif" 
+    font-size="38" 
+    font-weight="300" 
+    fill="#433E3C" 
+    text-anchor="middle" 
+    dominant-baseline="central"
+    style="font-weight: 300; letter-spacing: -2px;"
+  >RC</text>
+</svg>
+
