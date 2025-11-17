@@ -43,7 +43,7 @@ export function Estimate() {
   return (
     <AnimationParent className="w-full max-w-container px-4 mx-auto pt-12 relative">
       <a id="calculate" className="absolute top-0 left-0" />
-      <div className="flex flex-col items-center sm:flex-row gap-8">
+      <div className="flex flex-col items-center sm:flex-row gap-4 sm:gap-8">
         <div className="w-full flex flex-col gap-4">
           <AnimationChild>
             <AnimatePresence mode="wait">
@@ -53,7 +53,7 @@ export function Estimate() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="font-emilio text-balance sm:my-5 text-2xl sm:text-3xl lg:text-4xl text-left min-h-[120px] sm:min-h-[160px] flex items-center justify-start leading-tight tracking-tight"
+                className="font-emilio text-balance sm:my-5 text-2xl sm:text-3xl lg:text-4xl text-center sm:text-left min-h-[120px] sm:min-h-[160px] flex items-center justify-center sm:justify-start leading-tight tracking-tight"
               >
                 {items[index]}
               </motion.div>
