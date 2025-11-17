@@ -1,10 +1,11 @@
 import type { HTMLAttributes } from "react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useScrollToElement } from "./scroll";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@/lib/utils";
 
 const items: Array<{ href: string; label: string; isRoute?: boolean }> = [
-  { href: "/for-property-managers", label: "For Property Managers", isRoute: true },
   { href: "#how", label: "How It Works" },
   { href: "#qualification", label: "Benefits" },
   { href: "#faq", label: "FAQ" },
@@ -14,6 +15,11 @@ export function Navigation() {
   const { scrollToElement, scrollToTop } = useScrollToElement();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHeader, setIsPastHeader] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  // Determine if we're on the property managers page
+  const isPropertyManager = location.pathname === "/for-property-managers";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +47,7 @@ export function Navigation() {
   return (
     <nav className={`w-full py-4 sticky top-0 z-50 transition-all duration-300 ease-in-out ${navBg}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
+        <div className="relative grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
           {/* Left side - Logo */}
           <div className="flex items-center">
             <Link
@@ -88,6 +94,60 @@ export function Navigation() {
             >
               Sign In
             </Link>
+          </div>
+
+          {/* Center - Role Switcher (absolutely positioned) */}
+          <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2">
+            <ToggleGroup
+              type="single"
+              value={isPropertyManager ? "property-manager" : "landlord"}
+              onValueChange={(value) => {
+                if (value === "property-manager") {
+                  navigate("/for-property-managers");
+                } else if (value === "landlord") {
+                  navigate("/");
+                }
+              }}
+              className={cn(
+                "rounded-full p-1 transition-all duration-300 ease-in-out",
+                isPastHeader
+                  ? "bg-muted border border-border"
+                  : "bg-white/10 backdrop-blur-md border border-white/20"
+              )}
+            >
+              <ToggleGroupItem
+                value="landlord"
+                aria-label="Landlord"
+                className={cn(
+                  "h-[37px] px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out rounded-full whitespace-nowrap",
+                  isPropertyManager
+                    ? isPastHeader
+                      ? "text-muted-foreground hover:bg-primary/90 hover:text-primary-foreground border border-transparent hover:border-primary"
+                      : "text-white/70 hover:bg-white/20 hover:text-white border border-transparent hover:border-white/20"
+                    : isPastHeader
+                    ? "bg-primary hover:bg-primary/90 text-primary-foreground border border-primary"
+                    : "bg-white/20 text-white border border-white/20 hover:bg-white/30"
+                )}
+              >
+                Landlord
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                value="property-manager"
+                aria-label="Property Manager"
+                className={cn(
+                  "h-[37px] px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out rounded-full whitespace-nowrap",
+                  isPropertyManager
+                    ? isPastHeader
+                      ? "bg-primary hover:bg-primary/90 text-primary-foreground border border-primary"
+                      : "bg-white/20 text-white border border-white/20 hover:bg-white/30"
+                    : isPastHeader
+                    ? "text-muted-foreground hover:bg-primary/90 hover:text-primary-foreground border border-transparent hover:border-primary"
+                    : "text-white/70 hover:bg-white/20 hover:text-white border border-transparent hover:border-white/20"
+                )}
+              >
+                Property Manager
+              </ToggleGroupItem>
+            </ToggleGroup>
           </div>
         </div>
       </div>

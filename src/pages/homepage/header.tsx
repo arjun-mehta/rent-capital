@@ -55,13 +55,14 @@ export function Header() {
     <section className="relative w-full h-screen flex items-center justify-center -mt-[69px] pt-[69px]">
       {/* Background Image - Full Width, starts from top of viewport */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat -top-[69px]"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1757137910873-504d97aa80de?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2938')",
+          height: "calc(100% + 69px)",
         }}
       />
       {/* Dark Overlay for readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/40 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
       
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
