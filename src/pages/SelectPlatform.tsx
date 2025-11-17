@@ -299,7 +299,7 @@ const SelectPlatform: React.FC = () => {
                     )}
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-emilio text-foreground mb-2">
                   Connect Bank Account
                 </h3>
                 <p className="text-sm text-muted-foreground mb-4">
@@ -362,7 +362,7 @@ const SelectPlatform: React.FC = () => {
                     )}
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-emilio text-foreground mb-2">
                   Upload Lease Agreement
                 </h3>
                 <p className="text-sm text-muted-foreground mb-4">

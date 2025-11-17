@@ -80,11 +80,11 @@ export function Calculator() {
               onValueChange={handleSliderChange}
             />
             <div className="flex justify-between items-center">
-              <span className="text-xs text-gray-500">$10,000</span>
-              <span className="text-2xl font-medium">
+              <span className="text-xs text-muted-foreground">$10,000</span>
+              <span className="text-2xl font-medium text-foreground">
                 ${totalRepayment.toLocaleString()}
               </span>
-              <span className="text-xs text-gray-500">$90,000</span>
+              <span className="text-xs text-muted-foreground">$90,000</span>
             </div>
           </div>
         </div>
@@ -106,8 +106,8 @@ export function Calculator() {
                   "py-2.5 md:py-3 px-1 md:px-2 rounded-lg text-center transition-all duration-200",
                   "text-xs md:text-sm font-medium",
                   selectedPlan === plan.value
-                    ? "border-2 border-[#6EE7B7] text-[#6EE7B7] bg-[#6EE7B7]/10"
-                    : "border border-border text-muted-foreground bg-card hover:border-[#6EE7B7]/50 hover:text-[#6EE7B7]"
+                    ? "border-2 border-primary text-primary bg-primary/10"
+                    : "border border-border text-muted-foreground bg-card hover:border-primary/50 hover:text-primary"
                 )}
               >
                 {plan.label}
@@ -119,13 +119,13 @@ export function Calculator() {
 
       <motion.div
         variants={child}
-        className="bg-black border-2 border-primary text-foreground p-6 rounded-3xl"
+        className="bg-card border-2 border-primary text-foreground p-6 rounded-3xl"
       >
-        <div className="text-sm font-normal mb-4">Estimated advance amount</div>
+        <div className="text-sm font-normal mb-4 text-foreground">Estimated advance amount</div>
         <div className="flex items-center justify-between text-left">
-          <div className="text-2xl text-[#6EE7B7]">${advanceAmount.toLocaleString()}</div>
+          <div className="text-2xl text-primary font-medium">${advanceAmount.toLocaleString()}</div>
           <Button 
-            className="w-fit bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all" 
+            className="w-fit bg-primary hover:bg-primary/90 text-primary-foreground transition-all" 
             asChild
           >
             <a href="#waitlist">

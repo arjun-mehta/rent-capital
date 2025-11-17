@@ -37,23 +37,23 @@ const faqItems: FAQItem[] = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="w-full bg-black text-white">
+    <section id="faq" className="w-full bg-[#EFE7E3] text-foreground">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4">Frequently Asked Questions</h2>
-            <p className="paragraph text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-emilio mb-4">Frequently Asked Questions</h2>
+            <p className="paragraph text-muted-foreground max-w-2xl mx-auto">
               Find answers to common questions about Rent Capital and how we can help you grow your creator business.
             </p>
           </div>
           
           <Accordion type="single" collapsible className="w-full">
             {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-700">
-                <AccordionTrigger className="py-5 text-lg font-medium text-left hover:no-underline text-white">
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
+                <AccordionTrigger className="py-5 text-lg font-medium text-left hover:no-underline text-foreground">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-300 pb-5">
+                <AccordionContent className="text-muted-foreground pb-5">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>

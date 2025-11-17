@@ -84,16 +84,16 @@ const PricingSection: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-black text-white">
+    <section id="pricing" className="py-24 bg-[#EFE7E3] text-foreground">
       <div className="section-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
           <h2 
             ref={sectionRef} 
-            className="text-5xl md:text-6xl lg:text-7xl font-semibold mb-5 opacity-0 text-left text-white"
+            className="text-5xl md:text-6xl lg:text-7xl font-semibold mb-5 opacity-0 text-left text-foreground"
           >
             Pricing
           </h2>
-          <p className="text-xl md:text-2xl text-white max-w-full opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
+          <p className="text-xl md:text-2xl text-foreground max-w-full opacity-0 animate-fade-in" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             Our transparent pricing model is designed to help you grow without the stress of traditional financing.
           </p>
         </div>

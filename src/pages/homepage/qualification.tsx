@@ -32,7 +32,7 @@ export function Qualification() {
     <AnimationParent className="w-full max-w-container mx-auto pb-32 px-4 relative">
       <a id="qualification" className="absolute top-0 left-0" />
       <AnimationChild>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-emilio text-center mb-12">
           Benefits
         </h2>
       </AnimationChild>

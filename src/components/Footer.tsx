@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-black text-white pt-16 pb-8">
+    <footer className="bg-[#EFE7E3] text-foreground pt-16 pb-8">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-16">
           <div className="md:col-span-1">

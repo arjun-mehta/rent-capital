@@ -73,7 +73,7 @@ const SignIn: React.FC = () => {
       <div className="flex-1 flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="text-center mb-6">
-            <h1 className="font-serif font-bold text-2xl sm:text-3xl text-foreground tracking-tight">
+            <h1 className="font-emilio text-2xl sm:text-3xl text-foreground tracking-tight">
               Welcome Back
             </h1>
           </div>

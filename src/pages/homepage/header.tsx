@@ -61,7 +61,7 @@ export function Header() {
         }}
       />
       {/* Dark Overlay for readability */}
-      <div className="absolute inset-0 bg-background/40" />
+      <div className="absolute inset-0 bg-black/40" />
       
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
@@ -69,11 +69,11 @@ export function Header() {
         {/* Left Side - Hero Content */}
         <div className="space-y-5">
           <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight text-foreground leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-emilio tracking-tight text-white leading-tight">
               <span className="block">Get your future rent</span>
               <span className="block">income upfront</span>
             </h1>
-            <p className="text-base sm:text-lg text-foreground/90 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl">
               Access 1–9 months of future rent instantly to expand your portfolio, upgrade existing properties, or stabilize cash flow.
             </p>
           </div>
@@ -82,8 +82,8 @@ export function Header() {
           <div className="space-y-3 pt-2">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start gap-3">
-                <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                <p className="text-sm sm:text-base text-foreground">{benefit}</p>
+                <CheckCircle2 className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
+                <p className="text-sm sm:text-base text-white">{benefit}</p>
               </div>
             ))}
           </div>
@@ -93,7 +93,7 @@ export function Header() {
             <Button
               asChild
               size="lg"
-              className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all"
+              className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
             >
               <a href="#waitlist">
                 Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
@@ -103,6 +103,7 @@ export function Header() {
               asChild
               size="lg"
               variant="outline"
+              className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
             >
               <a href="#how">
                 Learn More
@@ -212,7 +213,7 @@ export function Header() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all h-9 text-sm disabled:opacity-50"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all h-9 text-sm disabled:opacity-50"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Submitting..." : "Join Waitlist"}

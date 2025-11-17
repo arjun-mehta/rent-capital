@@ -67,10 +67,10 @@ const items = [
 
 export function Questions() {
   return (
-    <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 relative">
+    <AnimationParent className="w-full max-w-container px-4 mx-auto pb-32 relative">
       <a id="faq" className="absolute top-0 left-0" />
       <AnimationChild>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-emilio text-center mb-12">
           FAQ
         </h2>
       </AnimationChild>
@@ -81,7 +81,7 @@ export function Questions() {
             <div
               className={cn(
                 "flex flex-col rounded-3xl w-full border border-border my-2",
-                index === 0 ? "bg-[hsl(0,0%,6%)]/70 backdrop-blur-sm" : "bg-[hsl(0,0%,6%)]"
+                "bg-card"
               )}
             >
               <Collapsible className="w-full">

@@ -61,7 +61,7 @@ const HowItWorks: React.FC = () => {
         <div className="max-w-3xl mb-12">
           <h2 
             ref={sectionRef} 
-            className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 opacity-0 text-left"
+            className="text-3xl md:text-4xl lg:text-5xl font-emilio mb-5 opacity-0 text-left"
           >
             How It Works
           </h2>

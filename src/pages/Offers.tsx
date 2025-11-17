@@ -120,22 +120,14 @@ const Offers: React.FC = () => {
             {/* Total Repayment Slider */}
             <div className="mb-8">
               <div className="relative px-2">
-                <Slider
-                  value={totalRepayment}
-                  onValueChange={setTotalRepayment}
-                  min={minRepayment}
-                  max={maxRepayment}
-                  step={step}
-                  className="w-full"
-                />
-                {/* Repayment markers/ridges */}
-                <div className="absolute top-0 left-2 right-2 h-1 flex justify-between items-center pointer-events-none">
+                {/* Repayment markers/ridges - positioned behind slider */}
+                <div className="absolute top-0 left-2 right-2 h-1 flex justify-between items-center pointer-events-none z-0">
                   {Array.from({ length: (maxRepayment - minRepayment) / step + 1 }, (_, i) => {
                     const repaymentValue = minRepayment + (i * step);
                     return (
                       <div
                         key={repaymentValue}
-                        className="w-0.5 h-3 bg-border rounded-full"
+                        className="w-0.5 h-3 bg-muted rounded-full z-0"
                         style={{
                           position: 'absolute',
                           left: `${((repaymentValue - minRepayment) / (maxRepayment - minRepayment)) * 100}%`,
@@ -145,10 +137,34 @@ const Offers: React.FC = () => {
                     );
                   })}
                 </div>
+                <Slider
+                  value={totalRepayment}
+                  onValueChange={setTotalRepayment}
+                  min={minRepayment}
+                  max={maxRepayment}
+                  step={step}
+                  className="w-full relative z-10"
+                />
                 {/* Repayment labels */}
-                <div className="flex justify-between text-xs text-muted-foreground mt-3 px-2">
-                  <span>$10k</span>
-                  <span>$90k</span>
+                <div className="relative mt-3 px-2 pb-1">
+                  <span 
+                    className="absolute text-xs text-muted-foreground"
+                    style={{
+                      left: '0.5rem', // Align with left-2 padding where first notch is
+                      transform: 'translateX(-50%)',
+                    }}
+                  >
+                    $10k
+                  </span>
+                  <span 
+                    className="absolute text-xs text-muted-foreground"
+                    style={{
+                      right: '0.5rem', // Align with right-2 padding where last notch is
+                      transform: 'translateX(50%)',
+                    }}
+                  >
+                    $90k
+                  </span>
                 </div>
               </div>
             </div>

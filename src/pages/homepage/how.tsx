@@ -31,7 +31,7 @@ export function How() {
     <AnimationParent className="w-full max-w-container px-4 mx-auto py-32 relative">
       <a id="how" className="absolute top-0 left-0" />
       <AnimationChild>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-emilio text-center mb-12">
           How It Works
         </h2>
       </AnimationChild>

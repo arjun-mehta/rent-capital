@@ -81,11 +81,11 @@ export function PropertyManagerCalculator() {
               onValueChange={handleSliderChange}
             />
             <div className="flex justify-between items-center">
-              <span className="text-xs text-gray-500">$10,000</span>
-              <span className="text-2xl font-medium">
+              <span className="text-xs text-muted-foreground">$10,000</span>
+              <span className="text-2xl font-medium text-foreground">
                 ${monthlyRent.toLocaleString()}
               </span>
-              <span className="text-xs text-gray-500">$200,000</span>
+              <span className="text-xs text-muted-foreground">$200,000</span>
             </div>
           </div>
         </div>
@@ -108,8 +108,8 @@ export function PropertyManagerCalculator() {
                   "py-2.5 md:py-3 px-1 md:px-2 rounded-lg text-center transition-all duration-200",
                   "text-xs md:text-sm font-medium",
                   selectedTerm === term.value
-                    ? "border-2 border-[#6EE7B7] text-[#6EE7B7] bg-[#6EE7B7]/10"
-                    : "border border-border text-muted-foreground bg-card hover:border-[#6EE7B7]/50 hover:text-[#6EE7B7]"
+                    ? "border-2 border-primary text-primary bg-primary/10"
+                    : "border border-border text-muted-foreground bg-card hover:border-primary/50 hover:text-primary"
                 )}
               >
                 {term.label}
@@ -121,10 +121,10 @@ export function PropertyManagerCalculator() {
 
       <motion.div
         variants={child}
-        className="bg-black border-2 border-primary text-foreground p-6 rounded-3xl"
+        className="bg-card border-2 border-primary text-foreground p-6 rounded-3xl"
       >
-        <div className="text-sm font-normal mb-4">Your Annual Commission Potential</div>
-        <div className="text-2xl text-[#6EE7B7] mb-2">
+        <div className="text-sm font-normal mb-4 text-foreground">Your Annual Commission Potential</div>
+        <div className="text-2xl text-primary mb-2">
           ${commission.toLocaleString()}
         </div>
         <p className="text-xs text-muted-foreground">

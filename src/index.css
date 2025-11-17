@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
+    --background: 20 27% 91%;
+    --foreground: 17 6% 25%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 20 27% 95%;
+    --card-foreground: 17 6% 25%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 20 27% 95%;
+    --popover-foreground: 17 6% 25%;
 
-    --primary: 156 72% 67%;
-    --primary-foreground: 0 0% 5%;
+    --primary: 105 25% 28%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 20 27% 85%;
+    --secondary-foreground: 17 6% 25%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 20 27% 88%;
+    --muted-foreground: 17 6% 45%;
 
-    --accent: 0 0% 12%;
+    --accent: 105 25% 28%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 10%;
-    --ring: 156 72% 67%;
+    --border: 17 6% 60%;
+    --input: 20 27% 95%;
+    --ring: 105 25% 28%;
 
     --radius: 0.5rem;
   }
@@ -83,8 +83,17 @@
   src: url("/fonts/Thunder-ExtraBoldLC.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Emilio";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/Emilio-Light.otf") format("opentype");
+}
+
 @theme {
   --font-thunder: "Thunder", "sans-serif";
+  --font-emilio: "Emilio", "sans-serif";
 }
 
 @layer components {

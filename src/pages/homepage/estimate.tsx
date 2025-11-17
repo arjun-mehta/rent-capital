@@ -53,7 +53,7 @@ export function Estimate() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="font-serif font-bold text-balance sm:my-5 text-2xl sm:text-3xl lg:text-4xl text-center sm:text-left min-h-[120px] sm:min-h-[160px] flex items-center justify-center leading-tight tracking-tight"
+                className="font-emilio text-balance sm:my-5 text-2xl sm:text-3xl lg:text-4xl text-left min-h-[120px] sm:min-h-[160px] flex items-center justify-start leading-tight tracking-tight"
               >
                 {items[index]}
               </motion.div>

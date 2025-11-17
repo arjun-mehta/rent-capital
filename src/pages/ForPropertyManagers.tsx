@@ -95,7 +95,7 @@ const ForPropertyManagers: React.FC = () => {
           }}
         />
         {/* Dark Overlay for readability */}
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-black/40" />
         
         {/* Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
@@ -103,12 +103,12 @@ const ForPropertyManagers: React.FC = () => {
             {/* Hero Content - Left Aligned */}
             <div className="space-y-5">
               <div className="space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight text-foreground leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-emilio tracking-tight text-white leading-tight">
                   <span className="block">Help your landlords</span>
                   <span className="block">unlock capital and</span>
                   <span className="block">grow your portfolio</span>
                 </h1>
-                <p className="text-base sm:text-lg text-foreground/90 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl">
                   Earn 2% on every funded advance — a recurring revenue stream that requires no setup or additional work.
                 </p>
               </div>
@@ -118,7 +118,7 @@ const ForPropertyManagers: React.FC = () => {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 transition-all"
+                  className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
                 >
                   <a href="mailto:nigel@rentcapital.us">
                     Become a Partner <ArrowRight className="ml-2 h-4 w-4" />
@@ -128,7 +128,7 @@ const ForPropertyManagers: React.FC = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20"
+                  className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
                 >
                   <a href="#how">
                     How it Works
@@ -150,7 +150,7 @@ const ForPropertyManagers: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <AnimationParent>
             <AnimationChild>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-emilio text-center mb-12">
                 Why property managers scale Rent Capital across their portfolios
               </h2>
             </AnimationChild>
@@ -158,10 +158,10 @@ const ForPropertyManagers: React.FC = () => {
               <AnimationChild>
                 <Card className="p-8 border rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#6EE7B7]/10">
-                      <TrendingUp className="h-8 w-8 text-[#6EE7B7]" />
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                      <TrendingUp className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold">Add a new revenue stream</h3>
+                    <h3 className="text-xl font-semibold text-foreground">Add a new revenue stream</h3>
                     <p className="text-muted-foreground">
                       Earn recurring commissions on every funded advance without changing workflows, staffing, or systems.
                     </p>
@@ -171,10 +171,10 @@ const ForPropertyManagers: React.FC = () => {
               <AnimationChild>
                 <Card className="p-8 border rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#6EE7B7]/10">
-                      <Users className="h-8 w-8 text-[#6EE7B7]" />
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                      <Users className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold">Increase portfolio revenue</h3>
+                    <h3 className="text-xl font-semibold text-foreground">Increase portfolio revenue</h3>
                     <p className="text-muted-foreground">
                       Owners with liquidity reinvest, upgrade units, and stay longer—reducing churn and expanding managed assets.
                     </p>
@@ -184,12 +184,12 @@ const ForPropertyManagers: React.FC = () => {
               <AnimationChild>
                 <Card className="p-8 border rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#6EE7B7]/10">
-                      <Shield className="h-8 w-8 text-[#6EE7B7]" />
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                      <Shield className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold">Improve operational stability</h3>
+                    <h3 className="text-xl font-semibold text-foreground">Improve operational stability</h3>
                     <p className="text-muted-foreground">
-                      Landlords with cash on hand handle repairs, turns, and vacancies faster, cutting delays and support load on your team.
+                      Landlords with cash on hand handle repairs, turns, and vacancies faster, cutting delays and support load.
                     </p>
                   </div>
                 </Card>
@@ -204,7 +204,7 @@ const ForPropertyManagers: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <AnimationParent>
             <AnimationChild>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-emilio text-center mb-12">
                 How It Works
               </h2>
             </AnimationChild>
@@ -212,10 +212,10 @@ const ForPropertyManagers: React.FC = () => {
               <AnimationChild>
                 <Card className="p-8 border rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#6EE7B7]/10">
-                      <span className="text-[#6EE7B7] font-bold text-2xl">1</span>
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                      <span className="text-primary font-bold text-2xl">1</span>
                     </div>
-                    <h3 className="text-xl font-semibold">Pre-qualify landlords</h3>
+                    <h3 className="text-xl font-semibold text-foreground">Pre-qualify landlords</h3>
                     <p className="text-muted-foreground">
                       Upload landlord and rent roll data to instantly generate pre-qualified advance offers based on lease terms, rent history, and payment performance.
                     </p>
@@ -225,10 +225,10 @@ const ForPropertyManagers: React.FC = () => {
               <AnimationChild>
                 <Card className="p-8 border rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#6EE7B7]/10">
-                      <span className="text-[#6EE7B7] font-bold text-2xl">2</span>
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                      <span className="text-primary font-bold text-2xl">2</span>
                     </div>
-                    <h3 className="text-xl font-semibold">Landlord selects offer</h3>
+                    <h3 className="text-xl font-semibold text-foreground">Landlord selects offer</h3>
                     <p className="text-muted-foreground">
                       We notify your owners to review their pre-qualified advance options, create an account, and sign electronically. Funding completes within 24 hours.
                     </p>
@@ -238,10 +238,10 @@ const ForPropertyManagers: React.FC = () => {
               <AnimationChild>
                 <Card className="p-8 border rounded-xl shadow-md">
                   <div className="flex flex-col space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#6EE7B7]/10">
-                      <span className="text-[#6EE7B7] font-bold text-2xl">3</span>
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+                      <span className="text-primary font-bold text-2xl">3</span>
                     </div>
-                    <h3 className="text-xl font-semibold">You earn automatically</h3>
+                    <h3 className="text-xl font-semibold text-foreground">You earn automatically</h3>
                     <p className="text-muted-foreground">
                       You earn 2% of every dollar advanced to your landlords, paid out automatically to your connected bank account for each funded deal.
                     </p>
@@ -264,7 +264,7 @@ const ForPropertyManagers: React.FC = () => {
           <a id="faq" className="absolute top-0 left-0" />
           <AnimationParent>
             <AnimationChild>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-emilio text-center mb-12">
                 FAQ
               </h2>
             </AnimationChild>
@@ -275,7 +275,7 @@ const ForPropertyManagers: React.FC = () => {
                   <div
                     className={cn(
                       "flex flex-col rounded-3xl w-full border border-border my-2",
-                      index === 0 ? "bg-[hsl(0,0%,6%)]/70 backdrop-blur-sm" : "bg-[hsl(0,0%,6%)]"
+                      "bg-card"
                     )}
                   >
                     <Collapsible className="w-full">
@@ -302,7 +302,7 @@ const ForPropertyManagers: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <AnimationParent>
             <AnimationChild>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-emilio mb-4">
                 Bring instant liquidity to your landlords
               </h2>
             </AnimationChild>

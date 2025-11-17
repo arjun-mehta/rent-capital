@@ -36,13 +36,13 @@ export function Footer() {
 
   return (
     <footer className="pb-8 w-full max-w-[1080px] mx-auto px-4">
-      <div className=" border-t pt-16">
+      <div className="border-t border-border pt-16">
         <AnimationParent className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
           <AnimationChild className="md:col-span-2">
             <div className="mb-6">
               <Logo className="h-8" align="left" />
             </div>
-            <p className="text-gray-600 mb-4 max-w-xs">
+            <p className="text-muted-foreground mb-4 max-w-xs">
               Providing landlords with the financial tools they need to grow
               their portfolio and unlock capital from their rental income.
             </p>
@@ -50,13 +50,13 @@ export function Footer() {
 
           {sections.map((section, index) => (
             <AnimationChild key={index} className="md:col-span-1">
-              <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
+              <h3 className="text-lg font-semibold mb-4 text-foreground">{section.title}</h3>
               <ul className="space-y-3">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a
                       href={link.href}
-                      className="text-gray-600 hover:text-gray-400 transition-colors"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.label}
                     </a>
@@ -67,8 +67,8 @@ export function Footer() {
           ))}
         </AnimationParent>
 
-        <div className="border-t pt-8 flex text-sm flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-400 text-sm mb-4 md:mb-0">
+        <div className="border-t border-border pt-8 flex text-sm flex-col md:flex-row justify-between items-center">
+          <div className="text-muted-foreground text-sm mb-4 md:mb-0">
             © {currentYear}{" "}
             <span className="font-poppins font-semibold">Rent Capital</span>. All
             rights reserved.
@@ -77,19 +77,19 @@ export function Footer() {
           <div className="flex space-x-6">
             <a
               href="#"
-              className="text-gray-400 hover:text-black transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
               Twitter
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-black transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
               LinkedIn
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-black transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
               Instagram
             </a>
