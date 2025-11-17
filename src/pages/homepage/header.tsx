@@ -37,7 +37,7 @@ export function Header() {
       setIsSubmitting(false);
       toast({
         title: "Thank you!",
-        description: "We'll be in touch soon with your advance offer.",
+        description: "We'll be in touch soon.",
       });
       setName("");
       setEmail("");
