@@ -126,10 +126,10 @@ export function Header() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <div className="flex flex-row gap-2 sm:gap-3 pt-2">
             <Button
               size="lg"
-              className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
+              className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToTop();
@@ -141,7 +141,7 @@ export function Header() {
               asChild
               size="lg"
               variant="outline"
-              className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
+              className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
             >
               <a href="#how">
                 Learn More
