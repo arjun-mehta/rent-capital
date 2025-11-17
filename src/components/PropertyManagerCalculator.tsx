@@ -121,7 +121,7 @@ export function PropertyManagerCalculator() {
 
       <motion.div
         variants={child}
-        className="bg-[#EFE7E3] border-2 border-primary text-foreground p-6 rounded-3xl"
+        className="bg-[#EFE7E3] text-foreground p-6 rounded-3xl"
       >
         <div className="text-sm font-normal mb-4 text-foreground">Your Annual Commission Potential</div>
         <div className="text-2xl text-primary mb-2">
