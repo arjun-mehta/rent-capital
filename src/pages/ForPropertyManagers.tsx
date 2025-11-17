@@ -130,8 +130,8 @@ const ForPropertyManagers: React.FC = () => {
                   variant="outline"
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
                 >
-                  <a href="#how">
-                    How it Works
+                  <a href="https://calendly.com/nigel-rentcapital/30min" target="_blank" rel="noopener noreferrer">
+                    Book a 15-min demo
                   </a>
                 </Button>
               </div>
