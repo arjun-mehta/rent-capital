@@ -11,7 +11,7 @@ const benefits = [
   },
   {
     title: "No credit checks",
-    description: "Approval based on your lease and tenant payment history.",
+    description: "Approval based on executed lease(s) and tenant payment history.",
   },
   {
     title: "Flat, transparent fee",

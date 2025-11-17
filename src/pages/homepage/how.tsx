@@ -7,7 +7,7 @@ const items = [
   {
     title: "Connect & Upload",
     description:
-      "Connect bank and upload lease agreement.",
+      "Connect bank and upload lease agreement(s).",
   },
   {
     title: "Receive Your Offer",
@@ -17,7 +17,7 @@ const items = [
   {
     title: "Get Your Funds",
     description:
-      "Get up to 95% of rent within 24 hours.",
+      "Get up to 95% of future rent within 24 hours.",
   },
   {
     title: "Auto Repayment",

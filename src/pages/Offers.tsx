@@ -98,7 +98,7 @@ const Offers: React.FC = () => {
         <div className="w-full max-w-2xl">
           <div className="text-center mb-10">
             <Title>
-              <span className="block">How many months of rent</span>
+              <span className="block">You're eligible! How many months of rent</span>
               <span className="block">would you like to be advanced?</span>
             </Title>
           </div>
