@@ -285,7 +285,7 @@ const ForPropertyManagers: React.FC = () => {
                           <ChevronDownIcon className="size-6" />
                         </div>
                       </CollapsibleTrigger>
-                      <CollapsibleContent className="p-4 px-6 text-balance text-muted-foreground pt-0 text-lg">
+                      <CollapsibleContent className="p-4 px-6 text-muted-foreground pt-0 text-lg">
                         <p>{item.anwer}</p>
                       </CollapsibleContent>
                     </Collapsible>
