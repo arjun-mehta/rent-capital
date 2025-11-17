@@ -38,13 +38,16 @@ const getFeePercentage = (months: number): number => {
 };
 
 export function Calculator() {
-  const [totalRepayment, setTotalRepayment] = useState(30000);
+  const [monthlyRentalIncome, setMonthlyRentalIncome] = useState(30000);
   const [selectedPlan, setSelectedPlan] = useState<PlanDuration>("6");
   const { scrollToTop } = useScrollToElement();
   const isMobile = useIsMobile();
 
   // Calculate values based on dynamic fee structure
   const selectedMonths = Number(selectedPlan);
+  
+  // Total repayment = monthly rental income * number of months
+  const totalRepayment = monthlyRentalIncome * selectedMonths;
   
   // Fee calculation: dynamic percentage based on months
   const feePercentage = getFeePercentage(selectedMonths);
@@ -54,8 +57,8 @@ export function Calculator() {
   const advanceAmount = totalRepayment - fee;
 
   const handleSliderChange = (value: number[]) => {
-    // Slider value is total repayment in thousands (10-90)
-    setTotalRepayment(value[0] * 1000);
+    // Slider value is monthly rental income in thousands (10-90)
+    setMonthlyRentalIncome(value[0] * 1000);
   };
 
   const handlePlanChange = (value: string) => {
@@ -84,7 +87,7 @@ export function Calculator() {
             <div className="flex justify-between items-center">
               <span className="text-xs text-muted-foreground">$10,000</span>
               <span className="text-2xl font-medium text-foreground">
-                ${totalRepayment.toLocaleString()}
+                ${monthlyRentalIncome.toLocaleString()}
               </span>
               <span className="text-xs text-muted-foreground">$90,000</span>
             </div>
