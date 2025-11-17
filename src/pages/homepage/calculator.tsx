@@ -133,7 +133,18 @@ export function Calculator() {
             className="w-fit bg-primary hover:bg-primary/90 text-primary-foreground transition-all"
             onClick={(e) => {
               e.preventDefault();
-              scrollToTop();
+              const waitlistElement = document.getElementById('waitlist');
+              if (waitlistElement) {
+                const navHeight = 80; // Approximate nav bar height
+                const elementPosition = waitlistElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - navHeight;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              } else {
+                scrollToTop();
+              }
             }}
           >
             Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />

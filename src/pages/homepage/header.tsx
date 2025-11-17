@@ -132,7 +132,18 @@ export function Header() {
               className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToTop();
+                const waitlistElement = document.getElementById('waitlist');
+                if (waitlistElement) {
+                  const navHeight = 80; // Approximate nav bar height
+                  const elementPosition = waitlistElement.getBoundingClientRect().top + window.pageYOffset;
+                  const offsetPosition = elementPosition - navHeight;
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  scrollToTop();
+                }
               }}
             >
               Join Waitlist <ArrowRight className="ml-2 h-4 w-4" />
