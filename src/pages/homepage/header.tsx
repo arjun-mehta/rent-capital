@@ -101,7 +101,7 @@ export function Header() {
       <div className="absolute inset-0 bg-black/70 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
       
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 pb-8 md:py-8">
         <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
         {/* Left Side - Hero Content */}
         <div className="space-y-5">
