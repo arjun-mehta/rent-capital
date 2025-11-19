@@ -47,7 +47,7 @@ export function Navigation() {
     : "lg:bg-transparent bg-black/90";
 
   return (
-    <nav className={`w-full py-4 sticky top-0 z-50 transition-all duration-300 ease-in-out ${navBg}`}>
+    <nav className={`w-full py-4 fixed md:sticky top-0 z-50 transition-all duration-300 ease-in-out ${navBg}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex lg:grid lg:grid-cols-[1.6fr_1fr] justify-between lg:justify-start gap-8 lg:gap-12 items-center w-full">
           {/* Left side - Logo */}

@@ -269,10 +269,6 @@ export function Header() {
                   {!isSubmitting && <ArrowRight className="ml-2 h-3.5 w-3.5" />}
                 </Button>
               </form>
-
-              <p className="text-xs text-muted-foreground text-center">
-                By joining, you agree to receive updates from Rent Capital. We respect your privacy.
-              </p>
             </div>
           </Card>
         </div>
