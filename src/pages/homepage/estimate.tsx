@@ -41,7 +41,7 @@ export function Estimate() {
   };
 
   return (
-    <AnimationParent className="w-full max-w-container px-4 mx-auto pt-12 relative">
+    <AnimationParent className="w-full max-w-container px-4 mx-auto pt-16 md:pt-20 lg:pt-24 relative">
       <a id="calculate" className="absolute top-0 left-0" />
       <div className="flex flex-col items-center sm:flex-row gap-4 sm:gap-8">
         <div className="w-full flex flex-col gap-4">

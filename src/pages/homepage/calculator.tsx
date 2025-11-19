@@ -143,7 +143,7 @@ export function Calculator() {
                   behavior: 'smooth'
                 });
               } else {
-                scrollToTop();
+              scrollToTop();
               }
             }}
           >

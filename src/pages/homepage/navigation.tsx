@@ -43,8 +43,8 @@ export function Navigation() {
   const navBg = isPastHeader 
     ? "bg-background/95 backdrop-blur-md" 
     : isScrolled 
-    ? "bg-white/10 backdrop-blur-md" 
-    : "bg-transparent";
+    ? "lg:bg-white/10 lg:backdrop-blur-md bg-black/90 md:bg-white/10 md:backdrop-blur-md" 
+    : "lg:bg-transparent bg-black/90";
 
   return (
     <nav className={`w-full py-4 sticky top-0 z-50 transition-all duration-300 ease-in-out ${navBg}`}>

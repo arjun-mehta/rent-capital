@@ -88,20 +88,20 @@ export function Header() {
   ];
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center -mt-[69px] pt-[69px]">
+    <section className="relative w-full h-screen flex items-center justify-center -mt-[69px] md:-mt-[69px] mt-0 pt-[69px] md:pt-[69px] pt-20">
       {/* Background Image - Full Width, starts from top of viewport */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat -top-[69px]"
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:-top-[69px] top-0"
         style={{
           backgroundImage: "url('/assets/homepage/neighbhorhood.png')",
           height: "calc(100% + 69px)",
         }}
       />
       {/* Dark Overlay for readability */}
-      <div className="absolute inset-0 bg-black/70 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
+      <div className="absolute inset-0 bg-black/70 md:-top-[69px] top-0" style={{ height: "calc(100% + 69px)" }} />
       
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 pb-8 md:py-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 pb-8 md:py-8">
         <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
         {/* Left Side - Hero Content */}
         <div className="space-y-5">
