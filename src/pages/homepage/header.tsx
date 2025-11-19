@@ -104,7 +104,7 @@ export function Header() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 pb-8 md:py-8">
         <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
         {/* Left Side - Hero Content */}
-        <div className="space-y-5 pt-4 md:pt-0">
+        <div className="space-y-5 pt-8 md:pt-0">
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-emilio tracking-tight text-white leading-tight">
               <span className="block">Get your future rent</span>
