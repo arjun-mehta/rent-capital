@@ -21,7 +21,7 @@ export function Header() {
   // Google Apps Script Web App URL
   const waitlistWebhook =
     import.meta.env.VITE_GOOGLE_SCRIPT_WEBHOOK ??
-    "https://script.google.com/macros/s/AKfycbx7v770dncGBLhMGA6nuyo119E-nyVkRihygEZDCP9xelQD6ctkwD2WkDdT7-_t3mnAsw/exec";
+    "https://script.google.com/macros/s/AKfycbzsupByrQ_Ey5r5PC-Z4WFqzkSjZAL1u7Lm3zms1eRnmtuth1ihz6rlDKOnDpos8vct_g/exec";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
