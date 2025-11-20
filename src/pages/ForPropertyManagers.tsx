@@ -3,7 +3,17 @@ import { Footer } from "./homepage/footer";
 import { AnimationParent, AnimationChild } from "./homepage/animations";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, TrendingUp, Users, Shield, ChevronDownIcon } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
+import {
+  ArrowRight,
+  CheckCircle2,
+  TrendingUp,
+  Users,
+  Shield,
+  ChevronDownIcon,
+} from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
@@ -11,6 +21,7 @@ import {
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 import { PropertyManagerCalculator } from "@/components/PropertyManagerCalculator";
+import { useState } from "react";
 
 const faqItems = [
   {
@@ -81,6 +92,71 @@ const faqItems = [
 ];
 
 const ForPropertyManagers: React.FC = () => {
+  const { toast } = useToast();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [units, setUnits] = useState("");
+  const [monthlyIncome, setMonthlyIncome] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const waitlistWebhook =
+    import.meta.env.VITE_GOOGLE_SCRIPT_WEBHOOK ??
+    "https://script.google.com/macros/s/AKfycbx7v770dncGBLhMGA6nuyo119E-nyVkRihygEZDCP9xelQD6ctkwD2WkDdT7-_t3mnAsw/exec";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!name || !email || !phone || !units || !monthlyIncome) {
+      toast({
+        title: "Please fill in all fields",
+        description: "All fields are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await fetch(waitlistWebhook, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          number: phone,
+          units,
+          monthlyIncome,
+          submittedAt: new Date().toISOString(),
+          source: "property-manager",
+        }),
+      });
+
+      toast({
+        title: "Thank you!",
+        description: "We'll be in touch soon.",
+      });
+
+      setName("");
+      setEmail("");
+      setPhone("");
+      setUnits("");
+      setMonthlyIncome("");
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -138,8 +214,146 @@ const ForPropertyManagers: React.FC = () => {
               </div>
             </div>
 
-            {/* Calculator - Right Side */}
-            <div className="lg:pl-8 max-w-lg">
+            {/* Waitlist Form */}
+            <div className="lg:pl-8 max-w-lg w-full" id="waitlist">
+              <Card className="p-5 sm:p-6 border border-border bg-[#EFE7E3]">
+                <div className="space-y-4">
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-1.5">
+                      Join the Waitlist
+                    </h2>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
+                      Get early access and priority onboarding for your landlords.
+                    </p>
+                    <p className="text-xs sm:text-sm font-medium text-primary">
+                      Join 300+ property managers already on the waitlist
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="pm-name" className="text-xs text-foreground">
+                          Full Name
+                        </Label>
+                        <Input
+                          id="pm-name"
+                          type="text"
+                          placeholder="John Smith"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          className="h-9 text-sm"
+                          required
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <Label htmlFor="pm-email" className="text-xs text-foreground">
+                          Email Address
+                        </Label>
+                        <Input
+                          id="pm-email"
+                          type="email"
+                          placeholder="john@example.com"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="h-9 text-sm"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="pm-phone" className="text-xs text-foreground">
+                          Phone Number
+                        </Label>
+                        <Input
+                          id="pm-phone"
+                          type="tel"
+                          placeholder="(555) 123-4567"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="h-9 text-sm"
+                          required
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <Label htmlFor="pm-units" className="text-xs text-foreground">
+                          # of Units Managed
+                        </Label>
+                        <Input
+                          id="pm-units"
+                          type="number"
+                          placeholder="25"
+                          min="1"
+                          value={units}
+                          onChange={(e) => setUnits(e.target.value)}
+                          className="h-9 text-sm"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1.5">
+                        <Label htmlFor="pm-monthlyIncome" className="text-xs text-foreground">
+                          Total Monthly Rental Volume
+                      </Label>
+                      <Input
+                        id="pm-monthlyIncome"
+                        type="number"
+                        placeholder="15000"
+                        min="0"
+                        value={monthlyIncome}
+                        onChange={(e) => setMonthlyIncome(e.target.value)}
+                        className="h-9 text-sm"
+                        required
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all h-9 text-sm disabled:opacity-50"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Submitting..." : "Join Waitlist"}
+                      {!isSubmitting && <ArrowRight className="ml-2 h-3.5 w-3.5" />}
+                    </Button>
+                  </form>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Calculator Section */}
+      <section className="w-full py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/40">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-emilio">
+                Show landlords their potential advance in seconds
+              </h2>
+              <p className="text-muted-foreground max-w-2xl">
+                Use our calculator to estimate how much future rent your landlords can access.
+                Share tailored examples during pitch calls or onboarding.
+              </p>
+              <ul className="space-y-2 text-muted-foreground">
+                {[
+                  "Adjust months advanced between 3–12 months",
+                  "See fees and net advance instantly",
+                  "Use live numbers from your landlords' portfolios",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-card rounded-3xl p-4 sm:p-6 border border-border shadow-lg">
               <PropertyManagerCalculator />
             </div>
           </div>

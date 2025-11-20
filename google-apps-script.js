@@ -6,7 +6,7 @@
  * 2. Go to Extensions > Apps Script
  * 3. Delete any existing code
  * 4. Paste this entire file
- * 5. Replace 'YOUR_SHEET_NAME' with your actual sheet name (usually "Sheet1")
+ * 5. Replace the sheet names in SHEET_MAP below with your actual tab names
  * 6. Click "Deploy" > "New deployment"
  * 7. Select type: "Web app"
  * 8. Execute as: "Me"
@@ -14,6 +14,12 @@
  * 10. Click "Deploy"
  * 11. Copy the Web app URL and use it in your form
  */
+
+const SHEET_MAP = {
+  landlord: "Landlord Waitlist",        // rename to your landlord tab
+  "property-manager": "PM Waitlist",    // rename to your property manager tab
+};
+const DEFAULT_SHEET = "Landlord Waitlist"; // fallback tab name
 
 function doPost(e) {
   try {
@@ -28,12 +34,13 @@ function doPost(e) {
       throw new Error('No data received');
     }
     
-    // Get your spreadsheet - replace 'YOUR_SHEET_NAME' with your actual sheet name
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');
+    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    const sheetName = SHEET_MAP[data.source] || DEFAULT_SHEET;
+    const sheet = spreadsheet.getSheetByName(sheetName);
     
     // If sheet doesn't exist, create it
     if (!sheet) {
-      throw new Error('Sheet not found. Please update the sheet name in the script.');
+      throw new Error(`Sheet "${sheetName}" not found. Please update SHEET_MAP in the script.`);
     }
     
     // Prepare the row data matching your column order: name, email, number, units, monthlyIncome
@@ -43,6 +50,7 @@ function doPost(e) {
       data.number || '',
       data.units || '',
       data.monthlyIncome || '',
+      data.source || '',
       new Date() // Timestamp
     ];
     

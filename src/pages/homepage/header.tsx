@@ -53,6 +53,7 @@ export function Header() {
           units,
           monthlyIncome,
           submittedAt: new Date().toISOString(),
+          source: "landlord",
         }),
       });
 
@@ -252,7 +253,6 @@ export function Header() {
                     type="number"
                     placeholder="15000"
                     min="0"
-                    step="100"
                     value={monthlyIncome}
                     onChange={(e) => setMonthlyIncome(e.target.value)}
                     className="h-9 text-sm"
