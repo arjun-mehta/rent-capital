@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
     setIsLoading(true);
 
     // Validate email before attempting login (silent validation)
-    if (email !== "test@rentcapital.us") {
+    if (email !== "demo@rentcapital.com") {
       toast({
         title: "Error",
         description: "Invalid credentials.",

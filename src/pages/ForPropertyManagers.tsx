@@ -162,23 +162,23 @@ const ForPropertyManagers: React.FC = () => {
     <>
       <Navigation />
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex items-center justify-center -mt-[69px] pt-[69px] pb-16">
+      <section className="relative w-full min-h-screen md:h-screen flex items-center justify-center -mt-[69px] md:-mt-[69px] mt-0 pt-[69px] md:pt-[69px] pt-20 pb-0 md:pb-0">
         {/* Background Image - Full Width, starts from top of viewport */}
         <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat -top-[69px]"
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:-top-[69px] top-0"
           style={{
             backgroundImage: "url('/assets/homepage/neighbhorhood.png')",
             height: "calc(100% + 69px)",
           }}
         />
         {/* Dark Overlay for readability */}
-        <div className="absolute inset-0 bg-black/70 -top-[69px]" style={{ height: "calc(100% + 69px)" }} />
+        <div className="absolute inset-0 bg-black/70 md:-top-[69px] top-0" style={{ height: "calc(100% + 69px)" }} />
         
         {/* Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 pb-4 md:py-8">
           <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-center w-full">
             {/* Hero Content - Left Aligned */}
-            <div className="space-y-5">
+            <div className="space-y-5 pt-8 md:pt-0">
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-emilio tracking-tight text-white leading-tight">
                   <span className="block">Help your landlords</span>
@@ -207,7 +207,7 @@ const ForPropertyManagers: React.FC = () => {
                   variant="outline"
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
                 >
-                  <a href="https://calendly.com/nigel-rentcapital/30min" target="_blank" rel="noopener noreferrer">
+                  <a href="https://calendly.com/nigel-rentcapital-rj_8/30min" target="_blank" rel="noopener noreferrer">
                     Book a 15-min demo
                   </a>
                 </Button>
@@ -329,7 +329,7 @@ const ForPropertyManagers: React.FC = () => {
       </section>
 
       {/* Calculator Section */}
-      <section className="w-full py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/40">
+      <section className="w-full pt-24 pb-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/40">
         <div className="max-w-6xl mx-auto">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div className="space-y-4">
@@ -542,7 +542,7 @@ const ForPropertyManagers: React.FC = () => {
                   size="lg"
                   variant="outline"
                 >
-                  <a href="https://calendly.com/nigel-rentcapital/30min" target="_blank" rel="noopener noreferrer">
+                  <a href="https://calendly.com/nigel-rentcapital-rj_8/30min" target="_blank" rel="noopener noreferrer">
                     Book a 15-min demo
                   </a>
                 </Button>
