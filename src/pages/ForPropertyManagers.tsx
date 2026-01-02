@@ -180,13 +180,16 @@ const ForPropertyManagers: React.FC = () => {
             {/* Hero Content - Left Aligned */}
             <div className="space-y-5 pt-8 md:pt-0">
               <div className="space-y-4">
+                <p className="text-sm sm:text-base font-medium text-white/80 uppercase tracking-wide">
+                  For residential property managers
+                </p>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-emilio tracking-tight text-white leading-tight">
-                  <span className="block">Help your landlords</span>
-                  <span className="block">unlock capital and</span>
-                  <span className="block">grow your revenue</span>
+                  <span className="block">Offer your landlords</span>
+                  <span className="block">our money under</span>
+                  <span className="block">your brand</span>
                 </h1>
                 <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl">
-                  Earn 2% on every funded advance — a recurring revenue stream that requires no setup or additional work.
+                  Launch a white-labeled rent advance program in 24 hours and earn 2% commission on every dollar advanced.
                 </p>
               </div>
 
@@ -366,45 +369,46 @@ const ForPropertyManagers: React.FC = () => {
           <AnimationParent>
             <AnimationChild>
               <h2 className="text-3xl md:text-4xl font-emilio text-center mb-12">
-                Why property managers scale Rent Capital across their portfolios
+                <span className="block">Grow your property management business</span>
+                <span className="block">with little effort and no risk</span>
               </h2>
             </AnimationChild>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimationChild>
-                <Card className="p-8 rounded-xl shadow-md">
-                  <div className="flex flex-col space-y-4">
+                <Card className="p-8 rounded-xl shadow-md h-full flex flex-col">
+                  <div className="flex flex-col space-y-4 flex-grow">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <TrendingUp className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">Add a new revenue stream</h3>
-                    <p className="text-muted-foreground">
-                      Earn recurring commissions on every funded advance without changing workflows, staffing, or systems.
+                    <h3 className="text-xl font-semibold text-foreground">Make more money without more work</h3>
+                    <p className="text-muted-foreground flex-grow">
+                      Earn recurring revenue on every funded advance without hiring or adding complexity. It layers directly onto your existing business.
                     </p>
                   </div>
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 rounded-xl shadow-md">
-                  <div className="flex flex-col space-y-4">
+                <Card className="p-8 rounded-xl shadow-md h-full flex flex-col">
+                  <div className="flex flex-col space-y-4 flex-grow">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <Users className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">Increase portfolio revenue</h3>
-                    <p className="text-muted-foreground">
-                      Owners with liquidity reinvest, upgrade units, and stay longer—reducing churn and expanding managed assets.
+                    <h3 className="text-xl font-semibold text-foreground">Help landlords grow and stick with you</h3>
+                    <p className="text-muted-foreground flex-grow">
+                      Access to capital helps landlords handle repairs, upgrades, and acquisitions faster. Growing landlords stay longer and consolidate more properties with managers they trust.
                     </p>
                   </div>
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 rounded-xl shadow-md">
-                  <div className="flex flex-col space-y-4">
+                <Card className="p-8 rounded-xl shadow-md h-full flex flex-col">
+                  <div className="flex flex-col space-y-4 flex-grow">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <Shield className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">Improve operational stability</h3>
-                    <p className="text-muted-foreground">
-                      Landlords with cash on hand handle repairs, turns, and vacancies faster, cutting delays and support load.
+                    <h3 className="text-xl font-semibold text-foreground">No risk. Nothing changes.</h3>
+                    <p className="text-muted-foreground flex-grow">
+                      We manage everything in the background so your workflows and team stay exactly the same.
                     </p>
                   </div>
                 </Card>
@@ -425,40 +429,40 @@ const ForPropertyManagers: React.FC = () => {
             </AnimationChild>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimationChild>
-                <Card className="p-8 rounded-xl shadow-md">
-                  <div className="flex flex-col space-y-4">
+                <Card className="p-8 rounded-xl shadow-md h-full flex flex-col">
+                  <div className="flex flex-col space-y-4 flex-grow">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <span className="text-primary font-bold text-2xl">1</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">Pre-qualify landlords</h3>
-                    <p className="text-muted-foreground">
-                      Upload landlord and rent roll data to instantly generate pre-qualified advance offers based on lease terms, rent history, and payment performance.
+                    <h3 className="text-xl font-semibold text-foreground">Turn on your branded rent advance program</h3>
+                    <p className="text-muted-foreground flex-grow">
+                      Add your logo and brand colors. We take care of everything else.
                     </p>
                   </div>
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 rounded-xl shadow-md">
-                  <div className="flex flex-col space-y-4">
+                <Card className="p-8 rounded-xl shadow-md h-full flex flex-col">
+                  <div className="flex flex-col space-y-4 flex-grow">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <span className="text-primary font-bold text-2xl">2</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">Landlord selects offer</h3>
-                    <p className="text-muted-foreground">
-                      We notify your owners to review their pre-qualified advance options, create an account, and sign electronically. Funding completes within 24 hours.
+                    <h3 className="text-xl font-semibold text-foreground">Invite your landlords</h3>
+                    <p className="text-muted-foreground flex-grow">
+                      Share a link or invite landlords directly. We handle approvals and funding.
                     </p>
                   </div>
                 </Card>
               </AnimationChild>
               <AnimationChild>
-                <Card className="p-8 rounded-xl shadow-md">
-                  <div className="flex flex-col space-y-4">
+                <Card className="p-8 rounded-xl shadow-md h-full flex flex-col">
+                  <div className="flex flex-col space-y-4 flex-grow">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
                       <span className="text-primary font-bold text-2xl">3</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">You earn automatically</h3>
-                    <p className="text-muted-foreground">
-                      You earn 2% of every dollar advanced to your landlords, paid out automatically to your connected bank account for each funded deal.
+                    <h3 className="text-xl font-semibold text-foreground">Earn automatically</h3>
+                    <p className="text-muted-foreground flex-grow">
+                      Receive 2% of every funded advance, paid automatically.
                     </p>
                   </div>
                 </Card>
@@ -466,7 +470,7 @@ const ForPropertyManagers: React.FC = () => {
             </div>
             <AnimationChild>
               <p className="text-center text-muted-foreground max-w-3xl mx-auto mt-12">
-                Repayments run automatically via ACH when rent hits the landlord's account. Tenants are unaffected; no changes to your trust or operating accounts.
+                We take care of everything in the background. Nothing changes for your team.
               </p>
             </AnimationChild>
           </AnimationParent>
