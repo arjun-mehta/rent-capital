@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 import { PropertyManagerCalculator } from "@/components/PropertyManagerCalculator";
+import OffersScreenMockup from "@/components/OffersScreenMockup";
 import { useState } from "react";
 
 const faqItems = [
@@ -217,10 +218,19 @@ const ForPropertyManagers: React.FC = () => {
               </div>
             </div>
 
-            {/* Waitlist Form */}
-            <div className="lg:pl-8 max-w-lg w-full" id="waitlist">
-              <Card className="p-5 sm:p-6 border border-border bg-[#EFE7E3]">
-                <div className="space-y-4">
+            {/* MacBook Mockup */}
+            <div className="lg:pl-8 w-full flex items-center justify-center">
+              <OffersScreenMockup />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Waitlist Form Section */}
+      <section className="w-full py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-background">
+        <div className="max-w-2xl mx-auto">
+          <Card className="p-5 sm:p-6 border border-border bg-[#EFE7E3]" id="waitlist">
+            <div className="space-y-4">
                   <div>
                     <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-1.5">
                       Join the Waitlist
@@ -324,10 +334,8 @@ const ForPropertyManagers: React.FC = () => {
                       {!isSubmitting && <ArrowRight className="ml-2 h-3.5 w-3.5" />}
                     </Button>
                   </form>
-                </div>
-              </Card>
             </div>
-          </div>
+          </Card>
         </div>
       </section>
 
