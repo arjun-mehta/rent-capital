@@ -108,7 +108,7 @@ const OffersScreenMockup: React.FC = () => {
               </div>
             </div>
             <div className="text-center mb-5 md:mb-6">
-              <h1 className="text-lg md:text-xl font-bold text-gray-900">
+              <h1 className="text-lg md:text-xl font-emilio text-gray-900">
                 How many months of rent would you like to be advanced?
               </h1>
             </div>

@@ -94,70 +94,71 @@ const faqItems = [
 
 const ForPropertyManagers: React.FC = () => {
   const { toast } = useToast();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [units, setUnits] = useState("");
-  const [monthlyIncome, setMonthlyIncome] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // Waitlist form state and handler - commented out for future use
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [units, setUnits] = useState("");
+  // const [monthlyIncome, setMonthlyIncome] = useState("");
+  // const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const waitlistWebhook =
-    import.meta.env.VITE_GOOGLE_SCRIPT_WEBHOOK ??
-    "https://script.google.com/macros/s/AKfycbzsupByrQ_Ey5r5PC-Z4WFqzkSjZAL1u7Lm3zms1eRnmtuth1ihz6rlDKOnDpos8vct_g/exec";
+  // const waitlistWebhook =
+  //   import.meta.env.VITE_GOOGLE_SCRIPT_WEBHOOK ??
+  //   "https://script.google.com/macros/s/AKfycbzsupByrQ_Ey5r5PC-Z4WFqzkSjZAL1u7Lm3zms1eRnmtuth1ihz6rlDKOnDpos8vct_g/exec";
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    if (!name || !email || !phone || !units || !monthlyIncome) {
-      toast({
-        title: "Please fill in all fields",
-        description: "All fields are required.",
-        variant: "destructive",
-      });
-      return;
-    }
+  //   if (!name || !email || !phone || !units || !monthlyIncome) {
+  //     toast({
+  //       title: "Please fill in all fields",
+  //       description: "All fields are required.",
+  //       variant: "destructive",
+  //     });
+  //     return;
+  //   }
 
-    setIsSubmitting(true);
+  //   setIsSubmitting(true);
 
-    try {
-      await fetch(waitlistWebhook, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          number: phone,
-          units,
-          monthlyIncome,
-          submittedAt: new Date().toISOString(),
-          source: "property-manager",
-        }),
-      });
+  //   try {
+  //     await fetch(waitlistWebhook, {
+  //       method: "POST",
+  //       mode: "no-cors",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         name,
+  //         email,
+  //         number: phone,
+  //         units,
+  //         monthlyIncome,
+  //         submittedAt: new Date().toISOString(),
+  //         source: "property-manager",
+  //       }),
+  //     });
 
-      toast({
-        title: "Thank you!",
-        description: "We'll be in touch soon.",
-      });
+  //     toast({
+  //       title: "Thank you!",
+  //       description: "We'll be in touch soon.",
+  //     });
 
-      setName("");
-      setEmail("");
-      setPhone("");
-      setUnits("");
-      setMonthlyIncome("");
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  //     setName("");
+  //     setEmail("");
+  //     setPhone("");
+  //     setUnits("");
+  //     setMonthlyIncome("");
+  //   } catch (error) {
+  //     console.error(error);
+  //     toast({
+  //       title: "Something went wrong",
+  //       description: "Please try again later.",
+  //       variant: "destructive",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
   return (
     <>
@@ -201,8 +202,8 @@ const ForPropertyManagers: React.FC = () => {
                   size="lg"
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
                 >
-                  <a href="mailto:nigel@rentcapital.us">
-                    Become a Partner <ArrowRight className="ml-2 h-4 w-4" />
+                  <a href="mailto:nigel@rentcapital.com">
+                    Email Us
                   </a>
                 </Button>
                 <Button
@@ -212,7 +213,7 @@ const ForPropertyManagers: React.FC = () => {
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
                 >
                   <a href="https://calendly.com/nigel-rentcapital-rj_8/30min" target="_blank" rel="noopener noreferrer">
-                    Book a 15-min demo
+                    Book a 15-min demo <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
               </div>
@@ -226,8 +227,8 @@ const ForPropertyManagers: React.FC = () => {
         </div>
       </section>
 
-      {/* Waitlist Form Section */}
-      <section className="w-full py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-background">
+      {/* Waitlist Form Section - Commented out for future use */}
+      {/* <section className="w-full py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-2xl mx-auto">
           <Card className="p-5 sm:p-6 border border-border bg-[#EFE7E3]" id="waitlist">
             <div className="space-y-4">
@@ -337,7 +338,7 @@ const ForPropertyManagers: React.FC = () => {
             </div>
           </Card>
         </div>
-      </section>
+      </section> */}
 
       {/* Calculator Section */}
       <section className="w-full pt-24 pb-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/40">
@@ -345,17 +346,16 @@ const ForPropertyManagers: React.FC = () => {
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-emilio">
-                Show landlords their potential advance in seconds
+                Estimate your commission revenue
               </h2>
               <p className="text-muted-foreground max-w-2xl">
-                Use our calculator to estimate how much future rent your landlords can access.
-                Share tailored examples during pitch calls or onboarding.
+                Use the calculator to see how much your firm can earn when landlords take advances.
               </p>
               <ul className="space-y-2 text-muted-foreground">
                 {[
-                  "Adjust months advanced between 3–12 months",
-                  "See fees and net advance instantly",
-                  "Use live numbers from your landlords' portfolios",
+                  "Commission-based revenue per funded advance.",
+                  "No balance sheet risk. You are never the lender.",
+                  "Uses live rent roll data with no workflow changes.",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
@@ -545,8 +545,8 @@ const ForPropertyManagers: React.FC = () => {
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
-                  <a href="mailto:nigel@rentcapital.us">
-                    Become a Partner <ArrowRight className="ml-2 h-4 w-4" />
+                  <a href="mailto:nigel@rentcapital.com">
+                    Email Us
                   </a>
                 </Button>
                 <Button
@@ -555,7 +555,7 @@ const ForPropertyManagers: React.FC = () => {
                   variant="outline"
                 >
                   <a href="https://calendly.com/nigel-rentcapital-rj_8/30min" target="_blank" rel="noopener noreferrer">
-                    Book a 15-min demo
+                    Book a 15-min demo <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
               </div>

@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
-type AdvanceTerm = "3" | "6" | "9" | "12";
+type AdvanceTerm = "1" | "3" | "6" | "9";
 
 const child: Variants = {
   hidden: { opacity: 0, y: 120 },
@@ -54,7 +54,7 @@ export function PropertyManagerCalculator() {
   const commission = Math.round(advanceAmount * 0.02);
 
   const handleSliderChange = (value: number[]) => {
-    // Map slider value 10-200 to rent $10,000-$200,000
+    // Map slider value 10-1000 to rent $10,000-$1,000,000
     setMonthlyRent(value[0] * 1000);
   };
 
@@ -76,7 +76,7 @@ export function PropertyManagerCalculator() {
             <Slider
               defaultValue={[50]}
               min={10}
-              max={200}
+              max={1000}
               step={1}
               onValueChange={handleSliderChange}
             />
@@ -85,7 +85,7 @@ export function PropertyManagerCalculator() {
               <span className="text-2xl font-medium text-foreground">
                 ${monthlyRent.toLocaleString()}
               </span>
-              <span className="text-xs text-muted-foreground">$200,000</span>
+              <span className="text-xs text-muted-foreground">$1,000,000</span>
             </div>
           </div>
         </div>
@@ -96,10 +96,10 @@ export function PropertyManagerCalculator() {
           </div>
           <div className="grid grid-cols-2 gap-2 md:gap-3">
             {[
+              { value: "1", label: "1 month" },
               { value: "3", label: "3 months" },
               { value: "6", label: "6 months" },
               { value: "9", label: "9 months" },
-              { value: "12", label: "12 months" },
             ].map((term) => (
               <button
                 key={term.value}
