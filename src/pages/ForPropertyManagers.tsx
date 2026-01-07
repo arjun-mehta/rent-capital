@@ -92,6 +92,17 @@ const faqItems = [
   },
 ];
 
+const trustedLogos = [
+  "logo1.png",
+  "logo2.png",
+  "logo3.png",
+  "logo4.png",
+  "logo5.png",
+  "logo6.png",
+  "logo7.png",
+  "logo8.png",
+];
+
 const ForPropertyManagers: React.FC = () => {
   const { toast } = useToast();
   // Waitlist form state and handler - commented out for future use
@@ -164,7 +175,7 @@ const ForPropertyManagers: React.FC = () => {
     <>
       <Navigation />
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen md:h-screen flex items-center justify-center -mt-[69px] md:-mt-[69px] mt-0 pt-[69px] md:pt-[69px] pt-20 pb-0 md:pb-0">
+      <section className="relative w-full min-h-screen md:h-screen flex items-center justify-center -mt-[69px] md:-mt-[69px] mt-0 pt-[69px] md:pt-[69px] pt-20 pb-0 md:pb-0 overflow-hidden">
         {/* Background Image - Full Width, starts from top of viewport */}
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:-top-[69px] top-0"
@@ -225,6 +236,47 @@ const ForPropertyManagers: React.FC = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Trusted By Section */}
+      <section className="relative z-10 w-full mt-6 md:mt-10 pt-6 pb-1 md:pt-8 md:pb-4 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-6 md:mb-8">
+            <p className="text-sm uppercase tracking-[0.2em] text-primary font-semibold">
+              Trusted By Leading Property Managers
+            </p>
+          </div>
+
+          <div className="relative overflow-hidden">
+            <div className="absolute left-0 top-0 h-full w-16 md:w-24 bg-gradient-to-r from-muted/30 to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 h-full w-16 md:w-24 bg-gradient-to-l from-muted/30 to-transparent pointer-events-none" />
+
+            <div className="flex items-center gap-10 md:gap-14 animate-trusted-marquee">
+              {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
+                <div
+                  key={`${logo}-${idx}`}
+                  className="flex-shrink-0 h-14 md:h-18 flex items-center"
+                >
+                  <img
+                    src={`/assets/trusted-by/${logo}`}
+                    alt={logo.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ")}
+                    className="h-full w-auto object-contain opacity-90"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <style>{`
+          @keyframes trusted-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-trusted-marquee {
+            animation: trusted-marquee 28s linear infinite;
+          }
+        `}</style>
       </section>
 
       {/* Waitlist Form Section - Commented out for future use */}
@@ -341,7 +393,7 @@ const ForPropertyManagers: React.FC = () => {
       </section> */}
 
       {/* Calculator Section */}
-      <section className="w-full pt-24 pb-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-muted/40">
+      <section className="w-full pt-12 pb-16 md:pt-14 md:pb-20 px-4 sm:px-6 lg:px-8 bg-muted/40">
         <div className="max-w-6xl mx-auto">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div className="space-y-4">
