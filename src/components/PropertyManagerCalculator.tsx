@@ -50,8 +50,10 @@ export function PropertyManagerCalculator() {
   // Advance amount = total repayment - fee
   const advanceAmount = totalRepayment - fee;
   
-  // Commission = 2% of advance amount
+  // Commission on a single funded advance (2% of advance amount)
   const commission = Math.round(advanceAmount * 0.02);
+  // Annualized commission based on selected term (e.g., 1 mo -> x12, 3 mo -> x4)
+  const annualCommission = Math.round(commission * (12 / termMonths));
 
   const handleSliderChange = (value: number[]) => {
     // Map slider value 10-1000 to rent $10,000-$1,000,000
@@ -125,7 +127,7 @@ export function PropertyManagerCalculator() {
       >
         <div className="text-sm font-normal mb-4 text-foreground">Your Annual Commission Potential</div>
         <div className="text-2xl text-primary mb-2">
-          ${commission.toLocaleString()}
+          ${annualCommission.toLocaleString()}
         </div>
         <p className="text-xs text-muted-foreground">
           Based on your current rent portfolio and selected advance term
