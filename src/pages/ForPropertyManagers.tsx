@@ -19,6 +19,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { PropertyManagerCalculator } from "@/components/PropertyManagerCalculator";
 import OffersScreenMockup from "@/components/OffersScreenMockup";
@@ -105,6 +112,65 @@ const trustedLogos = [
 
 const ForPropertyManagers: React.FC = () => {
   const { toast } = useToast();
+  const [isEmailDialogOpen, setIsEmailDialogOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [monthlyRent, setMonthlyRent] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const emailWebhook =
+    "https://script.google.com/macros/s/AKfycbxe4c2FHHWAmDnxvFrbR9gYtfEEayoTm7A1OzC7A0U_QM1PRotJfweY4g3I2Hg0nAA3Fw/exec";
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const numericMonthlyRent = monthlyRent.replace(/,/g, "");
+
+    if (!email || !numericMonthlyRent) {
+      toast({
+        title: "Please fill in all fields",
+        description: "All fields are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await fetch(emailWebhook, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          monthlyRent: numericMonthlyRent,
+          submittedAt: new Date().toISOString(),
+          source: "property-manager-email",
+        }),
+      });
+
+      toast({
+        title: "Thank you!",
+        description: "We'll be in touch soon.",
+      });
+
+      setEmail("");
+      setMonthlyRent("");
+      setIsEmailDialogOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   // Waitlist form state and handler - commented out for future use
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
@@ -209,13 +275,11 @@ const ForPropertyManagers: React.FC = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button
-                  asChild
                   size="lg"
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
+                  onClick={() => setIsEmailDialogOpen(true)}
                 >
-                  <a href="mailto:nigel@rentcapital.com">
-                    Email Us
-                  </a>
+                  Join Now
                 </Button>
                 <Button
                   asChild
@@ -243,7 +307,8 @@ const ForPropertyManagers: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-sm uppercase tracking-[0.2em] text-primary font-semibold">
-              Trusted By Leading Property Managers
+              <span className="block sm:inline">Trusted By Leading</span>{" "}
+              <span className="block sm:inline">Property Managers</span>
             </p>
           </div>
 
@@ -593,13 +658,11 @@ const ForPropertyManagers: React.FC = () => {
             <AnimationChild>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
-                  asChild
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                  onClick={() => setIsEmailDialogOpen(true)}
                 >
-                  <a href="mailto:nigel@rentcapital.com">
-                    Email Us
-                  </a>
+                  Join Now
                 </Button>
                 <Button
                   asChild
@@ -615,6 +678,61 @@ const ForPropertyManagers: React.FC = () => {
           </AnimationParent>
         </div>
       </section>
+
+      <Dialog open={isEmailDialogOpen} onOpenChange={setIsEmailDialogOpen}>
+        <DialogContent className="w-[92vw] sm:max-w-[425px] p-5 sm:p-6 rounded-2xl">
+          <DialogHeader>
+            <DialogTitle>Join Now</DialogTitle>
+            <DialogDescription>
+              Fill out the form below and we'll get back to you soon.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleEmailSubmit} className="space-y-5">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="monthlyRent">Monthly Rent You Manage</Label>
+              <div className="relative">
+                <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
+                  $
+                </div>
+                <Input
+                  id="monthlyRent"
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="50,000"
+                  value={monthlyRent}
+                  onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, "");
+                    if (!digits) {
+                      setMonthlyRent("");
+                      return;
+                    }
+                    const formatted = Number(digits).toLocaleString();
+                    setMonthlyRent(formatted);
+                  }}
+                  className="pl-7"
+                  required
+                />
+              </div>
+            </div>
+            <div className="flex justify-end pt-2">
+              <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </>
