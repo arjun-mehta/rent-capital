@@ -489,7 +489,10 @@ const ForPropertyManagers: React.FC = () => {
       </section>
 
       {/* Why Property Managers Scale Section */}
-      <section className="w-full py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+      <section
+        className="w-full py-16 md:py-20 px-4 sm:px-6 lg:px-8"
+        id="qualification"
+      >
         <div className="max-w-6xl mx-auto">
           <AnimationParent>
             <AnimationChild>
