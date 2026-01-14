@@ -155,8 +155,8 @@ export function Header() {
               variant="outline"
               className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
             >
-              <a href="#how">
-                Learn More
+              <a href="https://calendly.com/nigel-rentcapital-rj_8/30min" target="_blank" rel="noopener noreferrer">
+                Book a 15-min demo <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
           </div>
