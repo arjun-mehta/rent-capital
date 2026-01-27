@@ -16,12 +16,12 @@ const items = [
   {
     question: "How does it work?",
     anwer:
-      "Connect your bank account and upload your lease. We review your rent history and offer an advance of 1–9 months of future rent. Once you accept, funds are sent within 24 hours and repayment happens automatically as new rent is received.",
+      "Connect your bank account and upload your lease. We review your rent history and offer an advance of up to 12 months of future rent. Once you accept, funds are sent within 24 hours and repayment happens automatically as new rent is received.",
   },
   {
     question: "How much can I get?",
     anwer:
-      "You can receive up to 95% of your future rent upfront. The flat fee ranges from 5–15%, depending on the advance duration.",
+      "You can receive up to 95% of your future rent upfront. The flat fee ranges from 5–10%, depending on the advance duration.",
   },
   {
     question: "Can I access longer advances?",

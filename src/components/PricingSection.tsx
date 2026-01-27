@@ -39,10 +39,10 @@ const PricingSection: React.FC = () => {
   const pricingTiers = [
     {
       title: "3-Month Advance",
-      fee: "5%",
+      fee: "6.25%",
       description: "Perfect for short-term projects or seasonal revenue gaps",
       features: [
-        "5% flat fee on the total advance",
+        "6.25% flat fee on the total advance",
         "Repay over 3 months from earnings",
         "No compound interest or hidden fees",
         "Automatic repayments from platform"
@@ -52,10 +52,10 @@ const PricingSection: React.FC = () => {
     },
     {
       title: "6-Month Advance",
-      fee: "10%",
+      fee: "8%",
       description: "Ideal for medium-term investments in your content or business",
       features: [
-        "10% flat fee on the total advance",
+        "8% flat fee on the total advance",
         "Repay over 6 months from earnings",
         "No compound interest or hidden fees",
         "Automatic repayments from platform"
@@ -65,10 +65,10 @@ const PricingSection: React.FC = () => {
     },
     {
       title: "12-Month Advance",
-      fee: "15%",
+      fee: "10%",
       description: "Best for long-term growth strategies and larger investments",
       features: [
-        "15% flat fee on the total advance",
+        "10% flat fee on the total advance",
         "Repay over 12 months from earnings",
         "No compound interest or hidden fees",
         "Automatic repayments from platform"

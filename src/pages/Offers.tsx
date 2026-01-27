@@ -20,19 +20,19 @@ const Offers: React.FC = () => {
   const getFeePercentage = (months: number): number => {
     const feeTable: Record<number, number> = {
       1: 5.00,
-      2: 6.00,
-      3: 7.00,
-      4: 8.00,
-      5: 9.00,
-      6: 10.00,
-      7: 11.00,
-      8: 12.00,
-      9: 13.00,
-      10: 14.00,
-      11: 14.50,
-      12: 15.00,
+      2: 5.50,
+      3: 6.25,
+      4: 7.00,
+      5: 7.50,
+      6: 8.00,
+      7: 8.40,
+      8: 8.80,
+      9: 9.20,
+      10: 9.50,
+      11: 9.75,
+      12: 10.00,
     };
-    return feeTable[months] || 10.00;
+    return feeTable[months] || 8.00;
   };
   
   const [totalRepayment, setTotalRepayment] = useState([defaultRepayment]);

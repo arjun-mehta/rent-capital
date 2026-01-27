@@ -35,7 +35,7 @@ const faqItems = [
   {
     question: "How does a landlord qualify for an advance?",
     anwer:
-      "The lease must show at least three months of consistent rent deposits from the current tenant. Based on that payment history, Rent Capital can advance 1–9 months of future rent upfront.",
+      "The lease must show at least three months of consistent rent deposits from the current tenant. Based on that payment history, Rent Capital can advance up to 12 months of future rent upfront.",
   },
   {
     question: "Who is eligible to use Rent Capital?",

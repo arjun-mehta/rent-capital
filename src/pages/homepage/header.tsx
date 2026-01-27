@@ -112,7 +112,7 @@ export function Header() {
               <span className="block">income upfront</span>
             </h1>
             <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl">
-               Access 1 to 9 months of future rent instantly to expand your portfolio, upgrade existing properties, or stabilize cash flow.
+               Access up to 12 months of future rent instantly to expand your portfolio, upgrade existing properties, or stabilize cash flow.
             </p>
           </div>
 

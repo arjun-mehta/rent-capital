@@ -7,7 +7,7 @@ const benefits = [
   },
   {
     title: "Flexible terms",
-    description: "Advance 1–9 months of rent upfront, or up to 12 months after successful repayment.",
+    description: "Advance up to 12 months of rent upfront.",
   },
   {
     title: "No credit checks",
@@ -15,7 +15,7 @@ const benefits = [
   },
   {
     title: "Flat, transparent fee",
-    description: "5–15% fixed cost, no interest or hidden charges.",
+    description: "5–10% fixed cost, no interest or hidden charges.",
   },
   {
     title: "No tenant disruption",
