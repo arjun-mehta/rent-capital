@@ -30,76 +30,59 @@ const SelectPlatform: React.FC = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  // Fetch Plaid link token
-  // WARNING: This is for DEMO purposes only. In production, link tokens MUST be created on the backend.
+  // Fetch Plaid link token from backend API
   useEffect(() => {
     const fetchLinkToken = async () => {
       try {
         setIsLoadingToken(true);
         
-        const clientId = import.meta.env.VITE_PLAID_CLIENT_ID;
-        const secret = import.meta.env.VITE_PLAID_SECRET_KEY;
-        const env = import.meta.env.VITE_PLAID_ENV || 'sandbox';
-        
-        if (!clientId || !secret) {
-          setIsPlaidConfigured(false);
-          setIsLoadingToken(false);
-          // Silently handle missing credentials - don't show error to user in production
-          if (import.meta.env.DEV) {
-            console.warn('Plaid credentials not configured. Please set VITE_PLAID_CLIENT_ID and VITE_PLAID_SECRET_KEY in your environment variables.');
-          }
-          return;
-        }
-
-        // Create link token using CORS proxy for demo (DEMO ONLY - not secure for production)
-        const plaidUrl = env === 'production' 
-          ? 'https://production.plaid.com' 
-          : 'https://sandbox.plaid.com';
-        
-        // Using a CORS proxy for demo purposes only
-        // In production, this MUST be done on your backend server
-        const corsProxy = 'https://corsproxy.io/?';
-        const targetUrl = `${plaidUrl}/link/token/create`;
-        
-        const response = await fetch(`${corsProxy}${encodeURIComponent(targetUrl)}`, {
+        // Call our backend API endpoint
+        const response = await fetch('/api/plaid/create-link-token', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            client_id: clientId,
-            secret: secret,
-            client_name: 'Rent Capital',
-            products: ['auth', 'transactions'],
-            country_codes: ['US'],
-            language: 'en',
-            user: {
-              client_user_id: `user_${Date.now()}`, // Temporary user ID for demo
-            },
-          }),
         });
 
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.error_message || 'Failed to create link token');
+          let errorData;
+          try {
+            errorData = await response.json();
+          } catch (parseError) {
+            const text = await response.text().catch(() => 'Unknown error');
+            throw new Error(`Server error (${response.status}): ${text || 'Failed to create link token'}`);
+          }
+          
+          const errorMessage = errorData.error_message || errorData.error || 'Failed to create link token';
+          console.error('Plaid API error:', {
+            status: response.status,
+            statusText: response.statusText,
+            errorData
+          });
+          throw new Error(errorMessage);
         }
 
         const data = await response.json();
+        
+        if (!data.link_token) {
+          throw new Error('Invalid response from server: missing link_token');
+        }
+        
         setLinkToken(data.link_token);
       } catch (error) {
         setIsPlaidConfigured(false);
-        // Only log errors in development
-        if (import.meta.env.DEV) {
-          console.error('Error fetching link token:', error);
-        }
-        // Don't show toast for missing credentials - handle silently
-        if (error instanceof Error && !error.message.includes('not configured')) {
-          toast({
-            title: "Error",
-            description: "Failed to initialize bank connection. Please try again.",
-            variant: "destructive",
-          });
-        }
+        console.error('Error fetching link token:', error);
+        
+        // Show user-friendly error message
+        const errorMessage = error instanceof Error 
+          ? error.message 
+          : 'Failed to initialize bank connection. Please try again.';
+        
+        toast({
+          title: "Bank Connection Error",
+          description: errorMessage,
+          variant: "destructive",
+        });
       } finally {
         setIsLoadingToken(false);
       }
@@ -113,42 +96,24 @@ const SelectPlatform: React.FC = () => {
   const onSuccess = useCallback(
     async (publicToken: string, metadata: any) => {
       try {
-        // WARNING: For demo only - in production, token exchange MUST happen on backend
-        const clientId = import.meta.env.VITE_PLAID_CLIENT_ID;
-        const secret = import.meta.env.VITE_PLAID_SECRET_KEY;
-        const env = import.meta.env.VITE_PLAID_ENV || 'sandbox';
-        
-        if (!clientId || !secret) {
-          throw new Error('Plaid credentials not configured');
-        }
-
-        const plaidUrl = env === 'production' 
-          ? 'https://production.plaid.com' 
-          : 'https://sandbox.plaid.com';
-
-        // Exchange public token for access token using CORS proxy (DEMO ONLY)
-        const corsProxy = 'https://corsproxy.io/?';
-        const targetUrl = `${plaidUrl}/item/public_token/exchange`;
-        
-        const response = await fetch(`${corsProxy}${encodeURIComponent(targetUrl)}`, {
+        // Exchange public token for access token via backend API
+        const response = await fetch('/api/plaid/exchange-token', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            client_id: clientId,
-            secret: secret,
             public_token: publicToken,
           }),
         });
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.error_message || 'Failed to exchange token');
+          throw new Error(errorData.error_message || errorData.error || 'Failed to exchange token');
         }
 
         const data = await response.json();
-        console.log('Access token obtained (demo only):', data.access_token);
+        console.log('Access token obtained:', data.access_token);
         
         setIsBankConnected(true);
         
